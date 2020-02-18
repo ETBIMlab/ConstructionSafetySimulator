@@ -21,6 +21,9 @@ called "ConstructionSafetySimulator" that's in the same folder as README.md, git
 
 Now you should see the project in your Unity Hub. Once you open it, it should fill in the remaining components of the project. 
 
+<strong>Committing Changes To GitHub</strong><br />
+If you've added stuff to the project and you're ready to push it to the master branch (be sure and save your project in Unity first), in GitHub desktop select the repo for the project, add text to the "summary" describing what changes you made, click commit, and then in the top right "push to origin". You may need to do a pull first, if someone else has pushed new changes since the last time you pulled from the repo. "pull" or "fetch" will update your repo with any new content that's been pushed since your last pull. This might get tricky, so we may need to experiment with using branches. 
+
 <h2>Links To Helpful Videos</h2>
 
 <a href="https://www.youtube.com/watch?v=iJ0oNYIUFJo">Setting up VR in Unity, Teleport, Object Interaction</a>
