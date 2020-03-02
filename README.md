@@ -15,9 +15,12 @@ This step will copy all the contents of the repo to your machine, but it is not 
 Unity projects contain a lot of machine specific files that will need to be added in by your machine.
 
 <strong>Step 2: Adding The Project To Unity</strong><br />
+<a href="https://unity3d.com/get-unity/download"> Download Unity and Unity Hub here</a>
+
 Open Unity Hub. Click on "ADD" in the top right corner. Navigate to the cloned repository you just made and select 
 the folder "ConstructionSafetySimulator" that's INSIDE the parent folder. In other words, you want to select the folder 
 called "ConstructionSafetySimulator" that's in the same folder as README.md, gitignore, etc.
+
 
 Now you should see the project in your Unity Hub. Once you open it, it should fill in the remaining components of the project. <br />
 <strong>Important:</strong> in order to view the scene the first time you create the project you must open the "scene" called "sampleScene" in Unity.
