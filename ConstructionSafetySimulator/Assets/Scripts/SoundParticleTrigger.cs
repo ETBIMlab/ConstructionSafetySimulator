@@ -15,18 +15,19 @@ public class SoundParticleTrigger : MonoBehaviour
         particles = GetComponent<ParticleSystem>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (triggerSound != null)
         {
             audioSource.PlayOneShot(triggerSound, 0.2f);
             particles.Play();
+        }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        if (triggerSound != null) {
+            audioSource.Stop();
+            particles.Stop();
         }
     }
 }
