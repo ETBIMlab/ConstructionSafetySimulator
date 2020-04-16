@@ -105,7 +105,7 @@ public class DirectionalHaptic : MonoBehaviour {
 
     void SetAllPads(TactSource device, float value) {
         for (int j = 0; j < 20; j++) {
-            device.DotPoints[0] = (byte)value;
+            device.DotPoints[j] = (byte)value;
         }
     }
 
