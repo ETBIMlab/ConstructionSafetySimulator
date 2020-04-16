@@ -28,6 +28,7 @@ public class RemoteVibrate : MonoBehaviour {
         distance = 1 / distance;
 
         Debug.Log("Remote BUZZ: " + distance);
+        Debug.Log(gameObject);
         //Debug.Log(playerTrans.gameObject);
         StartCoroutine("Fade");        
     }
