@@ -1,0 +1,743 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!29 &1
+OcclusionCullingSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_OcclusionBakeSettings:
+    smallestOccluder: 5
+    smallestHole: 0.25
+    backfaceThreshold: 100
+  m_SceneGUID: 00000000000000000000000000000000
+  m_OcclusionCullingData: {fileID: 0}
+--- !u!104 &2
+RenderSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 9
+  m_Fog: 0
+  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_FogMode: 3
+  m_FogDensity: 0.01
+  m_LinearFogStart: 0
+  m_LinearFogEnd: 300
+  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
+  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
+  m_AmbientIntensity: 1
+  m_AmbientMode: 0
+  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_HaloStrength: 0.5
+  m_FlareStrength: 1
+  m_FlareFadeSpeed: 3
+  m_HaloTexture: {fileID: 0}
+  m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
+  m_DefaultReflectionMode: 0
+  m_DefaultReflectionResolution: 128
+  m_ReflectionBounces: 1
+  m_ReflectionIntensity: 1
+  m_CustomReflection: {fileID: 0}
+  m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_UseRadianceAmbientProbe: 0
+--- !u!157 &3
+LightmapSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 11
+  m_GIWorkflowMode: 1
+  m_GISettings:
+    serializedVersion: 2
+    m_BounceScale: 1
+    m_IndirectOutputScale: 1
+    m_AlbedoBoost: 1
+    m_EnvironmentLightingMode: 0
+    m_EnableBakedLightmaps: 1
+    m_EnableRealtimeLightmaps: 1
+  m_LightmapEditorSettings:
+    serializedVersion: 12
+    m_Resolution: 2
+    m_BakeResolution: 40
+    m_AtlasSize: 1024
+    m_AO: 0
+    m_AOMaxDistance: 1
+    m_CompAOExponent: 0
+    m_CompAOExponentDirect: 0
+    m_ExtractAmbientOcclusion: 0
+    m_Padding: 2
+    m_LightmapParameters: {fileID: 0}
+    m_LightmapsBakeMode: 1
+    m_TextureCompression: 1
+    m_FinalGather: 0
+    m_FinalGatherFiltering: 1
+    m_FinalGatherRayCount: 1024
+    m_ReflectionCompression: 2
+    m_MixedBakeMode: 1
+    m_BakeBackend: 0
+    m_PVRSampling: 1
+    m_PVRDirectSampleCount: 32
+    m_PVRSampleCount: 500
+    m_PVRBounces: 2
+    m_PVREnvironmentSampleCount: 500
+    m_PVREnvironmentReferencePointCount: 2048
+    m_PVRFilteringMode: 0
+    m_PVRDenoiserTypeDirect: 0
+    m_PVRDenoiserTypeIndirect: 0
+    m_PVRDenoiserTypeAO: 0
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
+    m_PVREnvironmentMIS: 0
+    m_PVRCulling: 1
+    m_PVRFilteringGaussRadiusDirect: 1
+    m_PVRFilteringGaussRadiusIndirect: 5
+    m_PVRFilteringGaussRadiusAO: 2
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ExportTrainingData: 0
+    m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
+  m_LightingDataAsset: {fileID: 0}
+  m_UseShadowmask: 0
+--- !u!196 &4
+NavMeshSettings:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_BuildSettings:
+    serializedVersion: 2
+    agentTypeID: 0
+    agentRadius: 0.5
+    agentHeight: 2
+    agentSlope: 45
+    agentClimb: 0.4
+    ledgeDropHeight: 0
+    maxJumpAcrossDistance: 0
+    minRegionArea: 2
+    manualCellSize: 0
+    cellSize: 0.16666667
+    manualTileSize: 0
+    tileSize: 256
+    accuratePlacement: 0
+    debug:
+      m_Flags: 0
+  m_NavMeshData: {fileID: 0}
+--- !u!1 &37340359
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 37340361}
+  - component: {fileID: 37340360}
+  m_Layer: 0
+  m_Name: Directional Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!108 &37340360
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37340359}
+  m_Enabled: 1
+  serializedVersion: 10
+  m_Type: 1
+  m_Shape: 0
+  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Intensity: 1
+  m_Range: 10
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!4 &37340361
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37340359}
+  m_LocalRotation: {x: -0.40821797, y: 0.23456939, z: -0.10938151, w: -0.8754262}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 50, y: 330, z: 0}
+--- !u!1 &314192077
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 314192082}
+  - component: {fileID: 314192081}
+  - component: {fileID: 314192079}
+  - component: {fileID: 314192078}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!81 &314192078
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314192077}
+  m_Enabled: 1
+--- !u!124 &314192079
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314192077}
+  m_Enabled: 1
+--- !u!20 &314192081
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314192077}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 0
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &314192082
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314192077}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -9.3, z: -45}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1197815021
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1197815022}
+  - component: {fileID: 1197815023}
+  - component: {fileID: 1197815025}
+  - component: {fileID: 1197815024}
+  - component: {fileID: 1197815027}
+  - component: {fileID: 1197815026}
+  - component: {fileID: 1197815028}
+  m_Layer: 0
+  m_Name: '[Test]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1197815022
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197815021}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1197815023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197815021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a1529af62bec6844a398f3ca44a214a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1197815024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197815021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2fe103a069af7a4180d7395075bc70d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FeedbackType: 1
+  Position: 2
+  Points:
+  - X: 0.5
+    Y: 0.5
+    Intensity: 100
+  DotPoints: 6464646464646464646464646464646464646464
+  TimeMillis: 1000
+  Intensity: 1
+  Duration: 1
+  IsReflectTactosy: 0
+  VestRotationAngleX: 0
+  VestRotationOffsetY: 0
+  TactFileOffsetX: 0
+  TactFileOffsetY: 0
+  FeedbackFile:
+    Id: 5cb85e672116d09d812b04efe13d1fc1
+    Key: allPointL
+    Value: '{"intervalMillis":20,"size":20,"name":"upDown","durationMillis":520,"feedback":{"0":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}],"20":[{"position":"HandL","mode":"DOT_MODE","values":[100,100,100,100,100,100,100,100,100,100],"texture":0}],"40":[{"position":"HandL","mode":"DOT_MODE","values":[100,100,100,100,100,100,100,100,100,100],"texture":0}],"60":[{"position":"HandL","mode":"DOT_MODE","values":[100,100,100,100,100,100,100,100,100,100],"texture":0}],"80":[{"position":"HandL","mode":"DOT_MODE","values":[100,100,100,100,100,100,100,100,100,100],"texture":0}],"100":[{"position":"HandL","mode":"DOT_MODE","values":[100,100,100,100,100,100,100,100,100,100],"texture":0}],"120":[{"position":"HandL","mode":"DOT_MODE","values":[100,100,100,100,100,100,100,100,100,100],"texture":0}],"140":[{"position":"HandL","mode":"DOT_MODE","values":[100,100,100,100,100,100,100,100,100,100],"texture":0}],"160":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}],"180":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}],"200":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}],"220":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}],"240":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}],"260":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}],"280":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}],"300":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}],"320":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}],"340":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}],"360":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}],"380":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}],"400":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}],"420":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}],"440":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}],"460":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}],"480":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}]},"project":{"id":433,"name":"upDown","column":0,"row":0,"mediaFileUrl":null,"thumbnailUrl":null,"mediaFileDuration":0.5,"tracks":[{"id":865,"enable":true,"projectId":433,"effects":[{"id":1659,"trackId":865,"name":"dot","startTime":9,"offsetTime":150,"priority":0,"modes":{"HandL":{"texture":0,"mode":"DOT_MODE","dotMode":{"dotConnected":false,"feedback":[{"startTime":0,"endTime":150,"playbackType":"NONE","pointList":[{"index":7,"intensity":"1.000"},{"index":8,"intensity":"1.000"},{"index":9,"intensity":"1.000"},{"index":4,"intensity":"1.000"},{"index":3,"intensity":"1.000"},{"index":2,"intensity":"1.000"},{"index":6,"intensity":"1.000"},{"index":1,"intensity":"1.000"},{"index":0,"intensity":"1.000"},{"index":5,"intensity":"1.000"}]}]},"pathMode":{"feedback":[{"playbackType":"NONE","movingPattern":"CONST_SPEED","pointList":[]}]}}}}]},{"id":866,"enable":false,"projectId":433,"effects":[]}],"hapticEffectSize":0,"parentId":1,"creationTime":null,"updateTime":"2017-11-22T11:34:21.000Z","peaks":null,"layout":{"id":5,"name":"HandL","layouts":{"HandL":[{"index":0,"x":"0.000","y":"0.000","distance":0},{"index":1,"x":"0.250","y":"0.000","distance":0},{"index":2,"x":"0.500","y":"0.000","distance":0},{"index":3,"x":"0.750","y":"0.000","distance":0},{"index":4,"x":"1.000","y":"0.000","distance":0},{"index":5,"x":"0.000","y":"1.000","distance":0},{"index":6,"x":"0.250","y":"1.000","distance":0},{"index":7,"x":"0.500","y":"1.000","distance":0},{"index":8,"x":"0.750","y":"1.000","distance":0},{"index":9,"x":"1.000","y":"1.000","distance":0}]},"type":"HandL","public":true}}}'
+    Type: HandL
+--- !u!114 &1197815025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197815021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2fe103a069af7a4180d7395075bc70d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FeedbackType: 0
+  Position: 2
+  Points:
+  - X: 0.5
+    Y: 0.5
+    Intensity: 100
+  DotPoints: 0000000000000000000000000000000000000000
+  TimeMillis: 1000
+  Intensity: 1
+  Duration: 1
+  IsReflectTactosy: 1
+  VestRotationAngleX: 0
+  VestRotationOffsetY: 0
+  TactFileOffsetX: 0
+  TactFileOffsetY: 0
+  FeedbackFile:
+    Id: 2cb7eece39d527e877593e3d0e1a8544
+    Key: Swipe_L
+    Value: '{"project":{"createdAt":1546842035087,"description":"","layout":{"layouts":{"ForearmL":[{"index":0,"x":0,"y":0},{"index":1,"x":0.5,"y":0},{"index":2,"x":1,"y":0},{"index":3,"x":0,"y":1},{"index":4,"x":0.5,"y":1},{"index":5,"x":1,"y":1}],"ForearmR":[{"index":0,"x":0,"y":0},{"index":1,"x":0.5,"y":0},{"index":2,"x":1,"y":0},{"index":3,"x":0,"y":1},{"index":4,"x":0.5,"y":1},{"index":5,"x":1,"y":1}]},"name":"Tactosy2","type":"Tactosy2"},"mediaFileDuration":1,"name":"Swipe_L","tracks":[{"effects":[{"modes":{"ForearmL":{"dotMode":{"dotConnected":false,"feedback":[{"endTime":1000,"playbackType":"NONE","startTime":0,"pointList":[]}]},"mode":"PATH_MODE","pathMode":{"feedback":[{"movingPattern":"CONST_SPEED","playbackType":"NONE","pointList":[{"intensity":0.5,"time":0,"x":0,"y":0},{"intensity":0.5,"time":500,"x":1,"y":0}]},{"movingPattern":"CONST_SPEED","playbackType":"NONE","pointList":[{"intensity":0.5,"time":0,"x":0,"y":1},{"intensity":0.5,"time":500,"x":1,"y":1}]}]}},"ForearmR":{"dotMode":{"dotConnected":false,"feedback":[{"endTime":1000,"playbackType":"NONE","startTime":0,"pointList":[]}]},"mode":"PATH_MODE","pathMode":{"feedback":[{"movingPattern":"CONST_SPEED","playbackType":"NONE","pointList":[]}]}}},"name":"Effect
+      1","offsetTime":500,"startTime":0}],"enable":true},{"enable":true,"effects":[]}],"updatedAt":1546849595499},"durationMillis":0,"intervalMillis":20,"size":20}'
+    Type: Tactosy2
+--- !u!114 &1197815026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197815021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2fe103a069af7a4180d7395075bc70d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FeedbackType: 0
+  Position: 2
+  Points:
+  - X: 0.5
+    Y: 0.5
+    Intensity: 100
+  DotPoints: 0000000000000000000000000000000000000000
+  TimeMillis: 1000
+  Intensity: 1
+  Duration: 1
+  IsReflectTactosy: 0
+  VestRotationAngleX: 0
+  VestRotationOffsetY: 0
+  TactFileOffsetX: 0
+  TactFileOffsetY: 0
+  FeedbackFile:
+    Id: c416f582caff3b0c6a43b8e186aabaf6
+    Key: HeadShot
+    Value: '{"intervalMillis":20,"size":20,"name":"HeadShot","durationMillis":1020,"feedback":{"0":[{"position":"Head","mode":"DOT_MODE","values":[100,100,100,100,100,100,100,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"20":[{"position":"Head","mode":"DOT_MODE","values":[100,100,100,100,100,100,100,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"40":[{"position":"Head","mode":"DOT_MODE","values":[100,100,100,100,100,100,100,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"60":[{"position":"Head","mode":"DOT_MODE","values":[100,100,100,100,100,100,100,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"80":[{"position":"Head","mode":"DOT_MODE","values":[100,100,100,100,100,100,100,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"100":[{"position":"Head","mode":"DOT_MODE","values":[100,100,100,100,100,100,100,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"120":[{"position":"Head","mode":"DOT_MODE","values":[100,100,100,100,100,100,100,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"140":[{"position":"Head","mode":"DOT_MODE","values":[100,100,100,100,100,100,100,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"160":[{"position":"Head","mode":"DOT_MODE","values":[92,92,92,92,92,92,92,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"180":[{"position":"Head","mode":"DOT_MODE","values":[85,85,85,85,85,85,85,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"200":[{"position":"Head","mode":"DOT_MODE","values":[77,77,77,77,77,77,77,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"220":[{"position":"Head","mode":"DOT_MODE","values":[70,70,70,70,70,70,70,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"240":[{"position":"Head","mode":"DOT_MODE","values":[62,62,62,62,62,62,62,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"260":[{"position":"Head","mode":"DOT_MODE","values":[55,55,55,55,55,55,55,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"280":[{"position":"Head","mode":"DOT_MODE","values":[47,47,47,47,47,47,47,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"300":[{"position":"Head","mode":"DOT_MODE","values":[40,40,40,40,40,40,40,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"320":[{"position":"Head","mode":"DOT_MODE","values":[32,32,32,32,32,32,32,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"340":[{"position":"Head","mode":"DOT_MODE","values":[25,25,25,25,25,25,25,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"360":[{"position":"Head","mode":"DOT_MODE","values":[17,17,17,17,17,17,17,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"380":[{"position":"Head","mode":"DOT_MODE","values":[10,10,10,10,10,10,10,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"400":[{"position":"Head","mode":"DOT_MODE","values":[2,2,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"420":[{"position":"Head","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"440":[{"position":"Head","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"460":[{"position":"Head","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"480":[{"position":"Head","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"500":[{"position":"Head","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"520":[{"position":"Head","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"540":[{"position":"Head","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"560":[{"position":"Head","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"580":[{"position":"Head","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"600":[{"position":"Head","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"620":[{"position":"Head","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"640":[{"position":"Head","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"660":[{"position":"Head","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"680":[{"position":"Head","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"700":[{"position":"Head","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"720":[{"position":"Head","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"740":[{"position":"Head","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"760":[{"position":"Head","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"780":[{"position":"Head","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"800":[{"position":"Head","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"820":[{"position":"Head","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"840":[{"position":"Head","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"860":[{"position":"Head","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"880":[{"position":"Head","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"900":[{"position":"Head","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"920":[{"position":"Head","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"940":[{"position":"Head","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"960":[{"position":"Head","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"980":[{"position":"Head","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}]},"project":{"id":112,"name":"HeadShot","column":0,"row":0,"mediaFileUrl":null,"thumbnailUrl":null,"mediaFileDuration":1,"tracks":[{"id":223,"enable":true,"projectId":112,"effects":[{"id":465,"trackId":223,"name":"dot","startTime":0,"offsetTime":141,"priority":0,"modes":{"Head":{"texture":0,"mode":"DOT_MODE","dotMode":{"dotConnected":false,"feedback":[{"startTime":0,"endTime":141,"playbackType":"NONE","pointList":[{"index":0,"intensity":"1.000"},{"index":1,"intensity":"1.000"},{"index":2,"intensity":"1.000"},{"index":3,"intensity":"1.000"},{"index":4,"intensity":"1.000"},{"index":5,"intensity":"1.000"},{"index":6,"intensity":"1.000"}]}]},"pathMode":{"feedback":[{"playbackType":"NONE","movingPattern":"CONST_SPEED","pointList":[]}]}}}},{"id":467,"trackId":223,"name":"dot","startTime":140,"offsetTime":268,"priority":0,"modes":{"Head":{"texture":0,"mode":"DOT_MODE","dotMode":{"dotConnected":false,"feedback":[{"startTime":0,"endTime":268,"playbackType":"FADE_OUT","pointList":[{"index":0,"intensity":"1.000"},{"index":1,"intensity":"1.000"},{"index":2,"intensity":"1.000"},{"index":3,"intensity":"1.000"},{"index":4,"intensity":"1.000"},{"index":5,"intensity":"1.000"},{"index":6,"intensity":"1.000"}]}]},"pathMode":{"feedback":[{"playbackType":"NONE","movingPattern":"CONST_SPEED","pointList":[]}]}}}}]},{"id":224,"enable":true,"projectId":112,"effects":[]}],"hapticEffectSize":0,"parentId":27,"creationTime":null,"updateTime":"2017-09-18T04:17:51.000Z","peaks":null,"layout":{"id":2,"name":"Tactal","layouts":{"Head":[{"index":0,"x":"0.000","y":"0.500","distance":0},{"index":1,"x":"0.167","y":"0.500","distance":0},{"index":2,"x":"0.333","y":"0.500","distance":0},{"index":3,"x":"0.500","y":"0.500","distance":0},{"index":4,"x":"0.667","y":"0.500","distance":0},{"index":5,"x":"0.833","y":"0.500","distance":0},{"index":6,"x":"1.000","y":"0.500","distance":0}]},"type":"Head","public":true}}}'
+    Type: Head
+--- !u!114 &1197815027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197815021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2fe103a069af7a4180d7395075bc70d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FeedbackType: 0
+  Position: 2
+  Points:
+  - X: 0.5
+    Y: 0.5
+    Intensity: 100
+  DotPoints: 0000000000000000000000000000000000000000
+  TimeMillis: 1000
+  Intensity: 1
+  Duration: 1
+  IsReflectTactosy: 0
+  VestRotationAngleX: 0
+  VestRotationOffsetY: 0
+  TactFileOffsetX: 0
+  TactFileOffsetY: 0
+  FeedbackFile:
+    Id: f414b5001d639ae2fb32569f35819263
+    Key: ElectricFront
+    Value: '{"intervalMillis":20,"size":20,"name":"ElectricFront","durationMillis":1220,"feedback":{"0":[{"position":"VestFront","mode":"DOT_MODE","values":[100,0,100,0,0,0,0,100,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"20":[{"position":"VestFront","mode":"DOT_MODE","values":[89,0,89,0,0,0,10,89,10,10,0,0,0,0,0,10,0,0,10,0],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"40":[{"position":"VestFront","mode":"DOT_MODE","values":[80,0,80,0,0,0,20,80,20,20,0,0,0,0,0,20,0,0,20,0],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"60":[{"position":"VestFront","mode":"DOT_MODE","values":[69,0,69,0,0,0,30,69,30,30,0,0,0,0,0,30,0,0,30,0],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"80":[{"position":"VestFront","mode":"DOT_MODE","values":[60,0,60,0,0,0,40,60,40,40,0,0,0,0,0,40,0,0,40,0],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"100":[{"position":"VestFront","mode":"DOT_MODE","values":[50,0,50,0,0,0,50,50,50,50,0,0,0,0,0,50,0,0,50,0],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"120":[{"position":"VestFront","mode":"DOT_MODE","values":[40,0,40,0,0,0,60,40,60,60,0,0,0,0,0,60,0,0,60,0],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"140":[{"position":"VestFront","mode":"DOT_MODE","values":[30,0,30,0,0,0,69,30,69,69,0,0,0,0,0,69,0,0,69,0],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"160":[{"position":"VestFront","mode":"DOT_MODE","values":[20,0,20,0,0,0,80,20,80,80,0,0,0,0,0,80,0,0,80,0],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"180":[{"position":"VestFront","mode":"DOT_MODE","values":[10,0,10,0,0,0,89,10,89,89,0,0,0,0,0,89,0,0,89,0],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"200":[{"position":"VestFront","mode":"DOT_MODE","values":[0,0,0,0,0,0,100,0,100,100,0,0,0,0,0,100,0,0,100,0],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"220":[{"position":"VestFront","mode":"DOT_MODE","values":[0,0,10,0,10,0,89,0,89,89,0,10,0,0,0,89,0,10,89,0],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"240":[{"position":"VestFront","mode":"DOT_MODE","values":[0,0,20,0,20,0,80,0,80,80,0,20,0,0,0,80,0,20,80,0],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"260":[{"position":"VestFront","mode":"DOT_MODE","values":[0,0,30,0,30,0,69,0,69,69,0,30,0,0,0,69,0,30,69,0],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"280":[{"position":"VestFront","mode":"DOT_MODE","values":[0,0,40,0,40,0,60,0,60,60,0,40,0,0,0,60,0,40,60,0],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"300":[{"position":"VestFront","mode":"DOT_MODE","values":[0,0,50,0,50,0,50,0,50,50,0,50,0,0,0,50,0,50,50,0],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"320":[{"position":"VestFront","mode":"DOT_MODE","values":[0,0,60,0,60,0,40,0,40,40,0,60,0,0,0,40,0,60,40,0],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"340":[{"position":"VestFront","mode":"DOT_MODE","values":[0,0,69,0,69,0,30,0,30,30,0,69,0,0,0,30,0,69,30,0],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"360":[{"position":"VestFront","mode":"DOT_MODE","values":[0,0,80,0,80,0,20,0,20,20,0,80,0,0,0,20,0,80,20,0],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"380":[{"position":"VestFront","mode":"DOT_MODE","values":[0,0,89,0,89,0,10,0,10,10,0,89,0,0,0,10,0,89,10,0],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"400":[{"position":"VestFront","mode":"DOT_MODE","values":[0,0,100,0,100,0,0,0,0,0,0,100,0,0,0,0,0,100,0,0],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"420":[{"position":"VestFront","mode":"DOT_MODE","values":[0,0,99,0,89,0,0,0,0,10,0,89,10,0,0,0,0,89,0,10],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"440":[{"position":"VestFront","mode":"DOT_MODE","values":[0,0,100,0,80,0,0,0,0,20,0,80,20,0,0,0,0,80,0,20],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"460":[{"position":"VestFront","mode":"DOT_MODE","values":[0,0,99,0,69,0,0,0,0,30,0,69,30,0,0,0,0,69,0,30],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"480":[{"position":"VestFront","mode":"DOT_MODE","values":[0,0,100,0,60,0,0,0,0,40,0,60,40,0,0,0,0,60,0,40],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"500":[{"position":"VestFront","mode":"DOT_MODE","values":[0,0,100,0,50,0,0,0,0,50,0,50,50,0,0,0,0,50,0,50],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"520":[{"position":"VestFront","mode":"DOT_MODE","values":[0,0,100,0,40,0,0,0,0,60,0,40,60,0,0,0,0,40,0,60],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"540":[{"position":"VestFront","mode":"DOT_MODE","values":[0,0,99,0,30,0,0,0,0,69,0,30,69,0,0,0,0,30,0,69],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"560":[{"position":"VestFront","mode":"DOT_MODE","values":[0,0,100,0,20,0,0,0,0,80,0,20,80,0,0,0,0,20,0,80],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"580":[{"position":"VestFront","mode":"DOT_MODE","values":[0,0,99,0,10,0,0,0,0,89,0,10,89,0,0,0,0,10,0,89],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"600":[{"position":"VestFront","mode":"DOT_MODE","values":[0,0,100,0,0,0,0,0,0,100,0,0,100,0,0,0,0,0,0,100],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"620":[{"position":"VestFront","mode":"DOT_MODE","values":[10,0,89,0,0,0,0,10,0,89,0,0,89,0,10,0,0,0,0,99],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"640":[{"position":"VestFront","mode":"DOT_MODE","values":[20,0,80,0,0,0,0,20,0,80,0,0,80,0,20,0,0,0,0,100],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"660":[{"position":"VestFront","mode":"DOT_MODE","values":[30,0,69,0,0,0,0,30,0,69,0,0,69,0,30,0,0,0,0,99],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"680":[{"position":"VestFront","mode":"DOT_MODE","values":[40,0,60,0,0,0,0,40,0,60,0,0,60,0,40,0,0,0,0,100],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"700":[{"position":"VestFront","mode":"DOT_MODE","values":[50,0,50,0,0,0,0,50,0,50,0,0,50,0,50,0,0,0,0,100],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"720":[{"position":"VestFront","mode":"DOT_MODE","values":[60,0,40,0,0,0,0,60,0,40,0,0,40,0,60,0,0,0,0,100],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"740":[{"position":"VestFront","mode":"DOT_MODE","values":[69,0,30,0,0,0,0,69,0,30,0,0,30,0,69,0,0,0,0,99],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"760":[{"position":"VestFront","mode":"DOT_MODE","values":[80,0,20,0,0,0,0,80,0,20,0,0,20,0,80,0,0,0,0,100],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"780":[{"position":"VestFront","mode":"DOT_MODE","values":[89,0,10,0,0,0,0,89,0,10,0,0,10,0,89,0,0,0,0,99],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"800":[{"position":"VestFront","mode":"DOT_MODE","values":[100,0,0,0,0,0,0,100,0,0,0,0,0,0,100,0,0,0,0,100],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"820":[{"position":"VestFront","mode":"DOT_MODE","values":[89,0,10,0,10,0,0,89,0,0,10,0,10,0,89,10,0,0,0,89],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"840":[{"position":"VestFront","mode":"DOT_MODE","values":[80,0,20,0,20,0,0,80,0,0,20,0,20,0,80,20,0,0,0,80],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"860":[{"position":"VestFront","mode":"DOT_MODE","values":[69,0,30,0,30,0,0,69,0,0,30,0,30,0,69,30,0,0,0,69],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"880":[{"position":"VestFront","mode":"DOT_MODE","values":[60,0,40,0,40,0,0,60,0,0,40,0,40,0,60,40,0,0,0,60],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"900":[{"position":"VestFront","mode":"DOT_MODE","values":[50,0,50,0,50,0,0,50,0,0,50,0,50,0,50,50,0,0,0,50],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"920":[{"position":"VestFront","mode":"DOT_MODE","values":[40,0,60,0,60,0,0,40,0,0,60,0,60,0,40,60,0,0,0,40],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"940":[{"position":"VestFront","mode":"DOT_MODE","values":[30,0,69,0,69,0,0,30,0,0,69,0,69,0,30,69,0,0,0,30],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"960":[{"position":"VestFront","mode":"DOT_MODE","values":[20,0,80,0,80,0,0,20,0,0,80,0,80,0,20,80,0,0,0,20],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"980":[{"position":"VestFront","mode":"DOT_MODE","values":[10,0,89,0,89,0,0,10,0,0,89,0,89,0,10,89,0,0,0,10],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"1000":[{"position":"VestFront","mode":"DOT_MODE","values":[0,0,100,0,100,0,0,0,0,0,100,0,100,0,0,100,0,0,0,0],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"1020":[{"position":"VestFront","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"1040":[{"position":"VestFront","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"1060":[{"position":"VestFront","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"1080":[{"position":"VestFront","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"1100":[{"position":"VestFront","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"1120":[{"position":"VestFront","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"1140":[{"position":"VestFront","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"1160":[{"position":"VestFront","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}],"1180":[{"position":"VestFront","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0},{"position":"VestBack","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"texture":0}]},"project":{"id":110,"name":"ElectricFront","column":0,"row":0,"mediaFileUrl":null,"thumbnailUrl":null,"mediaFileDuration":1.2,"tracks":[{"id":219,"enable":true,"projectId":110,"effects":[{"id":470,"trackId":219,"name":"dot","startTime":0,"offsetTime":1000,"priority":0,"modes":{"VestFront":{"texture":0,"mode":"DOT_MODE","dotMode":{"dotConnected":true,"feedback":[{"startTime":0,"endTime":200,"playbackType":"NONE","pointList":[{"index":0,"intensity":"1.000"},{"index":2,"intensity":"1.000"},{"index":7,"intensity":"1.000"}]},{"startTime":200,"endTime":400,"playbackType":"NONE","pointList":[{"index":8,"intensity":"1.000"},{"index":9,"intensity":"1.000"},{"index":6,"intensity":"1.000"},{"index":18,"intensity":"1.000"},{"index":15,"intensity":"1.000"}]},{"startTime":400,"endTime":600,"playbackType":"NONE","pointList":[{"index":17,"intensity":"1.000"},{"index":11,"intensity":"1.000"},{"index":2,"intensity":"1.000"},{"index":4,"intensity":"1.000"}]},{"startTime":600,"endTime":800,"playbackType":"NONE","pointList":[{"index":9,"intensity":"1.000"},{"index":2,"intensity":"1.000"},{"index":12,"intensity":"1.000"},{"index":19,"intensity":"1.000"}]},{"startTime":800,"endTime":1000,"playbackType":"NONE","pointList":[{"index":0,"intensity":"1.000"},{"index":19,"intensity":"1.000"},{"index":7,"intensity":"1.000"},{"index":14,"intensity":"1.000"}]},{"startTime":1000,"endTime":1000,"playbackType":"NONE","pointList":[{"index":2,"intensity":"1.000"},{"index":12,"intensity":"1.000"},{"index":15,"intensity":"1.000"},{"index":4,"intensity":"1.000"},{"index":10,"intensity":"1.000"}]}]},"pathMode":{"feedback":[{"playbackType":"NONE","movingPattern":"CONST_SPEED","pointList":[]}]}},"VestBack":{"texture":0,"mode":"DOT_MODE","dotMode":{"dotConnected":false,"feedback":[{"startTime":0,"endTime":1000,"playbackType":"NONE","pointList":[]}]},"pathMode":{"feedback":[{"playbackType":"NONE","movingPattern":"CONST_SPEED","pointList":[]}]}}}}]},{"id":220,"enable":true,"projectId":110,"effects":[]}],"hapticEffectSize":0,"parentId":27,"creationTime":null,"updateTime":"2017-09-18T04:43:49.000Z","peaks":null,"layout":{"id":3,"name":"Tactot","layouts":{"VestFront":[{"index":0,"x":"0.000","y":"0.000","distance":0},{"index":1,"x":"0.333","y":"0.000","distance":0},{"index":2,"x":"0.667","y":"0.000","distance":0},{"index":3,"x":"1.000","y":"0.000","distance":0},{"index":4,"x":"0.000","y":"0.250","distance":0},{"index":5,"x":"0.333","y":"0.250","distance":0},{"index":6,"x":"0.667","y":"0.250","distance":0},{"index":7,"x":"1.000","y":"0.250","distance":0},{"index":8,"x":"0.000","y":"0.500","distance":0},{"index":9,"x":"0.333","y":"0.500","distance":0},{"index":10,"x":"0.667","y":"0.500","distance":0},{"index":11,"x":"1.000","y":"0.500","distance":0},{"index":12,"x":"0.000","y":"0.750","distance":0},{"index":13,"x":"0.333","y":"0.750","distance":0},{"index":14,"x":"0.667","y":"0.750","distance":0},{"index":15,"x":"1.000","y":"0.750","distance":0},{"index":16,"x":"0.000","y":"1.000","distance":0},{"index":17,"x":"0.333","y":"1.000","distance":0},{"index":18,"x":"0.667","y":"1.000","distance":0},{"index":19,"x":"1.000","y":"1.000","distance":0}],"VestBack":[{"index":0,"x":"0.000","y":"0.000","distance":0},{"index":1,"x":"0.333","y":"0.000","distance":0},{"index":2,"x":"0.667","y":"0.000","distance":0},{"index":3,"x":"1.000","y":"0.000","distance":0},{"index":4,"x":"0.000","y":"0.250","distance":0},{"index":5,"x":"0.333","y":"0.250","distance":0},{"index":6,"x":"0.667","y":"0.250","distance":0},{"index":7,"x":"1.000","y":"0.250","distance":0},{"index":8,"x":"0.000","y":"0.500","distance":0},{"index":9,"x":"0.333","y":"0.500","distance":0},{"index":10,"x":"0.667","y":"0.500","distance":0},{"index":11,"x":"1.000","y":"0.500","distance":0},{"index":12,"x":"0.000","y":"0.750","distance":0},{"index":13,"x":"0.333","y":"0.750","distance":0},{"index":14,"x":"0.667","y":"0.750","distance":0},{"index":15,"x":"1.000","y":"0.750","distance":0},{"index":16,"x":"0.000","y":"1.000","distance":0},{"index":17,"x":"0.333","y":"1.000","distance":0},{"index":18,"x":"0.667","y":"1.000","distance":0},{"index":19,"x":"1.000","y":"1.000","distance":0}]},"type":"Vest","public":true}}}'
+    Type: Vest
+--- !u!114 &1197815028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197815021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2fe103a069af7a4180d7395075bc70d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FeedbackType: 2
+  Position: 0
+  Points:
+  - X: 0.5
+    Y: 0.5
+    Intensity: 100
+  DotPoints: 0000000000000000000000000000000000000000
+  TimeMillis: 1000
+  Intensity: 1
+  Duration: 1
+  IsReflectTactosy: 0
+  VestRotationAngleX: 0
+  VestRotationOffsetY: 0
+  TactFileOffsetX: 0
+  TactFileOffsetY: 0
+  FeedbackFile:
+    Id: 5cb85e672116d09d812b04efe13d1fc1
+    Key: allPointL
+    Value: '{"intervalMillis":20,"size":20,"name":"upDown","durationMillis":520,"feedback":{"0":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}],"20":[{"position":"HandL","mode":"DOT_MODE","values":[100,100,100,100,100,100,100,100,100,100],"texture":0}],"40":[{"position":"HandL","mode":"DOT_MODE","values":[100,100,100,100,100,100,100,100,100,100],"texture":0}],"60":[{"position":"HandL","mode":"DOT_MODE","values":[100,100,100,100,100,100,100,100,100,100],"texture":0}],"80":[{"position":"HandL","mode":"DOT_MODE","values":[100,100,100,100,100,100,100,100,100,100],"texture":0}],"100":[{"position":"HandL","mode":"DOT_MODE","values":[100,100,100,100,100,100,100,100,100,100],"texture":0}],"120":[{"position":"HandL","mode":"DOT_MODE","values":[100,100,100,100,100,100,100,100,100,100],"texture":0}],"140":[{"position":"HandL","mode":"DOT_MODE","values":[100,100,100,100,100,100,100,100,100,100],"texture":0}],"160":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}],"180":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}],"200":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}],"220":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}],"240":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}],"260":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}],"280":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}],"300":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}],"320":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}],"340":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}],"360":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}],"380":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}],"400":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}],"420":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}],"440":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}],"460":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}],"480":[{"position":"HandL","mode":"DOT_MODE","values":[0,0,0,0,0,0,0,0,0,0],"texture":0}]},"project":{"id":433,"name":"upDown","column":0,"row":0,"mediaFileUrl":null,"thumbnailUrl":null,"mediaFileDuration":0.5,"tracks":[{"id":865,"enable":true,"projectId":433,"effects":[{"id":1659,"trackId":865,"name":"dot","startTime":9,"offsetTime":150,"priority":0,"modes":{"HandL":{"texture":0,"mode":"DOT_MODE","dotMode":{"dotConnected":false,"feedback":[{"startTime":0,"endTime":150,"playbackType":"NONE","pointList":[{"index":7,"intensity":"1.000"},{"index":8,"intensity":"1.000"},{"index":9,"intensity":"1.000"},{"index":4,"intensity":"1.000"},{"index":3,"intensity":"1.000"},{"index":2,"intensity":"1.000"},{"index":6,"intensity":"1.000"},{"index":1,"intensity":"1.000"},{"index":0,"intensity":"1.000"},{"index":5,"intensity":"1.000"}]}]},"pathMode":{"feedback":[{"playbackType":"NONE","movingPattern":"CONST_SPEED","pointList":[]}]}}}}]},{"id":866,"enable":false,"projectId":433,"effects":[]}],"hapticEffectSize":0,"parentId":1,"creationTime":null,"updateTime":"2017-11-22T11:34:21.000Z","peaks":null,"layout":{"id":5,"name":"HandL","layouts":{"HandL":[{"index":0,"x":"0.000","y":"0.000","distance":0},{"index":1,"x":"0.250","y":"0.000","distance":0},{"index":2,"x":"0.500","y":"0.000","distance":0},{"index":3,"x":"0.750","y":"0.000","distance":0},{"index":4,"x":"1.000","y":"0.000","distance":0},{"index":5,"x":"0.000","y":"1.000","distance":0},{"index":6,"x":"0.250","y":"1.000","distance":0},{"index":7,"x":"0.500","y":"1.000","distance":0},{"index":8,"x":"0.750","y":"1.000","distance":0},{"index":9,"x":"1.000","y":"1.000","distance":0}]},"type":"HandL","public":true}}}'
+    Type: HandL
+--- !u!1 &1222795228
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1222795231}
+  - component: {fileID: 1222795230}
+  - component: {fileID: 1222795229}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1222795229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222795228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &1222795230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222795228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 5
+--- !u!4 &1222795231
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222795228}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1610698789
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 465534, guid: 6b04d793cc1f3b34dbcc334ac23a3d96, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 465534, guid: 6b04d793cc1f3b34dbcc334ac23a3d96, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 465534, guid: 6b04d793cc1f3b34dbcc334ac23a3d96, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 465534, guid: 6b04d793cc1f3b34dbcc334ac23a3d96, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 465534, guid: 6b04d793cc1f3b34dbcc334ac23a3d96, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 465534, guid: 6b04d793cc1f3b34dbcc334ac23a3d96, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 465534, guid: 6b04d793cc1f3b34dbcc334ac23a3d96, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 465534, guid: 6b04d793cc1f3b34dbcc334ac23a3d96, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 224145950453137100, guid: 6b04d793cc1f3b34dbcc334ac23a3d96,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224145950453137100, guid: 6b04d793cc1f3b34dbcc334ac23a3d96,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224157637791339130, guid: 6b04d793cc1f3b34dbcc334ac23a3d96,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.0000073965202
+      objectReference: {fileID: 0}
+    - target: {fileID: 224209723769478242, guid: 6b04d793cc1f3b34dbcc334ac23a3d96,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224209723769478242, guid: 6b04d793cc1f3b34dbcc334ac23a3d96,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224209723769478242, guid: 6b04d793cc1f3b34dbcc334ac23a3d96,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224302598123350556, guid: 6b04d793cc1f3b34dbcc334ac23a3d96,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224302598123350556, guid: 6b04d793cc1f3b34dbcc334ac23a3d96,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224354221262341384, guid: 6b04d793cc1f3b34dbcc334ac23a3d96,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224354221262341384, guid: 6b04d793cc1f3b34dbcc334ac23a3d96,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224354221262341384, guid: 6b04d793cc1f3b34dbcc334ac23a3d96,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224400677117833872, guid: 6b04d793cc1f3b34dbcc334ac23a3d96,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00002540811
+      objectReference: {fileID: 0}
+    - target: {fileID: 224461261849390966, guid: 6b04d793cc1f3b34dbcc334ac23a3d96,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224461261849390966, guid: 6b04d793cc1f3b34dbcc334ac23a3d96,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224461261849390966, guid: 6b04d793cc1f3b34dbcc334ac23a3d96,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224674503037763342, guid: 6b04d793cc1f3b34dbcc334ac23a3d96,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224674503037763342, guid: 6b04d793cc1f3b34dbcc334ac23a3d96,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224674503037763342, guid: 6b04d793cc1f3b34dbcc334ac23a3d96,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224728677341215796, guid: 6b04d793cc1f3b34dbcc334ac23a3d96,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224728677341215796, guid: 6b04d793cc1f3b34dbcc334ac23a3d96,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224740247986836736, guid: 6b04d793cc1f3b34dbcc334ac23a3d96,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.0000051094685
+      objectReference: {fileID: 0}
+    - target: {fileID: 224742689719039166, guid: 6b04d793cc1f3b34dbcc334ac23a3d96,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00002265531
+      objectReference: {fileID: 0}
+    - target: {fileID: 224747380910813116, guid: 6b04d793cc1f3b34dbcc334ac23a3d96,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224747380910813116, guid: 6b04d793cc1f3b34dbcc334ac23a3d96,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6b04d793cc1f3b34dbcc334ac23a3d96, type: 3}
