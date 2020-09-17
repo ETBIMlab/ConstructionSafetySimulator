@@ -1,7 +1,7 @@
 # Construction Safety Simulator - Git Guide
 
 ## First Things First!
-Our project is currently built on Unity version **2019.3.1f1** (This version is no long supported to we will need to upgrade to 2019.3.15, will discuss at sprint meeting)
+Our project is currently built on Unity version **2019.3.1f1** (This version is no longer supported so we will need to upgrade to 2019.3.15, will discuss at sprint meeting)
 This is **really _important_**! If we don't all use the same version, then whenever someone pushes new code, merge conflicts are bound to happen more often. If you aren't sure which version you're using, please install the [Unity Hub](https://unity3d.com/get-unity/download) from this link. You can add a different version of unity by clicking "Installs" and then selecting the blue "ADD" button. 
 
 ![Image of Unity Hub](https://i.imgur.com/wfvQaG5.png)
