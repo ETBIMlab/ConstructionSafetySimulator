@@ -22,22 +22,24 @@ git commit -m "my message"      // simultaneously commit and add a commit messag
 git push                        // pushes your commit to the main repo
 git checkout master             // switch back to the master branch 
 ```
-**If you get stuck** and you just want to start over you can use `git reset --hard` and that will revert you to the last commit and delete all your changes since the last commit **without any confirmation** so use it wisely. 
+**If you get stuck** and you just want to delete it all and start over you can use `git reset --hard` and that will revert you to the last commit and delete **all** of your changes since the last commit **without any confirmation** so use it wisely. Seriously, be careful with this command! (but don't worry, anthing commited is safe)
 
 
-#### Step 1: Cloning the repo!
+## Step 1: Cloning the repo!
 It's pretty simple! Just create a folder somewhere in your user directory (or wherever you want to keep the project) and then in the terminal, navigate to that folder. Once you're in the folder that you want to clone to repo into, type the following command
 ```
 git clone https://github.com/WillJenkins/ConstructionSafetySimulator.git
 ```
-You will probably then need to enter your GitHub username and password 
+You will the be prompted to enter your GitHub username and password 
 
 **A quick note about navigation using terminal commands**
-Let's say you have the folder `C:\Users\MyName\ConstructionSim` and you want to put the project there. 
+Unfamiliar with terminal? Let's say you have the folder `C:\Users\MyName\ConstructionSim` and you want to put the project there. 
 In your terminal, the command `cd` or "change directory" is how you move from folder to folder. 
-if you want to move into a folder called "MyFolder", type:
+
+If you're in the `Users` directory and you want to move into a folder `C:\Users\MyName\ConstructionSim`, type:
 ```
-cd MyFolder
+cd MyName           // it would be your user name
+cd ConstructionSim
 ```
 If you need to move back out of a folder, use
 ```
@@ -54,7 +56,9 @@ ls
 ### Once the repo has been cloned
 
 The next step is to add the project to Unity. The best way to do this is to open Unity Hub, and under the "Projects" tab, select the ADD button, navigate to the folder `ConstructionSafetySimulator` and then select the folder ***inside*** that folder that has the same name. 
+
 ![Image of the correct folder](https://i.imgur.com/omgiMRL.png)
+
 Once you select it, Unity Hub will allow you to open the project. It may prompt you to update the version. The first time you open the project it may take a while. This is because our GitHub version is not the entire Unity project. Unity has to fill in the missing info for your specific machine. 
 
 ***One Final Note***
@@ -70,12 +74,12 @@ You should checkout a new branch ***every time*** you make a change.
 And please, for the love of Alan Turing, **do not** keep one branch that you use over and over without merging. 
 ***Branches should be used for one or two changes!*** 
 
-Luckily, checking out a new branch is easy!
+Luckily, checking out a new branch is easy! (`checkout` just means "change my repo into this branch") 
 Before you do, though, make sure you are up to date with the latest. You should start on the `Master Branch` and update your repo
 ```
-git checkout master
+git checkout master   //not needed if you're already on master
 git fetch
-get pull
+git pull
 ```
 
 I also like to do a `git status` to make sure I don't have any unwanted changes lingering. Status will show you if there are any changes you have made that don't exist in the `Master` 
@@ -129,8 +133,27 @@ So, now you're done with your sprint task and you're ready to merge it in with t
 
 Click on `branches` and then click `New Pull Request`
 This will create a page where we can all see what changes were made and if there are any conflicts. 
-***PLEASE DON'T MERGE YOUR OWN PULL REQUESTS.***
-Put a message in the Discord that you have a PR and it needs to be tested. Let someone else merge the request after they have reviewed it. 
-If you want to review someone's changes but you don't want to merge it, click "Submit Review" and add any comments you want to add. Even if it's just a thumbs up emoji. (Yes GitHub supports emoji!)
+***PLEASE DON'T MERGE YOUR OWN PULL REQUESTS WITHOUT REVIEWS.***
+Put a message in the Discord that you have a PR and it needs to be tested. Let at least one person review it before you merge it. 
+If you want to review someone's changes, click "Submit Review" and add any comments you want to add. Even if it's just a thumbs up emoji. (Yes GitHub supports emoji!)
 
 **NOTE** If you only made a small change and you don't think it needs to be reviewed, you can merge your own PR, just please be responsible! We're all in this thing together! Good luck out there! 
+
+# TL;DR
+
+Start on `master`
+```
+git checkout master
+git pull
+```
+checkout a new branch
+```
+git checkout -b myCoolNewBranch
+```
+Make some cool new stuff in the project, and then push it
+```
+git add -A
+git commit -m "I did a thing!"
+git push
+```
+then create a pull request on GitHub, wait for review, and merge that puppy!
