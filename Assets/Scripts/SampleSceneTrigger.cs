@@ -4,7 +4,7 @@ namespace Scenes
 {
     public class SampleSceneTrigger : MonoBehaviour
     {
-        public static SceneOneToSceneTwo SampleSceneTransitionSingleton = new SceneOneToSceneTwo("SampleScene2");
+        public static ISelectScenes SampleSceneTransitionSingleton = new SceneOneToSceneTwo("SampleScene2");
 
         // Start is called before the first frame update
         void Start()
