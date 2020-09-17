@@ -129,6 +129,8 @@ So, now you're done with your sprint task and you're ready to merge it in with t
 
 Click on `branches` and then click `New Pull Request`
 This will create a page where we can all see what changes were made and if there are any conflicts. 
-***PLEASE DON'T MERGE YOUR OWN PULL REQUESTS***
+***PLEASE DON'T MERGE YOUR OWN PULL REQUESTS.***
 Put a message in the Discord that you have a PR and it needs to be tested. Let someone else merge the request after they have reviewed it. 
 If you want to review someone's changes but you don't want to merge it, click "Submit Review" and add any comments you want to add. Even if it's just a thumbs up emoji. (Yes GitHub supports emoji!)
+
+**NOTE** If you only made a small change and you don't think it needs to be reviewed, you can merge your own PR, just please be responsible! We're all in this thing together! Good luck out there! 
