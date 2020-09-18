@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RemoteVibrate : MonoBehaviour {
-    TactSource[] devices;
+    //TactSource[] devices;
 
     Transform playerTrans;
     float distance;
@@ -12,7 +12,7 @@ public class RemoteVibrate : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         playerTrans = GameObject.FindGameObjectWithTag("MainCamera").transform;
-        devices = GetComponents<TactSource>();        
+        //devices = GetComponents<TactSource>();        
     }
 
     private void Update() {
@@ -35,38 +35,38 @@ public class RemoteVibrate : MonoBehaviour {
 
 
 
-    IEnumerator Fade() {
+    //IEnumerator Fade() {
 
 
-        for (int i = 0; i < 4; i++) {
-            foreach (TactSource device in devices) {
-                if (i == 0) {
-                    device.DotPoints[0] = (byte)distance;
-                    device.DotPoints[1] = 0;
-                    device.DotPoints[2] = 0;
-                    device.DotPoints[3] = (byte)distance;
-                    device.DotPoints[4] = 0;
-                    device.DotPoints[5] = 0;
-                } else if (i == 1) {
-                    device.DotPoints[0] = 0;
-                    device.DotPoints[1] = (byte)distance;
-                    device.DotPoints[2] = 0;
-                    device.DotPoints[3] = 0;
-                    device.DotPoints[4] = (byte)distance;
-                    device.DotPoints[5] = 0;
-                } else if (i == 2) {
-                    device.DotPoints[0] = 0;
-                    device.DotPoints[1] = 0;
-                    device.DotPoints[2] = (byte)distance;
-                    device.DotPoints[3] = 0;
-                    device.DotPoints[4] = 0;
-                    device.DotPoints[5] = (byte)distance;
-                }
+    //    for (int i = 0; i < 4; i++) {
+    //        foreach (TactSource device in devices) {
+    //            if (i == 0) {
+    //                device.DotPoints[0] = (byte)distance;
+    //                device.DotPoints[1] = 0;
+    //                device.DotPoints[2] = 0;
+    //                device.DotPoints[3] = (byte)distance;
+    //                device.DotPoints[4] = 0;
+    //                device.DotPoints[5] = 0;
+    //            } else if (i == 1) {
+    //                device.DotPoints[0] = 0;
+    //                device.DotPoints[1] = (byte)distance;
+    //                device.DotPoints[2] = 0;
+    //                device.DotPoints[3] = 0;
+    //                device.DotPoints[4] = (byte)distance;
+    //                device.DotPoints[5] = 0;
+    //            } else if (i == 2) {
+    //                device.DotPoints[0] = 0;
+    //                device.DotPoints[1] = 0;
+    //                device.DotPoints[2] = (byte)distance;
+    //                device.DotPoints[3] = 0;
+    //                device.DotPoints[4] = 0;
+    //                device.DotPoints[5] = (byte)distance;
+    //            }
 
-            }
-            devices[0].Play();
-            devices[1].Play();
-            yield return new WaitForSeconds(0.5f);
-        }
-    }
+    //        }
+    //        devices[0].Play();
+    //        devices[1].Play();
+    //        yield return new WaitForSeconds(0.5f);
+    //    }
+    //}
 }
