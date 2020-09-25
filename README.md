@@ -10,6 +10,13 @@ This is **really _important_**! If we don't all use the same version, then whene
 ![Image of Unity Hub](https://i.imgur.com/wfvQaG5.png)
 ![Image of project version](https://i.imgur.com/lG8ER8C.png)
 
+
+***One quick note*** If you've been working on the project since the beginning it's a good idea to update your remote repo to the new origin (new people don't need to do this step)
+```
+git remote set-url origin https://github.com/ETBIMlab/ConstructionSafetySimulator.git
+```
+
+
 ## How Do I Use Git?
 The easiest way to manage your git commands is through the terminal! I would **strongly** recommend dowloading [CMDR](https://cmder.net/) (Use "Download Full"). All you need to do is unzip it into a folder in your User directory. It's free and lightweight and it allows you to use Unix style commands instead of Windows commands. It also comes with git pre-installed. If you already have a terminal setup you're happy with, great! But this tutorial will us Unix terminal commands, so be ready! (Serously, CMDR is awesome)
 
