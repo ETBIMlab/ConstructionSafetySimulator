@@ -31,7 +31,7 @@ git checkout master             // switch back to the master branch
 ## Step 1: Cloning the repo!
 It's pretty simple! Just create a folder somewhere in your user directory (or wherever you want to keep the project) and then in the terminal, navigate to that folder. Once you're in the folder that you want to clone to repo into, type the following command
 ```
-git clone https://github.com/WillJenkins/ConstructionSafetySimulator.git
+git clone https://github.com/ETBIMlab/ConstructionSafetySimulator.git
 ```
 You will the be prompted to enter your GitHub username and password 
 
@@ -53,7 +53,7 @@ If you need to see all the stuff in the current folder, type
 ls
 ```
 
-***If you're unfamiliar with terminal commands*** and you find this too intimidating, please contact Will Jenkins in Discord or wjenkin3@asu.edu. I'd be happy to help! 
+***If you're unfamiliar with terminal commands*** and you find this too intimidating, please contact Will Jenkins in Discord (Willjinx#0594) or wjenkin3@asu.edu. I'd be happy to help! 
 
 
 ### Once the repo has been cloned
