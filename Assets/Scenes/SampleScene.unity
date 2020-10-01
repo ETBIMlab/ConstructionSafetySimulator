@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18770617, g: 0.20971172, b: 0.24528301, a: 1}
+  m_IndirectSpecularColor: {r: 0.1876927, g: 0.20969933, b: 0.24526708, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11407,9 +11407,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1182155881}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dac9476d6d62b944d824ec256e5dd54d, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e7d9a24034d44041a07579df63d13e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wayPoint: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &1182155884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19147,7 +19149,7 @@ MonoBehaviour:
   randomHoldDurationMin: 0.1
   randomHoldDurationMax: 0.5
   configReady: 0
-  inspSalsaLinked: 0
+  inspSalsaLinked: 1
   inspStateFoldoutProcessing: 0
   inspStateFoldoutSettings: 0
   inspStateFoldoutEmotes: 0
