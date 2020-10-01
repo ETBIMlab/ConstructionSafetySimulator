@@ -34,6 +34,5 @@ public class wayPointScript : MonoBehaviour
     {
         //The wayPoint's position will now be the player's current position.
         wayPoint.transform.position = player.transform.position;
-        Debug.Log(player.transform.position);
     }
 }
