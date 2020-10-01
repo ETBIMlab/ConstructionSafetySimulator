@@ -20,18 +20,13 @@ public class Follow : MonoBehaviour
 
     void Update()
     {
-        //wayPointPos = new Vector3(wayPoint.transform.position.x, transform.position.y, wayPoint.transform.position.z);
-
-        //wayPointPos = new Vector3(((wayPoint.transform.position.x - boxHead.transform.position.x) * (wayPoint.transform.position.x - boxHead.transform.position.x)),
-        //                         ((wayPoint.transform.position.y - boxHead.transform.position.y) * (wayPoint.transform.position.y - boxHead.transform.position.y)),
-        //                         ((wayPoint.transform.position.z - boxHead.transform.position.z) * (wayPoint.transform.position.z - boxHead.transform.position.z)));
         wayPointPos = new Vector3((wayPoint.transform.position.x - boxHead.transform.position.x),
-                                       (wayPoint.transform.position.y - boxHead.transform.position.y),
-                                       (wayPoint.transform.position.z - boxHead.transform.position.z));
+                                   (wayPoint.transform.position.y - boxHead.transform.position.y),
+                                   (wayPoint.transform.position.z - boxHead.transform.position.z));
 
         double d = Math.Sqrt((wayPoint.transform.position.x - boxHead.transform.position.x) * (wayPoint.transform.position.x - boxHead.transform.position.x)
-                            + (wayPoint.transform.position.y - boxHead.transform.position.y) * (wayPoint.transform.position.y - boxHead.transform.position.y)
-                            + (wayPoint.transform.position.z - boxHead.transform.position.z) * (wayPoint.transform.position.z - boxHead.transform.position.z));
+                           + (wayPoint.transform.position.y - boxHead.transform.position.y) * (wayPoint.transform.position.y - boxHead.transform.position.y)
+                           + (wayPoint.transform.position.z - boxHead.transform.position.z) * (wayPoint.transform.position.z - boxHead.transform.position.z));
 
         Vector3 u = new Vector3(wayPointPos.x / (float)d, wayPointPos.y / (float)d, wayPointPos.z / (float)d);
 
