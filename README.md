@@ -1,11 +1,21 @@
 # Construction Safety Simulator - Git Guide
 
 ## First Things First!
-Our project is currently built on Unity version **2019.3.1f1** (This version is no longer supported so we will need to upgrade to 2019.3.15, will discuss at sprint meeting)
-This is **really _important_**! If we don't all use the same version, then whenever someone pushes new code, merge conflicts are bound to happen more often. If you aren't sure which version you're using, please install the [Unity Hub](https://unity3d.com/get-unity/download) from this link. You can add a different version of unity by clicking "Installs" and then selecting the blue "ADD" button. 
+Our project is currently built on Unity version **2019.3.15**
+
+If you haven't done so, please make a new Unity Install by following [this link](https://unity3d.com/unity/whats-new/2019.3.15) and click `Install with Unity Hub` near the top of the page. Make sure you have Unity Hub Installed first.
+
+This is **really _important_**! If we don't all use the same version, then whenever someone pushes new code, merge conflicts are bound to happen more often. If you aren't sure which version you're using, please install the [Unity Hub](https://unity3d.com/get-unity/download) from this link. 
 
 ![Image of Unity Hub](https://i.imgur.com/wfvQaG5.png)
 ![Image of project version](https://i.imgur.com/lG8ER8C.png)
+
+
+***One quick note*** If you've been working on the project since the beginning it's a good idea to update your remote repo to the new origin (new people don't need to do this step)
+```
+git remote set-url origin https://github.com/ETBIMlab/ConstructionSafetySimulator.git
+```
+
 
 ## How Do I Use Git?
 The easiest way to manage your git commands is through the terminal! I would **strongly** recommend dowloading [CMDR](https://cmder.net/) (Use "Download Full"). All you need to do is unzip it into a folder in your User directory. It's free and lightweight and it allows you to use Unix style commands instead of Windows commands. It also comes with git pre-installed. If you already have a terminal setup you're happy with, great! But this tutorial will us Unix terminal commands, so be ready! (Serously, CMDR is awesome)
@@ -28,7 +38,7 @@ git checkout master             // switch back to the master branch
 ## Step 1: Cloning the repo!
 It's pretty simple! Just create a folder somewhere in your user directory (or wherever you want to keep the project) and then in the terminal, navigate to that folder. Once you're in the folder that you want to clone to repo into, type the following command
 ```
-git clone https://github.com/WillJenkins/ConstructionSafetySimulator.git
+git clone https://github.com/ETBIMlab/ConstructionSafetySimulator.git
 ```
 You will the be prompted to enter your GitHub username and password 
 
@@ -50,7 +60,7 @@ If you need to see all the stuff in the current folder, type
 ls
 ```
 
-***If you're unfamiliar with terminal commands*** and you find this too intimidating, please contact Will Jenkins in Discord or wjenkin3@asu.edu. I'd be happy to help! 
+***If you're unfamiliar with terminal commands*** and you find this too intimidating, please contact Will Jenkins in Discord (Willjinx#0594) or wjenkin3@asu.edu. I'd be happy to help! 
 
 
 ### Once the repo has been cloned
