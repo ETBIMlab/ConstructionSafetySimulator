@@ -2,8 +2,7 @@
 //using System.Collections.Generic;
 //using UnityEngine;
 
-//public class CallToHaptics : MonoBehaviour
-//{
+//public class CallToHaptics : MonoBehaviour {
 //    [SerializeField]
 //    DirectionalHaptic hapticMan;
 

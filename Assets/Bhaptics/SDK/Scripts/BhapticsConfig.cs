@@ -11,7 +11,7 @@ public class BhapticsConfig : ScriptableObject {
 
 
     [Header("Android Settings")]
-    public BhapticsAndroidManager AndroidManagerPrefab;
+    //public BhapticsAndroidManager AndroidManagerPrefab;
 
     public bool AlwaysScanDisconnectedDevice = false;
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+//[CreateAssetMenu]
 public class SimEvent : ScriptableObject {
     private List<SimEventListener> listeners = new List<SimEventListener>();
 

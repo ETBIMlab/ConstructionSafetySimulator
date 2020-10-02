@@ -16,7 +16,7 @@ public class BhapticsManager
             if (Application.platform == RuntimePlatform.Android)
             {
                 BhapticsLogger.LogInfo("Android initialized.");
-                Haptic = new AndroidHaptic();
+                //Haptic = new AndroidHaptic();
             }
             else
             {
