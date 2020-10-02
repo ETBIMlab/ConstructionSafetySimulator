@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicMover : MonoBehaviour   // BEWARE: NOT TESTED YET
+public class BasicMover : MonoBehaviour   // BEWARE: Currently only works with objects that use Box Colliders
 {
     public GameObject objectToMove;
     public GameObject destination;
-    
+
+    Transform objTransform;
+    Transform destTransform;
+
+    Vector3 destNoY;
+
     public float speedOfMotion;
 
     public bool easeInAndOut;
@@ -14,30 +19,43 @@ public class BasicMover : MonoBehaviour   // BEWARE: NOT TESTED YET
     RaycastHit hitInfo;
 
     bool moving;
+    float halfHeight;
 
     private void Start() {
         moving = false;
+
+        objTransform = objectToMove.transform;
+        destTransform = destination.transform;
+
+        if(GetComponent<BoxCollider>() != null) {
+            halfHeight = GetComponent<BoxCollider>().size.y / 2;
+        } else {
+            halfHeight = 0;
+        }
     }
 
     private void Update() {
         if (moving) {
-            Ray ray = new Ray(objectToMove.transform.position, -objectToMove.transform.up);
+            Ray ray = new Ray(objTransform.position, -objTransform.up);
 
             if(Physics.Raycast (ray, out hitInfo)) {
-                objectToMove.transform.rotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
+                objTransform.rotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
             }
 
 
-            if(Vector3.Distance(objectToMove.transform.position, destination.transform.position) <= 0.05) {
+            if(Vector3.Distance(objTransform.position, destTransform.position) <= 0.05) {
                 moving = false;
             }
 
             if (easeInAndOut) {
-                objectToMove.transform.position = Vector3.Slerp(objectToMove.transform.position, destination.transform.position, speedOfMotion * Time.deltaTime);  // Slerp interpolates between two positions, moving slower near the beginning and the end
+                destNoY = Vector3.Slerp(objTransform.position, destTransform.position, speedOfMotion * Time.deltaTime);  // Slerp interpolates between two positions, moving slower near the beginning and the end
             } else {
-                objectToMove.transform.position = Vector3.Lerp(objectToMove.transform.position, destination.transform.position, speedOfMotion * Time.deltaTime);  // Lerp interpolates between two positions at a constant rate
+                destNoY = Vector3.Lerp(objTransform.position, destTransform.position, speedOfMotion * Time.deltaTime);  // Lerp interpolates between two positions at a constant rate
             }
-            
+
+
+            destNoY.y = hitInfo.point.y + halfHeight;
+            objTransform.position = destNoY;
         }
     }
 
