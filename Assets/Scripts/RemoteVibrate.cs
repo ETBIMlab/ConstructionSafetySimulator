@@ -45,7 +45,7 @@ public class RemoteVibrate : MonoBehaviour { // Currently the 'distance' functio
     IEnumerator Vibrate(float inverseDistance) {
         foreach (HapticSource device in devices) {
             device.Play();
-            Debug.Log(device + " VIBRATED");
+            //Debug.Log(device + " VIBRATED");
         }
         yield return null;
     }

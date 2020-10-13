@@ -5,29 +5,49 @@ using UnityEngine;
 public class BasicMover : MonoBehaviour   // BEWARE: Currently only works with objects that use Box Colliders
 {
     public GameObject objectToMove;
-    public GameObject destination;
+    //public GameObject destination;
+    public GameObject[] destinations;
 
     Transform objTransform;
-    Transform destTransform;
+    //Transform destTransform;
 
     Vector3 destNoY;
+    Vector3[] destPositions;
 
     public float speedOfMotion;
 
-    public bool easeInAndOut;
+    //public bool easeInAndOut;
 
     RaycastHit hitInfo;
 
     bool moving;
     float halfHeight;
+    
+    int currDest;
+    int last;
+
+    float t;
 
     private void Start() {
         moving = false;
+        t = 0;
 
         objTransform = objectToMove.transform;
-        destTransform = destination.transform;
+        //destTransform = destination.transform;
 
-        if(GetComponent<BoxCollider>() != null) {
+        destPositions = new Vector3[destinations.Length + 1];
+        destPositions[0] = objTransform.position;
+
+
+        currDest = 1;
+        last = 0;
+
+        foreach (GameObject obj in destinations) {
+            last++;
+            destPositions[last] = obj.transform.position;
+        }
+
+        if (GetComponent<BoxCollider>() != null) {
             halfHeight = GetComponent<BoxCollider>().size.y / 2;
         } else {
             halfHeight = 0;
@@ -43,19 +63,28 @@ public class BasicMover : MonoBehaviour   // BEWARE: Currently only works with o
             }
 
 
-            if(Vector3.Distance(objTransform.position, destTransform.position) <= 0.05) {
+            if(Vector3.Distance(objTransform.position, destPositions[last]) <= 0.15) {
                 moving = false;
+                return;
+            }
+
+            if (Vector3.Distance(objTransform.position, destPositions[currDest]) <= 0.15) {
+                currDest++;
+                t = 0;
             }
 
             if (easeInAndOut) {
-                destNoY = Vector3.Slerp(objTransform.position, destTransform.position, speedOfMotion * Time.deltaTime);  // Slerp interpolates between two positions, moving slower near the beginning and the end
+                destNoY = Vector3.Slerp(destPositions[currDest - 1], destPositions[currDest], t);  // Slerp interpolates between two positions, moving slower near the beginning and the end
             } else {
-                destNoY = Vector3.Lerp(objTransform.position, destTransform.position, speedOfMotion * Time.deltaTime);  // Lerp interpolates between two positions at a constant rate
+                destNoY = Vector3.Lerp(destPositions[currDest - 1], destPositions[currDest], t);  // Lerp interpolates between two positions at a constant rate
             }
 
+            t += speedOfMotion * Time.deltaTime;
 
             destNoY.y = hitInfo.point.y + halfHeight;
+            objTransform.LookAt(destNoY);
             objTransform.position = destNoY;
+            
         }
     }
 
