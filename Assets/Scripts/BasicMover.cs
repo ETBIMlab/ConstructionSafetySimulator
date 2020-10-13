@@ -16,7 +16,7 @@ public class BasicMover : MonoBehaviour   // BEWARE: Currently only works with o
 
     public float speedOfMotion;
 
-    //public bool easeInAndOut;
+    bool easeInAndOut;
 
     RaycastHit hitInfo;
 
@@ -30,6 +30,7 @@ public class BasicMover : MonoBehaviour   // BEWARE: Currently only works with o
 
     private void Start() {
         moving = false;
+        easeInAndOut = false;
         t = 0;
 
         objTransform = objectToMove.transform;
