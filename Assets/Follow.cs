@@ -10,7 +10,9 @@ public class Follow : MonoBehaviour
     private Vector3 wayPointPos;
     private Vector3 targetPos;
     private GameObject boxHead;
+    private GameObject player;
     private float distance = 5.0f;
+    private bool met = false; 
 
     private float speed = 6.0f;
     void Start()
@@ -18,10 +20,12 @@ public class Follow : MonoBehaviour
         //At the start of the game, boxhead will find the gameobject called wayPoint.
         wayPoint = GameObject.Find("wayPoint");
         boxHead = GameObject.Find("boxHead.v2");
+        player = GameObject.Find("Player");
     }
 
     void Update()
     {
+        LookAt();
         wayPointPos = wayPoint.transform.position;
 
         distanceVect = new Vector3((wayPoint.transform.position.x - boxHead.transform.position.x),
@@ -39,7 +43,28 @@ public class Follow : MonoBehaviour
                                 ((float)(1 - distance / d) * wayPointPos.y + (float)(distance / d) * boxHead.transform.position.y),
                                 ((float)(1 - distance / d) * wayPointPos.z + (float)(distance / d) * boxHead.transform.position.z));
 
-        //Here, boxhead will follow the waypoint.
-        transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
+        //Here, boxhead will follow the waypoint after meeting with the player and after 5.25 meters
+        if(d >= 5.25 && !met)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
+        }
+        else if(d > 10 && met)
+        {
+            met = false;
+        }
+        else if(d > 5 && d < 5.25)
+        {
+            met = true;
+        }
+    }
+
+    //Rotate towards player
+    void LookAt()
+    {
+        if(player != null)
+        {
+            Quaternion lookAtRotation = Quaternion.LookRotation(player.transform.position - this.transform.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookAtRotation, 5 * Time.deltaTime);
+        }
     }
 }
