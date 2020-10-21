@@ -1457,11 +1457,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 4bdc711a59e429049937e9bbfce8e681, type: 2}
-  isGlobal: 1
-  blendDistance: 0
-  weight: 1
-  priority: 0
 --- !u!4 &229835386
 Transform:
   m_ObjectHideFlags: 0
@@ -1671,8 +1666,8 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: b9b90babab22bb64fac0b3ff8518ab49, type: 2}
+  - {fileID: 2100000, guid: b9b90babab22bb64fac0b3ff8518ab49, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7857,10 +7852,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reflector
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 71459d3fe3e756349a751740afd93487, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 71459d3fe3e756349a751740afd93487, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.898808
@@ -7904,18 +7895,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 71459d3fe3e756349a751740afd93487, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300000, guid: 71459d3fe3e756349a751740afd93487, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2c4daa4326c48ba41aa29c263bcdd8a4, type: 2}
-    - target: {fileID: 2300000, guid: 71459d3fe3e756349a751740afd93487, type: 3}
-      propertyPath: m_ReceiveShadows
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300000, guid: 71459d3fe3e756349a751740afd93487, type: 3}
-      propertyPath: m_ImportantGI
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71459d3fe3e756349a751740afd93487, type: 3}
@@ -8501,7 +8480,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9019ce6b607258040850956cae284935, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8550,12 +8529,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 121907578}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &585716063 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 429506, guid: dc06161b6d97feb419f45f03b62e14b9,
-    type: 3}
-  m_PrefabInstance: {fileID: 121907578}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &585716067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8568,54 +8541,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeTrigger: {fileID: 585716063}
-  volumeLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  stopNaNPropagation: 1
-  finalBlitToCameraTarget: 0
-  antialiasingMode: 0
-  temporalAntialiasing:
-    jitterSpread: 0.75
-    sharpness: 0.25
-    stationaryBlending: 0.95
-    motionBlending: 0.85
-  subpixelMorphologicalAntialiasing:
-    quality: 2
-  fastApproximateAntialiasing:
-    fastMode: 0
-    keepAlpha: 0
-  fog:
-    enabled: 1
-    excludeSkybox: 1
-  debugLayer:
-    lightMeter:
-      width: 512
-      height: 256
-      showCurves: 1
-    histogram:
-      width: 512
-      height: 256
-      channel: 3
-    waveform:
-      exposure: 0.12
-      height: 256
-    vectorscope:
-      size: 256
-      exposure: 0.12
-    overlaySettings:
-      linearDepth: 0
-      motionColorIntensity: 4
-      motionGridSize: 64
-      colorBlindnessType: 0
-      colorBlindnessStrength: 1
-  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
-  m_ShowToolkit: 0
-  m_ShowCustomSorter: 0
-  breakBeforeColorGrading: 0
-  m_BeforeTransparentBundles: []
-  m_BeforeStackBundles: []
-  m_AfterStackBundles: []
 --- !u!4 &591882404 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: c156f39e6d4ee694f90c9915e2daa633,
@@ -9465,7 +9390,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 9.613e-42, y: 1.04e-43, z: 8.55e-43, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 4.737e-41, z: 0, w: 3.857091e-39}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -11427,7 +11352,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46de9b1c47cebac4b8b41882ab4c8682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetProfile: {fileID: 229835385}
   vignetteAmount: 1
   saturationAmount: -100
   contrastAmount: 60
@@ -16817,7 +16741,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9019ce6b607258040850956cae284935, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
