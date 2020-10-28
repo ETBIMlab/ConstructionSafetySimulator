@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// @TODO: Add functionality beyond box collider
+// @TODO: Smoothly interpolate between points, rather than snapping from one line to the next
 public class BasicMover : MonoBehaviour   // BEWARE: Currently only works with objects that use Box Colliders
 {
     public GameObject objectToMove;
