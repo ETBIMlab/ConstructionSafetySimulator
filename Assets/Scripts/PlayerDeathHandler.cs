@@ -20,6 +20,7 @@ public class PlayerDeathHandler : MonoBehaviour
 
     Color VisionFadeColor;
 
+    // @TODO: Remove update method once testing is no longer required
     private void Update() {
         if (callDeathCycleDirectly) {
             Debug.Log("CALLING DEATH CYCLE DIRECTLY");
