@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 //AUTHOR: William Jenkins
 //Trigger script to effect targeted post processing profile
@@ -11,13 +12,20 @@ using UnityEngine;
 
 public class ElectroPostProc : MonoBehaviour
 {
-    //public PostProcessVolume targetProfile;
+    //PostProcessing profile
+    public VolumeProfile _profile;
+
+    //post processing effects
+    private ColorAdjustments _colorAdjustments;
+    private Vignette _vignette;
+
+    //target values
     public float vignetteAmount = 1.0f;
     public float saturationAmount = -100.0f;
     public float contrastAmount = 60.0f;
     public float exposureAmount = 2.0f;
-    //private ColorGrading _colorgrading;
-    //private Vignette _vignette;
+    
+    //current values
     private float currentContrast;
     private float currentSaturation;
     private float currentVignette;
@@ -25,13 +33,13 @@ public class ElectroPostProc : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-       /* targetProfile.profile.TryGetSettings(out _colorgrading);
-        targetProfile.profile.TryGetSettings(out _vignette);
-        currentContrast = _colorgrading.contrast.value;
-        currentSaturation = _colorgrading.saturation.value;
+    {   
+        _profile.TryGet(out _colorAdjustments);
+        _profile.TryGet(out _vignette);
+        currentContrast = _colorAdjustments.contrast.value;
+        currentSaturation = _colorAdjustments.saturation.value;
         currentVignette = _vignette.intensity.value;
-        currentExposure = _colorgrading.postExposure.value;*/
+        currentExposure = _colorAdjustments.postExposure.value;
     }
 
     // Update is called once per frame
@@ -41,17 +49,16 @@ public class ElectroPostProc : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        /*_colorgrading.saturation.value = saturationAmount;
-        _colorgrading.contrast.value = contrastAmount;
+        _colorAdjustments.saturation.value = saturationAmount;
+        _colorAdjustments.contrast.value = contrastAmount;
         _vignette.intensity.value = vignetteAmount;
-        _colorgrading.postExposure.value = exposureAmount;*/
+        _colorAdjustments.postExposure.value = exposureAmount;
     }
 
     private void OnTriggerExit(Collider other) {
-        /*_colorgrading.saturation.value = currentSaturation;
-        _colorgrading.contrast.value = currentContrast;
+        _colorAdjustments.saturation.value = currentSaturation;
+        _colorAdjustments.contrast.value = currentContrast;
         _vignette.intensity.value = currentVignette;
-        _colorgrading.postExposure.value = currentExposure;
-*/
+        _colorAdjustments.postExposure.value = currentExposure;
     }
 }
