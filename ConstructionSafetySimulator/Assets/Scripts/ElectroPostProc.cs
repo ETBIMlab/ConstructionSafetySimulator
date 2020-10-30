@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
+//using UnityEngine.Rendering.PostProcessing;
 
 //AUTHOR: William Jenkins
 //Trigger script to effect targeted post processing profile
@@ -11,7 +11,7 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class ElectroPostProc : MonoBehaviour
 {
-    public PostProcessVolume targetProfile;
+    /*public PostProcessVolume targetProfile;
     public float vignetteAmount = 1.0f;
     public float saturationAmount = -100.0f;
     public float contrastAmount = 60.0f;
@@ -53,5 +53,5 @@ public class ElectroPostProc : MonoBehaviour
         _vignette.intensity.value = currentVignette;
         _colorgrading.postExposure.value = currentExposure;
 
-    }
+    }*/
 }

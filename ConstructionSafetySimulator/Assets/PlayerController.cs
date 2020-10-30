@@ -1,20 +1,65 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Valve.VR;
-using Valve.VR.InteractionSystem;
+using System;
+using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour
 {
+    private GameObject wayPoint;
+    private Vector3 distanceVect;
+    private Vector3 wayPointPos;
+    private Vector3 targetPos;
+    private GameObject boxHead;
+    private GameObject player;
+    private float distance = 5.0f;
+    private bool met = false;
+    private float speed = 6.0f;
+    public NavMeshAgent agent;
 
-    public SteamVR_Action_Vector2 input;
-    public float speed = 1;
-
+    void Start()
+    {
+        //At the start of the game, boxhead will find the gameobject called wayPoint.
+        wayPoint = GameObject.Find("wayPoint");
+        boxHead = GameObject.Find("boxHead.v2");
+        player = GameObject.Find("Player");
+        agent = gameObject.GetComponent(typeof(NavMeshAgent)) as NavMeshAgent;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 direction = Player.instance.hmdTransform.TransformDirection(new Vector3(0, 0, input.axis.y));
-        transform.position += speed * Time.deltaTime * Vector3.ProjectOnPlane(direction, Vector3.up); 
+        wayPointPos = wayPoint.transform.position;
+
+        distanceVect = new Vector3((wayPoint.transform.position.x - boxHead.transform.position.x),
+                                   (wayPoint.transform.position.y - boxHead.transform.position.y),
+                                   (wayPoint.transform.position.z - boxHead.transform.position.z));
+
+        double d = Math.Sqrt((wayPoint.transform.position.x - boxHead.transform.position.x) * (wayPoint.transform.position.x - boxHead.transform.position.x)
+                           + (wayPoint.transform.position.y - boxHead.transform.position.y) * (wayPoint.transform.position.y - boxHead.transform.position.y)
+                           + (wayPoint.transform.position.z - boxHead.transform.position.z) * (wayPoint.transform.position.z - boxHead.transform.position.z));
+
+        Vector3 u = new Vector3(distanceVect.x / (float)d, distanceVect.y / (float)d, distanceVect.z / (float)d);
+
+        //targetPos = new Vector3(wayPointPos.x + u.x * distance, wayPointPos.y + u.y * distance, wayPointPos.z + u.z * distance);
+        targetPos = new Vector3(((float)(1 - distance / d) * wayPointPos.x + (float)(distance / d) * boxHead.transform.position.x),
+                                ((float)(1 - distance / d) * wayPointPos.y + (float)(distance / d) * boxHead.transform.position.y),
+                                ((float)(1 - distance / d) * wayPointPos.z + (float)(distance / d) * boxHead.transform.position.z));
+
+        //Here, boxhead will follow the waypoint after meeting with the player and after 5.25 meters
+        if (d >= 5.25 && !met)
+        {
+            //transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
+            //Vector3 dest = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
+            agent.SetDestination(targetPos);
+        }
+        else if (d > 10 && met)
+        {
+            met = false;
+        }
+        else if (d > 5 && d < 5.25)
+        {
+            met = true;
+        }
     }
 }
