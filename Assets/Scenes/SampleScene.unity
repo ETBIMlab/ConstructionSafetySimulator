@@ -14984,6 +14984,76 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1747828805}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1619147374 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -3990036101274998414, guid: f71b8fa9b1b989448bdd521b1424c33f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2060011963}
+  m_PrefabAsset: {fileID: 0}
+--- !u!59 &1619147378
+HingeJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619147374}
+  m_ConnectedBody: {fileID: 0}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_Axis: {x: 1, y: 0, z: 0}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: 4.8428364, y: 1.1292212, z: -6.9713078}
+  m_UseSpring: 0
+  m_Spring:
+    spring: 0
+    damper: 0.27
+    targetPosition: 0
+  m_UseMotor: 0
+  m_Motor:
+    targetVelocity: 0
+    force: 0
+    freeSpin: 0
+  m_UseLimits: 1
+  m_Limits:
+    min: -144.17107
+    max: 47.339046
+    bounciness: 0
+    bounceMinVelocity: 0.2
+    contactDistance: 0
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
+--- !u!54 &1619147379
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619147374}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &1619147380
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619147374}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.007984038, y: 0.0038750537, z: 0.00016151299}
+  m_Center: {x: -4.656613e-10, y: 0.0019375255, z: 0.00008075306}
 --- !u!1001 &1628259537
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18970,6 +19040,21 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c1c4456ed2d0bf7468389291e16369da, type: 2}
+    - target: {fileID: 8940632808050562651, guid: f71b8fa9b1b989448bdd521b1424c33f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940632808050562651, guid: f71b8fa9b1b989448bdd521b1424c33f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940632808050562651, guid: f71b8fa9b1b989448bdd521b1424c33f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f71b8fa9b1b989448bdd521b1424c33f, type: 3}
 --- !u!1001 &2075787068
