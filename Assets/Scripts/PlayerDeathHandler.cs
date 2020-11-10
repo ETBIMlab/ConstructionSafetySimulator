@@ -108,7 +108,10 @@ public class PlayerDeathHandler : MonoBehaviour
             if (Camera.main.GetComponent<FallbackCameraController>() != null) {
                 Camera.main.transform.position = respawnPoints[minDistIndex].respawnPoint.position;
             } else {
-                this.transform.position = respawnPoints[minDistIndex].respawnPoint.position;
+                Vector3 playPos = this.transform.position;
+                playPos = respawnPoints[minDistIndex].respawnPoint.position;
+                playPos.y = this.transform.position.y;
+                this.transform.position = playPos;
             }
 
             respawnPoints[minDistIndex].ResetScene();
