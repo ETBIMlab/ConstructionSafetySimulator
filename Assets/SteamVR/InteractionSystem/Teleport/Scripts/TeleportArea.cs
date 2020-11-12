@@ -62,7 +62,8 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		public override void Highlight( bool highlight )
 		{
-			if ( !locked )
+			return;
+			/*if ( !locked )
 			{
 				highlighted = highlight;
 
@@ -74,16 +75,17 @@ namespace Valve.VR.InteractionSystem
 				{
 					areaMesh.material = Teleport.instance.areaVisibleMaterial;
 				}
-			}
+			}*/
 		}
 
 
 		//-------------------------------------------------
 		public override void SetAlpha( float tintAlpha, float alphaPercent )
 		{
-			Color tintedColor = GetTintColor();
+			return;
+			/*Color tintedColor = GetTintColor();
 			tintedColor.a *= alphaPercent;
-			areaMesh.material.SetColor( tintColorId, tintedColor );
+			areaMesh.material.SetColor( tintColorId, tintedColor );*/
 		}
 
 
