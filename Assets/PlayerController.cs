@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Vector3 direction = Player.instance.hmdTransform.TransformDirection(new Vector3(0, 0, input.axis.y));
+        Debug.Log("input.axis.x=" + input.axis.x + "\n");
         transform.position += speed * Time.deltaTime * Vector3.ProjectOnPlane(direction, Vector3.up); 
     }
 }
