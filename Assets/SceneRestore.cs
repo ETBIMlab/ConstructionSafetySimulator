@@ -5,7 +5,7 @@ using UnityEngine;
 public class SceneRestore : MonoBehaviour
 {
     public GameObject[] objectsToSave;
-    public bool userDied;
+    public Transform respawnPoint;
 
     List<Vector3> positions;
     List<Quaternion> rotations;
@@ -18,8 +18,6 @@ public class SceneRestore : MonoBehaviour
         rigidbodies = new List<Rigidbody>();
 
 
-        userDied = false;
-
         foreach (GameObject obj in objectsToSave) {
             positions.Add(obj.transform.position);
             rotations.Add(obj.transform.rotation);
@@ -28,26 +26,23 @@ public class SceneRestore : MonoBehaviour
                 rigidbodies.Add(obj.GetComponent<Rigidbody>());
             }
         }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
 
-        if (userDied) {
-
-            int i = 0;
-            foreach (GameObject obj in objectsToSave) {
-                obj.transform.position = positions[i];
-                obj.transform.rotation = rotations[i];
-                i++;
-            }
-
-            rigidbodies.ForEach(resetVelocity);
-
-            userDied = false;
+        if(player == null) {
+            Debug.LogWarning("Can not find an object with the tag \"Player\"");
+            return;
+        } else if (respawnPoint == null) {
+            Debug.LogWarning("A respawn has not been set for this SceneRestore on gameobject: " + this.gameObject);
+            return;
         }
+        PlayerDeathHandler plD = player.GetComponent<PlayerDeathHandler>();
 
+        if(plD == null) {
+            Debug.LogWarning("Can not find PlayerDeathHandler on the object with the tag \"Player\"");
+            return;
+        }
+        plD.AddStateToPlayer(this);
     }
 
     void resetVelocity(Rigidbody obj) {
@@ -55,4 +50,20 @@ public class SceneRestore : MonoBehaviour
         obj.angularVelocity = Vector3.zero;
     }
 
+    public void ResetScene() {
+        int i = 0;
+        foreach (GameObject obj in objectsToSave) {
+            obj.transform.position = positions[i];
+            obj.transform.rotation = rotations[i];
+            i++;
+        }
+
+        rigidbodies.ForEach(resetVelocity);
+    }
+
+    public void SceneCompleted() {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        PlayerDeathHandler plD = player.GetComponent<PlayerDeathHandler>();
+        plD.RemoveStateFromPlayer(this);
+    }
 }
