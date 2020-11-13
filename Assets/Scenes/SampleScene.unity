@@ -11767,7 +11767,6 @@ GameObject:
   - component: {fileID: 1128122117}
   - component: {fileID: 1128122116}
   - component: {fileID: 1128122115}
-  - component: {fileID: 1128122120}
   m_Layer: 0
   m_Name: Trigger (contains script)
   m_TagString: Untagged
@@ -11793,6 +11792,7 @@ MonoBehaviour:
   - {fileID: 1995302685}
   - {fileID: 1550578751}
   speedOfMotion: 0.25
+  useBezierCurve: 1
 --- !u!65 &1128122116
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11867,18 +11867,6 @@ Transform:
   m_Father: {fileID: 1864493282}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1128122120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1128122114}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15641f93a9727914babbd8113641473a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1140534736 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: f9d7a6d69ff216f4d8f4e709b84c1113,
