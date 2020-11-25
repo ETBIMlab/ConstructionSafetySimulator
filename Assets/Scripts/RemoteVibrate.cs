@@ -45,6 +45,11 @@ public class RemoteVibrate : MonoBehaviour { // Currently the 'distance' functio
     IEnumerator Vibrate(float inverseDistance) {
         foreach (HapticSource device in devices) {
             device.Play();
+
+
+            for(int i = 0; i < 20; i++) {
+                //device.clip.DotPoints[i].value = inverseDistance  // This doesn't work because we need to modify the bHaptics source code to publicize the DotPoints field first. See Nick's Documentation on DirectionalHaptic.cs for more info.
+            }
             //Debug.Log(device + " VIBRATED");
         }
         yield return null;

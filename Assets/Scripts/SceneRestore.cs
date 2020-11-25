@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SceneRestore : MonoBehaviour
+public class SceneRestore : MonoBehaviour // One Scene Restore object restores one scene
 {
-    public GameObject[] objectsToSave;
-    public Transform respawnPoint;
+    public GameObject[] objectsToSave;  // the array of objects whose positions we will save
+    public Transform respawnPoint;      // links with PlayerDeathHandler, where the player will be teleported when they die
 
-    List<Vector3> positions;
-    List<Quaternion> rotations;
-    List<Rigidbody> rigidbodies;
+    List<Vector3> positions;            // the list of positions of the objects we're storing
+    List<Quaternion> rotations;         // the list of rotations of the objects we're storing
+    List<Rigidbody> rigidbodies;        // the list of rigidbodies of the objects we're storing (if they have one)
 
-    void Start()
+    void Start()    // the positions, rotations, and rigidbodies are saved at the start of runtime
     {
         positions = new List<Vector3>();
         rotations = new List<Quaternion>();
@@ -42,15 +42,15 @@ public class SceneRestore : MonoBehaviour
             Debug.LogWarning("Can not find PlayerDeathHandler on the object with the tag \"Player\"");
             return;
         }
-        plD.AddStateToPlayer(this);
+        plD.AddStateToPlayer(this); // automatically adds the state to the player
     }
 
-    void resetVelocity(Rigidbody obj) {
+    void resetVelocity(Rigidbody obj) { // resets the velocity of the rigidbody component of the object
         obj.velocity = Vector3.zero;
         obj.angularVelocity = Vector3.zero;
     }
 
-    public void ResetScene() {
+    public void ResetScene() {  // this is the main function, resets all the objects.
         int i = 0;
         foreach (GameObject obj in objectsToSave) {
             obj.transform.position = positions[i];
@@ -61,7 +61,8 @@ public class SceneRestore : MonoBehaviour
         rigidbodies.ForEach(resetVelocity);
     }
 
-    public void SceneCompleted() {
+    
+    public void SceneCompleted() {  // if we complete a task and no longer want to be able to reset it, you can call this function to remove this from the PlayerDeathHandler
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         PlayerDeathHandler plD = player.GetComponent<PlayerDeathHandler>();
         plD.RemoveStateFromPlayer(this);
