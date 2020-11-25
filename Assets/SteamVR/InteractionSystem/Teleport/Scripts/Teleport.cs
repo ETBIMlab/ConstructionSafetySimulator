@@ -116,6 +116,8 @@ namespace Valve.VR.InteractionSystem
         SteamVR_Events.Action chaperoneInfoInitializedAction;
 
         private const int MAX_TELEPORT_DISTANCE = 4;
+        private const int ALLOWED_TELEPORT_INTERVAL_MILLIS = 5000; 
+        private DateTime LastTeleportTime { get; set; } = DateTime.MinValue;
         // Events
 
         public static SteamVR_Events.Event<float> ChangeScene = new SteamVR_Events.Event<float>();
@@ -350,7 +352,7 @@ namespace Valve.VR.InteractionSystem
 
             HighlightSelected(hitTeleportMarker);
 
-            SetTeleportColor(Vector3.Distance(player.transform.position, hitInfo.point) <= MAX_TELEPORT_DISTANCE, pointerAtBadAngle, hitTeleportMarker);
+            SetTeleportColor(DecideTeleportMeetsCustomCriteria(player.transform.position, hitInfo.point), pointerAtBadAngle, hitTeleportMarker);
 
 
             if (hitTeleportMarker != null) //Hit a teleport marker
@@ -451,6 +453,19 @@ namespace Valve.VR.InteractionSystem
 
             pointerLineRenderer.SetPosition(0, pointerStart);
             pointerLineRenderer.SetPosition(1, pointerEnd);
+        }
+
+        private bool DecideTeleportMeetsCustomCriteria(Vector3 playerPosition, Vector3 teleportPoint)
+        {
+            bool res = false;
+            if (DateTime.Now.Subtract(this.LastTeleportTime).TotalMilliseconds >= ALLOWED_TELEPORT_INTERVAL_MILLIS)
+            {
+                if (Vector3.Distance(playerPosition, teleportPoint) <= MAX_TELEPORT_DISTANCE)
+                {
+                    res = true;
+                }
+            }
+            return res;
         }
 
         private void SetTeleportColor(bool goodLocation, bool pointerAtBadAngle, TeleportMarkerBase hitTeleportMarker)
@@ -902,7 +917,7 @@ namespace Valve.VR.InteractionSystem
                 }
             }
 
-            if (Vector3.Distance(player.transform.position, pointedAtPosition) <= MAX_TELEPORT_DISTANCE)
+            if (DecideTeleportMeetsCustomCriteria(player.transform.position, pointedAtPosition))
             {
                 if (teleportingToMarker.ShouldMovePlayer())
                 {
@@ -920,6 +935,7 @@ namespace Valve.VR.InteractionSystem
                 }
 
                 Teleport.Player.Send(pointedAtTeleportMarker);
+                this.LastTeleportTime = DateTime.Now;
             }
         }
 
