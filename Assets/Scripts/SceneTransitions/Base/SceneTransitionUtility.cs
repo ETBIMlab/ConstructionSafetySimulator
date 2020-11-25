@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SceneTransitions
+﻿namespace SceneTransitions
 {
     public enum SceneTransitioner
     {
@@ -26,20 +20,20 @@ namespace SceneTransitions
             }
             return res;
         }
-    }
 
-    public class SceneTransitionSingletons
-    {
-        private ISelectScenes sceneOneToSceneTwo = null;
-        public ISelectScenes SceneOneToSceneTwo
+        private class SceneTransitionSingletons
         {
-            get
+            private ISelectScenes sceneOneToSceneTwo = null;
+            public ISelectScenes SceneOneToSceneTwo
             {
-                if (sceneOneToSceneTwo == null)
+                get
                 {
-                    sceneOneToSceneTwo = new DefaultSceneTransition("SampleScene2");
+                    if (sceneOneToSceneTwo == null)
+                    {
+                        sceneOneToSceneTwo = new DefaultSceneTransition("SampleScene2");
+                    }
+                    return sceneOneToSceneTwo;
                 }
-                return sceneOneToSceneTwo;
             }
         }
     }
