@@ -2959,6 +2959,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4012904143336590460, guid: 224439cad4b86594882700c3e903ad43,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 224439cad4b86594882700c3e903ad43, type: 3}
 --- !u!1 &171114709 stripped
@@ -29845,13 +29850,16 @@ MonoBehaviour:
   SteamVR_Object: {fileID: 171114711}
   NoVR_Object: {fileID: 171114710}
   ResetVectors:
-  - scene: Scene1Start
+  - sceneRoot: Assets/Scenes/Virtual Pipeline/
+    sceneName: Scene1Start
     keyCode: 256
     InitialTransform: {fileID: 312906314}
-  - scene: Scene2Hazard1
+  - sceneRoot: Assets/Scenes/Virtual Pipeline/
+    sceneName: Scene2Hazard1
     keyCode: 257
     InitialTransform: {fileID: 95137696}
-  - scene: Scene3Hazard2
+  - sceneRoot: Assets/Scenes/Virtual Pipeline/
+    sceneName: Scene3Hazard2
     keyCode: 258
     InitialTransform: {fileID: 15629514}
 --- !u!4 &1998460192
