@@ -10,8 +10,10 @@ public class SceneControl : MonoBehaviour
     [System.Serializable]
     public class ResetVector
     {
-        [Tooltip("Name of the scene to reset to.")]
-        public string scene;
+        [Tooltip("The root path of the scene.")]
+        public string sceneRoot;
+        [Tooltip("Name of the scene to reset to (without '.unity' suffix).")]
+        public string sceneName;
         [Tooltip("The keyboard key that will reset this scene.")]
         public KeyCode keyCode;
         [Tooltip("GameObject transform used as an initial position for the player in the scene.")]
@@ -58,9 +60,9 @@ public class SceneControl : MonoBehaviour
 
         foreach (ResetVector resetVector in ResetVectors)
         {
-            Debug.Log("Loading scene: " + resetVector.scene);
+            Debug.Log("Loading scene: " + resetVector.sceneName);
 #if UNITY_EDITOR
-            EditorSceneManager.OpenScene("Assets/Scenes/" + resetVector.scene + ".unity", OpenSceneMode.Additive);
+            EditorSceneManager.OpenScene(resetVector.sceneRoot + resetVector.sceneName + ".unity", OpenSceneMode.Additive);
 #else
             SceneManager.LoadScene(resetVector.scene, LoadSceneMode.Additive);
 #endif
@@ -83,12 +85,12 @@ public class SceneControl : MonoBehaviour
 
     void ResetScene(ResetVector resetVector)
     {
-        Debug.Log("SceneReset.ResetScene(): destroying scene " + resetVector.scene);
-        bool sceneDestroyed = SceneManager.UnloadScene(SceneManager.GetSceneByName(resetVector.scene));
+        Debug.Log("SceneReset.ResetScene(): destroying scene " + resetVector.sceneName);
+        bool sceneDestroyed = SceneManager.UnloadScene(SceneManager.GetSceneByName(resetVector.sceneName));
         if (sceneDestroyed)
         {
-            Debug.Log("SceneReset.ResetScene(): loading scene" + resetVector.scene);
-            SceneManager.LoadScene(resetVector.scene, LoadSceneMode.Additive);
+            Debug.Log("SceneReset.ResetScene(): loading scene" + resetVector.sceneName);
+            SceneManager.LoadScene(resetVector.sceneName, LoadSceneMode.Additive);
 
             Player.transform.position = resetVector.InitialTransform.position;
             Player.transform.eulerAngles = resetVector.InitialTransform.eulerAngles;

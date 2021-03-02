@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -25406,7 +25406,7 @@ Terrain:
   m_DrawInstanced: 0
   m_DrawTreesAndFoliage: 1
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
+  m_MaterialTemplate: {fileID: 2100000, guid: e7b38c17d1e3d794db6278c79506223b, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -29850,6 +29850,15 @@ MonoBehaviour:
   SteamVR_Object: {fileID: 171114711}
   NoVR_Object: {fileID: 171114710}
   ResetVectors:
+<<<<<<< HEAD
+  - scene: Virtual Pipeline/Scene1Start
+    keyCode: 256
+    InitialTransform: {fileID: 312906314}
+  - scene: Virtual Pipeline/Scene2Hazard1
+    keyCode: 257
+    InitialTransform: {fileID: 95137696}
+  - scene: Virtual Pipeline/Scene3Hazard2
+=======
   - sceneRoot: Assets/Scenes/Virtual Pipeline/
     sceneName: Scene1Start
     keyCode: 256
@@ -29860,6 +29869,7 @@ MonoBehaviour:
     InitialTransform: {fileID: 95137696}
   - sceneRoot: Assets/Scenes/Virtual Pipeline/
     sceneName: Scene3Hazard2
+>>>>>>> SceneControlFix
     keyCode: 258
     InitialTransform: {fileID: 15629514}
 --- !u!4 &1998460192
