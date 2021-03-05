@@ -16,6 +16,8 @@ public class SceneControl : MonoBehaviour
         public string sceneName;
         [Tooltip("The keyboard key that will reset this scene.")]
         public KeyCode keyCode;
+        [Tooltip("The number you wish to identify this scene with.")]
+        public int sceneNumber;
         [Tooltip("GameObject transform used as an initial position for the player in the scene.")]
         public Transform InitialTransform;
     }
@@ -77,6 +79,7 @@ public class SceneControl : MonoBehaviour
         {
             if (Input.GetKey(resetVector.keyCode))
             {
+                SceneControlVars.currentScene = resetVector.sceneNumber;
                 ResetScene(resetVector);
                 break;
             }

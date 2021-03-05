@@ -8,12 +8,19 @@ public class HazardAnimationController : MonoBehaviour
     [SerializeField] public Animator animationController;
     [Tooltip("The keyboard key that will start the animation.")]
     [SerializeField] public KeyCode keycode;
+   
+    int currentScene;
+    
+    void Start() {
+       currentScene = SceneControlVars.currentScene;
+    }  
 
-    // Update is called once per frame
     void Update()
     {
+        currentScene = SceneControlVars.currentScene;
         if(Input.GetKey(keycode)) {
             animationController.SetBool("KeyPressed", true);
+            animationController.SetInteger("SceneNumber", currentScene);
         }
     }
 }
