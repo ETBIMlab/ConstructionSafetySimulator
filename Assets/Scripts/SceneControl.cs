@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEditor.SceneManagement;
+using System.Collections;
 
 [ExecuteInEditMode]
 public class SceneControl : MonoBehaviour
@@ -28,6 +29,26 @@ public class SceneControl : MonoBehaviour
     public GameObject SteamVR_Object;
     [Tooltip("This is a referenct to the GameObject that is used when no VR systems are present.")]
     public GameObject NoVR_Object;
+    [Tooltip("This is an optional Animation to play during each transition. If the first parameter is a bool, that bool will be updated to reflect if the scene is loaded.")]
+    public Animator TransitionAnimator;
+    [Tooltip("This is an optional delay before trying to transition scenes. Set to a negative number to calculate the longest clip length.")]
+    public float SceneChangeDelay;
+
+    private void OnValidate()
+    {
+        if(SceneChangeDelay < 0)
+        {
+            SceneChangeDelay = 0;
+            if(TransitionAnimator)
+            {
+                foreach(AnimationClip ac in TransitionAnimator.runtimeAnimatorController.animationClips)
+                {
+                    if (ac.length > SceneChangeDelay)
+                        SceneChangeDelay = ac.length;
+                }
+            }
+        }
+    }
     
     GameObject activeFrame; //used generically for resetting the player to an initial position
     Vector3 initPos;        //stores the game start initial position for the activeFrame
@@ -77,29 +98,61 @@ public class SceneControl : MonoBehaviour
     {
         foreach (ResetVector resetVector in ResetVectors)
         {
-            if (Input.GetKey(resetVector.keyCode))
+            if (Input.GetKeyDown(resetVector.keyCode))
             {
                 SceneControlVars.currentScene = resetVector.sceneNumber;
-                ResetScene(resetVector);
+                
+                StartCoroutine(ResetScene(resetVector));
                 break;
             }
         }
     }
 
-    void ResetScene(ResetVector resetVector)
-    {
-        Debug.Log("SceneReset.ResetScene(): destroying scene " + resetVector.sceneName);
-        bool sceneDestroyed = SceneManager.UnloadScene(SceneManager.GetSceneByName(resetVector.sceneName));
-        if (sceneDestroyed)
-        {
-            Debug.Log("SceneReset.ResetScene(): loading scene" + resetVector.sceneName);
-            SceneManager.LoadScene(resetVector.sceneName, LoadSceneMode.Additive);
+    private bool mutex = true;
 
+    private IEnumerator ResetScene(ResetVector resetVector)
+    {
+        if(!mutex)
+        {
+            Debug.Log("Cannot transition scenes while in the middle of another scene transition");
+        }
+        else
+        {
+            mutex = false;
+            if(TransitionAnimator)
+            {
+                TransitionAnimator.enabled = true;
+                TransitionAnimator.Play(0, -1, 0);
+                if (TransitionAnimator.parameters.Length > 0)
+                    if (TransitionAnimator.parameters[0].type == AnimatorControllerParameterType.Bool)
+                        TransitionAnimator.SetBool(TransitionAnimator.parameters[0].name, false);
+            }
+            yield return new WaitForSeconds(SceneChangeDelay);
+
+            Debug.Log("SceneReset.ResetScene(): destroying scene " + resetVector.sceneName);
+            AsyncOperation asyncLoad;
+            asyncLoad = SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName(resetVector.sceneName));
+            while (!asyncLoad.isDone)
+                yield return null;
+
+            Debug.Log("SceneReset.ResetScene(): loading scene" + resetVector.sceneName);
+            asyncLoad = SceneManager.LoadSceneAsync(resetVector.sceneName, LoadSceneMode.Additive);
             Player.transform.position = resetVector.InitialTransform.position;
             Player.transform.eulerAngles = resetVector.InitialTransform.eulerAngles;
-
             activeFrame.transform.localPosition = initPos;
             activeFrame.transform.localEulerAngles = initAngles;
+
+            while (!asyncLoad.isDone)
+                yield return null;
+
+            if (TransitionAnimator)
+            {
+                if(TransitionAnimator.parameters.Length > 0)
+                    if(TransitionAnimator.parameters[0].type == AnimatorControllerParameterType.Bool)
+                        TransitionAnimator.SetBool(TransitionAnimator.parameters[0].name, true);
+            }
+            yield return new WaitForSeconds(SceneChangeDelay);
+            mutex = true;
         }
     }
 }
