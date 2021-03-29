@@ -490,7 +490,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: fe2941e5b43dbcf41b6e9cf672e62fbc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 69.54644
+      value: 69.72
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fe2941e5b43dbcf41b6e9cf672e62fbc,
         type: 3}
@@ -500,7 +500,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: fe2941e5b43dbcf41b6e9cf672e62fbc,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 104.740005
+      value: 111.56
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fe2941e5b43dbcf41b6e9cf672e62fbc,
         type: 3}
@@ -525,7 +525,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: fe2941e5b43dbcf41b6e9cf672e62fbc,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fe2941e5b43dbcf41b6e9cf672e62fbc,
         type: 3}
@@ -2071,6 +2071,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 66614545}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &72951625
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 72951626}
+  m_Layer: 0
+  m_Name: Scene4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &72951626
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72951625}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 44.13, y: 17.288, z: 82.65}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 558658600}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &74072742
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15110,6 +15140,7 @@ Transform:
   - {fileID: 312906314}
   - {fileID: 95137696}
   - {fileID: 15629514}
+  - {fileID: 72951626}
   m_Father: {fileID: 1998460192}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -51163,6 +51194,11 @@ MonoBehaviour:
     keyCode: 258
     sceneNumber: 2
     InitialTransform: {fileID: 15629514}
+  - sceneRoot: Assets/Scenes/Virtual Pipeline/
+    sceneName: Scene3Hazard3
+    keyCode: 259
+    sceneNumber: 3
+    InitialTransform: {fileID: 72951626}
 --- !u!4 &1998460192
 Transform:
   m_ObjectHideFlags: 0
