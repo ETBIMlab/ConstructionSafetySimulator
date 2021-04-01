@@ -20,6 +20,6 @@ public class SceneManualEnter : MonoBehaviour
 
     private void OnTriggerExit(Collider other) 
     {
-        SceneControlVars.currentScene = -1;
+        //SceneControlVars.currentScene = -1;
     }
 }

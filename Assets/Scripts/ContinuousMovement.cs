@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
+using Valve.VR.InteractionSystem;
 
 [RequireComponent(typeof(CharacterController))]
 public class ContinuousMovement : MonoBehaviour
@@ -26,8 +27,10 @@ public class ContinuousMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        inputAxis = inputSource.GetAxis(SteamVR_Input_Sources.LeftHand);
+        Debug.Log(inputAxis.x + "  " + inputAxis.y);
     }
+
     private void FixedUpdate()
     {
         CapsuleFollowHeadset();
@@ -55,9 +58,9 @@ public class ContinuousMovement : MonoBehaviour
         rig.transform.position -= distanceMoved;
         character.Move(distanceMoved);*/
 
-        //character.height = rig.cameraInRigSpaceHeight + additionalHeight;
-        //Vector3 campos = transform.InverseTransformPoint(rig.cameraGameObject.transform.position);
-        //character.center = new Vector3(campos.x, character.height / 2 + character.skinWidth, campos.z);
+        character.height = GetComponent<Player>().eyeHeight + additionalHeight;
+        Vector3 campos = GetComponent<Player>().hmdTransforms[0].localPosition;
+        character.center = new Vector3(campos.x, character.height / 2 + character.skinWidth, campos.z);
     }
 
     bool CheckGrounded()
