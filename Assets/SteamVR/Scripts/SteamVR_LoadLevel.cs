@@ -15,6 +15,7 @@ namespace Valve.VR
     {
         private static SteamVR_LoadLevel _active = null;
         public static bool loading { get { return _active != null; } }
+        public static bool fading { get { return _active != null && _active.alpha < 1; } }
         public static float progress
         {
             get { return (_active != null && _active.async != null) ? _active.async.progress : 0.0f; }
@@ -38,6 +39,9 @@ namespace Valve.VR
 
         // Async load causes crashes in some apps.
         public bool loadAsync = true;
+
+        // Try to destroy the scene before a load
+        public bool destroySceneBeforeLoad = false;
 
         // Optional logo texture.
         public Texture loadingScreen;
@@ -172,7 +176,7 @@ namespace Valve.VR
                 }
             }
 
-#if false
+#if true
 		// Draw loading screen and progress bar to 2d companion window as well.
 		if (loadingScreen != null)
 		{
@@ -245,9 +249,13 @@ namespace Valve.VR
                 Quaternion rot = Quaternion.Euler(0.0f, hmd.eulerAngles.y, 0.0f);
                 Vector3 pos = hmd.position + (rot * new Vector3(0.0f, 0.0f, loadingScreenDistance));
 
-                var t = loadingScreenTransform != null ? loadingScreenTransform : transform;
-                t.position = pos;
-                t.rotation = rot;
+                var t = loadingScreenTransform;
+                if (t != null)
+                {
+                    t.position = pos;
+                    t.rotation = rot;
+                }
+                
             }
 
             _active = this;
@@ -325,9 +333,12 @@ namespace Valve.VR
             while (alpha < 1.0f)
                 yield return null;
 
-            // Keep us from getting destroyed when loading the new level, otherwise this coroutine will get stopped prematurely.
-            transform.parent = null;
-            DontDestroyOnLoad(gameObject);
+            if (!loadAdditive)
+            {
+                // Keep us from getting destroyed when loading the new level, otherwise this coroutine will get stopped prematurely.
+                transform.parent = null;
+                DontDestroyOnLoad(gameObject);
+            }
 
             if (!string.IsNullOrEmpty(internalProcessPath))
             {
@@ -357,10 +368,18 @@ namespace Valve.VR
             }
             else
             {
+                if (destroySceneBeforeLoad)
+                {
+                    async = UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(levelName);
+                    while (!async.isDone)
+                        yield return null;
+                }
+
                 var mode = loadAdditive ? UnityEngine.SceneManagement.LoadSceneMode.Additive : UnityEngine.SceneManagement.LoadSceneMode.Single;
                 if (loadAsync)
                 {
                     Application.backgroundLoadingPriority = ThreadPriority.Low;
+
                     async = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(levelName, mode);
 
                     // Performing this in a while loop instead seems to help smooth things out.
@@ -372,6 +391,7 @@ namespace Valve.VR
                 }
                 else
                 {
+
                     UnityEngine.SceneManagement.SceneManager.LoadScene(levelName, mode);
                 }
             }
@@ -439,7 +459,8 @@ namespace Valve.VR
                     overlay.HideOverlay(loadingScreenOverlayHandle);
             }
 
-            Destroy(gameObject);
+            if (!loadAdditive)
+                Destroy(gameObject);
 
             _active = null;
 
