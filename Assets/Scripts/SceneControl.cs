@@ -3,8 +3,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEditor.SceneManagement;
 using System.Collections;
+using Valve.VR;
+using UnityEditor;
 
-[ExecuteInEditMode]
+[ExecuteInEditMode, RequireComponent(typeof(SteamVR_LoadLevel))]
 public class SceneControl : MonoBehaviour
 {
     //ResetVector: holds data needed to reset a given sub-scene
@@ -29,27 +31,11 @@ public class SceneControl : MonoBehaviour
     public GameObject SteamVR_Object;
     [Tooltip("This is a referenct to the GameObject that is used when no VR systems are present.")]
     public GameObject NoVR_Object;
-    [Tooltip("This is an optional Animation to play during each transition. If the first parameter is a bool, that bool will be updated to reflect if the scene is loaded.")]
-    public Animator TransitionAnimator;
-    [Tooltip("This is an optional delay before trying to transition scenes. Set to a negative number to calculate the longest clip length.")]
-    public float SceneChangeDelay;
 
-    private void OnValidate()
-    {
-        if(SceneChangeDelay < 0)
-        {
-            SceneChangeDelay = 0;
-            if(TransitionAnimator)
-            {
-                foreach(AnimationClip ac in TransitionAnimator.runtimeAnimatorController.animationClips)
-                {
-                    if (ac.length > SceneChangeDelay)
-                        SceneChangeDelay = ac.length;
-                }
-            }
-        }
-    }
-    
+
+    // RequiredComponent forces this to always be attached to the same object
+    private SteamVR_LoadLevel VRLoader;
+
     GameObject activeFrame; //used generically for resetting the player to an initial position
     Vector3 initPos;        //stores the game start initial position for the activeFrame
     Vector3 initAngles;     //stores the game start initial rotation for the activeFrame
@@ -60,6 +46,7 @@ public class SceneControl : MonoBehaviour
     //Setup: performs initialization of the activeFrame and initial positioning data on game start
     void Setup()
     {
+        VRLoader = GetComponent<SteamVR_LoadLevel>();
         if (SteamVR_Object.activeInHierarchy)
         {
             Debug.Log("SceneReset.Setup(): activeFrame set to SteamVR_Object");
@@ -90,6 +77,7 @@ public class SceneControl : MonoBehaviour
             SceneManager.LoadScene(resetVector.scene, LoadSceneMode.Additive);
 #endif
         }
+        
     }
 
 
@@ -101,7 +89,7 @@ public class SceneControl : MonoBehaviour
             if (Input.GetKeyDown(resetVector.keyCode))
             {
                 SceneControlVars.currentScene = resetVector.sceneNumber;
-                
+
                 StartCoroutine(ResetScene(resetVector));
                 break;
             }
@@ -112,23 +100,15 @@ public class SceneControl : MonoBehaviour
 
     private IEnumerator ResetScene(ResetVector resetVector)
     {
-        if(!mutex)
+        if (!mutex)
         {
             Debug.Log("Cannot transition scenes while in the middle of another scene transition");
         }
         else
         {
             mutex = false;
-            if(TransitionAnimator)
-            {
-                TransitionAnimator.enabled = true;
-                TransitionAnimator.Play(0, -1, 0);
-                if (TransitionAnimator.parameters.Length > 0)
-                    if (TransitionAnimator.parameters[0].type == AnimatorControllerParameterType.Bool)
-                        TransitionAnimator.SetBool(TransitionAnimator.parameters[0].name, false);
-            }
-            yield return new WaitForSeconds(SceneChangeDelay);
 
+            /*
             Debug.Log("SceneReset.ResetScene(): destroying scene " + resetVector.sceneName);
             AsyncOperation asyncLoad;
             asyncLoad = SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName(resetVector.sceneName));
@@ -141,17 +121,31 @@ public class SceneControl : MonoBehaviour
             Player.transform.eulerAngles = resetVector.InitialTransform.eulerAngles;
             activeFrame.transform.localPosition = initPos;
             activeFrame.transform.localEulerAngles = initAngles;
-
+            
             while (!asyncLoad.isDone)
                 yield return null;
-
-            if (TransitionAnimator)
-            {
-                if(TransitionAnimator.parameters.Length > 0)
-                    if(TransitionAnimator.parameters[0].type == AnimatorControllerParameterType.Bool)
-                        TransitionAnimator.SetBool(TransitionAnimator.parameters[0].name, true);
-            }
+            
             yield return new WaitForSeconds(SceneChangeDelay);
+            */
+
+            Debug.Log("SceneReset.ResetScene(): loading scene" + resetVector.sceneName);
+            VRLoader.levelName = resetVector.sceneName;
+            VRLoader.Trigger();
+            
+
+            while (SteamVR_LoadLevel.fading)
+                yield return null;
+
+            SceneControlVars.currentScene = resetVector.sceneNumber;
+            Player.transform.position = resetVector.InitialTransform.position;
+            Player.transform.eulerAngles = resetVector.InitialTransform.eulerAngles;
+            activeFrame.transform.localPosition = initPos;
+            activeFrame.transform.localEulerAngles = initAngles;
+
+            while (SteamVR_LoadLevel.loading)
+                yield return null;
+
+            Debug.Log("Finished.");
             mutex = true;
         }
     }
