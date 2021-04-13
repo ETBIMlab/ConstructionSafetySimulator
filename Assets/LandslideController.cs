@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Bhaptics.Tact.Unity;
 
 public class LandslideController : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class LandslideController : MonoBehaviour
     public Animator Fill_In;
     public ParticleSystem Dust;
     public AudioSource Explosion;
+    public HapticSource HapticFeedback;
     public KeyCode AnimationControlKey;
     bool isReset;
 
@@ -33,6 +35,7 @@ public class LandslideController : MonoBehaviour
         isReset = false;
         Dust.Play();
         Explosion.Play();
+        HapticFeedback.PlayLoop();
         Fill_In.SetBool("Reset", false);
         Fill_In.SetBool("Start", true);
         Landslide.SetBool("Reset", false);
@@ -40,6 +43,7 @@ public class LandslideController : MonoBehaviour
     }
     void ResetAnimations()
     {
+        HapticFeedback.Stop();
         Dust.Stop();
         Dust.Clear();
         Explosion.Stop();
