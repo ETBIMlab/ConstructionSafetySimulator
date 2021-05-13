@@ -76,7 +76,6 @@ GameObject:
   - component: {fileID: 8148307077124669400}
   - component: {fileID: 443317655029106563}
   - component: {fileID: 4012904143794814389}
-  - component: {fileID: 182915369423295717}
   m_Layer: 0
   m_Name: VRCamera
   m_TagString: MainCamera
@@ -216,21 +215,10 @@ MonoBehaviour:
   m_StopNaN: 0
   m_Dithering: 0
   m_ClearDepth: 1
+  m_AllowXRRendering: 1
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!114 &182915369423295717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4012904143335827868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4290d98f74391464da77d6e66d42f8d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4012904143335830142
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,11 +377,9 @@ GameObject:
   - component: {fileID: 4012904143336149058}
   - component: {fileID: 4012904143341924686}
   - component: {fileID: 4012904144389679236}
-  - component: {fileID: 4012904144389679233}
-  - component: {fileID: 4012904144389679238}
-  - component: {fileID: 4012904144389679239}
-  - component: {fileID: 6135910193727764646}
   - component: {fileID: 1567074166506816718}
+  - component: {fileID: 1902447689828333306}
+  - component: {fileID: 3840163476269096873}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -547,70 +533,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &4012904144389679233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4012904143335841850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e7d9a24034d44041a07579df63d13e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wayPoint: {fileID: 0}
-  player: {fileID: 0}
---- !u!114 &4012904144389679238
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4012904143335841850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f6ee332650011042a5388ee18848d4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  input:
-    actionPath: /actions/default/in/TouchPad
-    needsReinit: 0
-  speed: 1
---- !u!114 &4012904144389679239
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4012904143335841850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be72427d3c1581b4ba34ab2eb1f70beb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  input:
-    actionPath: /actions/default/in/TouchPad
-    needsReinit: 0
-  audioClip: {fileID: 8300000, guid: e1019ba204923504d8899e1681ff5b9b, type: 3}
---- !u!114 &6135910193727764646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4012904143335841850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1a839f1a308e314188697ce4c4dcc0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerVisionFade: {fileID: 2100000, guid: 2a767f431423cbc4da56803c592a6060, type: 2}
-  timeToDie: 85
-  timeToRespawn: 100
-  stateSavers: []
-  respawnPoints: []
-  callDeathCycleDirectly: 0
 --- !u!114 &1567074166506816718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -623,6 +545,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4b3133c317133947a41f7c28d58d120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HeartRate: 60
+  HeartBeatIntensity: 0
+  BloodOxygenPercent: 1
+  Hydration: 1
+--- !u!143 &1902447689828333306
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4012904143335841850}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3840163476269096873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4012904143335841850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81982acb3748b764e89c08875be36f10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  gravity: -9.81
+  inputSource:
+    actionPath: /actions/default/in/TouchPad
+    needsReinit: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  additionalHeight: 0.05
+  SteamVRCamera: {fileID: 4012904143334603608}
+  audioClipOnMove: {fileID: 8300000, guid: e1019ba204923504d8899e1681ff5b9b, type: 3}
+  audioVolume: 0.699
 --- !u!1 &4012904143335843412
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,6 +639,7 @@ MeshRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -695,6 +664,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &4012904143332833514
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -785,6 +755,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -809,6 +780,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &4012904143335847404
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,7 +795,6 @@ GameObject:
   - component: {fileID: 2528950835238731548}
   - component: {fileID: 4497736705588139528}
   - component: {fileID: 4012904143335736726}
-  - component: {fileID: 1832361265699871671}
   m_Layer: 0
   m_Name: FallbackObjects
   m_TagString: MainCamera
@@ -958,21 +929,10 @@ MonoBehaviour:
   m_StopNaN: 0
   m_Dithering: 0
   m_ClearDepth: 1
+  m_AllowXRRendering: 1
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!114 &1832361265699871671
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4012904143335847404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4290d98f74391464da77d6e66d42f8d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4012904143335848860
 GameObject:
   m_ObjectHideFlags: 0
@@ -2096,6 +2056,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2708,6 +2669,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

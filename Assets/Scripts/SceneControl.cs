@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+#if UNITY_EDITOR
 using UnityEditor.SceneManagement;
+using UnityEditor;
+#endif
 using System.Collections;
 using Valve.VR;
-using UnityEditor;
+
 
 [ExecuteInEditMode, RequireComponent(typeof(SteamVR_LoadLevel))]
 public class SceneControl : MonoBehaviour
@@ -49,18 +52,18 @@ public class SceneControl : MonoBehaviour
         VRLoader = GetComponent<SteamVR_LoadLevel>();
         if (SteamVR_Object.activeInHierarchy)
         {
-            Debug.Log("SceneReset.Setup(): activeFrame set to SteamVR_Object");
+            //Debug.Log("SceneReset.Setup(): activeFrame set to SteamVR_Object");
             activeFrame = SteamVR_Object;
         }
         else
         {
-            Debug.Log("SceneReset.Setup(): activeFrame set to NoVR_Object");
+            //Debug.Log("SceneReset.Setup(): activeFrame set to NoVR_Object");
             activeFrame = NoVR_Object;
         }
         initPos = activeFrame.transform.localPosition;
         initAngles = activeFrame.transform.localEulerAngles;
-        Debug.Log("SceneReset.Setup(): initial position: " + initPos.ToString());
-        Debug.Log("SceneReset.Setup(): initial euler angles: " + initAngles.ToString());
+        //Debug.Log("SceneReset.Setup(): initial position: " + initPos.ToString());
+        //Debug.Log("SceneReset.Setup(): initial euler angles: " + initAngles.ToString());
     }
 
     //START: loads the sub-scenes when the main scene is loaded
@@ -70,12 +73,8 @@ public class SceneControl : MonoBehaviour
 
         foreach (ResetVector resetVector in ResetVectors)
         {
-            Debug.Log("Loading scene: " + resetVector.sceneName);
-#if UNITY_EDITOR
-            EditorSceneManager.OpenScene(resetVector.sceneRoot + resetVector.sceneName + ".unity", OpenSceneMode.Additive);
-#else
-            SceneManager.LoadScene(resetVector.scene, LoadSceneMode.Additive);
-#endif
+            //Debug.Log("Loading scene: " + resetVector.sceneName);
+            SceneManager.LoadScene(resetVector.sceneName, LoadSceneMode.Additive);
         }
         
     }
@@ -128,7 +127,7 @@ public class SceneControl : MonoBehaviour
             yield return new WaitForSeconds(SceneChangeDelay);
             */
 
-            Debug.Log("SceneReset.ResetScene(): loading scene" + resetVector.sceneName);
+            //Debug.Log("SceneReset.ResetScene(): loading scene" + resetVector.sceneName);
             VRLoader.levelName = resetVector.sceneName;
             VRLoader.Trigger();
             
@@ -145,7 +144,7 @@ public class SceneControl : MonoBehaviour
             while (SteamVR_LoadLevel.loading)
                 yield return null;
 
-            Debug.Log("Finished.");
+            //Debug.Log("Finished.");
             mutex = true;
         }
     }

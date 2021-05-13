@@ -57,7 +57,7 @@ namespace Valve.VR
                 }
 
                 UnityEditor.BuildTargetGroup currentTarget = UnityEditor.EditorUserBuildSettings.selectedBuildTargetGroup;
-
+/*
 #if (UNITY_5_4 || UNITY_5_3 || UNITY_5_2 || UNITY_5_1 || UNITY_5_0)
                 string[] devices = UnityEditorInternal.VR.VREditor.GetVREnabledDevices(currentTarget);
 #else
@@ -90,7 +90,7 @@ namespace Valve.VR
 #endif
                     Debug.Log("<b>[SteamVR Setup]</b> Added OpenVR to supported VR SDKs list.");
                 }
-
+*/
 #if UNITY_2018_2_OR_NEWER
                 //2018+ requires us to manually add the OpenVR package
 
