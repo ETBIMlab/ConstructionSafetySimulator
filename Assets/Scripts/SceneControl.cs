@@ -65,12 +65,13 @@ public class SceneControl : MonoBehaviour
         initAngles = activeFrame.transform.localEulerAngles;
         //Debug.Log("SceneReset.Setup(): initial position: " + initPos.ToString());
         //Debug.Log("SceneReset.Setup(): initial euler angles: " + initAngles.ToString());
-    
-        //START: loads the sub-scenes when the main scene is loaded
+
         foreach (ResetVector resetVector in ResetVectors)
         {
-            //Debug.Log("Loading scene: " + resetVector.sceneName);
-            SceneManager.LoadScene(resetVector.sceneName, LoadSceneMode.Additive);
+            if(SceneManager.GetSceneByPath(resetVector.sceneRoot + resetVector.sceneName + ".unity").name == null)
+            {
+                SceneManager.LoadScene(resetVector.sceneName, LoadSceneMode.Additive);
+            }
         }
     }
 
@@ -141,6 +142,23 @@ public class SceneControl : MonoBehaviour
 
             //Debug.Log("Finished.");
             mutex = true;
+        }
+    }
+
+    private void OnValidate()
+    {
+        if(EditorSceneManager.sceneCount != ResetVectors.Count + 1)
+        {
+            //Debug.Log("There is a scene that is not loaded. Trying to load...");
+            // Trys to load in subsence if not loaded
+            foreach (ResetVector resetVector in ResetVectors)
+            {
+                if(SceneManager.GetSceneByPath(resetVector.sceneRoot + resetVector.sceneName + ".unity").name == null)
+                {
+                    // @TODO:: Load scene automatically.
+                    Debug.LogWarning("SceneControl:: Scene is not loaded '" + resetVector.sceneRoot + resetVector.sceneName + "'");
+                }
+            }
         }
     }
 }
