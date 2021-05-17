@@ -9,7 +9,7 @@ using System.Collections;
 using Valve.VR;
 
 
-[ExecuteInEditMode, RequireComponent(typeof(SteamVR_LoadLevel))]
+[RequireComponent(typeof(SteamVR_LoadLevel))]
 public class SceneControl : MonoBehaviour
 {
     //ResetVector: holds data needed to reset a given sub-scene
@@ -47,7 +47,8 @@ public class SceneControl : MonoBehaviour
     public List<ResetVector> ResetVectors;  //list containing all of the reset vectors for the main scene
 
     //Setup: performs initialization of the activeFrame and initial positioning data on game start
-    void Setup()
+    
+    void Start()
     {
         VRLoader = GetComponent<SteamVR_LoadLevel>();
         if (SteamVR_Object.activeInHierarchy)
@@ -64,19 +65,13 @@ public class SceneControl : MonoBehaviour
         initAngles = activeFrame.transform.localEulerAngles;
         //Debug.Log("SceneReset.Setup(): initial position: " + initPos.ToString());
         //Debug.Log("SceneReset.Setup(): initial euler angles: " + initAngles.ToString());
-    }
-
-    //START: loads the sub-scenes when the main scene is loaded
-    void Start()
-    {
-        Setup();
-
+    
+        //START: loads the sub-scenes when the main scene is loaded
         foreach (ResetVector resetVector in ResetVectors)
         {
             //Debug.Log("Loading scene: " + resetVector.sceneName);
             SceneManager.LoadScene(resetVector.sceneName, LoadSceneMode.Additive);
         }
-        
     }
 
 

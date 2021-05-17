@@ -3,7 +3,7 @@
 
 public class BhapticsVRBody : MonoBehaviour
 {
-    [SerializeField] private Transform camera;
+    [SerializeField] new private Transform camera;
     [SerializeField] private float distance;
 
     

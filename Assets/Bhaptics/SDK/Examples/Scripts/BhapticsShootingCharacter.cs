@@ -13,7 +13,7 @@ public class BhapticsShootingCharacter : MonoBehaviour
 
 
     private Animator animator;
-    private int shootCount = 4;
+    //private int shootCount = 4; // Hidden bec not used @Nevin Foster
     private float shootDelay = 3f;
     private float bulletSpeed = 2.5f;
 
