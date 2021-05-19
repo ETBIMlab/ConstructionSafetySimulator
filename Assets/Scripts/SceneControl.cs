@@ -147,7 +147,7 @@ public class SceneControl : MonoBehaviour
 
     private void OnValidate()
     {
-        if(EditorSceneManager.sceneCount != ResetVectors.Count + 1)
+        if(SceneManager.sceneCount != ResetVectors.Count + 1)
         {
             //Debug.Log("There is a scene that is not loaded. Trying to load...");
             // Trys to load in subsence if not loaded

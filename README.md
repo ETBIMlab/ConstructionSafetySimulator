@@ -1,9 +1,33 @@
 # Construction Safety Simulator - Git Guide
 
-## First Things First!
-Our project is currently built on Unity version **2019.3.15**
+If you are new coming onto this project, take a quick look at our [Introduction to ETBIM Lab: Development and Tasks](https://docs.google.com/presentation/d/1GntaptTZvh7coKvKLOK6KFFp43E3P3QXo5_9lmUGLcE/edit?usp=sharing). *Permission Required to access link*
 
-If you haven't done so, please make a new Unity Install by following [this link](https://unity3d.com/unity/whats-new/2019.3.15) and click `Install with Unity Hub` near the top of the page. Make sure you have Unity Hub Installed first.
+## Run Our Latest Build!
+
+There are two way to play our Simulator:
+   
+- Flat Screen - This is designed to those without a VR set up can also test and view the project easily.
+   
+- In Virtual Reality with SteamVR.
+   
+The application will always try to run the VR version, but will fall back on the flat screen version if no headset is available or SteamVR is not installed. *You do not need a VR headset or ANY extra applications to run the Builds on the GitHub.* **Windows is required** to run the Build posted to the GitHub.
+
+1) [Download CurrentBuild_ConstructionSafetySimulator.zip](https://drive.google.com/file/d/13JOlz83fVOO_7sr8AABgc-GUftaUPIyp/view?usp=sharing)
+
+2) Unzip to an empty folder
+
+3) Run ConstructionSafetySimulator.exe
+
+Again, If you have SteamVR installed, the .exe will first open SteamVR to see if a headset is connected to the computer. The Flat Screen version will run if no headset is connected to your computer.
+
+There is a PDF file in the main directory of the build named *ConstructionSafetySimulator_Usage.pdf* which contains extra information on the build, including keyboard interactions for switching between scenes and playing hazard animations.
+
+# Getting Ready For Development:
+
+## Preparing Unity!
+Our project is currently built on Unity version **2020.3.7**
+
+If you haven't done so, please make a new Unity Install by following [this link](https://unity3d.com/unity/whats-new/2020.3.7) and click `Install with Unity Hub` near the top of the page. Make sure you have Unity Hub Installed first.
 
 This is **really _important_**! If we don't all use the same version, then whenever someone pushes new code, merge conflicts are bound to happen more often. If you aren't sure which version you're using, please install the [Unity Hub](https://unity3d.com/get-unity/download) from this link. 
 
