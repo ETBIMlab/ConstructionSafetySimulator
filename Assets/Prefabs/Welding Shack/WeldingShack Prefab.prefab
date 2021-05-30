@@ -903,6 +903,7 @@ GameObject:
   - component: {fileID: 7681560556802995757}
   - component: {fileID: 6716478060652919176}
   - component: {fileID: 8849941037661752642}
+  - component: {fileID: 8348393780463893062}
   m_Layer: 0
   m_Name: WeldingShack Prefab
   m_TagString: Untagged
@@ -990,6 +991,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8348393780463893062
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7048610657198189719}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.03493276, y: 0.031993788, z: 0.02784774}
+  m_Center: {x: -0.00000008869436, y: -0.0000000034629672, z: 0.013423868}
 --- !u!1 &7858606005275514017
 GameObject:
   m_ObjectHideFlags: 0
