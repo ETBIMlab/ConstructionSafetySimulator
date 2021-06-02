@@ -1,8 +1,9 @@
-﻿//======= Copyright (c) Valve Corporation, All rights reserved. ===============
+//======= Copyright (c) Valve Corporation, All rights reserved. ===============
 //
 // Purpose: Prompt developers to use settings most compatible with SteamVR.
 //
 //=============================================================================
+#pragma warning disable CS0618
 
 using UnityEngine;
 using UnityEditor;
@@ -47,12 +48,11 @@ namespace Valve.VR
         {
             if (SteamVR_Settings.instance.autoEnableVR)
             {
-                bool enabledVR = false;
 
                 if (UnityEditor.PlayerSettings.virtualRealitySupported == false)
                 {
                     UnityEditor.PlayerSettings.virtualRealitySupported = true;
-                    enabledVR = true;
+                    
                     Debug.Log("<b>[SteamVR Setup]</b> Enabled virtual reality support in Player Settings. (you can disable this by unchecking Assets/SteamVR/SteamVR_Settings.autoEnableVR)");
                 }
 

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -15,7 +15,6 @@ public class OnTriggerHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("triggerEnter");
         triggerEnter.Invoke();
     }
 
@@ -25,6 +24,21 @@ public class OnTriggerHandler : MonoBehaviour
     }
 
     private void OnTriggerStay(Collider other)
+    {
+        triggerStay.Invoke();
+    }
+
+    public void OnTriggerEnter()
+    {
+        triggerEnter.Invoke();
+    }
+
+    public void OnTriggerExit()
+    {
+        triggerExit.Invoke();
+    }
+
+    public void OnTriggerStay()
     {
         triggerStay.Invoke();
     }

@@ -58,7 +58,7 @@ Properties {
 				float radius = v.t0.w * _RadiusScale;
 				float4 viewpos = mul(UNITY_MATRIX_V, v.vertex) + float4(v.corner.x, v.corner.y, 0, 0) * radius; // multiply by size.
 				o.pos = mul(UNITY_MATRIX_P, viewpos);
-				o.texcoord = float3(v.corner.x*0.5+0.5, v.corner.y*0.5+0.5, radius);
+				o.texcoord = float4(v.corner.x*0.5+0.5, v.corner.y*0.5+0.5, radius, 1.0f);
 				o.color = v.color * _Color;
 
 				o.lightDir = mul ((float3x3)UNITY_MATRIX_MV, ObjSpaceLightDir(v.vertex));
@@ -78,7 +78,7 @@ Properties {
 		   	    float ndotl = saturate( dot( n, normalize(i.lightDir) ) );
 
 				// final lit color:
-				return float4(i.color.rgb * (_LightColor0 * ndotl + amb),i.color.a);
+				return float4(i.color.rgb * (_LightColor0.xyz * ndotl + amb),i.color.a);
 			}
 			 
 			ENDHLSL

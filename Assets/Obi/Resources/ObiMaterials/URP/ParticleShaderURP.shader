@@ -70,7 +70,7 @@ Properties {
 				float3 worldPos;
 				float3 view;
 				float3 eye;
-				float radius = BuildEllipsoidBillboard(v.vertex,v.corner,P,IP,worldPos,view,eye);
+				float radius = BuildEllipsoidBillboard(v.vertex.xyz,v.corner,P,IP,worldPos,view,eye);
 			
 				v2f o;
 				o.pos = mul(UNITY_MATRIX_VP, float4(worldPos,v.vertex.w));
@@ -106,7 +106,7 @@ Properties {
 				float atten = Attenuation(p);
 
 				// final lit color:
-				fo.color.rgb = i.color * (_LightColor0 * ndotl * atten + amb);
+				fo.color.rgb = i.color * (_LightColor0.xyz * ndotl * atten + amb);
 
 				// normalized device coordinates:
 				fo.depth = pos.z/pos.w;
@@ -183,7 +183,7 @@ Properties {
 				float3 worldPos;
 				float3 view;
 				float3 eye;
-				float radius = BuildEllipsoidBillboard(v.vertex,v.corner,P,IP,worldPos,view,eye);
+				float radius = BuildEllipsoidBillboard(v.vertex.xyz,v.corner,P,IP,worldPos,view,eye);
 			
 				v2f o;
 				outpos = mul(UNITY_MATRIX_VP, float4(worldPos,v.vertex.w));
@@ -209,7 +209,7 @@ Properties {
                 float4 wpos = mul(UNITY_MATRIX_I_V,float4(p,1));
 
                 // calculate clip space position.
-                float4 clipPos = TransformWorldToHClip(ApplyShadowBias(wpos, wnormal, normalize(i.lightDir)));
+                float4 clipPos = TransformWorldToHClip(ApplyShadowBias(wpos.xyz, wnormal, normalize(i.lightDir)));
 
                 #if UNITY_REVERSED_Z
                     clipPos.z = min(clipPos.z, clipPos.w * UNITY_NEAR_CLIP_VALUE);

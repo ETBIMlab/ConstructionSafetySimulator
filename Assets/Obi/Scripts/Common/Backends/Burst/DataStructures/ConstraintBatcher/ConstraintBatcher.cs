@@ -1,4 +1,4 @@
-﻿#if (OBI_BURST && OBI_MATHEMATICS && OBI_COLLECTIONS)
+#if (OBI_BURST && OBI_MATHEMATICS && OBI_COLLECTIONS)
 using System;
 using Unity.Collections;
 using Unity.Mathematics;

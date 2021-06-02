@@ -7,14 +7,14 @@
 
 half3 SampleSphereAmbient(float3 eyeNormal)
 {
-    half3 worldNormal = mul(UNITY_MATRIX_I_V,half4(eyeNormal,0.0));
+    half3 worldNormal = mul(UNITY_MATRIX_I_V,half4(eyeNormal,0.0)).xyz;
     return SampleSH(worldNormal);
 }
 
 float3 ObjSpaceLightDir(in float4 modelPos)
 {
     float3 lightPos = mul(unity_WorldToObject,_MainLightPosition).xyz;
-    float3 lightVector = lightPos.xyz - modelPos * _MainLightPosition.w;
+    float3 lightVector = lightPos.xyz - modelPos.xyz * _MainLightPosition.w;
     return lightVector;
 }
 
@@ -27,7 +27,7 @@ float3 WorldSpaceLightDir(in float4 modelPos)
 
 half Attenuation(float3 eyePos)
 {
-    half3 worldPos = mul(UNITY_MATRIX_I_V,half4(eyePos,1.0));
+    half3 worldPos = mul(UNITY_MATRIX_I_V,half4(eyePos,1.0)).xyz;
     float4 shadowCoord = TransformWorldToShadowCoord(worldPos);
     Light mainLight = GetMainLight(shadowCoord);
     return mainLight.shadowAttenuation * mainLight.distanceAttenuation;

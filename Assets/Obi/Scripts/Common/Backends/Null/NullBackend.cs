@@ -1,4 +1,4 @@
-﻿namespace Obi
+namespace Obi
 {
     public class NullBackend : IObiBackend
     {

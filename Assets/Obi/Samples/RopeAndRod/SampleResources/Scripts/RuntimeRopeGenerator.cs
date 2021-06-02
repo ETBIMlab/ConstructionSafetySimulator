@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using UnityEngine;
 using Obi;
@@ -8,7 +8,7 @@ public class RuntimeRopeGenerator
 	//private ObiRope rope;
 	//private ObiRopeCursor cursor;
 	private ObiSolver solver;
-	private int pinnedParticle = -1;
+	//private int pinnedParticle = -1;
 
 	/// <summary>
     /// Creates a straight rope anchored to a transform at the top.

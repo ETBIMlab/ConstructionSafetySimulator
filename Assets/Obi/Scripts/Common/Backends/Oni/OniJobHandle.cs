@@ -1,4 +1,4 @@
-﻿#if (OBI_ONI_SUPPORTED)
+#if (OBI_ONI_SUPPORTED)
 using UnityEngine;
 using System;
 using System.Collections;

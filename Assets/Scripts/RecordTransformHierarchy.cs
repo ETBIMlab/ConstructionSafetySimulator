@@ -1,5 +1,5 @@
 using UnityEngine;
-#if Unity_Editor
+#if UNITY_EDITOR
 using UnityEditor.Animations;
 #endif
 
@@ -10,7 +10,7 @@ using UnityEditor.Animations;
 
 public class RecordTransformHierarchy : MonoBehaviour
 {
-#if Unity_Editor
+#if UNITY_EDITOR
     public AnimationClip clip;
 
     private GameObjectRecorder m_Recorder;

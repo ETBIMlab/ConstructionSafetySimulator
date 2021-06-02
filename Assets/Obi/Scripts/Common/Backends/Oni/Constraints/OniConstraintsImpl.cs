@@ -1,4 +1,4 @@
-﻿#if (OBI_ONI_SUPPORTED)
+#if (OBI_ONI_SUPPORTED)
 using System;
 using System.Collections;
 using System.Runtime.InteropServices;
