@@ -12,8 +12,16 @@ public class RecordTransformHierarchy : MonoBehaviour
 {
 #if UNITY_EDITOR
     public AnimationClip clip;
+    public Vector3 triggerVelocity = Vector3.zero;
 
     private GameObjectRecorder m_Recorder;
+    
+    public void TriggerVelocity()
+    {
+        Rigidbody _rb;
+        if((_rb = GetComponent<Rigidbody>()) != null)
+            _rb.AddForce(triggerVelocity, ForceMode.VelocityChange);
+    }
 
     void Start()
     {
@@ -44,5 +52,6 @@ public class RecordTransformHierarchy : MonoBehaviour
             m_Recorder.SaveToClip(clip);
         }
     }
+
 #endif
 }

@@ -8,8 +8,12 @@ public class VolumeWeightDirection : MonoBehaviour
 {
     public Transform playerCam;
     public Transform target;
-    public float minAngle;
-    public float maxAngle;
+    public float minAngle = 0;
+    public float maxAngle = 360;
+    [Range(0,1)]
+    public float maxDecSpeed = 0.1f;
+    [Range(0,1)]
+    public float maxIncSpeed = 0.1f;
     // Linear..
 
     private Volume _volume;
@@ -25,6 +29,8 @@ public class VolumeWeightDirection : MonoBehaviour
         Vector3 targetDir = target.position - playerCam.position;
         float angle = Vector3.Angle(targetDir, playerCam.forward);
         angle = Mathf.Clamp(angle, minAngle, maxAngle);
-        _volume.weight = 1 - Mathf.InverseLerp(minAngle, maxAngle, angle);
+
+
+        _volume.weight += Mathf.Clamp(1 - Mathf.InverseLerp(minAngle, maxAngle, angle) - (float) _volume.weight, -maxDecSpeed, maxIncSpeed) * Time.deltaTime;
     }
 }
