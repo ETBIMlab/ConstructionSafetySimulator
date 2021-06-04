@@ -10,9 +10,9 @@ public class VolumeWeightDirection : MonoBehaviour
     public Transform target;
     public float minAngle = 0;
     public float maxAngle = 360;
-    [Range(0,1)]
+    [Range(0,10)]
     public float maxDecSpeed = 0.1f;
-    [Range(0,1)]
+    [Range(0,10)]
     public float maxIncSpeed = 0.1f;
     // Linear..
 
