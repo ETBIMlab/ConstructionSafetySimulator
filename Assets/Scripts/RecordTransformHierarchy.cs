@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 #if UNITY_EDITOR
 using UnityEditor.Animations;
 #endif
@@ -12,6 +13,7 @@ public class RecordTransformHierarchy : MonoBehaviour
 {
 #if UNITY_EDITOR
     public AnimationClip clip;
+    public float recordTime = 40.0f;
     public Vector3 triggerVelocity = Vector3.zero;
 
     private GameObjectRecorder m_Recorder;
@@ -30,7 +32,16 @@ public class RecordTransformHierarchy : MonoBehaviour
 
         // Bind all the Transforms on the GameObject and all its children.
         m_Recorder.BindComponentsOfType<Transform>(gameObject, true);
+
+        StartCoroutine(DestroyAfter(recordTime));
     }
+
+    private IEnumerator DestroyAfter(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Destroy(this);
+    }
+        
 
     void LateUpdate()
     {
