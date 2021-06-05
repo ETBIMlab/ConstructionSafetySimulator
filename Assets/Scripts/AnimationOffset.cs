@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,9 +13,18 @@ public class AnimationOffset : MonoBehaviour
     [Tooltip("This is a percent offset")]
     public float offset = 0f;
     public string animationName = "Place Holder";
+
+    private Animator animator;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        GetComponent<Animator>().Play(animationName, 0, offset);
+        animator = GetComponent<Animator>();
+    }
+
+    void OnEnable()
+    {
+        if(!animator.enabled)
+            animator.enabled = true;
+        animator.Play(animationName, 0, offset);
     }
 }

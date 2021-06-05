@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 #if UNITY_EDITOR
@@ -16,16 +16,27 @@ public class SceneControl : MonoBehaviour
     [System.Serializable]
     public class ResetVector
     {
-        [Tooltip("The root path of the scene.")]
-        public string sceneRoot;
         [Tooltip("Name of the scene to reset to (without '.unity' suffix).")]
         public string sceneName;
+        [Tooltip("The root path of the scene.")]
+        public string sceneRoot;
         [Tooltip("The keyboard key that will reset this scene.")]
         public KeyCode keyCode;
         [Tooltip("The number you wish to identify this scene with.")]
         public int sceneNumber;
         [Tooltip("GameObject transform used as an initial position for the player in the scene.")]
         public Transform InitialTransform;
+    }
+
+    private void OnValidate()
+    {
+        foreach (ResetVector resetVector in ResetVectors)
+        {
+            if(resetVector.sceneRoot == null || resetVector.sceneRoot == "")
+            {
+                resetVector.sceneRoot = "/Assets/Scenes/";
+            }
+        }
     }
 
     [Tooltip("This is the Player GameObject.")]
@@ -65,14 +76,6 @@ public class SceneControl : MonoBehaviour
         initAngles = activeFrame.transform.localEulerAngles;
         //Debug.Log("SceneReset.Setup(): initial position: " + initPos.ToString());
         //Debug.Log("SceneReset.Setup(): initial euler angles: " + initAngles.ToString());
-
-        foreach (ResetVector resetVector in ResetVectors)
-        {
-            if(SceneManager.GetSceneByPath(resetVector.sceneRoot + resetVector.sceneName + ".unity").name == null)
-            {
-                SceneManager.LoadScene(resetVector.sceneName, LoadSceneMode.Additive);
-            }
-        }
     }
 
 
@@ -142,23 +145,6 @@ public class SceneControl : MonoBehaviour
 
             //Debug.Log("Finished.");
             mutex = true;
-        }
-    }
-
-    private void OnValidate()
-    {
-        if(SceneManager.sceneCount != ResetVectors.Count + 1)
-        {
-            //Debug.Log("There is a scene that is not loaded. Trying to load...");
-            // Trys to load in subsence if not loaded
-            foreach (ResetVector resetVector in ResetVectors)
-            {
-                if(SceneManager.GetSceneByPath(resetVector.sceneRoot + resetVector.sceneName + ".unity").name == null)
-                {
-                    // @TODO:: Load scene automatically.
-                    Debug.LogWarning("SceneControl:: Scene is not loaded '" + resetVector.sceneRoot + resetVector.sceneName + "'");
-                }
-            }
         }
     }
 }

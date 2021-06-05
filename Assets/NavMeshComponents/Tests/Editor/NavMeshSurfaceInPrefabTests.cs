@@ -1,4 +1,4 @@
-﻿//#define KEEP_ARTIFACTS_FOR_INSPECTION
+//#define KEEP_ARTIFACTS_FOR_INSPECTION
 //#define ENABLE_TEST_LOGS
 
 using System;

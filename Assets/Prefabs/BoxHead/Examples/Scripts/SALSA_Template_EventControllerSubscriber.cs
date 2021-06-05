@@ -1,4 +1,4 @@
-﻿using CrazyMinnow.SALSA;
+using CrazyMinnow.SALSA;
 using UnityEngine;
 
 public class SALSA_Template_EventControllerSubscriber : MonoBehaviour

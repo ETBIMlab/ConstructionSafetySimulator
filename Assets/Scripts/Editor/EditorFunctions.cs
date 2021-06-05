@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEditor;
 using UnityEngine.Animations;
 
@@ -9,8 +9,10 @@ using UnityEngine.Animations;
 public class EditModeFunctions : EditorWindow
 {
     GameObject go;
+    Transform trans;
     float arg_float;
     int arg_int;
+    Vector3 arg_vector;
 
     
     [MenuItem("Window/Edit Mode Functions")]
@@ -27,6 +29,11 @@ public class EditModeFunctions : EditorWindow
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.BeginHorizontal();
+        GUILayout.Label("trans ");
+        trans = (Transform) EditorGUILayout.ObjectField(trans, typeof(Transform), true);
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
         GUILayout.Label("arg_float ");
         arg_float = EditorGUILayout.FloatField(arg_float);
         EditorGUILayout.EndHorizontal();
@@ -34,6 +41,10 @@ public class EditModeFunctions : EditorWindow
         EditorGUILayout.BeginHorizontal();
         GUILayout.Label("arg_int ");
         arg_int = EditorGUILayout.IntField(arg_int);
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        arg_vector = EditorGUILayout.Vector3Field("arg_vector ", arg_vector);
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.Space();
@@ -48,6 +59,13 @@ public class EditModeFunctions : EditorWindow
         if (GUILayout.Button("Create Basic Rope"))
         {
             CreateBasicRope(go, arg_int);
+        }
+
+        EditorGUILayout.Space();
+        GUILayout.Label("go.transform.LookAt( trans, vector );");
+        if (GUILayout.Button("LookAt"))
+        {
+            go.transform.LookAt(trans, arg_vector);
         }
     }
 
@@ -115,7 +133,5 @@ public class EditModeFunctions : EditorWindow
                 pc.locked = true;
             }
         }
-        
-
     }
 }
