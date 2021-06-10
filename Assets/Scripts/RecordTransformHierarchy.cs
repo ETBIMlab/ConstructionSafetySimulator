@@ -48,6 +48,7 @@ public class RecordTransformHierarchy : MonoBehaviour
         if (clip == null)
             return;
 
+
         // Take a snapshot and record all the bindings values for this frame.
         m_Recorder.TakeSnapshot(Time.deltaTime);
     }
