@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Bhaptics.Tact.Unity
 {
+    /// <summary>
+    /// Simple component for playing a single haptics clip.
+    /// </summary>
     public class HapticSource : MonoBehaviour
     {
         private Coroutine currentCoroutine, loopCoroutine;

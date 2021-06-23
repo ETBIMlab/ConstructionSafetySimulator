@@ -34,6 +34,9 @@ namespace Bhaptics.Tact.Unity
 
         public override void Play(float intensity, float duration, float vestRotationAngleX, float vestRotationOffsetY)
         {
+            if (duration <= 0)
+                duration = TimeMillis/1000f;
+
             if (!BhapticsManager.Init)
             {
                 BhapticsManager.Initialize();
@@ -44,18 +47,20 @@ namespace Bhaptics.Tact.Unity
 
             if (Mode == FeedbackType.DotMode)
             {
-                haptic.Submit(keyId, ToPositionType(Position), Convert(DotPoints), TimeMillis);
+                haptic.Submit(keyId, ToPositionType(Position), Convert(DotPoints, intensity), (int)(duration * 1000));
             }
             else
             {
-                haptic.Submit(keyId, ToPositionType(Position), Convert(Points), TimeMillis);
+                haptic.Submit(keyId, ToPositionType(Position), Convert(Points, intensity), (int)(duration * 1000));
             }
-
-
-
         }
 
-        private static List<DotPoint> Convert(int[] points)
+        public int GetNumberOfPoints()
+        {
+            return (Mode == FeedbackType.DotMode) ? DotPoints.Length : Points.Length;
+        }
+
+        private static List<DotPoint> Convert(int[] points, float intensity)
         {
             var result = new List<DotPoint>();
 
@@ -64,20 +69,21 @@ namespace Bhaptics.Tact.Unity
                 var p = points[i];
                 if (p > 0)
                 {
-                    result.Add(new DotPoint(i, p));
+                    result.Add(new DotPoint(i, (int) (p * intensity)));
                 }
             }
 
             return result;
         }
 
-        private static List<PathPoint> Convert(Point[] points)
+        private static List<PathPoint> Convert(Point[] points, float intensity)
         {
             var result = new List<PathPoint>();
 
-            foreach (var point in points)
+            for (var i = 0; i < points.Length; i++)
             {
-                result.Add(new PathPoint(point.X, point.Y, point.Intensity));
+                var point = points[i];
+                result.Add(new PathPoint(point.X, point.Y, (int)(point.Intensity * intensity)));
             }
 
             return result;

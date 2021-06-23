@@ -2,6 +2,13 @@ using UnityEngine;
 
 namespace Bhaptics.Tact.Unity
 {
+    /// <summary>
+    /// This class is used for creating haptic feedback in response to collision events between colliders.
+    /// The haptic clips are taken from this class and played depending on the hapticReceiver on the other object. The
+    /// HapticSender class has different playable clips depending on a hit PositionTag (view HapticSender.Play()) (collision
+    /// only plays haptics if the trigger/collision collider has a HapticReceiver). This class is intended to play haptics
+    /// automatically using the dynamic relationship between this and HapticSender.
+    /// </summary>
     public class HapticSender : MonoBehaviour
     {
         #region Haptic Clips
@@ -113,6 +120,6 @@ namespace Bhaptics.Tact.Unity
 
     public enum PositionTag
     {
-        Body, Head, LeftArm, RightArm, Default
+        Default, Head, VestFront, VestBack, LeftArm, RightArm, LeftHand, RightHand, LeftFoot, RightFoot, None, Body
     }
 }

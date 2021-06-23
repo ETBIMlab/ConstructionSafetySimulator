@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// ConstructionSafteySimulator script. Obsolete due to bHaptics update.
+/// </summary>
 public class RemoteVibrate : MonoBehaviour { // Currently the 'distance' functionality is not fully implemented
     HapticSource[] devices;
 

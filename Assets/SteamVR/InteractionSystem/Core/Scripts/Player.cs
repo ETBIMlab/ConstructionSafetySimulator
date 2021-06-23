@@ -1,4 +1,4 @@
-//======= Copyright (c) Valve Corporation, All rights reserved. ===============
+﻿//======= Copyright (c) Valve Corporation, All rights reserved. ===============
 //
 // Purpose: Player interface used to query HMD transforms and VR hands
 //
@@ -25,8 +25,8 @@ namespace Valve.VR.InteractionSystem
 		[Tooltip( "List of possible Hands, including no-SteamVR fallback Hands." )]
 		public Hand[] hands;
 
-		[Tooltip( "Reference to the physics collider that follows the player's HMD position." )]
-		public Collider headCollider;
+		//[Tooltip( "Reference to the physics collider that follows the player's HMD position." )]
+		//public Collider headCollider;
 
 		[Tooltip( "These objects are enabled when SteamVR is available" )]
 		public GameObject rigSteamVR;

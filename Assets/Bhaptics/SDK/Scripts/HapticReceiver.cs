@@ -2,6 +2,13 @@ using UnityEngine;
 
 namespace Bhaptics.Tact.Unity
 {
+    /// <summary>
+    /// This class is used for creating haptic feedback in response to collision events between colliders.
+    /// The haptic clips are taken from the HapticSender class that should be attached to the other collider. The
+    /// HapticSender class has different playable clips depending on a hit PositionTag (view HapticSender.Play()) (collision
+    /// only plays haptics if the trigger/collision collider has a HapticSender). This class is intended to play haptics
+    /// automatically using the dynamic relationship between this and HapticSender.
+    /// </summary>
     public class HapticReceiver : MonoBehaviour
     {
         public bool IsActive = true;

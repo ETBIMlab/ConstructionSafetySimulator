@@ -149,7 +149,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2064163356212723227}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1bcf8c7e0042378468221bdffceb6f54, type: 3}
   m_Name: 
@@ -158,8 +158,20 @@ MonoBehaviour:
   target: {fileID: 7337371834552602986}
   minAngle: 20
   maxAngle: 55
-  maxDecSpeed: 1
-  maxIncSpeed: 10
+  angleBlendMethod:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxDecTime: 0.1
+  maxIncTime: 0.1
+  timeBlendMethod:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &3511283493923913543
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,7 +288,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3959727263841300860}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4243, y: 10000, z: 6858}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
