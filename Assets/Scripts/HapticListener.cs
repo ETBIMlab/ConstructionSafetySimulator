@@ -10,7 +10,9 @@ using System;
 [ExecuteInEditMode]
 public class HapticListener : MonoBehaviour
 {
-    private static HapticListener instance;
+    private static HapticListener instanceValue;
+    private static HapticListener Instance { get => instanceValue; set { instanceValue = value; loggedWarning = false; } }
+    private static bool loggedWarning = false;
 
     [Serializable]
     public class HapticListenerReceiver
@@ -25,30 +27,39 @@ public class HapticListener : MonoBehaviour
 
     private void OnEnable()
     {
-        if (instance != null)
+        if (Instance != null)
         {
-            Debug.LogWarning("There cannot be two haptic listeners in the scene. Active listener: {" + instance.name + "}. Disabling component...", this);
+            Debug.LogWarning("There cannot be two haptic listeners in the scene. Active listener: {" + Instance.name + "}. Disabling component...", this);
             this.enabled = false;
         }
         else
         {
-            instance = this;
+            Instance = this;
         }
     }
 
     private void OnDisable()
     {
-        if (instance == this)
-            instance = null;
+        if (Instance == this)
+            Instance = null;
     }
 
     public static float GetDistance(Vector3 position, PositionTag positionTag = PositionTag.Default)
     {
-        foreach (var hlr in instance.hapticLocations)
+        if (Instance == null)
+        {
+            if (loggedWarning)
+            {
+                loggedWarning = true;
+                Debug.LogWarning("There are no Haptic Listeners in the scene. Haptic Emitters are playing at distance of infinity.");
+            }
+            return Mathf.Infinity;
+        }
+        foreach (var hlr in Instance.hapticLocations)
             if (hlr.positionTag == positionTag)
                 return Vector3.Distance(position, hlr.trackedPosition.position);
 
-        return Vector3.Distance(position, instance.transform.position);
+        return Vector3.Distance(position, Instance.transform.position);
     }
 
     private void OnValidate()

@@ -25,45 +25,52 @@ public class HapticEmitter : MonoBehaviour
     }
 
     [Serializable]
-    public class DynamicHapticEmitterSource
+    public class DynamicHapticEmitterClip
     {
-        public AnimationCurve positionIntensityCurve;
-        public AnimationCurve timeIntensityCurve;
         public SimpleHapticClip clip;
         public PositionTag positionTag = PositionTag.Default;
 
-        //public float EvaluateBeyond(float time)
-        //{
-        //    intensityFalloffCurve.
-        //}
+        [NonSerialized] public float lastIntensity;
     }
 
     [Serializable]
-    public class StaticHapticEmitterSource
+    public class StaticHapticEmitterClip
     {
-        public AnimationCurve positionIntensityCurve;
         public HapticClip clip;
         public PositionTag positionTag = PositionTag.Default;
-
-        //public float EvaluateBeyond(float time)
-        //{
-        //    intensityFalloffCurve.
-        //}
     }
 
-    public DynamicHapticEmitterSource[] dynamicHaptics;
-    public StaticHapticEmitterSource[] staticHaptics;
+    [Serializable]
+    public class DynamicHapticGroup
+    {
+        public AnimationCurve positionIntensityCurve;
+        public AnimationCurve timeIntensityCurve;
+        public DynamicHapticEmitterClip[] emitterClip;
+    }
+
+    [Serializable]
+    public class StaticHapticGroup
+    {
+        public AnimationCurve positionIntensityCurve;
+        public StaticHapticEmitterClip[] emitterClip;
+    }
+
+    [Header("Haptic Info")]
+    public DynamicHapticGroup[] dynamicHaptics;
+    public StaticHapticGroup[] staticHaptics;
+
+    [Header("Emitter Info")]
     public DoublePlayMode doublePlayMode = DoublePlayMode.Reset;
-    public float intensityMultiplier;
+    [Range(0,5)]
+    public float intensityMultiplier = 1;
     public bool playOnAwake = false;
     public bool loop = false;
     //public float hapticsUpdateTimeStep;
-    [Range(LoopPadding, 10)]
-    public float totalDuration;
-    public bool scaleDurations = true;
+    [Range(0.01f, 10)]
+    public float totalDuration = 1.5f;
+    public bool scaleDurations = false;
 
-    public float currentDuration;
-
+    private float currentDuration;
     private bool queue = false;
 
     private void Awake()
@@ -114,23 +121,27 @@ public class HapticEmitter : MonoBehaviour
         }
         else
         {
-            foreach (var item in staticHaptics)
+            foreach (var staticHapticGroup in staticHaptics)
             {
-                float intensity = intensityMultiplier;
-                if (item.positionTag != PositionTag.None)
-                    intensity = item.positionIntensityCurve.Evaluate(HapticListener.GetDistance(transform.position, item.positionTag));
-                if (intensity > 0)
+                foreach (var staticEmitter in staticHapticGroup.emitterClip)
                 {
-                    if (scaleDurations)
-                        item.clip.Play(
-                            intensity: intensity,
-                            duration: totalDuration
-                            );
-                    else
-                        item.clip.Play(
-                            intensity: intensity
-                            );
+                    float intensity = intensityMultiplier;
+                    if (staticEmitter.positionTag != PositionTag.None)
+                        intensity = staticHapticGroup.positionIntensityCurve.Evaluate(HapticListener.GetDistance(transform.position, staticEmitter.positionTag));
+                    if (intensity > 0)
+                    {
+                        if (scaleDurations)
+                            staticEmitter.clip.Play(
+                                intensity: intensity,
+                                duration: totalDuration
+                                );
+                        else
+                            staticEmitter.clip.Play(
+                                intensity: intensity
+                                );
+                    }
                 }
+                
             }
 
             currentDuration = totalDuration;
@@ -146,58 +157,73 @@ public class HapticEmitter : MonoBehaviour
     public void StopClips()
     {
         this.enabled = false;
-        foreach (var item in dynamicHaptics)
-            item.clip.Stop();
+        foreach (var group in dynamicHaptics)
+            foreach (var emitter in group.emitterClip)
+                emitter.clip.Stop();
 
-        foreach (var item in staticHaptics)
-            item.clip.Stop();
+        foreach (var group in staticHaptics)
+            foreach (var emitter in group.emitterClip)
+                emitter.clip.Stop();
     }
 
     private void Update()
     {
         if (currentDuration > 0)
         {
-            foreach (var hes in dynamicHaptics)
+            foreach (var dynamicHapticGroup in dynamicHaptics)
             {
-                float intensity = intensityMultiplier;
-                if (hes.positionTag != PositionTag.None)
-                    intensity *= hes.positionIntensityCurve.Evaluate(HapticListener.GetDistance(transform.position, hes.positionTag));
-
-                if (scaleDurations)
-                    intensity *= hes.timeIntensityCurve.Evaluate(1 - currentDuration/totalDuration);
-                else
-                    intensity *= hes.timeIntensityCurve.Evaluate(1 - (((hes.clip.TimeMillis/1000f) - (totalDuration - currentDuration))/ (hes.clip.TimeMillis / 1000f)));
-
-                if (intensity > 0)
+                foreach (var dynamicHaptic in dynamicHapticGroup.emitterClip)
                 {
+                    float intensity = intensityMultiplier;
+                    if (dynamicHaptic.positionTag != PositionTag.None)
+                        intensity *= dynamicHapticGroup.positionIntensityCurve.Evaluate(HapticListener.GetDistance(transform.position, dynamicHaptic.positionTag));
+
                     if (scaleDurations)
-                    {
-                        hes.clip.Play(
-                            intensity: intensity,
-                            duration: currentDuration + (loop ? LoopPadding : 0)
-                            );
-                        continue;
-                    }
+                        intensity *= dynamicHapticGroup.timeIntensityCurve.Evaluate(1 - currentDuration / totalDuration);
                     else
+                        intensity *= dynamicHapticGroup.timeIntensityCurve.Evaluate(1 - (((dynamicHaptic.clip.TimeMillis / 1000f) - (totalDuration - currentDuration)) / (dynamicHaptic.clip.TimeMillis / 1000f)));
+
+
+                    if (dynamicHaptic.clip.IsPlaying() && dynamicHaptic.lastIntensity != dynamicHaptic.clip.currentPlayIntensity && intensity < dynamicHaptic.clip.currentPlayIntensity)
+                        continue;
+
+                    if (intensity > 0)
                     {
-                        float duration = (hes.clip.TimeMillis / 1000f) - (totalDuration - currentDuration) + (loop ? LoopPadding : 0);
-                        if (duration > 0)
+                        if (scaleDurations)
                         {
-                            hes.clip.Play(
+                            dynamicHaptic.clip.Play(
                                 intensity: intensity,
-                                duration: duration
+                                duration: currentDuration + (loop ? LoopPadding : 0)
                                 );
+                            dynamicHaptic.lastIntensity = intensity;
                             continue;
                         }
+                        else
+                        {
+                            float duration = (dynamicHaptic.clip.TimeMillis / 1000f) - (totalDuration - currentDuration) + (loop ? LoopPadding : 0);
+                            if (duration > 0)
+                            {
+                                dynamicHaptic.clip.Play(
+                                    intensity: intensity,
+                                    duration: duration
+                                    );
+                                dynamicHaptic.lastIntensity = intensity;
+                                continue;
+                            }
+                        }
+                    }
+                    if (dynamicHaptic.clip.IsPlaying())
+                    {
+                        dynamicHaptic.clip.Stop();
+                        dynamicHaptic.lastIntensity = 0.0001f;
                     }
                 }
-                hes.clip.Stop();
-            }
 
-            currentDuration -= Time.deltaTime;
-            if (currentDuration <= 0)
-                if (loop || queue)
-                    PlayClips();
+                currentDuration -= Time.deltaTime;
+                if (currentDuration <= 0)
+                    if (loop || queue)
+                        PlayClips();
+            }
         }
     }
 

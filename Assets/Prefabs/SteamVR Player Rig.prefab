@@ -1,5 +1,121 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1520503504
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1520503505}
+  - component: {fileID: 1520503508}
+  - component: {fileID: 1520503507}
+  - component: {fileID: 1520503506}
+  m_Layer: 3
+  m_Name: Feet Haptics
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1520503505
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520503504}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.12, y: 1.12, z: 1.12}
+  m_Children: []
+  m_Father: {fileID: 4012904143336149058}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1520503508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520503504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed7034e779c066b458041d65b089ff6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playOnAwake: 0
+  loop: 0
+  loopDelaySeconds: 0
+  intensity: 1
+  duration: 0
+  clip: {fileID: 11400000, guid: 69f2b30ba6a7a3846ac43d68d69b9bb6, type: 2}
+--- !u!114 &1520503507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520503504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed7034e779c066b458041d65b089ff6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playOnAwake: 0
+  loop: 0
+  loopDelaySeconds: 0
+  intensity: 1
+  duration: 0
+  clip: {fileID: 11400000, guid: 3cd8940aab085f94d9cc73c764e5a4d8, type: 2}
+--- !u!114 &1520503506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520503504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bfde60beb078b14ba9f36f17468542b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_VR_Animator_Controller: {fileID: 5784981480958340531}
+  SpeedIntensityCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.026136488
+      value: -0.0058058156
+      inSlope: 0.019360522
+      outSlope: 0.019360522
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.020967754
+    - serializedVersion: 3
+      time: 0.5571783
+      value: 0.096671335
+      inSlope: Infinity
+      outSlope: 0.0017244886
+      tangentMode: 7
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.20713834
+    - serializedVersion: 3
+      time: 3.507582
+      value: 0.113206625
+      inSlope: 0.010112247
+      outSlope: 0.010112247
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.25640032
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  stepSpeed: 0.55
 --- !u!1 &4012904143335827868
 GameObject:
   m_ObjectHideFlags: 0
@@ -14,7 +130,7 @@ GameObject:
   - component: {fileID: 4012904143340803980}
   - component: {fileID: 4012904143794814389}
   - component: {fileID: 7563079729049782128}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VRCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -29,7 +145,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4012904143335827868}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 1.692, z: 0.185}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4012904143336230886}
@@ -148,7 +264,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4012904143336229560}
   - component: {fileID: 4012904143341899716}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ControllerHoverHighlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +308,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4012904143336193970}
-  m_Layer: 26
+  m_Layer: 3
   m_Name: ObjectAttachmentPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +338,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4012904143336136896}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: NoSteamVRFallbackObjects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +375,8 @@ GameObject:
   - component: {fileID: 1902447689828333306}
   - component: {fileID: 3840163476269096873}
   - component: {fileID: 4490924583536082700}
-  m_Layer: 0
+  - component: {fileID: 2074857330}
+  m_Layer: 3
   m_Name: SteamVR Player Rig
   m_TagString: Player
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -283,6 +400,7 @@ Transform:
   - {fileID: 4016796299165677208}
   - {fileID: 4016796299335402256}
   - {fileID: 5784981480958340535}
+  - {fileID: 1520503505}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -308,7 +426,7 @@ MonoBehaviour:
   - {fileID: 4012904143341955694}
   rigSteamVR: {fileID: 4012904143335848860}
   rig2DFallback: {fileID: 4012904143335841512}
-  audioListener: {fileID: 0}
+  audioListener: {fileID: 4012904143336163410}
   headsetOnHead:
     actionPath: /actions/default/in/HeadsetOnHead
     needsReinit: 0
@@ -421,7 +539,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 2
-  m_Radius: 0.18
+  m_Radius: 0.2
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -440,19 +558,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SteamVRCamera: {fileID: 4012904143334603608}
+  PlayerRoot: {fileID: 6957860498032922986}
   inputSource:
     actionPath: /actions/default/in/TouchPadLeft
     needsReinit: 0
   sprintSource:
-    actionPath: 
+    actionPath: /actions/default/in/ClipTouchPadLeft
     needsReinit: 0
-  speed: 1
-  sprintSpeed: 1
+  speed: 2
+  sprintSpeed: 4.5
   gravity: -9.81
   groundLayer:
     serializedVersion: 2
     m_Bits: 4294967295
-  additionalHeight: 0.05
+  additionalHeight: 0.003
   groundRaycastLength: 0.003
   groundedAngle: 5
   audioClipOnMove: {fileID: 8300000, guid: e1019ba204923504d8899e1681ff5b9b, type: 3}
@@ -464,16 +583,52 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4012904143335841850}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bee3e5fd9ffda1e49978c2ffff2d32c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHeight: 1.69
+  instance: {fileID: 0}
+  playerHeight: 1.6
   playerArmScale: 1
-  avatarRoot: {fileID: 6957860498032922986}
+  avatarRoot: {fileID: 5784981480958340535}
   leftArmRoot: {fileID: 1737638732274539821}
+  leftArmWrist: {fileID: 1205606040052119010}
+  leftArmTarget: {fileID: 1538674804}
   rightArmRoot: {fileID: 6144117003653078885}
+  rightArmWrist: {fileID: 300879033228939794}
+  rightArmTarget: {fileID: 652948217}
+--- !u!114 &2074857330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4012904143335841850}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cf870e792998a8409735ddd9cb7b8a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hapticLocations:
+  - trackedPosition: {fileID: 4012904143336163410}
+    positionTag: 1
+  - trackedPosition: {fileID: 414392734635968386}
+    positionTag: 2
+  - trackedPosition: {fileID: 414392734377020485}
+    positionTag: 3
+  - trackedPosition: {fileID: 5950116357746442384}
+    positionTag: 4
+  - trackedPosition: {fileID: 4603724003979247089}
+    positionTag: 5
+  - trackedPosition: {fileID: 1538674804}
+    positionTag: 6
+  - trackedPosition: {fileID: 652948217}
+    positionTag: 7
+  - trackedPosition: {fileID: 522197258986266299}
+    positionTag: 8
+  - trackedPosition: {fileID: 1900371962983656769}
+    positionTag: 9
 --- !u!1 &4012904143335845874
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,7 +640,7 @@ GameObject:
   - component: {fileID: 4012904143336125484}
   - component: {fileID: 4012904143332778770}
   - component: {fileID: 4012904143333862474}
-  m_Layer: 26
+  m_Layer: 3
   m_Name: Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -569,7 +724,7 @@ GameObject:
   - component: {fileID: 2528950835238731548}
   - component: {fileID: 4012904143335736726}
   - component: {fileID: 3535414150632046278}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FallbackObjects
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -710,7 +865,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4012904143336230886}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SteamVRObjects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -748,7 +903,7 @@ GameObject:
   - component: {fileID: 4012904143341859526}
   - component: {fileID: 3901719706853654404}
   - component: {fileID: 3901719717966903948}
-  m_Layer: 26
+  m_Layer: 3
   m_Name: RightHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -763,7 +918,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4012904143335864004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.25, y: 1, z: 0}
+  m_LocalPosition: {x: 0.25, y: 1.134, z: 0.391}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4012904143336182048}
@@ -889,7 +1044,7 @@ GameObject:
   - component: {fileID: 4012904143341921990}
   - component: {fileID: 4012904143341922916}
   - component: {fileID: 3901719704017426560}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: InputModule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -967,7 +1122,7 @@ GameObject:
   - component: {fileID: 4012904143336195346}
   - component: {fileID: 4012904143341955694}
   - component: {fileID: 4012904143339096082}
-  m_Layer: 26
+  m_Layer: 3
   m_Name: FallbackHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1068,7 +1223,7 @@ GameObject:
   - component: {fileID: 4012904143341941336}
   - component: {fileID: 3901719706471670278}
   - component: {fileID: 3901719706095356586}
-  m_Layer: 26
+  m_Layer: 3
   m_Name: LeftHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1083,7 +1238,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4012904143335880438}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.25, y: 1, z: 0}
+  m_LocalPosition: {x: -0.25, y: 1.134, z: 0.39100003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4016796299872253128}
@@ -1206,7 +1361,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4012904143336182048}
-  m_Layer: 26
+  m_Layer: 3
   m_Name: HoverPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1237,7 +1392,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4012904143336153274}
   - component: {fileID: 4012904143341922100}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ControllerHoverHighlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1284,7 +1439,7 @@ GameObject:
   - component: {fileID: 3901719707143530600}
   - component: {fileID: 4012904143341973446}
   - component: {fileID: 3901719718016585086}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: '[SteamVR]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1363,7 +1518,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4012904143336150180}
   - component: {fileID: 4012904143341947624}
-  m_Layer: 26
+  m_Layer: 3
   m_Name: ControllerButtonHints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1415,7 +1570,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4012904143336114716}
   - component: {fileID: 4012904143341954720}
-  m_Layer: 26
+  m_Layer: 3
   m_Name: ControllerButtonHints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1466,7 +1621,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4016796299028088564}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: arrow 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1496,7 +1651,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4016796299952211522}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: dot_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1526,7 +1681,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4016796299627794790}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: dot_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1557,7 +1712,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4016796296663174604}
   - component: {fileID: 3954495892116126582}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: snapTurnFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1608,7 +1763,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4016796295955311192}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: dot_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1638,7 +1793,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4016796298331071452}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: dot_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1669,7 +1824,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4016796299098068590}
   - component: {fileID: 3915329872249939562}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1759,7 +1914,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4016796299408240392}
   - component: {fileID: 3901719718863501364}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Overlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1808,7 +1963,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4016796299157775270}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: dot_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1839,7 +1994,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4016796300101315260}
   - component: {fileID: 3954495878482642880}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: snapTurnFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1891,13 +2046,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4016796299335402256}
   - component: {fileID: 3901719717926183558}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Snap Turn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4016796299335402256
 Transform:
   m_ObjectHideFlags: 0
@@ -1954,7 +2109,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4016796298396089984}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: arrow 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1984,7 +2139,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4016796299872253128}
-  m_Layer: 26
+  m_Layer: 3
   m_Name: HoverPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2014,7 +2169,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4016796298617973852}
-  m_Layer: 26
+  m_Layer: 3
   m_Name: ObjectAttachmentPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2044,7 +2199,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4016796295982509588}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2081,7 +2236,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4016796296573972172}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: dot_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2111,7 +2266,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4016796298681387562}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2148,7 +2303,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4016796298623055218}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: dot_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2178,7 +2333,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4016796295947431968}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: dot_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2209,7 +2364,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4016796299165677208}
   - component: {fileID: 3901719704044155570}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DebugUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2251,7 +2406,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4016796298157694264}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: dot_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2282,7 +2437,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4016796296892778860}
   - component: {fileID: 3915329872169760304}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2371,7 +2526,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4016796296767297036}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: dot_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2401,7 +2556,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4016796297444767658}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: dot_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2431,7 +2586,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4016796299723708356}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: dot_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2462,7 +2617,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4016796296084197118}
   - component: {fileID: 3932734953756244470}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sound Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2588,7 +2743,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4016796298908975050}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2619,7 +2774,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4016796296081351562}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2710,14 +2865,14 @@ PrefabInstance:
       objectReference: {fileID: 4012904143336163410}
     - target: {fileID: 6163270642032717454, guid: 642ac42f3b92fcd468701f3e1d79cbb5,
         type: 3}
-      propertyPath: leftHand.vrTarget
+      propertyPath: leftHand.hand
       value: 
-      objectReference: {fileID: 4012904143336177900}
+      objectReference: {fileID: 4012904143341941336}
     - target: {fileID: 6163270642032717454, guid: 642ac42f3b92fcd468701f3e1d79cbb5,
         type: 3}
-      propertyPath: rightHand.vrTarget
+      propertyPath: rightHand.hand
       value: 
-      objectReference: {fileID: 4012904143336189210}
+      objectReference: {fileID: 4012904143341859526}
     - target: {fileID: 6163270642032717455, guid: 642ac42f3b92fcd468701f3e1d79cbb5,
         type: 3}
       propertyPath: m_Name
@@ -2737,9 +2892,33 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 414392734682972991}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &522197258986266299 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 215891705642556804, guid: 642ac42f3b92fcd468701f3e1d79cbb5,
+    type: 3}
+  m_PrefabInstance: {fileID: 414392734682972991}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1900371962983656769 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2278625442670358142, guid: 642ac42f3b92fcd468701f3e1d79cbb5,
+    type: 3}
+  m_PrefabInstance: {fileID: 414392734682972991}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1737638732274539821 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2151984805358018066, guid: 642ac42f3b92fcd468701f3e1d79cbb5,
+    type: 3}
+  m_PrefabInstance: {fileID: 414392734682972991}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5950116357746442384 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6292435442729993135, guid: 642ac42f3b92fcd468701f3e1d79cbb5,
+    type: 3}
+  m_PrefabInstance: {fileID: 414392734682972991}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1205606040052119010 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1547861345701410525, guid: 642ac42f3b92fcd468701f3e1d79cbb5,
     type: 3}
   m_PrefabInstance: {fileID: 414392734682972991}
   m_PrefabAsset: {fileID: 0}
@@ -2749,3 +2928,51 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 414392734682972991}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &4603724003979247089 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4189334362754858702, guid: 642ac42f3b92fcd468701f3e1d79cbb5,
+    type: 3}
+  m_PrefabInstance: {fileID: 414392734682972991}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &300879033228939794 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 138723311158907181, guid: 642ac42f3b92fcd468701f3e1d79cbb5,
+    type: 3}
+  m_PrefabInstance: {fileID: 414392734682972991}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &414392734635968386 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 87213245, guid: 642ac42f3b92fcd468701f3e1d79cbb5,
+    type: 3}
+  m_PrefabInstance: {fileID: 414392734682972991}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &414392734377020485 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 910397306, guid: 642ac42f3b92fcd468701f3e1d79cbb5,
+    type: 3}
+  m_PrefabInstance: {fileID: 414392734682972991}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &652948217 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 414392734118523334, guid: 642ac42f3b92fcd468701f3e1d79cbb5,
+    type: 3}
+  m_PrefabInstance: {fileID: 414392734682972991}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1538674804 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 414392736221647691, guid: 642ac42f3b92fcd468701f3e1d79cbb5,
+    type: 3}
+  m_PrefabInstance: {fileID: 414392734682972991}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5784981480958340531 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6163270642032717452, guid: 642ac42f3b92fcd468701f3e1d79cbb5,
+    type: 3}
+  m_PrefabInstance: {fileID: 414392734682972991}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2bcc58903d921c4ca97b10f5a19b6a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

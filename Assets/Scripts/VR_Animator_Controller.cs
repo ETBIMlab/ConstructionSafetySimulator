@@ -7,11 +7,12 @@ public class VR_Animator_Controller : MonoBehaviour
     public float speedThreshold = 0.1f;
     [Range(0,1)]
     public float smoothing = 1;
-    public float turnSmoothness;
-    public float followAngle;
+
     private Animator animator;
     private Vector3 previousPos;
     private VR_Rig vrRig;
+
+    public float Speed { get; private set; }
 
     // Start is called before the first frame update
     void Start()
@@ -32,15 +33,8 @@ public class VR_Animator_Controller : MonoBehaviour
         Vector3 headsetLocalSpeed = transform.InverseTransformDirection(headsetSpeed);
         previousPos = vrRig.head.vrTarget.position;
 
-        //Update body rotation
-        if (followAngle < Quaternion.Angle(transform.rotation, vrRig.head.rigTarget.rotation) * (1))
-        {
-            Vector3 camrot = vrRig.head.vrTarget.eulerAngles;
-            camrot.z = camrot.x = 0;
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(camrot), turnSmoothness);
-        }
 
-            
+        Speed = headsetSpeed.magnitude;
 
         //Set Animator Values
         float previousDirectionX = animator.GetFloat("directionX");

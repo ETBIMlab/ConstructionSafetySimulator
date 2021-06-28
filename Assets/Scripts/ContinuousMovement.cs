@@ -16,10 +16,13 @@ public class ContinuousMovement : MonoBehaviour
     [Header("Interaction")]
     [Tooltip("Tracks that look direction and head position of the player")]
     public Camera SteamVRCamera;
+    [Tooltip("The controller that is associated with the movement will be positioned at this transform (x and z). Otherwise, it'll use the camera.")]
+    public Transform PlayerRoot;
     [Tooltip("Input for move strenght and direction")]
     public SteamVR_Action_Vector2 inputSource;
     [Tooltip("The max speed will toggle, but turn off once player stops moving")]
     public SteamVR_Action_Boolean sprintSource;
+
 
 
     [Header("Movement")]
@@ -127,31 +130,34 @@ public class ContinuousMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        CapsuleFollowHeadset();
-
-        Quaternion rotation = Quaternion.Euler(0, SteamVRCamera.transform.eulerAngles.y, 0);
-        Vector3 direction = rotation * new Vector3(inputAxis.x, 0, inputAxis.y);
-        _characterController.Move(direction * Time.fixedDeltaTime * (isSprinting ? sprintSpeed : speed));
-        
+        Vector3 direction = Quaternion.Euler(0, SteamVRCamera.transform.eulerAngles.y, 0) * new Vector3(inputAxis.x, 0, inputAxis.y);
+        direction *= Time.fixedDeltaTime * (isSprinting ? sprintSpeed : speed);
 
         if (CheckGrounded())
             fallingSpeed = 0;
         else
             fallingSpeed += gravity * Time.fixedDeltaTime;
 
-        _characterController.Move(Vector3.up * fallingSpeed * Time.fixedDeltaTime);
+        direction += fallingSpeed * Time.fixedDeltaTime * Vector3.up;
+        _characterController.Move(direction);
 
-        
+        FollowHeadset();
     }
 
     /// <summary>
     /// Updates the center of the capsule collider to the headset. The y position is set instead by using the half the eye height.
     /// </summary>
-    void CapsuleFollowHeadset()
+    private void FollowHeadset()
     {
         _characterController.height = _player.eyeHeight + additionalHeight;
-        Vector3 campos = GetComponent<Player>().hmdTransforms[0].localPosition;
-        _characterController.center = new Vector3(campos.x, _characterController.height / 2 + _characterController.skinWidth, campos.z);
+
+        Vector3 pos;
+        if (PlayerRoot != null && PlayerRoot.gameObject.activeInHierarchy)
+            pos = transform.InverseTransformPoint(PlayerRoot.position);
+        else
+            pos = _player.hmdTransforms[0].localPosition;
+
+        _characterController.center = new Vector3(pos.x, _characterController.height / 2 + _characterController.skinWidth, pos.z);
     }
 
     bool CheckGrounded()

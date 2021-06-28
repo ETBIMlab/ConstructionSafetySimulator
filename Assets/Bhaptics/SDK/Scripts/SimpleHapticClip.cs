@@ -32,10 +32,16 @@ namespace Bhaptics.Tact.Unity
             Points = DefaultPoints;
         }
 
+        public override void Play(float intensity)
+        {
+            base.Play(intensity, 0f);
+        }
+
         public override void Play(float intensity, float duration, float vestRotationAngleX, float vestRotationOffsetY)
         {
             if (duration <= 0)
                 duration = TimeMillis/1000f;
+
 
             if (!BhapticsManager.Init)
             {
@@ -47,12 +53,14 @@ namespace Bhaptics.Tact.Unity
 
             if (Mode == FeedbackType.DotMode)
             {
-                haptic.Submit(keyId, ToPositionType(Position), Convert(DotPoints, intensity), (int)(duration * 1000));
+                haptic.Submit(keyId, ToPositionType(Position), Convert(DotPoints, intensity), (int)(duration * 1000f));
             }
             else
             {
-                haptic.Submit(keyId, ToPositionType(Position), Convert(Points, intensity), (int)(duration * 1000));
+                haptic.Submit(keyId, ToPositionType(Position), Convert(Points, intensity), (int)(duration * 1000f));
             }
+
+            currentPlayIntensity = intensity;
         }
 
         public int GetNumberOfPoints()
