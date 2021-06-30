@@ -96,7 +96,7 @@ namespace Valve.VR.InteractionSystem
 			renderModelLoadedAction = SteamVR_Events.RenderModelLoadedAction( OnRenderModelLoaded );
 
 #if UNITY_URP
-			colorID = Shader.PropertyToID( "_BaseColor" );
+			colorID = Shader.PropertyToID( "_Color" );
 #else
 			colorID = Shader.PropertyToID( "_Color" );
 #endif
