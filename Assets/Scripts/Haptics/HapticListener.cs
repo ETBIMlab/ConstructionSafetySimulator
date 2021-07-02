@@ -48,7 +48,7 @@ public class HapticListener : MonoBehaviour
     {
         if (Instance == null)
         {
-            if (loggedWarning)
+            if (!loggedWarning)
             {
                 loggedWarning = true;
                 Debug.LogWarning("There are no Haptic Listeners in the scene. Haptic Emitters are playing at distance of infinity.");

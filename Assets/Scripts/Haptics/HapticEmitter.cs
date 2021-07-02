@@ -63,7 +63,7 @@ public class HapticEmitter : MonoBehaviour
     public DoublePlayMode doublePlayMode = DoublePlayMode.Reset;
     [Range(0,5)]
     public float intensityMultiplier = 1;
-    public bool playOnAwake = false;
+    public bool playOnEnable = false;
     public bool loop = false;
     //public float hapticsUpdateTimeStep;
     [Range(0.01f, 10)]
@@ -100,13 +100,26 @@ public class HapticEmitter : MonoBehaviour
 
         currentDuration = -1;
 
-        // Play on awake
-        if (playOnAwake)
-        {
-            PlayClips();
-        } else
+        // Play on enable
+        if (!playOnEnable)
         {
             this.enabled = false;
+        }
+    }
+
+    private void OnEnable()
+    {
+        if (playOnEnable)
+        {
+            PlayClips();
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (currentDuration > 0)
+        {
+            StopClips();
         }
     }
 
@@ -149,14 +162,8 @@ public class HapticEmitter : MonoBehaviour
         }
     }
 
-    public void ResumeDynamicClips()
-    {
-        this.enabled = true;
-    }
-
     public void StopClips()
     {
-        this.enabled = false;
         foreach (var group in dynamicHaptics)
             foreach (var emitter in group.emitterClip)
                 emitter.clip.Stop();
@@ -164,6 +171,13 @@ public class HapticEmitter : MonoBehaviour
         foreach (var group in staticHaptics)
             foreach (var emitter in group.emitterClip)
                 emitter.clip.Stop();
+
+        currentDuration = -1;
+    }
+
+    private bool IsCurrentPlayback(DynamicHapticEmitterClip dynamicHaptic )
+    {
+        return (dynamicHaptic.lastIntensity == dynamicHaptic.clip.currentPlayIntensity);
     }
 
     private void Update()
@@ -174,7 +188,9 @@ public class HapticEmitter : MonoBehaviour
             {
                 foreach (var dynamicHaptic in dynamicHapticGroup.emitterClip)
                 {
+
                     float intensity = intensityMultiplier;
+
                     if (dynamicHaptic.positionTag != PositionTag.None)
                         intensity *= dynamicHapticGroup.positionIntensityCurve.Evaluate(HapticListener.GetDistance(transform.position, dynamicHaptic.positionTag));
 
@@ -183,14 +199,15 @@ public class HapticEmitter : MonoBehaviour
                     else
                         intensity *= dynamicHapticGroup.timeIntensityCurve.Evaluate(1 - (((dynamicHaptic.clip.TimeMillis / 1000f) - (totalDuration - currentDuration)) / (dynamicHaptic.clip.TimeMillis / 1000f)));
 
-
-                    if (dynamicHaptic.clip.IsPlaying() && dynamicHaptic.lastIntensity != dynamicHaptic.clip.currentPlayIntensity && intensity < dynamicHaptic.clip.currentPlayIntensity)
+                    
+                    if (dynamicHaptic.clip.IsPlaying() && !IsCurrentPlayback(dynamicHaptic) && intensity < dynamicHaptic.clip.currentPlayIntensity)
                         continue;
 
                     if (intensity > 0)
                     {
                         if (scaleDurations)
                         {
+                            
                             dynamicHaptic.clip.Play(
                                 intensity: intensity,
                                 duration: currentDuration + (loop ? LoopPadding : 0)
@@ -216,13 +233,22 @@ public class HapticEmitter : MonoBehaviour
                     {
                         dynamicHaptic.clip.Stop();
                         dynamicHaptic.lastIntensity = 0.0001f;
+                        Debug.Log("Clip intensity too low. Clip stopped" + dynamicHaptic.clip);
                     }
                 }
+            }
 
-                currentDuration -= Time.deltaTime;
-                if (currentDuration <= 0)
-                    if (loop || queue)
-                        PlayClips();
+            currentDuration -= Time.deltaTime;
+            if (currentDuration <= 0)
+            {
+                if (loop || queue)
+                    PlayClips();
+                else
+                {
+                    Debug.Log("End of clip. No queue or loop!");
+
+                    this.enabled = false;
+                }
             }
         }
     }

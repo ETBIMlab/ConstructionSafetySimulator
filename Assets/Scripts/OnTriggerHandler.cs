@@ -12,14 +12,34 @@ public class OnTriggerHandler : MonoBehaviour
     public UnityEvent triggerEnter;
     public UnityEvent triggerExit;
     public UnityEvent triggerStay;
+    public UnityEvent firstTriggerEnter;
+    public UnityEvent lastTriggerExit;
+
+    private int collisionCount;
+
+    private void Start()
+    {
+        collisionCount = 0;
+    }
+
+    private void OnDisable()
+    {
+        collisionCount = 0;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
+        collisionCount++;
+        if (collisionCount == 1)
+            firstTriggerEnter.Invoke();
         triggerEnter.Invoke();
     }
 
     private void OnTriggerExit(Collider other)
     {
+        collisionCount--;
+        if (collisionCount == 0)
+            lastTriggerExit.Invoke();
         triggerExit.Invoke();
     }
 
@@ -30,11 +50,17 @@ public class OnTriggerHandler : MonoBehaviour
 
     public void OnTriggerEnter()
     {
+        collisionCount++;
+        if (collisionCount == 1)
+            firstTriggerEnter.Invoke();
         triggerEnter.Invoke();
     }
 
     public void OnTriggerExit()
     {
+        collisionCount--;
+        if (collisionCount == 0)
+            lastTriggerExit.Invoke();
         triggerExit.Invoke();
     }
 

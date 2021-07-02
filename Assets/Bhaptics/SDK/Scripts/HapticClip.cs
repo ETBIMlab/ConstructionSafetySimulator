@@ -56,9 +56,8 @@ namespace Bhaptics.Tact.Unity
 
         public virtual void Stop()
         {
-            //var haptic = BhapticsManager.GetHaptic();
-            //haptic.TurnOff(keyId);
-            this.Play(0, 0.00001f);
+            var haptic = BhapticsManager.GetHaptic();
+            haptic.TurnOff(keyId);
         }
 
         public virtual bool IsPlaying()
