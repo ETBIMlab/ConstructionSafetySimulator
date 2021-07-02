@@ -13,5 +13,9 @@ namespace Valve.VR.InteractionSystem
 	{
 		[Tooltip( "If Hand is not null, only ignore the specified hand" )]
 		public Hand onlyIgnoreHand = null;
+
+		public bool isActive = true;
+
+		public void SetIsActive(bool isActive) { this.isActive = isActive; }
 	}
 }

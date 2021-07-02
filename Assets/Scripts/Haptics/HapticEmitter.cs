@@ -233,7 +233,6 @@ public class HapticEmitter : MonoBehaviour
                     {
                         dynamicHaptic.clip.Stop();
                         dynamicHaptic.lastIntensity = 0.0001f;
-                        Debug.Log("Clip intensity too low. Clip stopped" + dynamicHaptic.clip);
                     }
                 }
             }
@@ -245,7 +244,6 @@ public class HapticEmitter : MonoBehaviour
                     PlayClips();
                 else
                 {
-                    Debug.Log("End of clip. No queue or loop!");
 
                     this.enabled = false;
                 }

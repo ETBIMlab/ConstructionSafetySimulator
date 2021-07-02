@@ -920,15 +920,22 @@ namespace Valve.VR.InteractionSystem
                 if (contacting == null)
                     continue;
 
+                // Modified By Nevin! ---------------------------
+
+
                 // Ignore this collider for hovering
                 IgnoreHovering ignore = collider.GetComponent<IgnoreHovering>();
-                if (ignore != null)
+                if (ignore == null)
+                    ignore = collider.GetComponentInParent<IgnoreHovering>();
+                if (ignore != null && ignore.isActive)
                 {
                     if (ignore.onlyIgnoreHand == null || ignore.onlyIgnoreHand == this)
                     {
                         continue;
                     }
                 }
+
+                // ----------------------------------------------
 
                 // Can't hover over the object if it's attached
                 bool hoveringOverAttached = false;

@@ -15,9 +15,9 @@ public class OnTriggerHandler : MonoBehaviour
     public UnityEvent firstTriggerEnter;
     public UnityEvent lastTriggerExit;
 
-    private int collisionCount;
+    public int collisionCount;
 
-    private void Start()
+    private void OnEnable()
     {
         collisionCount = 0;
     }
@@ -29,6 +29,7 @@ public class OnTriggerHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Trigger Enter! : " + collisionCount);
         collisionCount++;
         if (collisionCount == 1)
             firstTriggerEnter.Invoke();
@@ -59,6 +60,8 @@ public class OnTriggerHandler : MonoBehaviour
     public void OnTriggerExit()
     {
         collisionCount--;
+        if (collisionCount < 0)
+            collisionCount = 0;
         if (collisionCount == 0)
             lastTriggerExit.Invoke();
         triggerExit.Invoke();

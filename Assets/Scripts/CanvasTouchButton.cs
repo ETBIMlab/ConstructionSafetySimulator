@@ -36,7 +36,7 @@ public class CanvasTouchButton : MonoBehaviour
     /// <summary>
     /// Counts the time that has pasted since the 
     /// </summary>
-    private float timeCounter;
+    private float timeEnterTime;
 
     /// <summary>
     /// A save state of the original scale of the image. 
@@ -57,7 +57,6 @@ public class CanvasTouchButton : MonoBehaviour
     {
         if (ProgressImage == null)
         {
-
             if (selectTime == 0)
                 Debug.LogWarning("Progress Image on CanvasTouchButton is null AND time is set to 0. If this is intended, consider using the 'OnTriggerHandler' instead.");
         }
@@ -67,7 +66,10 @@ public class CanvasTouchButton : MonoBehaviour
             ProgressImage.transform.localScale = Vector3.zero;
             startColor = ProgressImage.color;
         }
+    }
 
+    public void OnEnable()
+    {
         numberEnter = 0;
     }
 
@@ -89,7 +91,7 @@ public class CanvasTouchButton : MonoBehaviour
         numberEnter++;
         if (numberEnter == 1)
         {
-            timeCounter = selectTime;
+            timeEnterTime = Time.time;
 
             if (ProgressImage != null)
             {
@@ -104,14 +106,12 @@ public class CanvasTouchButton : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        timeCounter -= Time.deltaTime;
-
         if (ProgressImage == null)
             return;
 
-        float progress = Mathf.Clamp01((1 - (timeCounter / selectTime)));
+        float progress = Mathf.Clamp01((Time.time - timeEnterTime) / selectTime);
 
-        if (timeCounter <= 0)
+        if (progress == 1)
         {
             ProgressImage.color = ActiveColor;
         }
@@ -164,7 +164,7 @@ public class CanvasTouchButton : MonoBehaviour
                 ProgressImage.color = startColor;
             }
 
-            if (timeCounter <= 0)
+            if ((Time.time - timeEnterTime) / selectTime >= 1)
             {
                 OnSelected.Invoke();
             }

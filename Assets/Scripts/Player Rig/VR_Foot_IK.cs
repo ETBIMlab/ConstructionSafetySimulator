@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class VR_Foot_IK : MonoBehaviour
 {
+    public const float ExtraCastDistance = 0.8f;
+
     private Animator animator;
     public LayerMask layerMask;
     public Vector3 footOffset;
@@ -16,6 +18,8 @@ public class VR_Foot_IK : MonoBehaviour
     [Range(0, 1)]
     public float leftFootRotWeight = 1;
 
+    public float castHeight = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +31,7 @@ public class VR_Foot_IK : MonoBehaviour
         Vector3 rightFootPos = animator.GetIKPosition(AvatarIKGoal.RightFoot);
         RaycastHit hit;
 
-        bool hasHit = Physics.Raycast(rightFootPos + Vector3.up, Vector3.down, out hit, layerMask);
+        bool hasHit = Physics.Raycast(new Vector3(rightFootPos.x, castHeight, rightFootPos.z), Vector3.down, out hit, castHeight + ExtraCastDistance, layerMask);
 
         if (hasHit)
         {
@@ -45,7 +49,7 @@ public class VR_Foot_IK : MonoBehaviour
 
         Vector3 leftFootPos = animator.GetIKPosition(AvatarIKGoal.LeftFoot);
 
-        hasHit = Physics.Raycast(leftFootPos + Vector3.up, Vector3.down, out hit, layerMask);
+        hasHit = Physics.Raycast(leftFootPos + Vector3.up, Vector3.down, out hit, castHeight + ExtraCastDistance, layerMask);
 
         if (hasHit)
         {
