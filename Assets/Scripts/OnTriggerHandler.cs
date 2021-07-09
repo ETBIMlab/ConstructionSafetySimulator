@@ -29,7 +29,6 @@ public class OnTriggerHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Trigger Enter! : " + collisionCount);
         collisionCount++;
         if (collisionCount == 1)
             firstTriggerEnter.Invoke();

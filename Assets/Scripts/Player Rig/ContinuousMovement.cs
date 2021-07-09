@@ -24,7 +24,6 @@ public class ContinuousMovement : MonoBehaviour
     public SteamVR_Action_Boolean sprintSource;
 
 
-
     [Header("Movement")]
     [Tooltip("The max player speed in meters/second")]
     public float speed = 1;
@@ -48,6 +47,8 @@ public class ContinuousMovement : MonoBehaviour
     [Range(0,1)]
     [Tooltip("Volume at which the movement clip plays")]
     public float audioVolume;
+
+    
 
     //[Header("Hips")]
     //[Tooltip("The movement script will update this tranform to equal where the players hip is.")]

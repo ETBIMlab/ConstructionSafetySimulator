@@ -13,7 +13,7 @@ public class RenderTextureCapture : MonoBehaviour
     [HideInInspector]
     public Dictionary<string, List<Texture2D>> PhotoLibraries;
 
-    private void Start()
+    private void Awake()
     {
         if (renderTexture == null)
             Debug.LogWarning("Render Texture must be set! Component not set up for creating and rendering it's own textures.", this);

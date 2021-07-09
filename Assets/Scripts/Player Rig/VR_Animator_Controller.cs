@@ -12,7 +12,7 @@ public class VR_Animator_Controller : MonoBehaviour
     private Vector3 previousPos;
     private VR_Rig vrRig;
 
-    public float Speed { get; private set; }
+    public float Speed { get; private set; } = 0;
 
     // Start is called before the first frame update
     void Start()

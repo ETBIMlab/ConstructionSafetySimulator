@@ -31,7 +31,7 @@ public class VR_Foot_IK : MonoBehaviour
         Vector3 rightFootPos = animator.GetIKPosition(AvatarIKGoal.RightFoot);
         RaycastHit hit;
 
-        bool hasHit = Physics.Raycast(new Vector3(rightFootPos.x, castHeight, rightFootPos.z), Vector3.down, out hit, castHeight + ExtraCastDistance, layerMask);
+        bool hasHit = Physics.Raycast(rightFootPos + Vector3.up * castHeight, Vector3.down, out hit, castHeight + ExtraCastDistance, layerMask);
 
         if (hasHit)
         {
@@ -49,7 +49,7 @@ public class VR_Foot_IK : MonoBehaviour
 
         Vector3 leftFootPos = animator.GetIKPosition(AvatarIKGoal.LeftFoot);
 
-        hasHit = Physics.Raycast(leftFootPos + Vector3.up, Vector3.down, out hit, castHeight + ExtraCastDistance, layerMask);
+        hasHit = Physics.Raycast(leftFootPos + Vector3.up * castHeight, Vector3.down, out hit, castHeight + ExtraCastDistance, layerMask);
 
         if (hasHit)
         {

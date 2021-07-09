@@ -41,6 +41,7 @@ public class VRHeadMap
 }
 
 [RequireComponent(typeof(VR_Animator_Controller))]
+[RequireComponent(typeof(Animator))]
 public class VR_Rig : MonoBehaviour
 {
     //public float turnAngle;
@@ -65,7 +66,7 @@ public class VR_Rig : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    IEnumerator Start()
     {
         _VR_Animator_Controller = GetComponent<VR_Animator_Controller>();
 
@@ -73,9 +74,18 @@ public class VR_Rig : MonoBehaviour
         Vector3 noy = headBodyOffset;
         noy.y = 0;
         distance = Vector3.Magnitude(noy);
+
+
+        // If SteamVR is not connected, don't bother showing/updating the player body
+        while (SteamVR.initializedState == SteamVR.InitializedStates.None || SteamVR.initializedState == SteamVR.InitializedStates.Initializing)
+            yield return null;
+
+        if (SteamVR.instance == null)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (SteamVR.initializedState != SteamVR.InitializedStates.InitializeSuccess)
