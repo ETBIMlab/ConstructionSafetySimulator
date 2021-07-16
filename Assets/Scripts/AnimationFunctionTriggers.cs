@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(Animator))]
 public class AnimationFunctionTriggers : MonoBehaviour
 {
     [SerializeField]
