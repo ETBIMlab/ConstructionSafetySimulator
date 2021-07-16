@@ -9,24 +9,25 @@ public class RenderTextureCapture : MonoBehaviour
     public const string DEFAULT_PHOTO_NAME = "RenderTextureCapture-Photo";
     public const string DEFAULT_Library_NAME = "Default";
 
+    private static string current_Default_Library = DEFAULT_Library_NAME;
+
     public RenderTexture renderTexture;
     [HideInInspector]
-    public Dictionary<string, List<Texture2D>> PhotoLibraries;
+    public Dictionary<string, List<Texture2D>> PhotoLibraries = new Dictionary<string, List<Texture2D>>()
+    {
+        { DEFAULT_Library_NAME, new List<Texture2D>() }
+    };
 
     private void Awake()
     {
         if (renderTexture == null)
             Debug.LogWarning("Render Texture must be set! Component not set up for creating and rendering it's own textures.", this);
-
-        PhotoLibraries = new Dictionary<string, List<Texture2D>>() {
-            { DEFAULT_Library_NAME, new List<Texture2D>() }
-        };
     }
 
     #region CapturePhotos
     public void CapturePhoto()
     {
-        CapturePhoto(DEFAULT_Library_NAME);
+        CapturePhoto(current_Default_Library);
     }
 
     public void CapturePhoto(string library)
@@ -81,6 +82,11 @@ public class RenderTextureCapture : MonoBehaviour
         SaveTexture(RenderToTexture2D(renderTexture), path, name);
     }
     #endregion
+
+    public static void SetDefaultLibrary(string defaultLibrary)
+    {
+        current_Default_Library = defaultLibrary;
+    }
 
     private static Texture2D RenderToTexture2D(RenderTexture rTex)
     {

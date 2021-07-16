@@ -53,7 +53,7 @@ public class CanvasTouchButton : MonoBehaviour
     /// </summary>
     private int numberEnter;
 
-    private void Start()
+    private void Awake()
     {
         if (ProgressImage == null)
         {

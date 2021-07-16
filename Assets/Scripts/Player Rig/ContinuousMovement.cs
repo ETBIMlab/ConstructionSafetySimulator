@@ -42,45 +42,35 @@ public class ContinuousMovement : MonoBehaviour
     public float groundedAngle = 5f;
 
     [Header("Audio")]
-    [Tooltip("Audio Clip that plays only when moving.")]
-    public AudioClip audioClipOnMove = null;
-    [Range(0,1)]
-    [Tooltip("Volume at which the movement clip plays")]
-    public float audioVolume;
+    [Tooltip("Audio source that plays only when moving. If there is an audio source attached, it is intended to be used ONLY for this script.")]
+    public AudioSource MoveAudioSource = null;
 
     
-
+    // Hips and body possitions moved to the "Body Visuals" prefab.
     //[Header("Hips")]
     //[Tooltip("The movement script will update this tranform to equal where the players hip is.")]
     //public Transform Hip;
     //[Tooltip("The percent of the height at which the hips are located.")]
     //[Range(0,1)]
+
+
 // TODO:: Add in a calabraction system for setting the hip height.
     //public float hipHeight = 0.52f;
 
     // Attached Components
     private Player _player;
     private CharacterController _characterController;
-    private AudioSource _audioSource;
 
     // private variables
     private float fallingSpeed;
     private Vector2 inputAxis;
     private bool isSprinting;
-    private bool audioIsPlaying = false;
 
     void Start()
     {
         _player = GetComponent<Player>();
         _characterController = GetComponent<CharacterController>();
-        if(audioClipOnMove) // Checks for attacked audio clip and audio source.
-            if((_audioSource = GetComponent<AudioSource>()) == null)
-            {
-                Debug.LogWarning("There is an audio clip but no Audio Source Not found on object. Disabling audio on move");
-                audioClipOnMove = null;
-            }
 
-        audioIsPlaying = false;
         isSprinting = false;
     }
 
@@ -94,7 +84,7 @@ public class ContinuousMovement : MonoBehaviour
             isSprinting = !isSprinting;
 
         // play audio if needed
-        if (audioClipOnMove)
+        if (MoveAudioSource != null)
             UpdateMoveAudio();
 
         // update the transform for the hips.
@@ -114,23 +104,25 @@ public class ContinuousMovement : MonoBehaviour
     /// </summary>
     private void UpdateMoveAudio()
     {
+        // Maybe replace epsilon with an actual deadzone?
+        // Maybe use body visuals for audio on move? (as body visuals could make sound when the player moves with the joystick AND in the playspace).
         if(inputAxis.x + inputAxis.y > Mathf.Epsilon)
         {
-            if(!audioIsPlaying)
+            if(!MoveAudioSource.isPlaying)
             {
-                audioIsPlaying = true;
-                _audioSource.PlayOneShot(audioClipOnMove, 0.7f);
+                MoveAudioSource.Play();
             }
         }
-        else if(audioIsPlaying)
+        else if (MoveAudioSource.isPlaying)
         {
-            audioIsPlaying = false;
-            _audioSource.Stop();
+            MoveAudioSource.Stop();
         }
     }
 
     private void FixedUpdate()
     {
+        FollowHeadset();
+
         Vector3 direction = Quaternion.Euler(0, SteamVRCamera.transform.eulerAngles.y, 0) * new Vector3(inputAxis.x, 0, inputAxis.y);
         direction *= Time.fixedDeltaTime * (isSprinting ? sprintSpeed : speed);
 
@@ -142,7 +134,6 @@ public class ContinuousMovement : MonoBehaviour
         direction += fallingSpeed * Time.fixedDeltaTime * Vector3.up;
         _characterController.Move(direction);
 
-        FollowHeadset();
     }
 
     /// <summary>

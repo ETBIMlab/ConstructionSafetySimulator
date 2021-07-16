@@ -57,12 +57,12 @@ MonoBehaviour:
   loadingScreenDistance: 0
   loadingScreenTransform: {fileID: 0}
   progressBarTransform: {fileID: 0}
-  front: {fileID: 2800000, guid: 595bdb4ba08337c4097325cdb370d080, type: 3}
-  back: {fileID: 2800000, guid: bbb6637f8ce50e74a83854c1a41e6cea, type: 3}
-  left: {fileID: 2800000, guid: 842d39b32695a454d87dce9630b9a235, type: 3}
-  right: {fileID: 2800000, guid: b4dd7bac6c9c9bb4bb3c1b63a3eef362, type: 3}
-  top: {fileID: 2800000, guid: baafe81d1a28b0d45b7f3e673509d5e8, type: 3}
-  bottom: {fileID: 2800000, guid: 1995afa179277e7418c30f99df22dc2f, type: 3}
+  front: {fileID: 0}
+  back: {fileID: 0}
+  left: {fileID: 0}
+  right: {fileID: 0}
+  top: {fileID: 0}
+  bottom: {fileID: 0}
   backgroundColor: {r: 0, g: 0, b: 0, a: 1}
   showGrid: 0
   fadeOutTime: 0.5
@@ -204,12 +204,12 @@ MonoBehaviour:
   loadingScreenDistance: 0
   loadingScreenTransform: {fileID: 0}
   progressBarTransform: {fileID: 0}
-  front: {fileID: 2800000, guid: 595bdb4ba08337c4097325cdb370d080, type: 3}
-  back: {fileID: 2800000, guid: bbb6637f8ce50e74a83854c1a41e6cea, type: 3}
-  left: {fileID: 2800000, guid: 842d39b32695a454d87dce9630b9a235, type: 3}
-  right: {fileID: 2800000, guid: b4dd7bac6c9c9bb4bb3c1b63a3eef362, type: 3}
-  top: {fileID: 2800000, guid: baafe81d1a28b0d45b7f3e673509d5e8, type: 3}
-  bottom: {fileID: 2800000, guid: 1995afa179277e7418c30f99df22dc2f, type: 3}
+  front: {fileID: 0}
+  back: {fileID: 0}
+  left: {fileID: 0}
+  right: {fileID: 0}
+  top: {fileID: 0}
+  bottom: {fileID: 0}
   backgroundColor: {r: 0, g: 0, b: 0, a: 1}
   showGrid: 0
   fadeOutTime: 0.5
@@ -275,12 +275,12 @@ MonoBehaviour:
   loadingScreenDistance: 0
   loadingScreenTransform: {fileID: 0}
   progressBarTransform: {fileID: 0}
-  front: {fileID: 2800000, guid: 595bdb4ba08337c4097325cdb370d080, type: 3}
-  back: {fileID: 2800000, guid: bbb6637f8ce50e74a83854c1a41e6cea, type: 3}
-  left: {fileID: 2800000, guid: 842d39b32695a454d87dce9630b9a235, type: 3}
-  right: {fileID: 2800000, guid: b4dd7bac6c9c9bb4bb3c1b63a3eef362, type: 3}
-  top: {fileID: 2800000, guid: baafe81d1a28b0d45b7f3e673509d5e8, type: 3}
-  bottom: {fileID: 2800000, guid: 1995afa179277e7418c30f99df22dc2f, type: 3}
+  front: {fileID: 0}
+  back: {fileID: 0}
+  left: {fileID: 0}
+  right: {fileID: 0}
+  top: {fileID: 0}
+  bottom: {fileID: 0}
   backgroundColor: {r: 0, g: 0, b: 0, a: 1}
   showGrid: 0
   fadeOutTime: 0.5
@@ -573,12 +573,12 @@ MonoBehaviour:
   loadingScreenDistance: 0
   loadingScreenTransform: {fileID: 0}
   progressBarTransform: {fileID: 0}
-  front: {fileID: 2800000, guid: 595bdb4ba08337c4097325cdb370d080, type: 3}
-  back: {fileID: 2800000, guid: bbb6637f8ce50e74a83854c1a41e6cea, type: 3}
-  left: {fileID: 2800000, guid: 842d39b32695a454d87dce9630b9a235, type: 3}
-  right: {fileID: 2800000, guid: b4dd7bac6c9c9bb4bb3c1b63a3eef362, type: 3}
-  top: {fileID: 2800000, guid: baafe81d1a28b0d45b7f3e673509d5e8, type: 3}
-  bottom: {fileID: 2800000, guid: 1995afa179277e7418c30f99df22dc2f, type: 3}
+  front: {fileID: 0}
+  back: {fileID: 0}
+  left: {fileID: 0}
+  right: {fileID: 0}
+  top: {fileID: 0}
+  bottom: {fileID: 0}
   backgroundColor: {r: 0, g: 0, b: 0, a: 1}
   showGrid: 0
   fadeOutTime: 0.5
@@ -939,6 +939,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5606539451651396883}
+        m_TargetAssemblyTypeName: ResetPlayerManager, Assembly-CSharp
+        m_MethodName: EnablePlayerBody
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnStopFreezeFrame:
     m_PersistentCalls:
       m_Calls:
@@ -958,6 +970,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.Audio.AudioMixerSnapshot, UnityEngine
         m_MethodName: TransitionTo
         m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 5606539451651396883}
+        m_TargetAssemblyTypeName: ResetPlayerManager, Assembly-CSharp
+        m_MethodName: EnablePlayerBody
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1050,12 +1074,12 @@ MonoBehaviour:
   loadingScreenDistance: 0
   loadingScreenTransform: {fileID: 0}
   progressBarTransform: {fileID: 0}
-  front: {fileID: 2800000, guid: 595bdb4ba08337c4097325cdb370d080, type: 3}
-  back: {fileID: 2800000, guid: bbb6637f8ce50e74a83854c1a41e6cea, type: 3}
-  left: {fileID: 2800000, guid: 842d39b32695a454d87dce9630b9a235, type: 3}
-  right: {fileID: 2800000, guid: b4dd7bac6c9c9bb4bb3c1b63a3eef362, type: 3}
-  top: {fileID: 2800000, guid: baafe81d1a28b0d45b7f3e673509d5e8, type: 3}
-  bottom: {fileID: 2800000, guid: 1995afa179277e7418c30f99df22dc2f, type: 3}
+  front: {fileID: 0}
+  back: {fileID: 0}
+  left: {fileID: 0}
+  right: {fileID: 0}
+  top: {fileID: 0}
+  bottom: {fileID: 0}
   backgroundColor: {r: 0, g: 0, b: 0, a: 1}
   showGrid: 0
   fadeOutTime: 0.5
@@ -1121,12 +1145,12 @@ MonoBehaviour:
   loadingScreenDistance: 0
   loadingScreenTransform: {fileID: 0}
   progressBarTransform: {fileID: 0}
-  front: {fileID: 2800000, guid: 595bdb4ba08337c4097325cdb370d080, type: 3}
-  back: {fileID: 2800000, guid: bbb6637f8ce50e74a83854c1a41e6cea, type: 3}
-  left: {fileID: 2800000, guid: 842d39b32695a454d87dce9630b9a235, type: 3}
-  right: {fileID: 2800000, guid: b4dd7bac6c9c9bb4bb3c1b63a3eef362, type: 3}
-  top: {fileID: 2800000, guid: baafe81d1a28b0d45b7f3e673509d5e8, type: 3}
-  bottom: {fileID: 2800000, guid: 1995afa179277e7418c30f99df22dc2f, type: 3}
+  front: {fileID: 0}
+  back: {fileID: 0}
+  left: {fileID: 0}
+  right: {fileID: 0}
+  top: {fileID: 0}
+  bottom: {fileID: 0}
   backgroundColor: {r: 0, g: 0, b: 0, a: 1}
   showGrid: 0
   fadeOutTime: 0.5
@@ -1389,7 +1413,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5606539451651396883}
         m_TargetAssemblyTypeName: ResetPlayerManager, Assembly-CSharp
-        m_MethodName: EnablePlayerHands
+        m_MethodName: EnablePlayerBodyAndHands
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1404,7 +1428,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5606539451651396883}
         m_TargetAssemblyTypeName: ResetPlayerManager, Assembly-CSharp
-        m_MethodName: EnablePlayerHands
+        m_MethodName: EnablePlayerBodyAndHands
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1426,6 +1450,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 728fe4527e3a5b84ebacd6de5a9d3260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TrackCalls: 1
+  FadeTime: 0.3
 --- !u!1 &6356588824397537779
 GameObject:
   m_ObjectHideFlags: 0
@@ -1483,12 +1509,12 @@ MonoBehaviour:
   loadingScreenDistance: 0
   loadingScreenTransform: {fileID: 0}
   progressBarTransform: {fileID: 0}
-  front: {fileID: 2800000, guid: 595bdb4ba08337c4097325cdb370d080, type: 3}
-  back: {fileID: 2800000, guid: bbb6637f8ce50e74a83854c1a41e6cea, type: 3}
-  left: {fileID: 2800000, guid: 842d39b32695a454d87dce9630b9a235, type: 3}
-  right: {fileID: 2800000, guid: b4dd7bac6c9c9bb4bb3c1b63a3eef362, type: 3}
-  top: {fileID: 2800000, guid: baafe81d1a28b0d45b7f3e673509d5e8, type: 3}
-  bottom: {fileID: 2800000, guid: 1995afa179277e7418c30f99df22dc2f, type: 3}
+  front: {fileID: 0}
+  back: {fileID: 0}
+  left: {fileID: 0}
+  right: {fileID: 0}
+  top: {fileID: 0}
+  bottom: {fileID: 0}
   backgroundColor: {r: 0, g: 0, b: 0, a: 1}
   showGrid: 0
   fadeOutTime: 0.5

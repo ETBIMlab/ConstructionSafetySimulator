@@ -42,6 +42,10 @@ namespace Valve.VR.InteractionSystem
 
 		public bool allowToggleTo2D = true;
 
+		// @ETBIM:: ADDED BY NEVIN FOSTER
+		[Tooltip("The body visual heirachy that resembles the player. This gives static access to all runtime components.")]
+		public GameObject[] bodyVisuals;
+
 
 		//-------------------------------------------------
 		// Singleton instance of the Player. Only one can exist at a time.

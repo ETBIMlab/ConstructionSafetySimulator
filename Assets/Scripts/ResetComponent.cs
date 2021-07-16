@@ -237,7 +237,9 @@ public class ResetComponent : MonoBehaviour
             {
                 // If the animator is disabled (animation finished), we will assume that this frame is the first frame of the animation.
                 // If instead the animator is disabled and we are on the last frame (because the animation has not finished), we will skip updating the animator (see bellow).
-                RecordedObject.Play(value.Item1.fullPathHash, RecordLayer, 0.0f);
+                if (RecordedObject.enabled)
+                    // Play, but at speed zero. This essentailly sets the frame of the animation, but doesn't play it.
+                    RecordedObject.Play(value.Item1.fullPathHash, RecordLayer, 0.0f);
             }
             // Update forces the animation to display the current frame in the scene. This is helpful if:
             //  - the animator becomes disabled and is no longer able to update to recorded state
@@ -247,6 +249,7 @@ public class ResetComponent : MonoBehaviour
             {
                 RecordedObject.Update(0.0f);
             }
+
             RecordedObject.enabled = value.Item2;
         }
 

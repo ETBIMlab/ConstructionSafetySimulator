@@ -41,6 +41,9 @@ public class HapticsOnWalk : MonoBehaviour
     {
         if (counter < 0)
         {
+            if (Time.timeScale == 0)
+                return;
+
             float intensity = SpeedIntensityCurve.Evaluate(m_VR_Animator_Controller.Speed);
             if (intensity > 0)
             {

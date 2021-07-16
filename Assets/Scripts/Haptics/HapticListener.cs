@@ -7,7 +7,6 @@ using System;
 /// <summary>
 /// Used for 
 /// </summary>
-[ExecuteInEditMode]
 public class HapticListener : MonoBehaviour
 {
     private static HapticListener instanceValue;
