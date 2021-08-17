@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
 
@@ -64,7 +65,6 @@ public class VR_Rig : MonoBehaviour
     private Vector3 headBodyOffset;
     private VR_Animator_Controller _VR_Animator_Controller;
 
-
     // Start is called before the first frame update
     IEnumerator Start()
     {
@@ -86,7 +86,20 @@ public class VR_Rig : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    private void OnEnable()
+    {
+        RenderPipelineManager.beginFrameRendering += RPM_beginFrameRendering;
+    }
+
+    private void OnDisable()
+    {
+        RenderPipelineManager.beginFrameRendering -= RPM_beginFrameRendering;
+    }
+
+    /// <summary>
+    /// Called once pre frame like Update, however, this is the last thing to be called before rendering the cameras. This ensures that when we map the head and arms, they match with the VR hands
+    /// </summary>
+    private void RPM_beginFrameRendering(ScriptableRenderContext context, Camera[] cameras)
     {
         if (SteamVR.initializedState != SteamVR.InitializedStates.InitializeSuccess)
             return;
@@ -123,5 +136,7 @@ public class VR_Rig : MonoBehaviour
             LeftArmExtention.position = leftHand.rigTarget.position;
             LeftArmExtention.up = (LeftForeArm.position - leftHand.rigTarget.position).normalized;
         }
+
+        _VR_Animator_Controller.ForceUpdate();
     }
 }

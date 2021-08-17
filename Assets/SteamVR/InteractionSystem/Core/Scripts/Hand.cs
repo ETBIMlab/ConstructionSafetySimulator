@@ -156,6 +156,9 @@ namespace Valve.VR.InteractionSystem
             }
         }
 
+        public Action<AttachedObject> onObjectAttachedToHand = (_) => { };
+        public Action<AttachedObject> onObjectDetachedToHand = (_) => { };
+
 
         //-------------------------------------------------
         // The Interactable object this Hand is currently hovering over
@@ -573,6 +576,7 @@ namespace Valve.VR.InteractionSystem
             if (spewDebugText)
                 HandDebugLog("AttachObject " + objectToAttach);
             objectToAttach.SendMessage("OnAttachedToHand", this, SendMessageOptions.DontRequireReceiver);
+            onObjectAttachedToHand.Invoke(attachedObject);
         }
 
         public bool ObjectIsAttached(GameObject go)
@@ -669,6 +673,7 @@ namespace Valve.VR.InteractionSystem
                         attachedObjects[index].attachedObject.SetActive(true);
 
                     attachedObjects[index].attachedObject.SendMessage("OnDetachedFromHand", this, SendMessageOptions.DontRequireReceiver);
+                    onObjectDetachedToHand.Invoke(attachedObjects[index]);
                 }
 
                 attachedObjects.RemoveAt(index);

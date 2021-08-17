@@ -130,19 +130,26 @@ public class MenuItems
 
     #region Create Prefabs
 
-    private const string SteamVRPlayerRigPath = "SteamVR Player Rig";
-    private const string ContextSwitcher = "Context Switcher";
+    private const string SteamVRPlayerRigPath = "Assets/Prefabs/SteamVR Player Rig";
+    private const string ContextSwitcher = "Assets/Prefabs/Context Switcher";
+    private const string FreezeAndReset = "Assets/Prefabs/Freeze And Reset";
 
     [MenuItem("GameObject/ETBIM/SteamVR Player Rig", false, 10)]
     static void CreateSteamVRPlayerRig(MenuCommand menuCommand)
     {
-        CreateCustomGameObject(menuCommand, Resources.Load<GameObject>(SteamVRPlayerRigPath));
+        CreateCustomGameObject(menuCommand, AssetDatabase.LoadAssetAtPath<GameObject>(SteamVRPlayerRigPath));
     }
 
     [MenuItem("GameObject/ETBIM/Context Switcher", false, 10)]
     static void CreateContextSwitcher(MenuCommand menuCommand)
     {
-        CreateCustomGameObject(menuCommand, Resources.Load<GameObject>(ContextSwitcher));
+        CreateCustomGameObject(menuCommand, AssetDatabase.LoadAssetAtPath<GameObject>(ContextSwitcher));
+    }
+
+    [MenuItem("GameObject/ETBIM/Freeze And Reset", false, 10)]
+    static void CreateFreezeAndReset(MenuCommand menuCommand)
+    {
+        CreateCustomGameObject(menuCommand, AssetDatabase.LoadAssetAtPath<GameObject>(FreezeAndReset));
     }
 
     static void CreateCustomGameObject(MenuCommand menuCommand, GameObject prefab)

@@ -1,47 +1,63 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
+using UnityEngine.Playables;
 
+[RequireComponent(typeof(RigBuilder))]
+[RequireComponent(typeof(VR_Rig))]
+[RequireComponent(typeof(Animator))]
 public class VR_Animator_Controller : MonoBehaviour
 {
     public float speedThreshold = 0.1f;
     [Range(0,1)]
     public float smoothing = 1;
 
-    private Animator animator;
+    private Animator _animator;
     private Vector3 previousPos;
-    private VR_Rig vrRig;
+    private VR_Rig _vrRig;
+    private RigBuilder _rigBuilder;
 
     public float Speed { get; private set; } = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
-        vrRig = GetComponent<VR_Rig>();
-        previousPos = vrRig.head.vrTarget.position;
+        _animator = GetComponent<Animator>();
+        _vrRig = GetComponent<VR_Rig>();
+        _rigBuilder = GetComponent<RigBuilder>();
+
+        previousPos = _vrRig.head.vrTarget.position;
+        //_rigBuilder.Build();
+        //_rigBuilder.graph.SetTimeUpdateMode(DirectorUpdateMode.Manual);
+
+        //_animator.enabled = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    internal void ForceUpdate()
     {
         //Compute the Speed
-        Vector3 headsetSpeed = (vrRig.head.vrTarget.position - previousPos) / Time.deltaTime;
+        Vector3 headsetSpeed = (_vrRig.head.vrTarget.position - previousPos) / Time.deltaTime;
         headsetSpeed.y = 0;
 
         //Local Speed
         Vector3 headsetLocalSpeed = transform.InverseTransformDirection(headsetSpeed);
-        previousPos = vrRig.head.vrTarget.position;
+        previousPos = _vrRig.head.vrTarget.position;
 
 
         Speed = headsetSpeed.magnitude;
 
         //Set Animator Values
-        float previousDirectionX = animator.GetFloat("directionX");
-        float previousDirectionY = animator.GetFloat("directionY");
+        float previousDirectionX = _animator.GetFloat("directionX");
+        float previousDirectionY = _animator.GetFloat("directionY");
 
-        animator.SetBool("isMoving", headsetLocalSpeed.magnitude > speedThreshold);
-        animator.SetFloat("directionX", Mathf.Lerp(previousDirectionX, Mathf.Clamp(headsetLocalSpeed.x, -1, 1), smoothing));
-        animator.SetFloat("directionY", Mathf.Lerp(previousDirectionY, Mathf.Clamp(headsetLocalSpeed.z, -1, 1), smoothing));
+        _animator.SetBool("isMoving", headsetLocalSpeed.magnitude > speedThreshold);
+        _animator.SetFloat("directionX", Mathf.Lerp(previousDirectionX, Mathf.Clamp(headsetLocalSpeed.x, -1, 1), smoothing));
+        _animator.SetFloat("directionY", Mathf.Lerp(previousDirectionY, Mathf.Clamp(headsetLocalSpeed.z, -1, 1), smoothing));
+
+        //_rigBuilder.graph.Evaluate(Time.deltaTime);
+        //_animator.Update(Time.deltaTime);
+
     }
 }
