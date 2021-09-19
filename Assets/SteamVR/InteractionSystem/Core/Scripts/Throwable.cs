@@ -1,4 +1,4 @@
-//======= Copyright (c) Valve Corporation, All rights reserved. ===============
+﻿//======= Copyright (c) Valve Corporation, All rights reserved. ===============
 //
 // Purpose: Basic throwable object
 //
@@ -40,7 +40,8 @@ namespace Valve.VR.InteractionSystem
         [Tooltip( "When detaching the object, should it return to its original parent?" )]
 		public bool restoreOriginalParent = false;
 
-
+        [Tooltip( "Attach and detach with a toggle" )]
+        public bool toggleGrab = false;
 
 		protected VelocityEstimator velocityEstimator;
         protected bool attached = false;
@@ -48,6 +49,9 @@ namespace Valve.VR.InteractionSystem
         protected Vector3 attachPosition;
         protected Quaternion attachRotation;
         protected Transform attachEaseInTransform;
+
+        private bool isFirstGrab;
+        private bool firstGrabEnded;
 
 		public UnityEvent onPickUp;
         public UnityEvent onDetachFromHand;
@@ -155,7 +159,9 @@ namespace Valve.VR.InteractionSystem
 			attachPosition = transform.position;
 			attachRotation = transform.rotation;
 
-		}
+            isFirstGrab = toggleGrab;
+            firstGrabEnded = false;
+        }
 
 
         //-------------------------------------------------
@@ -230,19 +236,28 @@ namespace Valve.VR.InteractionSystem
         //-------------------------------------------------
         protected virtual void HandAttachedUpdate(Hand hand)
         {
-
-
             if (hand.IsGrabEnding(this.gameObject))
             {
-                hand.DetachObject(gameObject, restoreOriginalParent);
+                if (!isFirstGrab)
+                {
+                    hand.DetachObject(gameObject, restoreOriginalParent);
 
-                // Uncomment to detach ourselves late in the frame.
-                // This is so that any vehicles the player is attached to
-                // have a chance to finish updating themselves.
-                // If we detach now, our position could be behind what it
-                // will be at the end of the frame, and the object may appear
-                // to teleport behind the hand when the player releases it.
-                //StartCoroutine( LateDetach( hand ) );
+                    // Uncomment to detach ourselves late in the frame.
+                    // This is so that any vehicles the player is attached to
+                    // have a chance to finish updating themselves.
+                    // If we detach now, our position could be behind what it
+                    // will be at the end of the frame, and the object may appear
+                    // to teleport behind the hand when the player releases it.
+                    //StartCoroutine( LateDetach( hand ) );
+                }
+                else
+                {
+                    firstGrabEnded = true;
+                }
+            }
+            if (firstGrabEnded)
+            {
+                isFirstGrab = false;
             }
 
             if (onHeldUpdate != null)

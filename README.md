@@ -12,7 +12,7 @@ There are two way to play our Simulator:
    
 The application will always try to run the VR version, but will fall back on the flat screen version if no headset is available or SteamVR is not installed. *You do not need a VR headset or ANY extra applications to run the Builds on the GitHub.* **Windows is required** to run the Build posted to the GitHub.
 
-1) [Download CurrentBuild_ConstructionSafetySimulator.zip](https://github.com/ETBIMlab/ConstructionSafetySimulator/releases/download/v0.1-alpha/CurrentBuild_ConstructionSafetySimulator_Data.zip)
+1) [Download Current Build for ConstructionSafetySimulator](https://github.com/ETBIMlab/ConstructionSafetySimulator/releases/)
 
 2) Unzip to an empty folder
 

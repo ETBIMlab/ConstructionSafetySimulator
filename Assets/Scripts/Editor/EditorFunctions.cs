@@ -12,6 +12,7 @@ public class EditModeFunctions : EditorWindow
     Transform trans;
     float arg_float;
     int arg_int;
+    bool arg_bool;
     Vector3 arg_vector;
 
     
@@ -44,6 +45,11 @@ public class EditModeFunctions : EditorWindow
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.BeginHorizontal();
+        GUILayout.Label("arg_bool ");
+        arg_bool = EditorGUILayout.Toggle(arg_bool);
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
         arg_vector = EditorGUILayout.Vector3Field("arg_vector ", arg_vector);
         EditorGUILayout.EndHorizontal();
 
@@ -66,6 +72,13 @@ public class EditModeFunctions : EditorWindow
         if (GUILayout.Button("LookAt"))
         {
             go.transform.LookAt(trans, arg_vector);
+        }
+
+        EditorGUILayout.Space();
+        GUILayout.Label("Toggle Use XR");
+        if (GUILayout.Button("XRSettings.enabled = arg_bool"))
+        {
+            UnityEngine.XR.XRSettings.enabled = arg_bool;
         }
     }
 

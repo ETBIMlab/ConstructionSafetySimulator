@@ -1,4 +1,4 @@
-//======= Copyright (c) Valve Corporation, All rights reserved. ===============
+﻿//======= Copyright (c) Valve Corporation, All rights reserved. ===============
 //
 // Purpose: The hands used by the player in the vr interaction system
 //
@@ -155,6 +155,9 @@ namespace Valve.VR.InteractionSystem
                 return trackedObject.isValid;
             }
         }
+
+        public Action<AttachedObject> onObjectAttachedToHand = (_) => { };
+        public Action<AttachedObject> onObjectDetachedToHand = (_) => { };
 
 
         //-------------------------------------------------
@@ -573,6 +576,7 @@ namespace Valve.VR.InteractionSystem
             if (spewDebugText)
                 HandDebugLog("AttachObject " + objectToAttach);
             objectToAttach.SendMessage("OnAttachedToHand", this, SendMessageOptions.DontRequireReceiver);
+            onObjectAttachedToHand.Invoke(attachedObject);
         }
 
         public bool ObjectIsAttached(GameObject go)
@@ -669,6 +673,7 @@ namespace Valve.VR.InteractionSystem
                         attachedObjects[index].attachedObject.SetActive(true);
 
                     attachedObjects[index].attachedObject.SendMessage("OnDetachedFromHand", this, SendMessageOptions.DontRequireReceiver);
+                    onObjectDetachedToHand.Invoke(attachedObjects[index]);
                 }
 
                 attachedObjects.RemoveAt(index);
@@ -920,15 +925,22 @@ namespace Valve.VR.InteractionSystem
                 if (contacting == null)
                     continue;
 
+                // Modified By Nevin! ---------------------------
+
+
                 // Ignore this collider for hovering
                 IgnoreHovering ignore = collider.GetComponent<IgnoreHovering>();
-                if (ignore != null)
+                if (ignore == null)
+                    ignore = collider.GetComponentInParent<IgnoreHovering>();
+                if (ignore != null && ignore.isActive)
                 {
                     if (ignore.onlyIgnoreHand == null || ignore.onlyIgnoreHand == this)
                     {
                         continue;
                     }
                 }
+
+                // ----------------------------------------------
 
                 // Can't hover over the object if it's attached
                 bool hoveringOverAttached = false;

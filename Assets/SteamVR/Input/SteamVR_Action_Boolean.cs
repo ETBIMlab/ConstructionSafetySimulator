@@ -1,4 +1,4 @@
-//======= Copyright (c) Valve Corporation, All rights reserved. ===============
+﻿//======= Copyright (c) Valve Corporation, All rights reserved. ===============
 
 using UnityEngine;
 using System.Collections;
@@ -91,7 +91,7 @@ namespace Valve.VR
         /// <param name="inputSource">The device you would like to get data from. Any if the action is not device specific.</param>
         public bool GetState(SteamVR_Input_Sources inputSource)
         {
-            return sourceMap[inputSource].state;
+            return (sourceMap[inputSource] != null) && sourceMap[inputSource].state;
         }
 
         /// <summary>[For the previous update] Returns true if the value of the action has been set to true (from false).</summary>

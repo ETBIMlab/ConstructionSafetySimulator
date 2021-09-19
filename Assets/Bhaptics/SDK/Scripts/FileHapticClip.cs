@@ -59,6 +59,11 @@ namespace Bhaptics.Tact.Unity
 
         public override void Play(float intensity, float duration, float vestRotationAngleX, float vestRotationOffsetY)
         {
+            if (duration <= 0)
+                duration = Duration;
+
+            currentPlayIntensity = intensity;
+
             if (!BhapticsManager.Init)
             {
                 BhapticsManager.Initialize();
@@ -71,19 +76,7 @@ namespace Bhaptics.Tact.Unity
                 haptic.RegisterTactFileStr(assetId, JsonValue);
             }
 
-            haptic.SubmitRegistered(assetId, keyId, new ScaleOption(intensity, duration));
-        }
-
-        public override void Stop()
-        {
-            var haptic = BhapticsManager.GetHaptic();
-            haptic.TurnOff();
-        }
-
-        public override bool IsPlaying()
-        {
-            var haptic = BhapticsManager.GetHaptic();
-            return haptic.IsPlaying(keyId);
+            haptic.SubmitRegistered(assetId, keyId, new ScaleOption(intensity, duration/Duration));
         }
 
         public override void ResetValues()

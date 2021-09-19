@@ -1,4 +1,4 @@
-//======= Copyright (c) Valve Corporation, All rights reserved. ===============
+﻿//======= Copyright (c) Valve Corporation, All rights reserved. ===============
 
 using UnityEngine;
 using System.Collections;
@@ -632,17 +632,21 @@ namespace Valve.VR
             lastVelocity = velocity;
             lastAngularVelocity = angularVelocity;
 
-            EVRInputError err;
+            
+            try
+            {   
+                EVRInputError err;
+                if (framesAhead == 0)
+                    err = OpenVR.Input.GetPoseActionDataForNextFrame(handle, universeOrigin, ref poseActionData, poseActionData_size, inputSourceHandle);
+                else
+                    err = OpenVR.Input.GetPoseActionDataRelativeToNow(handle, universeOrigin, framesAhead * (Time.timeScale / SteamVR.instance.hmd_DisplayFrequency), ref poseActionData, poseActionData_size, inputSourceHandle);
 
-            if (framesAhead == 0)
-                err = OpenVR.Input.GetPoseActionDataForNextFrame(handle, universeOrigin, ref poseActionData, poseActionData_size, inputSourceHandle);
-            else
-                err = OpenVR.Input.GetPoseActionDataRelativeToNow(handle, universeOrigin, framesAhead * (Time.timeScale / SteamVR.instance.hmd_DisplayFrequency), ref poseActionData, poseActionData_size, inputSourceHandle);
-
-            if (err != EVRInputError.None)
-            {
-                Debug.LogError("<b>[SteamVR]</b> GetPoseActionData error (" + fullPath + "): " + err.ToString() + " Handle: " + handle.ToString() + ". Input source: " + inputSource.ToString());
-            }
+                if (err != EVRInputError.None)
+                {
+                    Debug.LogError("<b>[SteamVR]</b> GetPoseActionData error (" + fullPath + "): " + err.ToString() + " Handle: " + handle.ToString() + ". Input source: " + inputSource.ToString());
+                }
+            } catch (NullReferenceException) { Debug.LogWarning("<b>[SteamVR] </b> GetPoseActionData error with null reference."); }
+            
 
             if (active)
             {

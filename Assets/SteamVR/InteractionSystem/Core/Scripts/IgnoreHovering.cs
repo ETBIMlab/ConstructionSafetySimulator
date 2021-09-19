@@ -1,4 +1,4 @@
-//======= Copyright (c) Valve Corporation, All rights reserved. ===============
+﻿//======= Copyright (c) Valve Corporation, All rights reserved. ===============
 //
 // Purpose: Makes this object ignore any hovering by the hands
 //
@@ -13,5 +13,9 @@ namespace Valve.VR.InteractionSystem
 	{
 		[Tooltip( "If Hand is not null, only ignore the specified hand" )]
 		public Hand onlyIgnoreHand = null;
+
+		public bool isActive = true;
+
+		public void SetIsActive(bool isActive) { this.isActive = isActive; }
 	}
 }

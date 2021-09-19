@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Bhaptics.Tact.Unity
 {
+    /// <summary>
+    /// Simple component for playing a single haptics clip.
+    /// </summary>
     public class HapticSource : MonoBehaviour
     {
         private Coroutine currentCoroutine, loopCoroutine;
@@ -13,6 +16,8 @@ namespace Bhaptics.Tact.Unity
         public bool playOnAwake = false;
         public bool loop = false;
         public float loopDelaySeconds = 0f;
+        public float intensity = 1f;
+        public float duration = 0f;
         public HapticClip clip;
 
         public void PlayLoop()
@@ -95,7 +100,7 @@ namespace Bhaptics.Tact.Unity
                 return;
             }
 
-            clip.Play();
+            clip.Play(intensity, duration);
         }
 
         private IEnumerator PlayLoopCoroutine()

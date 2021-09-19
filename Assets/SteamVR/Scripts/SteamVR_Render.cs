@@ -1,4 +1,4 @@
-//======= Copyright (c) Valve Corporation, All rights reserved. ===============
+﻿//======= Copyright (c) Valve Corporation, All rights reserved. ===============
 //
 // Purpose: Handles rendering of all SteamVR_Cameras
 //
@@ -316,7 +316,11 @@ namespace Valve.VR
                 SteamVR_ExternalCamera_LegacyManager.SubscribeToNewPoses();
 
 #if UNITY_2017_1_OR_NEWER
+#if UNITY_URP
+            UnityEngine.Rendering.RenderPipelineManager.beginFrameRendering += BeginFrameRendering;
+#else
 		    Application.onBeforeRender += OnBeforeRender;
+#endif
 #else
             Camera.onPreCull += OnCameraPreCull;
 #endif
@@ -340,7 +344,11 @@ namespace Valve.VR
             SteamVR_Events.System(EVREventType.VREvent_RequestScreenshot).Remove(OnRequestScreenshot);
 
 #if UNITY_2017_1_OR_NEWER
-		    Application.onBeforeRender -= OnBeforeRender;
+#if UNITY_URP
+            UnityEngine.Rendering.RenderPipelineManager.beginFrameRendering -= BeginFrameRendering;
+#else
+            Application.onBeforeRender -= OnBeforeRender;
+#endif
 #else
             Camera.onPreCull -= OnCameraPreCull;
 #endif
@@ -361,7 +369,25 @@ namespace Valve.VR
         }
 
 #if UNITY_2017_1_OR_NEWER
-	    void OnBeforeRender()
+#if UNITY_URP
+        void BeginFrameRendering(UnityEngine.Rendering.ScriptableRenderContext discard1, Camera[] discard2)
+        {
+            if (SteamVR.active == false)
+                return;
+
+            if (SteamVR.settings.IsPoseUpdateMode(SteamVR_UpdateModes.OnPreCull))
+            {
+                try
+                {
+                    UpdatePoses();
+                } catch(System.Exception e)
+                {
+                    Debug.LogError("STEAMVR UPDATE POSE ERROR:: " + e.Message);
+                }
+            }
+        }
+#else
+        void OnBeforeRender()
         {
             if (SteamVR.active == false)
                 return;
@@ -371,6 +397,7 @@ namespace Valve.VR
                 UpdatePoses();
             }
         }
+#endif
 #else
         void OnCameraPreCull(Camera cam)
         {

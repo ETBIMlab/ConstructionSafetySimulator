@@ -12,6 +12,7 @@ namespace Bhaptics.Tact.Unity
 
         [NonSerialized] public string keyId = System.Guid.NewGuid().ToString();
 
+        [NonSerialized] public float currentPlayIntensity;
 
         public virtual void Play()
         {
@@ -50,12 +51,13 @@ namespace Bhaptics.Tact.Unity
 
         public virtual void Play(float intensity, float duration, float vestRotationAngleX, float vestRotationOffsetY)
         {
+            Debug.LogError("The Play function of the haptic clips is not overriden. The clip will not play.", this);
         }
 
         public virtual void Stop()
         {
             var haptic = BhapticsManager.GetHaptic();
-            haptic.TurnOff();
+            haptic.TurnOff(keyId);
         }
 
         public virtual bool IsPlaying()

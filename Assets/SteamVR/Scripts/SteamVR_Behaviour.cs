@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -174,20 +174,46 @@ namespace Valve.VR
 #endif
 
 #if UNITY_2017_1_OR_NEWER
+
         protected void OnEnable()
         {
-		    Application.onBeforeRender += OnBeforeRender;
+#if UNITY_URP
+            UnityEngine.Rendering.RenderPipelineManager.beginFrameRendering += BeginFrameRendering;
+#else
+            Application.onBeforeRender += OnBeforeRender;
+#endif
             SteamVR_Events.System(EVREventType.VREvent_Quit).Listen(OnQuit);
         }
         protected void OnDisable()
         {
+#if UNITY_URP
+            UnityEngine.Rendering.RenderPipelineManager.beginFrameRendering -= BeginFrameRendering;
+#else
 		    Application.onBeforeRender -= OnBeforeRender;
+#endif
             SteamVR_Events.System(EVREventType.VREvent_Quit).Remove(OnQuit);
         }
+
+#if UNITY_URP
+        void BeginFrameRendering(UnityEngine.Rendering.ScriptableRenderContext discard1, Camera[] discard2)
+        {
+            try
+            {
+                PreCull();
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("STEAMVR PRECULL ERROR:: " + e.Message);
+            }
+        }
+#else
 	    protected void OnBeforeRender()
         {
             PreCull();
         }
+#endif
+
+
 #else
         protected void OnEnable()
         {
