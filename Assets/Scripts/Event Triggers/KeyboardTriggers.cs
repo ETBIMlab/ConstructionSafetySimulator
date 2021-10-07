@@ -15,6 +15,16 @@ public class KeyboardTriggers : MonoBehaviour
 
     public KeystrokeEvent[] keystrokeEvents;
 
+    // void Start() {
+    //     KeystrokeEvent keystroke = new KeystrokeEvent();
+    //     keystroke.keyCode = KeyCode.Alpha0;
+    //     keystroke.trigger = new UnityEvent();
+    //     keystroke.trigger.AddListener(()=>{
+    //         TimeRecorder.updateTimeRecords("test");
+    //     });
+    //     keystrokeEvents = new KeystrokeEvent[]{keystroke};
+    // }
+
     // Update is called once per frame
     void Update()
     {
