@@ -27,13 +27,14 @@ public class TimeRecorder : MonoBehaviour
         if(firstUse == true){
              using(System.IO.StreamWriter writetext = new System.IO.StreamWriter("Time Stamp Log.txt", append: false))
         {
-            writetext.WriteLine(string.Empty);
+            writetext.WriteLine(currentTimeMessage);
         }
             firstUse = false;
-        }
-        using(System.IO.StreamWriter writetext = new System.IO.StreamWriter("Time Stamp Log.txt", append: true))
-        {
-            writetext.WriteLine(currentTimeMessage);
+        } else {
+            using(System.IO.StreamWriter writetext = new System.IO.StreamWriter("Time Stamp Log.txt", append: true))
+            {
+                writetext.WriteLine(currentTimeMessage);
+            }
         }
 
     }
