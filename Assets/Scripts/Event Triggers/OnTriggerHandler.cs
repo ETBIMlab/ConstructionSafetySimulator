@@ -9,11 +9,14 @@ using UnityEngine.Events;
 */
 public class OnTriggerHandler : MonoBehaviour
 {
+    public bool useTag;
+    public string tagName;
     public UnityEvent triggerEnter;
     public UnityEvent triggerExit;
     public UnityEvent triggerStay;
     public UnityEvent firstTriggerEnter;
     public UnityEvent lastTriggerExit;
+
 
     [HideInInspector]
     [System.NonSerialized]
@@ -31,24 +34,33 @@ public class OnTriggerHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Trigger entered, other: " + other.name, other);
-        collisionCount++;
-        if (collisionCount == 1)
-            firstTriggerEnter.Invoke();
-        triggerEnter.Invoke();
+        if(useTag == false || (useTag == true && other.gameObject.CompareTag(tagName))){
+            Debug.Log("Trigger entered, other: " + other.name, other);
+            collisionCount++;
+            if (collisionCount == 1)
+                firstTriggerEnter.Invoke();
+                print("Test");
+                print(tagName);
+                print(other.gameObject.tag);
+            triggerEnter.Invoke();
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        collisionCount--;
-        if (collisionCount == 0)
-            lastTriggerExit.Invoke();
-        triggerExit.Invoke();
+        if(useTag == false || (useTag == true && other.gameObject.CompareTag(tagName))){
+            collisionCount--;
+            if (collisionCount == 0)
+                lastTriggerExit.Invoke();
+            triggerExit.Invoke();
+        }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        triggerStay.Invoke();
+        if(useTag == false || (useTag == true && other.gameObject.CompareTag(tagName))){
+            triggerStay.Invoke();
+        }
     }
 
     public void OnTriggerEnter()
