@@ -39,9 +39,10 @@ public class OnTriggerHandler : MonoBehaviour
             collisionCount++;
             if (collisionCount == 1)
                 firstTriggerEnter.Invoke();
-                print("Test");
-                print(tagName);
+                //print("Test");
+                //print(tagName);
                 print(other.gameObject.tag);
+                //print(other.gameObject.name);
             triggerEnter.Invoke();
         }
     }
