@@ -180,15 +180,18 @@ public class ForemanHandeler : MonoBehaviour
         // Bend animation to rotating
         ForemanController.CrossFadeInFixedTime(RotatingAnimation, FixedTransitionTime);
 
-        while (true)
+        Quaternion temp = Quaternion.LookRotation(locations[locationIndex].location.position - ForemanTrans.position);
+        while (Quaternion.Angle(
+            ForemanTrans.rotation,
+            temp
+            ) > 0.05f)
         {
-            Vector3 targetDirection = locations[locationIndex].location.position - ForemanTrans.position;
-            ForemanTrans.forward = Vector3.RotateTowards(ForemanTrans.forward, targetDirection, AngleSpeed * Time.deltaTime * 0.01f, 0.0f);
 
-            if (Vector3.Angle(ForemanTrans.forward,
-                targetDirection) < 0.05f)
-                break;
-
+            ForemanTrans.rotation = Quaternion.RotateTowards(
+                ForemanTrans.rotation,
+                temp,
+                AngleSpeed * Time.deltaTime
+                );
             yield return null;
         }
 
@@ -214,6 +217,7 @@ public class ForemanHandeler : MonoBehaviour
             locations[locationIndex].location.rotation
             ) > 0.05f)
         {
+            
             ForemanTrans.rotation = Quaternion.RotateTowards(
                 ForemanTrans.rotation,
                 locations[locationIndex].location.rotation,

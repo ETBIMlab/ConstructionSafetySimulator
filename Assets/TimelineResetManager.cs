@@ -3,25 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 
-[RequireComponent(typeof(PlayableDirector))]
 public class TimelineResetManager : MonoBehaviour
 {
-    private PlayableDirector _playableDirector;
+    private PlayableDirector m_playableDirector;
 
     private void Start()
     {
-        _playableDirector = GetComponent<PlayableDirector>();
+        m_playableDirector = GetComponent<PlayableDirector>();
     }
 
-    public void PlayPlayable(PlayableAsset playableAsset)
+    public void PlayDirector(PlayableDirector playableDirector)
     {
-        _playableDirector.Play(playableAsset);
+        m_playableDirector = playableDirector;
+        m_playableDirector.Play();
     }
 
     public void ResetCurrentPlayable()
     {
-        _playableDirector.Stop();
-        _playableDirector.time = 0;
-        _playableDirector.Evaluate();
+        m_playableDirector.Stop();
+        m_playableDirector.time = 0;
+        m_playableDirector.Evaluate();
     }
 }

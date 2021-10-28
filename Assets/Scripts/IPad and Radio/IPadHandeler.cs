@@ -112,7 +112,22 @@ public class IPadHandeler : MonoBehaviour
                 _rigidbody.useGravity = false;
                 _rigidbody.isKinematic = true;
 
-                ChangeConstraintToIndex(1); // Essentailly sets the partent to the formans left hand
+                int count = _parentConstraint.sourceCount;
+                GameObject go = new GameObject("Constraint fade");
+                go.hideFlags = HideFlags.HideAndDontSave;
+                go.transform.position = Vector3.zero;
+                go.transform.rotation = Quaternion.identity;
+
+                ConstraintSource c = new ConstraintSource();
+                c.sourceTransform = go.transform;
+                _parentConstraint.AddSource(c);
+                _parentConstraint.translationOffsets[count] = transform.position;
+                _parentConstraint.rotationOffsets[count] = transform.rotation.eulerAngles;
+
+                ChangeConstraintToIndex(2); // Essentailly sets partent to the last location the ipad is at
+                FadeConstraintChange(1, 2); // fades the partent to the formans left hand
+
+                _parentConstraint.enabled = true;
 
                 return;
             }
@@ -138,11 +153,6 @@ public class IPadHandeler : MonoBehaviour
 
     public void ChangeConstraintToIndex(int index)
     {
-        ChangeConstraintWeightIndex(index, 1);
-    }
-
-    public void ChangeConstraintWeightIndex(int index, float alpha)
-    {
         ConstraintSource source;
         for (int i = 0; i < _parentConstraint.sourceCount; i++)
         {
@@ -150,30 +160,49 @@ public class IPadHandeler : MonoBehaviour
             if (i == index)
             {
                 source = _parentConstraint.GetSource(i);
-                source.weight = alpha;
+                source.weight = 1;
+                _parentConstraint.SetSource(i, source);
             }
             else
             {
                 source = _parentConstraint.GetSource(i);
-                source.weight = 1 - alpha;
+                source.weight = 0;
+                _parentConstraint.SetSource(i, source);
             }
         }
     }
 
-    public void FadeConstraintChange(int index)
+    public void FadeConstraintChange(int newindex, int fadeindex)
     {
-        StartCoroutine(FadeConstraintChange_coroutine(index));
+        StartCoroutine(FadeConstraintChange_coroutine(newindex, fadeindex));
     }
 
-    private IEnumerator FadeConstraintChange_coroutine(int index)
+    private IEnumerator FadeConstraintChange_coroutine(int newindex, int fadeindex)
     {
         float time = 0;
-        while (time < 1)
+        float alpha = 0;
+        ConstraintSource source;
+        while (alpha < 1)
         {
             yield return null;
             time += Time.deltaTime;
+            alpha = Mathf.Clamp01(time / 0.5f);
+            for (int i = 0; i < _parentConstraint.sourceCount; i++)
+            {
 
-            ChangeConstraintWeightIndex(index, Mathf.Clamp01(time / 0.5f));
+                if (i == newindex)
+                {
+                    source = _parentConstraint.GetSource(i);
+                    source.weight = alpha;
+                    _parentConstraint.SetSource(i, source);
+                }
+                else if (i == fadeindex)
+                {
+                    source = _parentConstraint.GetSource(i);
+                    source.weight = 1 - alpha;
+                    _parentConstraint.SetSource(i, source);
+                }
+            }
         }
     }
 
