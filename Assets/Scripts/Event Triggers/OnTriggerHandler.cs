@@ -9,11 +9,14 @@ using UnityEngine.Events;
 */
 public class OnTriggerHandler : MonoBehaviour
 {
+    public bool useTag;
+    public string tagName;
     public UnityEvent triggerEnter;
     public UnityEvent triggerExit;
     public UnityEvent triggerStay;
     public UnityEvent firstTriggerEnter;
     public UnityEvent lastTriggerExit;
+
 
     [HideInInspector]
     [System.NonSerialized]
