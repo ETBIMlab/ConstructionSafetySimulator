@@ -109,9 +109,10 @@ public class IPadHandeler : MonoBehaviour
             {
                 fh.IPadHandedOff();
 
-                transform.parent = fh.ForemanRightHand;
                 _rigidbody.useGravity = false;
                 _rigidbody.isKinematic = true;
+
+                ChangeConstraintToIndex(1); // Essentailly sets the partent to the formans left hand
 
                 return;
             }
@@ -133,6 +134,47 @@ public class IPadHandeler : MonoBehaviour
         _parentConstraint.enabled = true;
         _rigidbody.useGravity = false;
         _rigidbody.isKinematic = true;
+    }
+
+    public void ChangeConstraintToIndex(int index)
+    {
+        ChangeConstraintWeightIndex(index, 1);
+    }
+
+    public void ChangeConstraintWeightIndex(int index, float alpha)
+    {
+        ConstraintSource source;
+        for (int i = 0; i < _parentConstraint.sourceCount; i++)
+        {
+
+            if (i == index)
+            {
+                source = _parentConstraint.GetSource(i);
+                source.weight = alpha;
+            }
+            else
+            {
+                source = _parentConstraint.GetSource(i);
+                source.weight = 1 - alpha;
+            }
+        }
+    }
+
+    public void FadeConstraintChange(int index)
+    {
+        StartCoroutine(FadeConstraintChange_coroutine(index));
+    }
+
+    private IEnumerator FadeConstraintChange_coroutine(int index)
+    {
+        float time = 0;
+        while (time < 1)
+        {
+            yield return null;
+            time += Time.deltaTime;
+
+            ChangeConstraintWeightIndex(index, Mathf.Clamp01(time / 0.5f));
+        }
     }
 
     private IEnumerator ReturnToStartAfterTime(float seconds)

@@ -43,6 +43,11 @@ public class ForemanHandeler : MonoBehaviour
     public string RotatingAnimation;
     public string WalkingAnimation;
 
+    [Header("Default Actions")]
+    public UnityEvent OnHandoff;
+    public UnityEvent OnReset;
+
+
     [Header("Locations")]
     public ForemanLocation[] locations;
 
@@ -75,7 +80,8 @@ public class ForemanHandeler : MonoBehaviour
                 else
                 {
                     m_updateRig = false;
-                    ForemanRig.weight = 0;
+                    if (ForemanRig)
+                        ForemanRig.weight = 0;
                 }
             }
         }
@@ -180,7 +186,7 @@ public class ForemanHandeler : MonoBehaviour
             ForemanTrans.forward = Vector3.RotateTowards(ForemanTrans.forward, targetDirection, AngleSpeed * Time.deltaTime * 0.01f, 0.0f);
 
             if (Vector3.Angle(ForemanTrans.forward,
-                targetDirection) < 0.001f)
+                targetDirection) < 0.05f)
                 break;
 
             yield return null;
@@ -206,7 +212,7 @@ public class ForemanHandeler : MonoBehaviour
         while (Quaternion.Angle(
             ForemanTrans.rotation,
             locations[locationIndex].location.rotation
-            ) > 0.001f)
+            ) > 0.05f)
         {
             ForemanTrans.rotation = Quaternion.RotateTowards(
                 ForemanTrans.rotation,

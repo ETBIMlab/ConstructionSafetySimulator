@@ -19,6 +19,11 @@ public class OnTriggerHandler : MonoBehaviour
     [System.NonSerialized]
     public int collisionCount;
 
+    private void Awake()
+    {
+        collisionCount = -1;
+    }
+
     private void OnEnable()
     {
         collisionCount = 0;
@@ -31,6 +36,8 @@ public class OnTriggerHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (collisionCount == -1) return;
+
         Debug.Log("Trigger entered, other: " + other.name, other);
         collisionCount++;
         if (collisionCount == 1)
@@ -40,6 +47,8 @@ public class OnTriggerHandler : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if (collisionCount == -1) return;
+
         collisionCount--;
         if (collisionCount == 0)
             lastTriggerExit.Invoke();
@@ -48,11 +57,15 @@ public class OnTriggerHandler : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        if (collisionCount == -1) return;
+
         triggerStay.Invoke();
     }
 
     public void OnTriggerEnter()
     {
+        if (collisionCount == -1) return;
+
         collisionCount++;
         if (collisionCount == 1)
             firstTriggerEnter.Invoke();
@@ -61,6 +74,8 @@ public class OnTriggerHandler : MonoBehaviour
 
     public void OnTriggerExit()
     {
+        if (collisionCount == -1) return;
+
         collisionCount--;
         if (collisionCount < 0)
             collisionCount = 0;
@@ -71,6 +86,8 @@ public class OnTriggerHandler : MonoBehaviour
 
     public void OnTriggerStay()
     {
+        if (collisionCount == -1) return;
+
         triggerStay.Invoke();
     }
 }
