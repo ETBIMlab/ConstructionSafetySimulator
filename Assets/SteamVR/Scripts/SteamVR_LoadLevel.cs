@@ -221,7 +221,7 @@ namespace Valve.VR
             if (_active != this)
                 return;
 
-            alpha = Mathf.Clamp01(alpha + fadeRate * Time.deltaTime);
+            alpha = Mathf.Clamp01(alpha + fadeRate * Time.unscaledTime);
 
             var overlay = OpenVR.Overlay;
             if (overlay != null)
@@ -303,7 +303,7 @@ namespace Valve.VR
 
                     // Explicitly fade to the compositor since loading will cause us to stop rendering.
                     compositor.FadeGrid(fadeOutTime, true);
-                    yield return new WaitForSeconds(fadeOutTime);
+                    yield return new WaitForSecondsRealtime(fadeOutTime);
                 }
                 else if (backgroundColor != Color.clear)
                 {
@@ -313,13 +313,13 @@ namespace Valve.VR
                         // Set compositor background color immediately, and start fading to it.
                         compositor.FadeToColor(0.0f, backgroundColor.r, backgroundColor.g, backgroundColor.b, backgroundColor.a, true);
                         compositor.FadeGrid(fadeOutTime, true);
-                        yield return new WaitForSeconds(fadeOutTime);
+                        yield return new WaitForSecondsRealtime(fadeOutTime);
                     }
                     else
                     {
                         // Fade the foreground color in (which will blend on top of the scene), and then cut to the compositor.
                         compositor.FadeToColor(fadeOutTime, backgroundColor.r, backgroundColor.g, backgroundColor.b, backgroundColor.a, false);
-                        yield return new WaitForSeconds(fadeOutTime + 0.1f);
+                        yield return new WaitForSecondsRealtime(fadeOutTime + 0.1f);
                         compositor.FadeGrid(0.0f, true);
                         fadedForeground = true;
                     }
@@ -406,7 +406,7 @@ namespace Valve.VR
 
             // Optionally wait a short period of time after loading everything back in, but before we start rendering again
             // in order to give everything a change to settle down to avoid any hitching at the start of the new level.
-            yield return new WaitForSeconds(postLoadSettleTime);
+            yield return new WaitForSecondsRealtime(postLoadSettleTime);
 
             SteamVR_Render.pauseRendering = false;
 
@@ -432,13 +432,13 @@ namespace Valve.VR
                 {
                     compositor.FadeGrid(0.0f, false);
                     compositor.FadeToColor(fadeInTime, 0.0f, 0.0f, 0.0f, 0.0f, false);
-                    yield return new WaitForSeconds(fadeInTime);
+                    yield return new WaitForSecondsRealtime(fadeInTime);
                 }
                 else
                 {
                     // Fade scene back in, and reset skybox once no longer visible.
                     compositor.FadeGrid(fadeInTime, false);
-                    yield return new WaitForSeconds(fadeInTime);
+                    yield return new WaitForSecondsRealtime(fadeInTime);
 
                     if (front != null)
                     {
