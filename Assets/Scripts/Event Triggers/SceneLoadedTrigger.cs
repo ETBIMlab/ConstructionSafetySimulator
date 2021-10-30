@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
@@ -22,5 +23,10 @@ public class SceneLoadedTrigger : MonoBehaviour
     private void SceneLoaded(Scene scene, LoadSceneMode mode)
     {
         OnSceneFinishLoading.Invoke();
+    }
+
+    public void ForceQuitApp()
+    {
+        Application.Quit();
     }
 }

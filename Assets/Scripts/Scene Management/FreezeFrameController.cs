@@ -36,6 +36,12 @@ public class FreezeFrameController : MonoBehaviour
         }
     }
 
+    public void OnDestroy()
+    {
+        TimeScaleLock.timeScaleWritable = true;
+        Time.timeScale = 1;
+    }
+
     /// <summary>
     /// Toggles if freeze frame is happening. Note that if the time scale is not frozen, then the application is considered playing and the freeze frame is STARTED. If the freeze frame is stopped after this, the time scale will be set to 1 and not what the time scale was before.
     /// </summary>
@@ -51,5 +57,6 @@ public class FreezeFrameController : MonoBehaviour
 
 public static class TimeScaleLock
 {
+    [System.NonSerialized]
     public static bool timeScaleWritable = true;
 }
