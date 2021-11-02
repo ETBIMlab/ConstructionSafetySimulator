@@ -12,20 +12,18 @@ public class OnTriggerHandler : MonoBehaviour
     public bool useTag;
     public string tagName;
     public UnityEvent triggerEnter;
+    public UnityEvent triggerEnterDoOnce;
     public UnityEvent triggerExit;
     public UnityEvent triggerStay;
     public UnityEvent firstTriggerEnter;
     public UnityEvent lastTriggerExit;
 
+    private bool doOnce = false;
+
 
     [HideInInspector]
     [System.NonSerialized]
     public int collisionCount;
-
-    private void Awake()
-    {
-        collisionCount = -1;
-    }
 
     private void OnEnable()
     {
@@ -39,36 +37,42 @@ public class OnTriggerHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (collisionCount == -1) return;
-
-        Debug.Log("Trigger entered, other: " + other.name, other);
-        collisionCount++;
-        if (collisionCount == 1)
-            firstTriggerEnter.Invoke();
-        triggerEnter.Invoke();
+        if(!useTag || (useTag && other.gameObject.CompareTag(tagName))){
+            Debug.Log("Trigger entered, other: " + other.name, other);
+            collisionCount++;
+            if (collisionCount == 1)
+                firstTriggerEnter.Invoke();
+            if (!doOnce) {
+                triggerEnterDoOnce.Invoke();
+                doOnce = true;
+            }
+                //print("Test");
+                //print(tagName);
+                //print(other.gameObject.tag);
+                //print(other.gameObject.name);
+            triggerEnter.Invoke();
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (collisionCount == -1) return;
-
-        collisionCount--;
-        if (collisionCount == 0)
-            lastTriggerExit.Invoke();
-        triggerExit.Invoke();
+        if(!useTag || (useTag && other.gameObject.CompareTag(tagName))){
+            collisionCount--;
+            if (collisionCount == 0)
+                lastTriggerExit.Invoke();
+            triggerExit.Invoke();
+        }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (collisionCount == -1) return;
-
-        triggerStay.Invoke();
+        if(!useTag || (useTag && other.gameObject.CompareTag(tagName))){
+            triggerStay.Invoke();
+        }
     }
 
     public void OnTriggerEnter()
     {
-        if (collisionCount == -1) return;
-
         collisionCount++;
         if (collisionCount == 1)
             firstTriggerEnter.Invoke();
@@ -77,8 +81,6 @@ public class OnTriggerHandler : MonoBehaviour
 
     public void OnTriggerExit()
     {
-        if (collisionCount == -1) return;
-
         collisionCount--;
         if (collisionCount < 0)
             collisionCount = 0;
@@ -89,8 +91,6 @@ public class OnTriggerHandler : MonoBehaviour
 
     public void OnTriggerStay()
     {
-        if (collisionCount == -1) return;
-
         triggerStay.Invoke();
     }
 }
