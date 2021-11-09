@@ -10,7 +10,7 @@ public class AnimationCrossFade : MonoBehaviour
 
     public FadeData[] fadeDatas;
 
-    void Start()
+    void Awake()
     {
         _animator = GetComponent<Animator>();
     }

@@ -25,6 +25,7 @@ using ETBIM.StaticFunctions;
 [RequireComponent(typeof(CharacterController))]
 public class ContinuousMovement : MonoBehaviour
 {
+    public bool InputsEnabled { get; set; } = true;
     [Header("Interaction")]
     [Tooltip("Tracks that look direction and head position of the player")]
     public Camera SteamVRCamera;
@@ -150,7 +151,7 @@ public class ContinuousMovement : MonoBehaviour
     void Update()
     {
         // We update the input value on updates but do all physics during the fixed update.
-        if (enableMoveSource.state)
+        if (enableMoveSource.state && InputsEnabled)
         {
             inputAxis = inputSource.GetAxis(SteamVR_Input_Sources.LeftHand);
             //if (inputAxis.x + inputAxis.y < Mathf.Epsilon)

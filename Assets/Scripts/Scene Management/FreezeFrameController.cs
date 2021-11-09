@@ -14,7 +14,7 @@ public class FreezeFrameController : MonoBehaviour
         if (TimeScaleLock.timeScaleWritable)
             OnStartFreezeFrame.Invoke();
 
-        SetTimeScale(0);
+        SetTimeScale(0.001f);
     }
 
     public void StopFreezeFrame()
@@ -25,14 +25,14 @@ public class FreezeFrameController : MonoBehaviour
         SetTimeScale(1);
     }
 
-    public void SetTimeScale(int timeScale)
+    public void SetTimeScale(float timeScale)
     {
         if (TimeScaleLock.timeScaleWritable)
             Time.timeScale = timeScale;
         else
         {
             // This is kind of a desired functionality (try to pause when unable), so commented out the debug to avoid unneeded logs.
-            //Debug.Log("Could not change time scale as the time scale is being locked by another resource.", this);
+            Debug.Log("Could not change time scale as the time scale is being locked by another resource.", this);
         }
     }
 
@@ -47,7 +47,7 @@ public class FreezeFrameController : MonoBehaviour
     /// </summary>
     public void ToggleFreezeFrame()
     {
-        if (Time.timeScale == 0)
+        if (Time.timeScale != 1)
             StopFreezeFrame();
         else
             StartFreezeFrame();

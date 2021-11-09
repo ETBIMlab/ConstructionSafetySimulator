@@ -241,6 +241,12 @@ public class ForemanHandeler : MonoBehaviour
 
     public void IPadHandedOff()
     {
+        if (locationIndex < 0)
+        {
+            Debug.LogWarning("IPad is being handed off at an invalid location");
+            return;
+        
+        }
         handOffHasHappend = true;
         Debug.Log("Ipad has been handed off");
         StartCoroutine(IPadHandedOffDelayCoroutine());
@@ -248,6 +254,7 @@ public class ForemanHandeler : MonoBehaviour
 
     private IEnumerator IPadHandedOffDelayCoroutine()
     {
+        OnHandoff.Invoke();
         yield return new WaitForSeconds(locations[locationIndex].OnHandOffDelay);
         locations[locationIndex].OnHandoff.Invoke();
     }

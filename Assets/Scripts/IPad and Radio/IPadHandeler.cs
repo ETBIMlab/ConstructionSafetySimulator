@@ -112,7 +112,7 @@ public class IPadHandeler : MonoBehaviour
                 _rigidbody.useGravity = false;
                 _rigidbody.isKinematic = true;
 
-                int count = _parentConstraint.sourceCount;
+                /*int count = _parentConstraint.sourceCount;
                 GameObject go = new GameObject("Constraint fade");
                 go.hideFlags = HideFlags.HideAndDontSave;
                 go.transform.position = Vector3.zero;
@@ -121,11 +121,11 @@ public class IPadHandeler : MonoBehaviour
                 ConstraintSource c = new ConstraintSource();
                 c.sourceTransform = go.transform;
                 _parentConstraint.AddSource(c);
-                _parentConstraint.translationOffsets[count] = transform.position;
-                _parentConstraint.rotationOffsets[count] = transform.rotation.eulerAngles;
+                _parentConstraint.translationOffsets[count] = transform.localPosition;
+                _parentConstraint.rotationOffsets[count] = transform.localEulerAngles;*/
 
-                ChangeConstraintToIndex(2); // Essentailly sets partent to the last location the ipad is at
-                FadeConstraintChange(1, 2); // fades the partent to the formans left hand
+                ChangeConstraintToIndex(1); // Essentailly sets partent to the last location the ipad is at
+                //FadeConstraintChange(1, count); // fades the partent to the formans left hand
 
                 _parentConstraint.enabled = true;
 
@@ -172,7 +172,7 @@ public class IPadHandeler : MonoBehaviour
         }
     }
 
-    public void FadeConstraintChange(int newindex, int fadeindex)
+    /*public void FadeConstraintChange(int newindex, int fadeindex)
     {
         StartCoroutine(FadeConstraintChange_coroutine(newindex, fadeindex));
     }
@@ -204,7 +204,7 @@ public class IPadHandeler : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
 
     private IEnumerator ReturnToStartAfterTime(float seconds)
     {

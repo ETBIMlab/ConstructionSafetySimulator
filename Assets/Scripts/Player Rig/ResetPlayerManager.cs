@@ -87,7 +87,7 @@ public class ResetPlayerManager : MonoBehaviour
         yield return new WaitForEndOfFrame();
         fading = true;
         float counter = 0;
-        Vector3 initScale = go.transform.localScale;
+        Vector3 initScale = Vector3.one;
 
         while (counter < FadeTime)
         {
@@ -103,8 +103,7 @@ public class ResetPlayerManager : MonoBehaviour
                 break;
             }
 
-            go.transform.localScale = initScale * (1 - (counter/FadeTime));
-            Debug.Log("Loop new scale: " + go.transform.localScale);
+            go.transform.localScale = initScale * (1 - Mathf.Clamp01(counter/FadeTime));
             yield return null;
         }
 
