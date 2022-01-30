@@ -130,9 +130,9 @@ public class MenuItems
 
     #region Create Prefabs
 
-    private const string SteamVRPlayerRigPath = "Assets/Prefabs/SteamVR Player Rig";
-    private const string ContextSwitcher = "Assets/Prefabs/Context Switcher";
-    private const string FreezeAndReset = "Assets/Prefabs/Freeze And Reset";
+    private const string SteamVRPlayerRigPath = "Assets/Prefabs/SteamVR Player Rig.prefab";
+    private const string ContextSwitcher = "Assets/Prefabs/Context Switcher.prefab";
+    private const string FreezeAndReset = "Assets/Prefabs/Freeze And Reset.prefab";
 
     [MenuItem("GameObject/ETBIM/SteamVR Player Rig", false, 10)]
     static void CreateSteamVRPlayerRig(MenuCommand menuCommand)
