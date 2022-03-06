@@ -314,7 +314,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 747520825}
-  - component: {fileID: 747520824}
   m_Layer: 0
   m_Name: InputController
   m_TagString: Untagged
@@ -322,45 +321,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &747520824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 747520823}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c83dbcae34d822b4fa161db179f60fbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spaceKey:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2000061842}
-        m_TargetAssemblyTypeName: AnimationChange, Assembly-CSharp
-        m_MethodName: ChangeDirection
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1581067125}
-        m_TargetAssemblyTypeName: AnimationChange, Assembly-CSharp
-        m_MethodName: ChangeDirection
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!4 &747520825
 Transform:
   m_ObjectHideFlags: 0
@@ -384,7 +344,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 927217882}
-  - component: {fileID: 927217883}
   m_Layer: 0
   m_Name: TruckAnimation
   m_TagString: Untagged
@@ -406,19 +365,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &927217883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 927217881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c83dbcae34d822b4fa161db179f60fbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spaceKey: []
 --- !u!1 &1021613999 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4667336998801605516, guid: bfb8ba5f96a95cd4889c1dc4ca1b070c,
@@ -2336,6 +2282,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1499512781}
   - component: {fileID: 1499512780}
+  - component: {fileID: 1499512783}
   - component: {fileID: 1499512782}
   m_Layer: 0
   m_Name: TimelineController
@@ -2389,7 +2336,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c83dbcae34d822b4fa161db179f60fbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spaceKey: []
+  spaceKey:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2000061842}
+        m_TargetAssemblyTypeName: AnimationChange, Assembly-CSharp
+        m_MethodName: ChangeDirection
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1581067125}
+        m_TargetAssemblyTypeName: AnimationChange, Assembly-CSharp
+        m_MethodName: ChangeDirection
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1499512783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499512779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ecb919698f3ddd4cae29e851dc1e083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeDeltaForReset: 0.016666668
 --- !u!1 &1581067119 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 15865c9df80ca144a88714dbfd6d58d1,
@@ -2434,6 +2420,8 @@ PlayableDirector:
     value: {fileID: 1581067123}
   - key: {fileID: 0}
     value: {fileID: 2000061843}
+  - key: {fileID: 5304892083625230712, guid: 96918fc0d1409f04087ba6f62de4b9b5, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &1581067125
