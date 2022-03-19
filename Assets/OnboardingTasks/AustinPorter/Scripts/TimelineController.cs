@@ -17,6 +17,12 @@ public class TimelineController : MonoBehaviour
         }
     }
 
+    public void SetCurrentTimeline(PlayableDirector director)
+    {
+        Debug.Log("TimelineController: Set a new timeline/playable director.");
+        m_playableDirector = director;
+    }
+
     public void PlayDirector()
     {
         Debug.Log("<color=green>Playing the timeline.</color>");
