@@ -6,6 +6,7 @@ public class CutsceneController : MonoBehaviour
 {
     private Animation anim_bars;
     public List<GameObject> disableObjects;
+    public bool enableCutscene;
 
     private void Awake()
     {
@@ -14,6 +15,12 @@ public class CutsceneController : MonoBehaviour
 
     public void PlayAnimationBars()
     {
+        //return if no animatio
+        if(!enableCutscene)
+        {
+            return;
+        }
+
         anim_bars.Play();
         foreach(GameObject obj in disableObjects)
         {
@@ -23,6 +30,11 @@ public class CutsceneController : MonoBehaviour
 
     public void StopAnimationBars()
     {
+        if(!enableCutscene)
+        {
+            return;
+        }
+
         //anim_bars[anim_bars.clip.name].normalizedTime = 1f;
         //anim_bars[anim_bars.clip.name].speed = -1;
         anim_bars.Rewind();
