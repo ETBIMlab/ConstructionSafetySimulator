@@ -171,12 +171,17 @@ public class Upgrade_URPToHDRP : EditorWindow
 		litMaterial.SetTextureOffset("_NormalMap", _BaseOffset);
 		litMaterial.SetFloat("_NormalScale", _BumpScale);
 
-		//if (_ParallaxMap) 
-		//	litMaterial.SetFloat("_HeightMap", _DisplacementMode, 1);
-		litMaterial.SetTexture("_HeightMap", _ParallaxMap);
-		litMaterial.SetTextureScale("_HeightMap", _BaseScale);
-		litMaterial.SetTextureOffset("_HeightMap", _BaseOffset);
-		litMaterial.SetFloat("_HeightTessAmplitude", _Parallax * 100);
+		if (_ParallaxMap)
+		{
+			litMaterial.SetTexture("_HeightMap", _ParallaxMap);
+			litMaterial.SetTextureScale("_HeightMap", _BaseScale);
+			litMaterial.SetTextureOffset("_HeightMap", _BaseOffset);
+			litMaterial.SetFloat("_HeightTessAmplitude", _Parallax * 100);
+
+			// Pixel Displacement
+			litMaterial.SetInt("_DisplacementMode", 2);
+		}
+		
 
 		litMaterial.SetTexture("_DetailMap", _DetailMap);
 		litMaterial.SetTextureScale("_DetailMap", _DetailScale);
@@ -200,16 +205,25 @@ public class Upgrade_URPToHDRP : EditorWindow
 		litMaterial.SetFloat("_SurfaceType", _Surface);
 		litMaterial.SetFloat("_BlendMode", _Blend);
 
+		litMaterial.SetFloat("_ReceivesSSR", _EnvironmentReflections);
+		litMaterial.SetFloat("_ReceivesSSRTransparent", _EnvironmentReflections);
 
 		litMaterial.SetFloat("_EnableBlendModePreserveSpecularLighting", (_SpecularHighlights) ? 1 : 0);
 		litMaterial.SetFloat("_EnableBlendModePreserveSpecularLighting", (_SpecularHighlights) ? 1 : 0);
 
 
-		if (_Cull != 2)
+		if (_Cull == 0)
 		{
 			litMaterial.SetFloat("_DoubleSidedEnable", 1);
-			litMaterial.SetFloat("_DoubleSidedNormalMode", (_Cull == 1) ? 0 : 1);
+			litMaterial.SetFloat("_DoubleSidedNormalMode", 0);
 		}
+		else if (_Cull == 1)
+		{
+			litMaterial.SetInt("_OpaqueCullMode", 1);
+			litMaterial.SetInt("_TransparentCullMode", 1);
+		}
+
+
 
 		// TODO::
 		if (_QueueOffset != 0) Debug.LogWarning("Material '" + litMaterial.name + "' has a _QueueOffset (_QueueOffset is not compatible for HDRP)");
