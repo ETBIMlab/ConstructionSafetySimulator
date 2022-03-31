@@ -68,6 +68,7 @@ public class FreezeFrameController : MonoBehaviour
         {
             timeElapsed = 0;
             valueToLerp = 0;
+            SetTimeScale(1); //reset to normal time
         }
     }
 
