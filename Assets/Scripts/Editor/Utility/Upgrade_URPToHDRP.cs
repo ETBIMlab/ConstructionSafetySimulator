@@ -329,6 +329,7 @@ public class Upgrade_URPToHDRP : EditorWindow
 			litMaterial.SetTextureScale("_HeightMap", _BaseScale);
 			litMaterial.SetTextureOffset("_HeightMap", _BaseOffset);
 			litMaterial.SetFloat("_HeightPoMAmplitude", _Parallax);
+			litMaterial.SetFloat("_HeightTessAmplitude", _Parallax);
 
 			// Pixel Displacement
 			litMaterial.SetInt("_DisplacementMode", 2);
