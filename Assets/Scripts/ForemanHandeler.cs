@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 using UnityEngine.Events;
+using UnityEngine.AI;
 
 public class ForemanHandeler : MonoBehaviour
 {
@@ -24,7 +25,8 @@ public class ForemanHandeler : MonoBehaviour
     public Transform ForemanTrans;
     public float speed = 1.0f;
     public float AngleSpeed = 130.0f;
-    
+
+    public GameObject ForemanBody;
 
     [Header("HandOff Values")]
     public Collider IPad;
@@ -143,8 +145,11 @@ public class ForemanHandeler : MonoBehaviour
             this.locationIndex = index;
 
             InTransition = true;
-            StopAllCoroutines();
-            StartCoroutine(MoveToCoroutine());
+
+            //mine
+            NavMeshAgent agent = ForemanBody.GetComponent<NavMeshAgent>();
+            agent.destination = locations[locationIndex].location.position;
+            // end mine
 
             foreach (ForemanLocation fl in locations)
             {
@@ -173,64 +178,16 @@ public class ForemanHandeler : MonoBehaviour
             //    RATarget.forward = ForemanRightHand.position - RATarget.position;
             ForemanRig.weight = blendWeight;
         }
-    }
 
-    public IEnumerator MoveToCoroutine()
-    {
-        // Bend animation to rotating
-        ForemanController.CrossFadeInFixedTime(RotatingAnimation, FixedTransitionTime);
-
-        Quaternion temp = Quaternion.LookRotation(locations[locationIndex].location.position - ForemanTrans.position);
-        while (Quaternion.Angle(
-            ForemanTrans.rotation,
-            temp
-            ) > 0.05f)
+        // mine
+        NavMeshAgent agent = ForemanBody.GetComponent<NavMeshAgent>();
+        if(InTransition && agent.velocity.magnitude < 0.05f)
         {
-
-            ForemanTrans.rotation = Quaternion.RotateTowards(
-                ForemanTrans.rotation,
-                temp,
-                AngleSpeed * Time.deltaTime
-                );
-            yield return null;
+            InTransition = false;
         }
-
-        // blend Animation to walking
-        ForemanController.CrossFadeInFixedTime(WalkingAnimation, FixedTransitionTime);
-
-
-        while (Vector3.Distance(ForemanTrans.position, locations[locationIndex].location.position) > 0.001f)
-        {
-            ForemanTrans.position = Vector3.MoveTowards(
-                ForemanTrans.position,
-                locations[locationIndex].location.position,
-                speed * Time.deltaTime
-                );
-            yield return null;
-        }
-
-        // Blend animation to rotating
-        ForemanController.CrossFadeInFixedTime(RotatingAnimation, FixedTransitionTime);
-
-        while (Quaternion.Angle(
-            ForemanTrans.rotation,
-            locations[locationIndex].location.rotation
-            ) > 0.05f)
-        {
-            
-            ForemanTrans.rotation = Quaternion.RotateTowards(
-                ForemanTrans.rotation,
-                locations[locationIndex].location.rotation,
-                AngleSpeed * Time.deltaTime
-                );
-            yield return null;
-        }
-
-        // blend animation to idle
-        ForemanController.CrossFadeInFixedTime(IdleAnimation, FixedTransitionTime);
-
-        locations[locationIndex].location.gameObject.SetActive(true);
-        InTransition = false;
+        Animator animator = ForemanController.GetComponent<Animator>();
+        animator.SetFloat("velocity", agent.velocity.magnitude);
+        // end mine
     }
 
     public bool IsIPadHandOff()
