@@ -12806,7 +12806,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4574862453428843468}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.14927721, y: 5.484175, z: 10.221575}
+  m_LocalPosition: {x: -0.14927566, y: 5.48418, z: 10.22158}
   m_LocalScale: {x: 2, y: 2, z: 7.5509}
   m_Children:
   - {fileID: 8159486166535138696}
@@ -13656,6 +13656,9 @@ MonoBehaviour:
   triggerEnter:
     m_PersistentCalls:
       m_Calls: []
+  triggerEnterDoOnce:
+    m_PersistentCalls:
+      m_Calls: []
   triggerExit:
     m_PersistentCalls:
       m_Calls: []
@@ -14486,7 +14489,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5287305271193290895}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.14690518, y: 5.4851065, z: 3.648509}
+  m_LocalPosition: {x: -0.14691043, y: 5.485118, z: 3.6485157}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 4037877891631251757}
@@ -20614,6 +20617,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Heat Distortion
+      objectReference: {fileID: 0}
+    - target: {fileID: 2790781955504275327, guid: a34177c202a34b4429d840e4d11cd210,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a34177c202a34b4429d840e4d11cd210, type: 3}
