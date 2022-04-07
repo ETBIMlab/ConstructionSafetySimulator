@@ -10,6 +10,21 @@ public class Upgrade_URPToHDRP : EditorWindow
 	private const string DETAIL_MAP_NAME = "DetailMap";
 	private const TextureFormat DEFAULT_MASKMAP_FORMAT = TextureFormat.RGBA32;
 
+	[MenuItem("Window/URP->HDRP Wizard")]
+	[MenuItem("Edit/Render Pipeline/URP->HDRP Wizard")]
+	static void Init()
+	{
+
+		GetWindow<Upgrade_URPToHDRP>(false, "URP->HDRP Wizard").Show();
+	}
+
+	void OnGUI()
+	{
+		GUILayout.Label("Base Settings", EditorStyles.boldLabel);
+		if (GUILayout.Button("Upgrade Seleted Materials (auto pack)")) Selected_URPToHDRP_WithPacked();
+		if (GUILayout.Button("Upgrade Seleted Materials")) Selected_URPToHDRP();
+	}
+
 	private static Shader TryShaderFind(string name)
 	{
 		Shader result = Shader.Find(name);
@@ -39,7 +54,6 @@ public class Upgrade_URPToHDRP : EditorWindow
 		URP_CreatePackedTextures(urpMaterials);
 	}
 	
-	[MenuItem("Edit/Render Pipeline/Selected With-Packed URP-->HDRP")]
 	static void Selected_URPToHDRP_WithPacked()
 	{
 		Selected_UPR_PackedTextures();
@@ -47,7 +61,6 @@ public class Upgrade_URPToHDRP : EditorWindow
 	}
 
 
-	[MenuItem("Edit/Render Pipeline/Selected NO-Packed URP-->HDRP")]
 	static void Selected_URPToHDRP()
 	{
 		Undo.RegisterCompleteObjectUndo(Selection.objects, "UndoConversion");
@@ -89,6 +102,7 @@ public class Upgrade_URPToHDRP : EditorWindow
 			/*******************/
 			/* Get URP shaders */
 			/*******************/
+			// Only includes shaders that need a packed texture.
 			Shader URP_LIT = TryShaderFind("Universal Render Pipeline/Lit");
 
 			/***************************/
@@ -102,19 +116,16 @@ public class Upgrade_URPToHDRP : EditorWindow
 				if (mat.shader.name.Split('/')[0] != "Universal Render Pipeline")
 					continue; // Selected Asset is not URP
 
-				if (mat.shader == URP_LIT)
+				try
 				{
-					try { CreatePackedTextures_URPLit(mat); }
-					catch (Exception e)
-					{
-						Debug.LogError("Material asset '" + urpMaterials[i].name +
-						  "' (" + mat.shader.name + ") failed to create packed texture: " + e.Message + "\n" + e.StackTrace, urpMaterials[i]);
-					}
+					if (mat.shader == URP_LIT) CreatePackedTextures_URPLit(mat);
 				}
-				// Default...
-				else
+				catch (Exception e)
 				{
-					Debug.LogWarning("Material asset '" + mat.name + "' does not have a defined conversion for its shader: '" + mat.shader.name + "'", mat);
+					Debug.LogErrorFormat("Material asset failed to pack:\n\t" +
+						"Materail Name: {0}\n\t" +
+						"  Shader Name: {1}\n\t" +
+						"        Error: {2}\n{3}", mat.name, mat.shader, e.Message, e.StackTrace, urpMaterials[i]);
 				}
 			}
 		}
@@ -140,13 +151,20 @@ public class Upgrade_URPToHDRP : EditorWindow
 		/****************************/
 		/* Filter Materials for URP */
 		/****************************/
-		for (int i = 0; i < urpMaterials.Count; i++)
 		{
-			if (urpMaterials[i].shader.name.Split('/')[0] != "Universal Render Pipeline")
+			int len = urpMaterials.Count;
+			for (int i = 0; i < urpMaterials.Count; i++)
 			{
-				urpMaterials.RemoveAt(i);
-				i--; // This index is removed, thus repeat this index.
+				if (urpMaterials[i].shader.name.Split('/')[0] != "Universal Render Pipeline")
+				{
+					urpMaterials.RemoveAt(i);
+					i--; // This index is removed, thus repeat this index.
+				}
 			}
+
+			Debug.LogFormat("Converting Materails from URP to HDRP::\n\t" +
+				"Total Targeted Material Count: {0}\n\t" +
+				"           URP Material Count: {1}", len, urpMaterials.Count);
 		}
 
 		try
@@ -161,8 +179,11 @@ public class Upgrade_URPToHDRP : EditorWindow
 			Shader URP_LIT = TryShaderFind("Universal Render Pipeline/Lit");
 			Shader HDRP_LIT = TryShaderFind("HDRP/Lit");
 
+			Shader URP_ST7 = TryShaderFind("Universal Render Pipeline/Nature/SpeedTree7");
+			Shader HDRP_ST8 = TryShaderFind("HDRP/Nature/SpeedTree8");
+
 			/***************************/
-			/*   Convert Each Shader   */
+			/*  Convert Each Material  */
 			/***************************/
 			for (int i = 0; i < urpMaterials.Count; i++)
 			{
@@ -171,28 +192,34 @@ public class Upgrade_URPToHDRP : EditorWindow
 
 				if (mat.shader.name.Split('/')[0] != "Universal Render Pipeline")
 					continue; // Selected Asset is not URP
+				try
+				{
+					// Switch statement for shader conversion
+					if (mat.shader == URP_LIT) URPToHDRP_Lit(mat, HDRP_LIT);
+					else if (mat.shader == URP_ST7) URPToHDRP_SpeedTree7(mat, HDRP_ST8);
 
-				if (mat.shader == URP_LIT)
-				{
-					try { URPToHDRP_LitMaterial(mat, HDRP_LIT); }
-					catch (Exception e) 
-						{ Debug.LogError("Material asset '" + urpMaterials[i].name + 
-							"' (URP Lit) failed to convert to HDRP: " + e.Message + "\n" + e.StackTrace, urpMaterials[i]); }
+					// Default...
+					else
+					{
+						Debug.LogWarning("Material asset '" + mat.name + "' does not have a defined conversion for its shader: '" + mat.shader.name + "'", mat);
+					}
 				}
-				// Default...
-				else
+				catch (Exception e)
 				{
-					Debug.LogWarning("Material asset '" + mat.name + "' does not have a defined conversion for its shader: '" + mat.shader.name + "'", mat);
+					Debug.LogErrorFormat("Material asset failed to convert to HDRP:\n\t" +
+						"Materail Name: {0}\n\t" +
+						"  Shader Name: {1}\n\t" +
+						"        Error: {2}\n{3}", mat.name, mat.shader, e.Message, e.StackTrace, urpMaterials[i]);
 				}
 			}
 		}
 		catch(InvalidDataException e)
 		{
-			Debug.LogError(e.Message + " Check to make sure URP and HDRP are included in the project.");
+			Debug.LogError(e.Message + " Check to make sure URP and HDRP are included in the project. (Note, URP must be included in order to identify which shader materials start with)");
 		}
 		catch (Exception e)
 		{
-			Debug.LogError(e.Message + "\n" + e.StackTrace);
+			Debug.LogError("Critical Error. Stopping conversion:\n" + e.Message + "\n" + e.StackTrace);
 		}
 		finally
 		{
@@ -203,7 +230,11 @@ public class Upgrade_URPToHDRP : EditorWindow
 		}
 	}
 
-	private static void URPToHDRP_LitMaterial(Material litMaterial, Shader HDRP_LIT)
+	/******************************/
+	/* Shader Property Converters */
+	/******************************/
+
+	private static void URPToHDRP_Lit(Material litMaterial, Shader HDRP_LIT)
 	{
 		// WorkflowMode: Specular = 0, Metallic = 1
 		int _WorkflowMode = (int)litMaterial.GetFloat("_WorkflowMode");
@@ -380,6 +411,100 @@ public class Upgrade_URPToHDRP : EditorWindow
 		if (!_ReceiveShadows) Debug.LogWarning("Material '" + litMaterial.name + "' is set to NOT receive shadows, which HDRP does not support. Consider using Light Layers instead.");
 	}
 
+	/// NOTES:
+	/// - Detail is not supported
+	/// - Face culling is forced to back. (Double sided mode is flipped normals)
+	private static void URPToHDRP_SpeedTree7(Material st7Material, Shader HDRP_ST8)
+	{
+		bool EFFECT_BUMP = st7Material.IsKeywordEnabled("EFFECT_BUMP");
+		bool ENABLE_WIND = st7Material.IsKeywordEnabled("ENABLE_WIND");
+		bool EFFECT_HUE_VARIATION = st7Material.IsKeywordEnabled("EFFECT_HUE_VARIATION");
+		bool GEOM_TYPE_BRANCH_DETAIL = st7Material.IsKeywordEnabled("GEOM_TYPE_BRANCH_DETAIL"); 
+		bool GEOM_TYPE_BRANCH = st7Material.IsKeywordEnabled("GEOM_TYPE_BRANCH");
+		bool SPEEDTREE_ALPHATEST = st7Material.IsKeywordEnabled("SPEEDTREE_ALPHATEST"); 
+
+		 // (Base) Color
+		 Color _Color = st7Material.GetColor("_Color");
+		// (Base) Hue Variation
+		Color _HueVariation = st7Material.GetColor("_HueVariation");
+		// Albedo
+		Texture2D _MainTex = (Texture2D)st7Material.GetTexture("_MainTex");
+		// N/A
+		Vector2 _MainScale = st7Material.GetTextureScale("_MainTex");
+		// N/A
+		Vector2 _MainOffset = st7Material.GetTextureOffset("_MainTex");
+
+		if (GEOM_TYPE_BRANCH_DETAIL)
+		{
+			Debug.LogWarning("SpeedTree7 Material '" + st7Material.name + "' is set to 'Branch Detail'. Detail map will not be preserved.", st7Material);
+
+			//NOTE:: Detail is not compatable with HDRP SpeedTree8
+			//Texture2D _DetailTex = (Texture2D)st7Material.GetTexture("_DetailTex");
+			//Vector2 _DetailScale = st7Material.GetTextureScale("_DetailTex");
+			//Vector2 _DetailOffset = st7Material.GetTextureOffset("_DetailTex");
+		}
+
+		// Normal Map
+		Texture2D _BumpMap = (Texture2D)st7Material.GetTexture("_BumpMap");
+		// N/A
+		Vector2 _BumpScale = st7Material.GetTextureScale("_BumpMap");
+		// N/A
+		Vector2 _BumpOffset = st7Material.GetTextureOffset("_BumpMap");
+
+		// (Alpha) Threshold: Boolean
+		float _Cutoff = st7Material.GetFloat("_Cutoff");
+		// Render Face: Front = 2, Back = 1, Both = 0
+		int _Cull = (int)st7Material.GetFloat("_Cull");
+		// Wind Quality: None = 0, Fastest = 1, Fast = 2, Better = 3, Best = 4, Palm = 5
+		int _WindQuality = (int)st7Material.GetFloat("_WindQuality");
+
+		st7Material.shader = HDRP_ST8;
+
+		// Base Map
+		st7Material.SetTexture("_MainTex", _MainTex);
+		st7Material.SetTextureScale("_MainTex", _MainScale);
+		st7Material.SetTextureOffset("_MainTex", _MainOffset);
+
+		// Color Tint
+		st7Material.SetColor("_Color", _Color);
+		// Enable Hue Variation (bool)
+		st7Material.SetFloat("_HueVariationKwToggle", EFFECT_HUE_VARIATION ? 1 : 0); 
+		// Hue Variation Color
+		st7Material.SetColor("_HueVariationColor", _HueVariation);
+
+		// Normal Mapping (bool)
+		st7Material.SetFloat("_NormalMapKwToggle", EFFECT_BUMP ? 1 : 0);
+		// Normal Map
+		st7Material.SetTexture("_BumpMap", _BumpMap);
+		st7Material.SetTextureScale("_BumpMap", _BumpScale);
+		st7Material.SetTextureOffset("_BumpMap", _BumpScale);
+
+		// Enable Extra Map (bool)
+		st7Material.SetFloat("EFFECT_EXTRA_TEX", 0);
+		// Smoothness (R), Met (G), AO (B)
+		st7Material.SetTexture("_ExtraTex", null); 
+		
+		// Smoothness
+		st7Material.SetFloat("_Glossiness", GEOM_TYPE_BRANCH ? 0 : 1);
+		// Subsurface Map
+		st7Material.SetTexture("_SubsurfaceTex", null);
+		// Subsurface Scale
+		st7Material.SetFloat("_SubsurfaceScale", 1);
+
+		// TODO:: DEFFUSION_Profile !!!
+
+		// Alpha Clip Threshold
+		st7Material.SetFloat("_AlphaClipThreshold", SPEEDTREE_ALPHATEST ? _Cutoff : 0);
+		// Enable Wind
+		st7Material.SetFloat("_WindQuality", ENABLE_WIND ? 1 : 0);
+		// Wind Quality 
+		st7Material.SetFloat("_WINDQUALITY", _WindQuality); 
+	}
+
+	/****************************/
+	/* Creating Packed Textuers */
+	/****************************/
+
 	private static void CreatePackedTextures_URPLit(Material litMaterial)
 	{
 		int _WorkflowMode = (int)litMaterial.GetFloat("_WorkflowMode");
@@ -394,7 +519,6 @@ public class Upgrade_URPToHDRP : EditorWindow
 		CreatePackedMaskMap((_WorkflowMode == 0) ? null : _MetallicGlossMap, _OcclusionMap, _DetailMask, (_SmoothnessTextureChannel == 0) ? _MetallicGlossMap : _BaseMap);
 		CreatePackedDetailMap(_DetailAlbedoMap, _DetailNormalMap, null);
 	}
-
 
 	private static void CreatePackedMaskMap(Texture2D metallic, Texture2D occlusion, Texture2D height, Texture2D smoothness)
 	{
