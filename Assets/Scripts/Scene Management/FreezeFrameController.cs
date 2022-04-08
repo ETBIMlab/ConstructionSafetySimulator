@@ -9,12 +9,33 @@ public class FreezeFrameController : MonoBehaviour
     public UnityEvent OnStartFreezeFrame;
     public UnityEvent OnStopFreezeFrame;
 
+    
+    public float lerpDuration = 3;
+    public float startValue = 1;
+    public float endValue = 0.001f;
+
+    private float timeElapsed = 0;
+    private float valueToLerp = 0;
+
+    public bool slowOn = false;
+    public bool reset = false;
+
     public void StartFreezeFrame()
     {
         if (TimeScaleLock.timeScaleWritable)
             OnStartFreezeFrame.Invoke();
 
-        SetTimeScale(0.001f);
+        reset = false;
+        timeElapsed = 0;
+        valueToLerp = 0;
+        SetTimeScale(1);
+        slowOn = true;
+    }
+
+    public void StartFreezeFrame(float duration)
+    {
+        lerpDuration = duration;
+        StartFreezeFrame();
     }
 
     public void StopFreezeFrame()
@@ -22,7 +43,33 @@ public class FreezeFrameController : MonoBehaviour
         if (TimeScaleLock.timeScaleWritable)
             OnStopFreezeFrame.Invoke();
 
+        slowOn = false;
+        reset = false;
+        timeElapsed = 0;
+        valueToLerp = 0;
         SetTimeScale(1);
+    }
+
+    public void FullStop()
+    {
+        SetTimeScale(0.0001f); //full stop the timeline
+    }
+
+    private void Update()
+    {
+        if(slowOn && (timeElapsed < lerpDuration))
+        {
+            valueToLerp = Mathf.Lerp(startValue, endValue, timeElapsed / lerpDuration);
+            SetTimeScale(valueToLerp); //set the current time after lerp
+            timeElapsed += Time.deltaTime;
+        }
+
+        if(reset)
+        {
+            timeElapsed = 0;
+            valueToLerp = 0;
+            SetTimeScale(1); //reset to normal time
+        }
     }
 
     public void SetTimeScale(float timeScale)

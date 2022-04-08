@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028364, g: 0.22571364, b: 0.306922, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1990,7 +1990,7 @@ Terrain:
   m_DrawInstanced: 0
   m_DrawTreesAndFoliage: 1
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
+  m_MaterialTemplate: {fileID: 2100000, guid: 22ff8771d87ef27429e670136399094b, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -5612,7 +5612,7 @@ Terrain:
   m_DrawInstanced: 0
   m_DrawTreesAndFoliage: 1
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
+  m_MaterialTemplate: {fileID: 2100000, guid: 22ff8771d87ef27429e670136399094b, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -8138,7 +8138,7 @@ Terrain:
   m_DrawInstanced: 0
   m_DrawTreesAndFoliage: 1
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
+  m_MaterialTemplate: {fileID: 2100000, guid: 22ff8771d87ef27429e670136399094b, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -14152,17 +14152,17 @@ PrefabInstance:
     - target: {fileID: 250906794666755817, guid: 3fb672d2c2791444589a393797e0c186,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.2076035
+      value: 0.2076036
       objectReference: {fileID: 0}
     - target: {fileID: 250906794666755817, guid: 3fb672d2c2791444589a393797e0c186,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.009221676
+      value: 0.009221671
       objectReference: {fileID: 0}
     - target: {fileID: 250906794666755817, guid: 3fb672d2c2791444589a393797e0c186,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0434071
+      value: 0.043407097
       objectReference: {fileID: 0}
     - target: {fileID: 887368825455766330, guid: 3fb672d2c2791444589a393797e0c186,
         type: 3}
@@ -14207,17 +14207,17 @@ PrefabInstance:
     - target: {fileID: 1742324925763099673, guid: 3fb672d2c2791444589a393797e0c186,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.009222359
+      value: -0.009220977
       objectReference: {fileID: 0}
     - target: {fileID: 1742324925763099673, guid: 3fb672d2c2791444589a393797e0c186,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.20760345
+      value: 0.20760357
       objectReference: {fileID: 0}
     - target: {fileID: 1742324925763099673, guid: 3fb672d2c2791444589a393797e0c186,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.97720605
+      value: -0.977206
       objectReference: {fileID: 0}
     - target: {fileID: 2328001968289188693, guid: 3fb672d2c2791444589a393797e0c186,
         type: 3}
@@ -14227,12 +14227,12 @@ PrefabInstance:
     - target: {fileID: 2328001968289188693, guid: 3fb672d2c2791444589a393797e0c186,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.20761862
+      value: 0.20761849
       objectReference: {fileID: 0}
     - target: {fileID: 2328001968289188693, guid: 3fb672d2c2791444589a393797e0c186,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.008901018
+      value: -0.008901024
       objectReference: {fileID: 0}
     - target: {fileID: 2328001968289188693, guid: 3fb672d2c2791444589a393797e0c186,
         type: 3}
@@ -14287,17 +14287,17 @@ PrefabInstance:
     - target: {fileID: 4499910956983838592, guid: 3fb672d2c2791444589a393797e0c186,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0006656334
+      value: 0.00003353891
       objectReference: {fileID: 0}
     - target: {fileID: 4499910956983838592, guid: 3fb672d2c2791444589a393797e0c186,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.1199863
+      value: -0.119985625
       objectReference: {fileID: 0}
     - target: {fileID: 4499910956983838592, guid: 3fb672d2c2791444589a393797e0c186,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.99277514
+      value: -0.9927754
       objectReference: {fileID: 0}
     - target: {fileID: 5412220881209631611, guid: 3fb672d2c2791444589a393797e0c186,
         type: 3}
@@ -14317,17 +14317,17 @@ PrefabInstance:
     - target: {fileID: 5676019081521313902, guid: 3fb672d2c2791444589a393797e0c186,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0007710029
+      value: -0.00077100296
       objectReference: {fileID: 0}
     - target: {fileID: 5676019081521313902, guid: 3fb672d2c2791444589a393797e0c186,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.009709356
+      value: 0.009709261
       objectReference: {fileID: 0}
     - target: {fileID: 5676019081521313902, guid: 3fb672d2c2791444589a393797e0c186,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.9999523
+      value: -0.99995226
       objectReference: {fileID: 0}
     - target: {fileID: 5892952161820061898, guid: 3fb672d2c2791444589a393797e0c186,
         type: 3}
@@ -14347,17 +14347,17 @@ PrefabInstance:
     - target: {fileID: 6062644997052708436, guid: 3fb672d2c2791444589a393797e0c186,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.00078667223
+      value: -0.000021738912
       objectReference: {fileID: 0}
     - target: {fileID: 6062644997052708436, guid: 3fb672d2c2791444589a393797e0c186,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.009709568
+      value: 0.009710178
       objectReference: {fileID: 0}
     - target: {fileID: 6062644997052708436, guid: 3fb672d2c2791444589a393797e0c186,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.99995226
+      value: -0.99995255
       objectReference: {fileID: 0}
     - target: {fileID: 6410447079129229953, guid: 3fb672d2c2791444589a393797e0c186,
         type: 3}
@@ -14437,17 +14437,17 @@ PrefabInstance:
     - target: {fileID: 7571141255680882693, guid: 3fb672d2c2791444589a393797e0c186,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0006796973
+      value: 0.00007903879
       objectReference: {fileID: 0}
     - target: {fileID: 7571141255680882693, guid: 3fb672d2c2791444589a393797e0c186,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.11998443
+      value: -0.119984
       objectReference: {fileID: 0}
     - target: {fileID: 7571141255680882693, guid: 3fb672d2c2791444589a393797e0c186,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.9927753
+      value: -0.9927755
       objectReference: {fileID: 0}
     - target: {fileID: 8240594678705809743, guid: 3fb672d2c2791444589a393797e0c186,
         type: 3}
@@ -14477,12 +14477,12 @@ PrefabInstance:
     - target: {fileID: 8692836913067656042, guid: 3fb672d2c2791444589a393797e0c186,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.008901423
+      value: -0.008902125
       objectReference: {fileID: 0}
     - target: {fileID: 8692836913067656042, guid: 3fb672d2c2791444589a393797e0c186,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.20761862
+      value: -0.20761847
       objectReference: {fileID: 0}
     - target: {fileID: 8692836913067656042, guid: 3fb672d2c2791444589a393797e0c186,
         type: 3}
@@ -18243,7 +18243,7 @@ Terrain:
   m_DrawInstanced: 0
   m_DrawTreesAndFoliage: 1
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
+  m_MaterialTemplate: {fileID: 2100000, guid: 22ff8771d87ef27429e670136399094b, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -20070,7 +20070,7 @@ Terrain:
   m_DrawInstanced: 0
   m_DrawTreesAndFoliage: 1
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
+  m_MaterialTemplate: {fileID: 2100000, guid: 22ff8771d87ef27429e670136399094b, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -21910,7 +21910,7 @@ Terrain:
   m_DrawInstanced: 0
   m_DrawTreesAndFoliage: 1
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
+  m_MaterialTemplate: {fileID: 2100000, guid: 22ff8771d87ef27429e670136399094b, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -27238,6 +27238,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 608043593665065996, guid: 224439cad4b86594882700c3e903ad43,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.08000183
+      objectReference: {fileID: 0}
+    - target: {fileID: 608043593665065996, guid: 224439cad4b86594882700c3e903ad43,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5640011
+      objectReference: {fileID: 0}
+    - target: {fileID: 608043593665065996, guid: 224439cad4b86594882700c3e903ad43,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.14799881
+      objectReference: {fileID: 0}
     - target: {fileID: 4012904143335841850, guid: 224439cad4b86594882700c3e903ad43,
         type: 3}
       propertyPath: m_Name
@@ -30665,7 +30680,7 @@ Terrain:
   m_DrawInstanced: 0
   m_DrawTreesAndFoliage: 1
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
+  m_MaterialTemplate: {fileID: 2100000, guid: 22ff8771d87ef27429e670136399094b, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -31599,7 +31614,7 @@ Terrain:
   m_DrawInstanced: 0
   m_DrawTreesAndFoliage: 1
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
+  m_MaterialTemplate: {fileID: 2100000, guid: 22ff8771d87ef27429e670136399094b, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -43309,7 +43324,7 @@ Terrain:
   m_DrawInstanced: 0
   m_DrawTreesAndFoliage: 1
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
+  m_MaterialTemplate: {fileID: 2100000, guid: 22ff8771d87ef27429e670136399094b, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -43745,7 +43760,7 @@ Terrain:
   m_DrawInstanced: 0
   m_DrawTreesAndFoliage: 1
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
+  m_MaterialTemplate: {fileID: 2100000, guid: 22ff8771d87ef27429e670136399094b, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -46987,7 +47002,7 @@ Terrain:
   m_DrawInstanced: 0
   m_DrawTreesAndFoliage: 1
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
+  m_MaterialTemplate: {fileID: 2100000, guid: 22ff8771d87ef27429e670136399094b, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -47139,11 +47154,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
         type: 3}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
-        type: 3}
       propertyPath: m_Volume
       value: 0.25
       objectReference: {fileID: 0}
@@ -47159,28 +47169,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
         type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
+        type: 3}
       propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].time
       value: 0.034859132
-      objectReference: {fileID: 0}
-    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
-        type: 3}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].inSlope
-      value: -28.698486
-      objectReference: {fileID: 0}
-    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
-        type: 3}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].outSlope
-      value: -28.698486
-      objectReference: {fileID: 0}
-    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
-        type: 3}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].inWeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
-        type: 3}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].outWeight
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
         type: 3}
@@ -47189,48 +47184,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
         type: 3}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].value
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
-        type: 3}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].inSlope
-      value: -7.1746216
-      objectReference: {fileID: 0}
-    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
-        type: 3}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].outSlope
-      value: -7.1746216
-      objectReference: {fileID: 0}
-    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
-        type: 3}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].inWeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
-        type: 3}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].outWeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
-        type: 3}
       propertyPath: rolloffCustomCurve.m_Curve.Array.data[2].time
       value: 0.13943653
-      objectReference: {fileID: 0}
-    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
-        type: 3}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[2].value
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
-        type: 3}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[2].inSlope
-      value: -1.7936554
-      objectReference: {fileID: 0}
-    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
-        type: 3}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[2].outSlope
-      value: -1.7936554
       objectReference: {fileID: 0}
     - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
         type: 3}
@@ -47239,38 +47194,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
         type: 3}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[3].value
-      value: 0.125
-      objectReference: {fileID: 0}
-    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
-        type: 3}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[3].inSlope
-      value: -0.44841385
-      objectReference: {fileID: 0}
-    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
-        type: 3}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[3].outSlope
-      value: -0.44841385
-      objectReference: {fileID: 0}
-    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
-        type: 3}
       propertyPath: rolloffCustomCurve.m_Curve.Array.data[4].time
       value: 0.5577461
-      objectReference: {fileID: 0}
-    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
-        type: 3}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[4].value
-      value: 0.0625
-      objectReference: {fileID: 0}
-    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
-        type: 3}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[4].inSlope
-      value: -0.11210346
-      objectReference: {fileID: 0}
-    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
-        type: 3}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[4].outSlope
-      value: -0.11210346
       objectReference: {fileID: 0}
     - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
         type: 3}
@@ -47279,13 +47204,103 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
         type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].value
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[2].value
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[3].value
+      value: 0.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[4].value
+      value: 0.0625
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].inSlope
+      value: -28.698486
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].inSlope
+      value: -7.1746216
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[2].inSlope
+      value: -1.7936554
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[3].inSlope
+      value: -0.44841385
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[4].inSlope
+      value: -0.11210346
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
+        type: 3}
       propertyPath: rolloffCustomCurve.m_Curve.Array.data[5].inSlope
       value: -0.034873094
       objectReference: {fileID: 0}
     - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
         type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].inWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].outSlope
+      value: -28.698486
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].inWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].outSlope
+      value: -7.1746216
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[2].outSlope
+      value: -1.7936554
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[3].outSlope
+      value: -0.44841385
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[4].outSlope
+      value: -0.11210346
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
+        type: 3}
       propertyPath: rolloffCustomCurve.m_Curve.Array.data[5].outSlope
       value: -0.034873094
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].outWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202345318118992226, guid: 66aaba6c6d752724fa27ce4378c18865,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].outWeight
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66aaba6c6d752724fa27ce4378c18865, type: 3}
@@ -50196,13 +50211,13 @@ MonoBehaviour:
   SteamVR_Object: {fileID: 1997154413}
   NoVR_Object: {fileID: 1368602713}
   ResetVectors:
-  - sceneRoot: Assets/Scenes/Virtual Pipeline/
-    sceneName: Scene0Start
+  - sceneName: Scene0Start
+    sceneRoot: Assets/Scenes/Virtual Pipeline/
     keyCode: 256
     sceneNumber: 0
     InitialTransform: {fileID: 312906314}
-  - sceneRoot: Assets/Scenes/Virtual Pipeline/
-    sceneName: ShackAssembly
+  - sceneName: ShackAssembly
+    sceneRoot: Assets/Scenes/Virtual Pipeline/
     keyCode: 32
     sceneNumber: 1
     InitialTransform: {fileID: 95137696}
@@ -51610,7 +51625,7 @@ Terrain:
   m_DrawInstanced: 0
   m_DrawTreesAndFoliage: 1
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
+  m_MaterialTemplate: {fileID: 2100000, guid: 22ff8771d87ef27429e670136399094b, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -51686,7 +51701,7 @@ Terrain:
   m_DrawInstanced: 0
   m_DrawTreesAndFoliage: 1
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
+  m_MaterialTemplate: {fileID: 2100000, guid: 22ff8771d87ef27429e670136399094b, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -51837,7 +51852,7 @@ Terrain:
   m_DrawInstanced: 0
   m_DrawTreesAndFoliage: 1
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
+  m_MaterialTemplate: {fileID: 2100000, guid: 22ff8771d87ef27429e670136399094b, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -52435,7 +52450,7 @@ Terrain:
   m_DrawInstanced: 0
   m_DrawTreesAndFoliage: 1
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
+  m_MaterialTemplate: {fileID: 2100000, guid: 22ff8771d87ef27429e670136399094b, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1

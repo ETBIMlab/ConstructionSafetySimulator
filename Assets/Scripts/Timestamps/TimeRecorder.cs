@@ -2,44 +2,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TimeRecorder : MonoBehaviour
+public class TimeRecorder
 {
-    [System.NonSerialized]
-    public static System.DateTime startTime = System.DateTime.Now;
+	public const string RECORD_FILE = "Saved/Time Stamp Log.txt";
+	public const bool CLEAR_ON_LOAD = true;
 
-    [System.NonSerialized]
-    public static System.DateTime sceneStartTime = System.DateTime.Now;
-    public static List<string> timeRecords = new List<string>();
-    //public static List<string> durationRecords = new List<string>();
+	[System.NonSerialized]
+	public static System.DateTime startTime;
+	[System.NonSerialized]
+	public static System.DateTime sceneStartTime;
 
-    private static bool firstUse = true;
+	public static List<string> timeRecords = new List<string>();
 
-    public static void updateTimeRecords(string message) {
-        System.DateTime currentTime = System.DateTime.Now;
-        System.TimeSpan currentSceneDuration = currentTime.Subtract(sceneStartTime);
-        System.TimeSpan duration = currentTime.Subtract(startTime);
+	[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+	static void InitailizeFile()
+	{
+		startTime = System.DateTime.Now;
+		sceneStartTime = System.DateTime.Now;
 
-        string currentTimeMessage = message + " Timestamp: " + currentTime.ToShortTimeString() + " Total Duration: " + duration.ToString("mm':'ss") + " Scene Duration:  " + currentSceneDuration.ToString("mm':'ss");
-        // string durationMessage = message + " " + duration.TotalMinutes + ":" + duration.TotalSeconds;
-        timeRecords.Add(currentTimeMessage);
-        Debug.Log(currentTimeMessage);
-        //durationRecords.Add(durationMessage);
-        if(firstUse == true){
-             using(System.IO.StreamWriter writetext = new System.IO.StreamWriter("Time Stamp Log.txt", append: false))
-        {
-            writetext.WriteLine(currentTimeMessage);
-        }
-            firstUse = false;
-        } else {
-            using(System.IO.StreamWriter writetext = new System.IO.StreamWriter("Time Stamp Log.txt", append: true))
-            {
-                writetext.WriteLine(currentTimeMessage);
-            }
-        }
+		UpdateTimeRecords("Construction Saftey Simulator has begun", CLEAR_ON_LOAD);
+	}
 
-    }
+	public static void UpdateTimeRecords(string message, bool clearlog = false)
+	{
+		string currentTimeMessage = CreateTimeMessage(message);
 
-    public static void printRecords() {
+		Debug.Log("[Logging TimeRecorder]:: " + currentTimeMessage);
 
-    }
+		using(System.IO.StreamWriter writetext = new System.IO.StreamWriter(Application.dataPath + "/../" + RECORD_FILE, append: !clearlog))
+		{
+			writetext.WriteLine(currentTimeMessage);
+		}
+	}
+
+	private static string CreateTimeMessage(string message)
+	{
+		System.DateTime currentTime = System.DateTime.Now;
+		System.TimeSpan currentSceneDuration = currentTime.Subtract(sceneStartTime);
+		System.TimeSpan duration = currentTime.Subtract(startTime);
+
+		return string.Format("Time: {1}, App Dur.: {2}, Scene Dur.: {3}\n\t{0}",
+			message, currentTime.ToShortTimeString(), duration.ToString("mm':'ss"), currentSceneDuration.ToString("mm':'ss"));
+	}
+
+	public static void printRecords() {
+
+	}
 }

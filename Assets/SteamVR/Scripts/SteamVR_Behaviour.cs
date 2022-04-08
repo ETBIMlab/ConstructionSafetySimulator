@@ -173,28 +173,17 @@ namespace Valve.VR
         }
 #endif
 
-#if UNITY_2017_1_OR_NEWER
 
         protected void OnEnable()
         {
-#if UNITY_URP
             UnityEngine.Rendering.RenderPipelineManager.beginFrameRendering += BeginFrameRendering;
-#else
-            Application.onBeforeRender += OnBeforeRender;
-#endif
             SteamVR_Events.System(EVREventType.VREvent_Quit).Listen(OnQuit);
         }
         protected void OnDisable()
         {
-#if UNITY_URP
             UnityEngine.Rendering.RenderPipelineManager.beginFrameRendering -= BeginFrameRendering;
-#else
-		    Application.onBeforeRender -= OnBeforeRender;
-#endif
             SteamVR_Events.System(EVREventType.VREvent_Quit).Remove(OnQuit);
         }
-
-#if UNITY_URP
         void BeginFrameRendering(UnityEngine.Rendering.ScriptableRenderContext discard1, Camera[] discard2)
         {
             try
@@ -203,36 +192,9 @@ namespace Valve.VR
             }
             catch (Exception e)
             {
-                Debug.LogError("STEAMVR PRECULL ERROR:: " + e.Message);
+                Debug.LogError("STEAMVR PRECULL ERROR:: " + e.Message + "\n" + e.StackTrace);
             }
         }
-#else
-	    protected void OnBeforeRender()
-        {
-            PreCull();
-        }
-#endif
-
-
-#else
-        protected void OnEnable()
-        {
-            Camera.onPreCull += OnCameraPreCull;
-            SteamVR_Events.System(EVREventType.VREvent_Quit).Listen(OnQuit);
-        }
-        protected void OnDisable()
-        {
-            Camera.onPreCull -= OnCameraPreCull;
-            SteamVR_Events.System(EVREventType.VREvent_Quit).Remove(OnQuit);
-        }
-        protected void OnCameraPreCull(Camera cam)
-        {
-            if (!cam.stereoEnabled)
-                return;
-
-            PreCull();
-        }
-#endif
 
         protected static int lastFrameCount = -1;
         protected void PreCull()
