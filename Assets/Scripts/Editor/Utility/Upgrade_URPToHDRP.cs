@@ -3,6 +3,13 @@ using UnityEditor;
 using System.Collections.Generic;
 using System;
 using System.IO;
+using UnityEditor.Rendering.HighDefinition;
+using UnityEngine.Rendering.HighDefinition;
+using UnityEngine.Rendering;
+using UnityEngine.UIElements;
+using UnityEditorInternal;
+using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 
 public class Upgrade_URPToHDRP : EditorWindow
 {
@@ -10,19 +17,68 @@ public class Upgrade_URPToHDRP : EditorWindow
 	private const string DETAIL_MAP_NAME = "DetailMap";
 	private const TextureFormat DEFAULT_MASKMAP_FORMAT = TextureFormat.RGBA32;
 
+	private static Vector4 ConvertGUIDToVector4(string guid)
+	{
+		byte[] bytes = new byte[16];
+
+		for (int i = 0; i < 16; i++)
+			bytes[i] = byte.Parse(guid.Substring(i * 2, 2), System.Globalization.NumberStyles.HexNumber);
+
+		return BytesAs<Vector4>(bytes);
+	}
+
+	private static float Asfloat(int hash)
+	{
+		return BytesAs<float>(BitConverter.GetBytes(hash));
+	}
+
+	private static T BytesAs<T>(params byte[] bytes)
+	{
+		BinaryFormatter bf = new BinaryFormatter();
+		try
+		{
+			using (MemoryStream ms = new MemoryStream(bytes))
+			{
+				object obj = bf.Deserialize(ms);
+				return (T)obj;
+			}
+		}
+		catch { return default(T); }
+	}
+
+	private static UnityEngine.Object defaultDiffusionAsset = null;
+	private static Vector4 defaultDiffusionAsset_V4;
+	private static float defaultDiffusionAsset_f;
+
 	[MenuItem("Window/URP->HDRP Wizard")]
 	[MenuItem("Edit/Render Pipeline/URP->HDRP Wizard")]
 	static void Init()
 	{
-
 		GetWindow<Upgrade_URPToHDRP>(false, "URP->HDRP Wizard").Show();
 	}
 
 	void OnGUI()
 	{
 		GUILayout.Label("Base Settings", EditorStyles.boldLabel);
+		UpdateDiffuseAsset((UnityEngine.Object)EditorGUILayout.ObjectField("Defusion Value: ", defaultDiffusionAsset, Type.GetType("DiffusionProfileSettings"), false));
+
+		
+
+
+		//AssetDatabase.GetMainAssetTypeAtPath("").Name
 		if (GUILayout.Button("Upgrade Seleted Materials (auto pack)")) Selected_URPToHDRP_WithPacked();
 		if (GUILayout.Button("Upgrade Seleted Materials")) Selected_URPToHDRP();
+	}
+
+	private void UpdateDiffuseAsset(UnityEngine.Object obj)
+	{
+		if (obj && obj != defaultDiffusionAsset)
+		{
+			defaultDiffusionAsset = obj;
+			string diffuse_ap = AssetDatabase.GetAssetPath(defaultDiffusionAsset);
+			Debug.Log(diffuse_ap + "  ::  " + AssetDatabase.GetMainAssetTypeAtPath(diffuse_ap).Name);
+		}
+		
 	}
 
 	private static Shader TryShaderFind(string name)
@@ -491,14 +547,17 @@ public class Upgrade_URPToHDRP : EditorWindow
 		// Subsurface Scale
 		st7Material.SetFloat("_SubsurfaceScale", 1);
 
-		// TODO:: DEFFUSION_Profile !!!
+		st7Material.SetVector("Diffusion_Profile_Asset", defaultDiffusionAsset_V4);
+		st7Material.SetFloat("Diffusion_Profile", defaultDiffusionAsset_f);
 
 		// Alpha Clip Threshold
 		st7Material.SetFloat("_AlphaClipThreshold", SPEEDTREE_ALPHATEST ? _Cutoff : 0);
 		// Enable Wind
 		st7Material.SetFloat("_WindQuality", ENABLE_WIND ? 1 : 0);
 		// Wind Quality 
-		st7Material.SetFloat("_WINDQUALITY", _WindQuality); 
+		st7Material.SetFloat("_WINDQUALITY", _WindQuality);
+
+		
 	}
 
 	/****************************/
