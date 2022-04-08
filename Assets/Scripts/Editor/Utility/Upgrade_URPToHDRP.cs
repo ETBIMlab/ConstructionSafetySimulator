@@ -4,12 +4,8 @@ using System.Collections.Generic;
 using System;
 using System.IO;
 using UnityEditor.Rendering.HighDefinition;
-using UnityEngine.Rendering.HighDefinition;
-using UnityEngine.Rendering;
-using UnityEngine.UIElements;
-using UnityEditorInternal;
-using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Reflection;
 
 public class Upgrade_URPToHDRP : EditorWindow
 {
@@ -19,6 +15,7 @@ public class Upgrade_URPToHDRP : EditorWindow
 
 	private static Vector4 ConvertGUIDToVector4(string guid)
 	{
+		Debug.Log("GUID: " + guid);
 		byte[] bytes = new byte[16];
 
 		for (int i = 0; i < 16; i++)
@@ -29,26 +26,35 @@ public class Upgrade_URPToHDRP : EditorWindow
 
 	private static float Asfloat(int hash)
 	{
+		Debug.Log("Hash: " + hash);
 		return BytesAs<float>(BitConverter.GetBytes(hash));
 	}
 
 	private static T BytesAs<T>(params byte[] bytes)
 	{
-		BinaryFormatter bf = new BinaryFormatter();
-		try
-		{
-			using (MemoryStream ms = new MemoryStream(bytes))
-			{
-				object obj = bf.Deserialize(ms);
-				return (T)obj;
-			}
-		}
-		catch { return default(T); }
+		return (T)(object)bytes;
+		//BinaryFormatter bf = new BinaryFormatter();
+		//try
+		//{
+		//	using (MemoryStream ms = new MemoryStream(bytes))
+		//	{
+		//		ms.Position = 0;
+		//		object obj = bf.Deserialize(ms);
+		//		return (T)obj;
+		//	}
+		//}
+		//catch (Exception e){
+		//	Debug.Log(bytes.Length);
+		//	Debug.LogError(e.Message + "\n" + e.StackTrace);
+		//	return default(T);
+		//}
 	}
 
+	private static Type DeffusionType = typeof(UnityEngine.Object);
 	private static UnityEngine.Object defaultDiffusionAsset = null;
 	private static Vector4 defaultDiffusionAsset_V4;
 	private static float defaultDiffusionAsset_f;
+	
 
 	[MenuItem("Window/URP->HDRP Wizard")]
 	[MenuItem("Edit/Render Pipeline/URP->HDRP Wizard")]
@@ -60,25 +66,49 @@ public class Upgrade_URPToHDRP : EditorWindow
 	void OnGUI()
 	{
 		GUILayout.Label("Base Settings", EditorStyles.boldLabel);
-		UpdateDiffuseAsset((UnityEngine.Object)EditorGUILayout.ObjectField("Defusion Value: ", defaultDiffusionAsset, Type.GetType("DiffusionProfileSettings"), false));
-
+		UpdateDiffuseAsset(EditorGUILayout.ObjectField("Defusion Value: ", defaultDiffusionAsset, DeffusionType, false));
 		
-
 
 		//AssetDatabase.GetMainAssetTypeAtPath("").Name
 		if (GUILayout.Button("Upgrade Seleted Materials (auto pack)")) Selected_URPToHDRP_WithPacked();
 		if (GUILayout.Button("Upgrade Seleted Materials")) Selected_URPToHDRP();
+		if (GUILayout.Button("Get Val"))
+		{
+			Debug.LogFormat("Vector: {0}, Float: {1}\nVector: {2}, Float: {3}",
+				(Selection.objects[0] as Material).GetVector("Diffusion_Profile_Asset"),
+				(Selection.objects[0] as Material).GetFloat("Diffusion_Profile"),
+				defaultDiffusionAsset_V4,
+				defaultDiffusionAsset_f
+			);
+		}
 	}
 
 	private void UpdateDiffuseAsset(UnityEngine.Object obj)
 	{
-		if (obj && obj != defaultDiffusionAsset)
+		if (obj != defaultDiffusionAsset)
 		{
-			defaultDiffusionAsset = obj;
-			string diffuse_ap = AssetDatabase.GetAssetPath(defaultDiffusionAsset);
-			Debug.Log(diffuse_ap + "  ::  " + AssetDatabase.GetMainAssetTypeAtPath(diffuse_ap).Name);
+			if (obj)
+			{
+				string diffuse_ap = AssetDatabase.GetAssetPath(obj);
+
+				if (DeffusionType == typeof(UnityEngine.Object))
+				{
+					DeffusionType = AssetDatabase.GetMainAssetTypeAtPath(diffuse_ap);
+
+					if (DeffusionType.FullName != "UnityEngine.Rendering.HighDefinition.DiffusionProfileSettings")
+					{
+						Debug.LogErrorFormat("Wrong Type! Got: {0}, Expected: {1}", DeffusionType.FullName, "UnityEngine.Rendering.HighDefinition.DiffusionProfileSettings");
+						DeffusionType = typeof(UnityEngine.Object);
+						defaultDiffusionAsset = null;
+						return;
+					}
+				}
+
+				defaultDiffusionAsset = obj;
+				defaultDiffusionAsset_f = Asfloat(obj.GetHashCode());
+				defaultDiffusionAsset_V4 = ConvertGUIDToVector4(AssetDatabase.AssetPathToGUID(diffuse_ap));
+			} else defaultDiffusionAsset = null;
 		}
-		
 	}
 
 	private static Shader TryShaderFind(string name)
