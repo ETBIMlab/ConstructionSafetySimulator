@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
-public class TimeRecorder
+public static class TimeRecorder
 {
-	public const string RECORD_FILE = "Saved/Time Stamp Log.txt";
+	public const string RECORD_FILE = "Time Stamp Log.txt";
+	public static string record_folder { get; private set; }
 	public const bool CLEAR_ON_LOAD = true;
 
 	[System.NonSerialized]
@@ -17,8 +19,12 @@ public class TimeRecorder
 	[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
 	static void InitailizeFile()
 	{
+		record_folder = Application.dataPath + "/../Saved/";
 		startTime = System.DateTime.Now;
 		sceneStartTime = System.DateTime.Now;
+
+		if (!Directory.Exists(record_folder))
+			Directory.CreateDirectory(record_folder);
 
 		UpdateTimeRecords("Construction Saftey Simulator has begun", CLEAR_ON_LOAD);
 	}
@@ -29,7 +35,7 @@ public class TimeRecorder
 
 		Debug.Log("[Logging TimeRecorder]:: " + currentTimeMessage);
 
-		using(System.IO.StreamWriter writetext = new System.IO.StreamWriter(Application.dataPath + "/../" + RECORD_FILE, append: !clearlog))
+		using(System.IO.StreamWriter writetext = new System.IO.StreamWriter(record_folder + RECORD_FILE, append: !clearlog))
 		{
 			writetext.WriteLine(currentTimeMessage);
 		}
