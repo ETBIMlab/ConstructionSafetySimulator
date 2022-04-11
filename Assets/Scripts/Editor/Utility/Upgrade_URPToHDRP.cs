@@ -3,9 +3,6 @@ using UnityEditor;
 using System.Collections.Generic;
 using System;
 using System.IO;
-using UnityEditor.Rendering.HighDefinition;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Reflection;
 
 public class Upgrade_URPToHDRP : EditorWindow
 {
@@ -13,41 +10,53 @@ public class Upgrade_URPToHDRP : EditorWindow
 	private const string DETAIL_MAP_NAME = "DetailMap";
 	private const TextureFormat DEFAULT_MASKMAP_FORMAT = TextureFormat.RGBA32;
 
-	private static Vector4 ConvertGUIDToVector4(string guid)
+	private static Vector4 HDUtils_ConvertGUIDToVector4(string guid)
 	{
-		Debug.Log("GUID: " + guid);
+		Vector4 vector;
 		byte[] bytes = new byte[16];
 
 		for (int i = 0; i < 16; i++)
 			bytes[i] = byte.Parse(guid.Substring(i * 2, 2), System.Globalization.NumberStyles.HexNumber);
 
-		return BytesAs<Vector4>(bytes);
-	}
-
-	private static float Asfloat(int hash)
-	{
-		Debug.Log("Hash: " + hash);
-		return BytesAs<float>(BitConverter.GetBytes(hash));
-	}
-
-	private static T BytesAs<T>(params byte[] bytes)
-	{
-		return (T)(object)bytes;
-		//BinaryFormatter bf = new BinaryFormatter();
-		//try
+		// <<< REPLACE unsafe >>>
+		//unsafe
 		//{
-		//	using (MemoryStream ms = new MemoryStream(bytes))
-		//	{
-		//		ms.Position = 0;
-		//		object obj = bf.Deserialize(ms);
-		//		return (T)obj;
-		//	}
+		//	fixed (byte* b = bytes)
+		//		vector = *(Vector4*)b;
 		//}
-		//catch (Exception e){
-		//	Debug.Log(bytes.Length);
-		//	Debug.LogError(e.Message + "\n" + e.StackTrace);
-		//	return default(T);
-		//}
+
+		// <<< With >>>
+		vector = new Vector4(
+			BitConverter.ToSingle(bytes, 0 * sizeof(float)),
+			BitConverter.ToSingle(bytes, 1 * sizeof(float)),
+			BitConverter.ToSingle(bytes, 2 * sizeof(float)),
+			BitConverter.ToSingle(bytes, 3 * sizeof(float))
+		);
+
+		return vector;
+	}
+
+	private static float HDShadowUtils_Asfloat(uint hash)
+	{
+		// unsafe { return *((float*)&val); }
+		return BitConverter.ToSingle(BitConverter.GetBytes(hash), 0);
+	}
+
+	private static uint DiffusionProfileHashTable_GetDiffusionProfileHash(UnityEngine.Object asset)
+	{
+		string assetPath = AssetDatabase.GetAssetPath(asset);
+
+		// In case the diffusion profile is not yet saved on the disk, we don't generate the hash
+		if (String.IsNullOrEmpty(assetPath))
+			return 0;
+
+		uint hash32 = (uint)AssetDatabase.AssetPathToGUID(assetPath).GetHashCode();
+		uint mantissa = hash32 & 0x7FFFFF;
+		uint exponent = 0b10000000; // 0 as exponent
+
+		// only store the first 23 bits so when the hash is converted to float, it doesn't write into
+		// the exponent part of the float (which avoids having NaNs, inf or precisions issues)
+		return (exponent << 23) | mantissa;
 	}
 
 	private static Type DeffusionType = typeof(UnityEngine.Object);
@@ -89,11 +98,9 @@ public class Upgrade_URPToHDRP : EditorWindow
 		{
 			if (obj)
 			{
-				string diffuse_ap = AssetDatabase.GetAssetPath(obj);
-
 				if (DeffusionType == typeof(UnityEngine.Object))
 				{
-					DeffusionType = AssetDatabase.GetMainAssetTypeAtPath(diffuse_ap);
+					DeffusionType = AssetDatabase.GetMainAssetTypeAtPath(AssetDatabase.GetAssetPath(obj));
 
 					if (DeffusionType.FullName != "UnityEngine.Rendering.HighDefinition.DiffusionProfileSettings")
 					{
@@ -105,8 +112,8 @@ public class Upgrade_URPToHDRP : EditorWindow
 				}
 
 				defaultDiffusionAsset = obj;
-				defaultDiffusionAsset_f = Asfloat(obj.GetHashCode());
-				defaultDiffusionAsset_V4 = ConvertGUIDToVector4(AssetDatabase.AssetPathToGUID(diffuse_ap));
+				defaultDiffusionAsset_f = HDShadowUtils_Asfloat(DiffusionProfileHashTable_GetDiffusionProfileHash(obj));
+				defaultDiffusionAsset_V4 = HDUtils_ConvertGUIDToVector4(AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(obj)));
 			} else defaultDiffusionAsset = null;
 		}
 	}
