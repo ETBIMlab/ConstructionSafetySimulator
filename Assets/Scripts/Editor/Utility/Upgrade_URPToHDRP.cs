@@ -4,119 +4,53 @@ using System.Collections.Generic;
 using System;
 using System.IO;
 
-public class Upgrade_URPToHDRP : EditorWindow
+public class Upgrade_URPToHDRP
 {
 	private const string MASK_MAP_NAME = "MaskMap";
 	private const string DETAIL_MAP_NAME = "DetailMap";
 	private const TextureFormat DEFAULT_MASKMAP_FORMAT = TextureFormat.RGBA32;
 
-	private static Vector4 HDUtils_ConvertGUIDToVector4(string guid)
-	{
-		Vector4 vector;
-		byte[] bytes = new byte[16];
+	public static UnityEngine.Object defaultDiffusionAsset { get; private set; } = null;
 
-		for (int i = 0; i < 16; i++)
-			bytes[i] = byte.Parse(guid.Substring(i * 2, 2), System.Globalization.NumberStyles.HexNumber);
-
-		// <<< REPLACE unsafe >>>
-		//unsafe
-		//{
-		//	fixed (byte* b = bytes)
-		//		vector = *(Vector4*)b;
-		//}
-
-		// <<< With >>>
-		vector = new Vector4(
-			BitConverter.ToSingle(bytes, 0 * sizeof(float)),
-			BitConverter.ToSingle(bytes, 1 * sizeof(float)),
-			BitConverter.ToSingle(bytes, 2 * sizeof(float)),
-			BitConverter.ToSingle(bytes, 3 * sizeof(float))
-		);
-
-		return vector;
-	}
-
-	private static float HDShadowUtils_Asfloat(uint hash)
-	{
-		// unsafe { return *((float*)&val); }
-		return BitConverter.ToSingle(BitConverter.GetBytes(hash), 0);
-	}
-
-	private static uint DiffusionProfileHashTable_GetDiffusionProfileHash(UnityEngine.Object asset)
-	{
-		string assetPath = AssetDatabase.GetAssetPath(asset);
-
-		// In case the diffusion profile is not yet saved on the disk, we don't generate the hash
-		if (String.IsNullOrEmpty(assetPath))
-			return 0;
-
-		uint hash32 = (uint)AssetDatabase.AssetPathToGUID(assetPath).GetHashCode();
-		uint mantissa = hash32 & 0x7FFFFF;
-		uint exponent = 0b10000000; // 0 as exponent
-
-		// only store the first 23 bits so when the hash is converted to float, it doesn't write into
-		// the exponent part of the float (which avoids having NaNs, inf or precisions issues)
-		return (exponent << 23) | mantissa;
-	}
-
-	private static Type DeffusionType = typeof(UnityEngine.Object);
-	private static UnityEngine.Object defaultDiffusionAsset = null;
+	#region HandleDiffusionProfileValues
+	/// <summary>
+	/// The "DiffusionProfileSettings" type is private, so we keep this type in a variable to let unity know what are valid assets, even if this script doesn't know what the type is.
+	/// </summary>
+	public static Type DiffusionType { get; private set; } = typeof(UnityEngine.Object);
+	/// <summary>
+	/// Compute only once! This is the Vector4 used to set a diffusion profile on a material.
+	/// </summary>
 	private static Vector4 defaultDiffusionAsset_V4;
+	/// <summary>
+	/// Compute only once! This is the float used to set a diffusion profile on a material.
+	/// </summary>
 	private static float defaultDiffusionAsset_f;
-	
-
-	[MenuItem("Window/URP->HDRP Wizard")]
-	[MenuItem("Edit/Render Pipeline/URP->HDRP Wizard")]
-	static void Init()
-	{
-		GetWindow<Upgrade_URPToHDRP>(false, "URP->HDRP Wizard").Show();
-	}
-
-	void OnGUI()
-	{
-		GUILayout.Label("Base Settings", EditorStyles.boldLabel);
-		UpdateDiffuseAsset(EditorGUILayout.ObjectField("Defusion Value: ", defaultDiffusionAsset, DeffusionType, false));
-		
-
-		//AssetDatabase.GetMainAssetTypeAtPath("").Name
-		if (GUILayout.Button("Upgrade Seleted Materials (auto pack)")) Selected_URPToHDRP_WithPacked();
-		if (GUILayout.Button("Upgrade Seleted Materials")) Selected_URPToHDRP();
-		if (GUILayout.Button("Get Val"))
-		{
-			Debug.LogFormat("Vector: {0}, Float: {1}\nVector: {2}, Float: {3}",
-				(Selection.objects[0] as Material).GetVector("Diffusion_Profile_Asset"),
-				(Selection.objects[0] as Material).GetFloat("Diffusion_Profile"),
-				defaultDiffusionAsset_V4,
-				defaultDiffusionAsset_f
-			);
-		}
-	}
-
-	private void UpdateDiffuseAsset(UnityEngine.Object obj)
+	internal static void ValidateDiffuseAsset(UnityEngine.Object obj)
 	{
 		if (obj != defaultDiffusionAsset)
 		{
 			if (obj)
 			{
-				if (DeffusionType == typeof(UnityEngine.Object))
+				if (DiffusionType == typeof(UnityEngine.Object))
 				{
-					DeffusionType = AssetDatabase.GetMainAssetTypeAtPath(AssetDatabase.GetAssetPath(obj));
+					DiffusionType = AssetDatabase.GetMainAssetTypeAtPath(AssetDatabase.GetAssetPath(obj));
 
-					if (DeffusionType.FullName != "UnityEngine.Rendering.HighDefinition.DiffusionProfileSettings")
+					if (DiffusionType.FullName != "UnityEngine.Rendering.HighDefinition.DiffusionProfileSettings")
 					{
-						Debug.LogErrorFormat("Wrong Type! Got: {0}, Expected: {1}", DeffusionType.FullName, "UnityEngine.Rendering.HighDefinition.DiffusionProfileSettings");
-						DeffusionType = typeof(UnityEngine.Object);
+						Debug.LogErrorFormat("Wrong Type! Got: {0}, Expected: {1}", DiffusionType.FullName, "UnityEngine.Rendering.HighDefinition.DiffusionProfileSettings");
+						DiffusionType = typeof(UnityEngine.Object);
 						defaultDiffusionAsset = null;
 						return;
 					}
 				}
 
 				defaultDiffusionAsset = obj;
-				defaultDiffusionAsset_f = HDShadowUtils_Asfloat(DiffusionProfileHashTable_GetDiffusionProfileHash(obj));
-				defaultDiffusionAsset_V4 = HDUtils_ConvertGUIDToVector4(AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(obj)));
+				defaultDiffusionAsset_f = HDPrivateUtils.HDShadowUtils_Asfloat(HDPrivateUtils.DiffusionProfileHashTable_GetDiffusionProfileHash(obj));
+				defaultDiffusionAsset_V4 = HDPrivateUtils.HDUtils_ConvertGUIDToVector4(AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(obj)));
 			} else defaultDiffusionAsset = null;
 		}
 	}
+	#endregion
 
 	private static Shader TryShaderFind(string name)
 	{
@@ -126,7 +60,7 @@ public class Upgrade_URPToHDRP : EditorWindow
 		throw new InvalidDataException("Shader '" + name + "' could not be found in project!");
 	}
 
-	static void Selected_UPR_PackedTextures()
+	internal static void Selected_UPR_PackedTextures()
 	{
 		Debug.Log("Creating packed...");
 		UnityEngine.Object[] selectedObjects = Selection.objects;
@@ -147,14 +81,14 @@ public class Upgrade_URPToHDRP : EditorWindow
 		URP_CreatePackedTextures(urpMaterials);
 	}
 	
-	static void Selected_URPToHDRP_WithPacked()
+	internal static void Selected_URPToHDRP_WithPacked()
 	{
 		Selected_UPR_PackedTextures();
 		Selected_URPToHDRP();
 	}
 
 
-	static void Selected_URPToHDRP()
+	internal static void Selected_URPToHDRP()
 	{
 		Undo.RegisterCompleteObjectUndo(Selection.objects, "UndoConversion");
 
@@ -175,7 +109,7 @@ public class Upgrade_URPToHDRP : EditorWindow
 		URPToHDRP_Materials(urpMaterials);
 	}
 
-	private static void URP_CreatePackedTextures(List<Material> urpMaterials)
+	internal static void URP_CreatePackedTextures(List<Material> urpMaterials)
 	{
 		/****************************/
 		/* Filter Materials for URP */
@@ -239,7 +173,7 @@ public class Upgrade_URPToHDRP : EditorWindow
 		}
 	}
 
-	private static void URPToHDRP_Materials(List<Material> urpMaterials)
+	internal static void URPToHDRP_Materials(List<Material> urpMaterials)
 	{
 		/****************************/
 		/* Filter Materials for URP */
@@ -616,7 +550,7 @@ public class Upgrade_URPToHDRP : EditorWindow
 		CreatePackedDetailMap(_DetailAlbedoMap, _DetailNormalMap, null);
 	}
 
-	private static void CreatePackedMaskMap(Texture2D metallic, Texture2D occlusion, Texture2D height, Texture2D smoothness)
+	internal static void CreatePackedMaskMap(Texture2D metallic, Texture2D occlusion, Texture2D height, Texture2D smoothness)
 	{
 		if (!(metallic || occlusion || height)) return;
 
@@ -644,7 +578,7 @@ public class Upgrade_URPToHDRP : EditorWindow
 		SaveTexture(maskMap, filePath);
 	}
 
-	private static void CreatePackedDetailMap(Texture2D albedo, Texture2D normal, Texture2D smoothness)
+	internal static void CreatePackedDetailMap(Texture2D albedo, Texture2D normal, Texture2D smoothness)
 	{
 		if (!(albedo || normal || smoothness)) return;
 
