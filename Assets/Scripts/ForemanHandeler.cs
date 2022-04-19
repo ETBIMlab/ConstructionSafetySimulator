@@ -181,9 +181,10 @@ public class ForemanHandeler : MonoBehaviour
 
         // mine
         NavMeshAgent agent = ForemanBody.GetComponent<NavMeshAgent>();
-        if(InTransition && agent.velocity.magnitude < 0.05f)
+        if(InTransition && agent.velocity.magnitude < 0.05f && Vector3.Distance(agent.destination, transform.position) <= agent.stoppingDistance)
         {
             InTransition = false;
+            locations[locationIndex].location.gameObject.SetActive(true);
         }
         Animator animator = ForemanController.GetComponent<Animator>();
         animator.SetFloat("velocity", agent.velocity.magnitude);
