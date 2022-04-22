@@ -37,31 +37,50 @@ public class OnTriggerHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(!useTag || (useTag && other.gameObject.CompareTag(tagName))){
-            Debug.Log("Trigger entered, other: " + other.name, other);
-            collisionCount++;
-            if (collisionCount == 1)
-                firstTriggerEnter.Invoke();
-            if (!doOnce) {
-                triggerEnterDoOnce.Invoke();
-                doOnce = true;
+        if (useTag)
+        {
+            Transform node = other.transform;
+            while (node != null && node.gameObject.CompareTag(tagName))
+            {
+                if (node.parent == null) return;
+
+                node = node.parent;
             }
+        }
+
+        Debug.Log("Trigger entered, other: " + other.name, other);
+        collisionCount++;
+        if (collisionCount == 1)
+            firstTriggerEnter.Invoke();
+        if (!doOnce) {
+            triggerEnterDoOnce.Invoke();
+            doOnce = true;
+        }
                 //print("Test");
                 //print(tagName);
                 //print(other.gameObject.tag);
                 //print(other.gameObject.name);
-            triggerEnter.Invoke();
-        }
+        triggerEnter.Invoke();
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if(!useTag || (useTag && other.gameObject.CompareTag(tagName))){
-            collisionCount--;
-            if (collisionCount == 0)
-                lastTriggerExit.Invoke();
-            triggerExit.Invoke();
+        if (useTag)
+        {
+            Transform node = other.transform;
+            while (node != null && node.gameObject.CompareTag(tagName))
+            {
+                if (node.parent == null) return;
+
+                node = node.parent;
+            }
+                
         }
+
+        collisionCount--;
+        if (collisionCount == 0)
+            lastTriggerExit.Invoke();
+        triggerExit.Invoke();
     }
 
     private void OnTriggerStay(Collider other)
