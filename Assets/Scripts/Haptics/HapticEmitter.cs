@@ -235,7 +235,7 @@ public class HapticEmitter : MonoBehaviour
                 }
             }
 
-            currentDuration -= Time.deltaTime;
+            currentDuration -= Time.unscaledDeltaTime;
             if (currentDuration <= 0)
             {
                 if (loop || queue)
