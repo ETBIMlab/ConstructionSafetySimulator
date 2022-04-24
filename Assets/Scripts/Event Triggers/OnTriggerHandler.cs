@@ -9,107 +9,108 @@ using UnityEngine.Events;
 */
 public class OnTriggerHandler : MonoBehaviour
 {
-    public bool useTag;
-    public string tagName;
-    public UnityEvent triggerEnter;
-    public UnityEvent triggerEnterDoOnce;
-    public UnityEvent triggerExit;
-    public UnityEvent triggerStay;
-    public UnityEvent firstTriggerEnter;
-    public UnityEvent lastTriggerExit;
+	public bool useTag;
+	public string tagName;
+	public UnityEvent triggerEnter;
+	public UnityEvent triggerEnterDoOnce;
+	public UnityEvent triggerExit;
+	public UnityEvent triggerStay;
+	public UnityEvent firstTriggerEnter;
+	public UnityEvent lastTriggerExit;
 
-    private bool doOnce = false;
+	private bool doOnce = false;
 
 
-    [HideInInspector]
-    [System.NonSerialized]
-    public int collisionCount;
+	[HideInInspector]
+	[System.NonSerialized]
+	public int collisionCount;
 
-    private void OnEnable()
-    {
-        collisionCount = 0;
-    }
+	private void OnEnable()
+	{
+		collisionCount = 0;
+	}
 
-    private void OnDisable()
-    {
-        collisionCount = 0;
-    }
+	private void OnDisable()
+	{
+		collisionCount = 0;
+	}
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (useTag)
-        {
-            Transform node = other.transform;
-            while (node != null && node.gameObject.CompareTag(tagName))
-            {
-                if (node.parent == null) return;
+	private void OnTriggerEnter(Collider other)
+	{
+		if (useTag)
+		{
+			Transform node = other.transform;
+			while (!node.gameObject.CompareTag(tagName))
+			{
+				if (node.parent == null) return;
 
-                node = node.parent;
-            }
-        }
+				node = node.parent;
+			}
+		}
 
-        Debug.Log("Trigger entered, other: " + other.name, other);
-        collisionCount++;
-        if (collisionCount == 1)
-            firstTriggerEnter.Invoke();
-        if (!doOnce) {
-            triggerEnterDoOnce.Invoke();
-            doOnce = true;
-        }
-                //print("Test");
-                //print(tagName);
-                //print(other.gameObject.tag);
-                //print(other.gameObject.name);
-        triggerEnter.Invoke();
-    }
+		collisionCount++;
+		if (collisionCount == 1)
+		{
+			firstTriggerEnter.Invoke();
+		}
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (useTag)
-        {
-            Transform node = other.transform;
-            while (node != null && node.gameObject.CompareTag(tagName))
-            {
-                if (node.parent == null) return;
+		if (!doOnce)
+		{
+			triggerEnterDoOnce.Invoke();
+			doOnce = true;
+			//Debug.Log("Do once trigger on '" + gameObject.name + "' happend. Other: '" + other.name + "'", other);
+		}
 
-                node = node.parent;
-            }
-                
-        }
+		triggerEnter.Invoke();
+	}
 
-        collisionCount--;
-        if (collisionCount == 0)
-            lastTriggerExit.Invoke();
-        triggerExit.Invoke();
-    }
+	private void OnTriggerExit(Collider other)
+	{
+		if (useTag)
+		{
+			Transform node = other.transform;
+			while (!node.gameObject.CompareTag(tagName))
+			{
+				if (node.parent == null) return;
 
-    private void OnTriggerStay(Collider other)
-    {
-        if(!useTag || (useTag && other.gameObject.CompareTag(tagName))){
-            triggerStay.Invoke();
-        }
-    }
+				node = node.parent;
+			}
+				
+		}
 
-    public void OnTriggerEnter()
-    {
-        collisionCount++;
-        if (collisionCount == 1)
-            firstTriggerEnter.Invoke();
-        triggerEnter.Invoke();
-    }
+		collisionCount--;
+		if (collisionCount == 0)
+			lastTriggerExit.Invoke();
+		triggerExit.Invoke();
+	}
 
-    public void OnTriggerExit()
-    {
-        collisionCount--;
-        if (collisionCount < 0)
-            collisionCount = 0;
-        if (collisionCount == 0)
-            lastTriggerExit.Invoke();
-        triggerExit.Invoke();
-    }
+	private void OnTriggerStay(Collider other)
+	{
+		if(!useTag || (useTag && other.gameObject.CompareTag(tagName))){
+			triggerStay.Invoke();
+		}
+	}
 
-    public void OnTriggerStay()
-    {
-        triggerStay.Invoke();
-    }
+	public void OnTriggerEnter()
+	{
+		collisionCount++;
+		if (collisionCount == 1)
+			firstTriggerEnter.Invoke();
+		triggerEnter.Invoke();
+	}
+
+	public void OnTriggerExit()
+	{
+		collisionCount--;
+		if (collisionCount < 0)
+			collisionCount = 0;
+		if (collisionCount == 0)
+			lastTriggerExit.Invoke();
+		triggerExit.Invoke();
+	}
+
+	public void OnTriggerStay()
+	{
+		triggerStay.Invoke();
+	}
 }
