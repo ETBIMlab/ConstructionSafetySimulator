@@ -1,0 +1,154 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!241 &24100000
+AudioMixerController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: street
+  m_OutputGroup: {fileID: 0}
+  m_MasterGroup: {fileID: 24300001}
+  m_Snapshots:
+  - {fileID: 24500003}
+  m_StartSnapshot: {fileID: 24500003}
+  m_SuspendThreshold: -80
+  m_EnableSuspend: 1
+  m_ExposedParameters:
+  - guid: 4afd003c8d398944ca4d8819624ebb82
+    name: lowpass
+  m_AudioMixerGroupViews:
+  - guids:
+    - 3176e5af5e4800f46be46423cd7e1e46
+    - f028f4ceb463dfb42b7916ad6642fbac
+    - 883f3b58808bee143824594631cea0b6
+    name: View
+  m_CurrentViewIndex: 0
+  m_TargetSnapshot: {fileID: 24500003}
+--- !u!243 &24300001
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Master
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 3176e5af5e4800f46be46423cd7e1e46
+  m_Children:
+  - {fileID: 24325544}
+  - {fileID: 24378124}
+  m_Volume: 9c82f80b31053a24a8ff58e8214ffae7
+  m_Pitch: a7d91e9b00975344abc7f2303cbc4362
+  m_Effects:
+  - {fileID: 24400002}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!243 &24325544
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: city ambient
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: f028f4ceb463dfb42b7916ad6642fbac
+  m_Children: []
+  m_Volume: 62ef8354b8a3b3e43a27d534729ac0da
+  m_Pitch: 98d6ec8bd10724a499c4893b2d36e312
+  m_Effects:
+  - {fileID: 24488766}
+  - {fileID: 24486260}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!243 &24378124
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: police siren
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 883f3b58808bee143824594631cea0b6
+  m_Children: []
+  m_Volume: 4055bd888b0b55b46b2e564dbe91006a
+  m_Pitch: 0d8afc8a9f2d1a7498edd565a52e2f7a
+  m_Effects:
+  - {fileID: 24403210}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &24400002
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: 35fedb4c656e1a146b9f2cc6e76649e8
+  m_EffectName: Attenuation
+  m_MixLevel: 3245b3dfbbe223140bc52b312b5e1a8b
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &24403210
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: b3726930aef81ca46bd8d01a9b6809b8
+  m_EffectName: Attenuation
+  m_MixLevel: 87f10c2e1fe98de40aabc1d5518f0063
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &24486260
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: 67b121a368a1aa149aa7fa637624c1c5
+  m_EffectName: Lowpass
+  m_MixLevel: 8490601bb7a37ee469fd08c0e363d686
+  m_Parameters:
+  - m_ParameterName: Cutoff freq
+    m_GUID: 4afd003c8d398944ca4d8819624ebb82
+  - m_ParameterName: Resonance
+    m_GUID: aabef3868da3d8e4aae68d8a56b79611
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &24488766
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: e4938c1040ab7d5478acba6929553647
+  m_EffectName: Attenuation
+  m_MixLevel: 7e584256e99a3ab4d87de552b54be227
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!245 &24500003
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Snapshot
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 7a71bfb95e19ece4a83028dd9a7a8963
+  m_FloatValues:
+    b8ef5d33745840144bf622987cc82f86: -10.6
+    13637d939ae7ef14c958eab808f1d072: 0.633
+    62ef8354b8a3b3e43a27d534729ac0da: -4.536097
+    aabef3868da3d8e4aae68d8a56b79611: 1
+    9c82f80b31053a24a8ff58e8214ffae7: 8.614072
+    4afd003c8d398944ca4d8819624ebb82: 4868
+    b693575c2546cc54fbef7edbf9a598a8: 5.3
+    6e4a549c9e1e7aa47912f7b8a839a4fc: 569
+  m_TransitionOverrides: {}
