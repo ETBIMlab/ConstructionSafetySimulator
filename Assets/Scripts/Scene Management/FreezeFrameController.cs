@@ -8,7 +8,6 @@ public class FreezeFrameController : MonoBehaviour
 {
     public UnityEvent OnStartFreezeFrame;
     public UnityEvent OnStopFreezeFrame;
-
     
     public float lerpDuration = 3;
     public float startValue = 1;
@@ -26,6 +25,7 @@ public class FreezeFrameController : MonoBehaviour
             OnStartFreezeFrame.Invoke();
 
         reset = false;
+        
         timeElapsed = 0;
         valueToLerp = 0;
         SetTimeScale(1);

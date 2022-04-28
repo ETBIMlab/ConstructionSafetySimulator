@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!65 &241793078854276898
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1901073538915066768}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 9.995503, y: 3.1496139, z: 23.21}
-  m_Center: {x: -4.9957986, y: 1.5757835, z: 11.1}
 --- !u!1 &3337672826513331521
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,8 +336,8 @@ MonoBehaviour:
     type: 3}
   skeletonMainPose: {fileID: 11400000, guid: 771c3ef77ebbd6a418eeb38bf64ec601, type: 2}
   skeletonAdditionalPoses: []
-  showLeftPreview: 1
-  showRightPreview: 1
+  showLeftPreview: 0
+  showRightPreview: 0
   previewLeftInstance: {fileID: 0}
   previewRightInstance: {fileID: 0}
   previewPoseSelection: 0
@@ -482,3 +469,16 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1902646064029501622}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &241793078854276898
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901073538915066768}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.995503, y: 3.1496139, z: 23.21}
+  m_Center: {x: -4.9957986, y: 1.5757835, z: 11.1}
