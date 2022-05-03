@@ -1,0 +1,721 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -464492983, guid: 3c85ef614fa430f4c9a4ed38fa0acf46, type: 3}
+  m_Name: CognitiveVR_Preferences
+  m_EditorClassIdentifier: 
+  Protocol: https
+  Gateway: data.cognitive3d.com
+  Dashboard: app.cognitive3d.com
+  Viewer: viewer.cognitive3d.com/scene/
+  Documentation: docs.cognitive3d.com
+  GazeType: 0
+  RenderPassType: 0
+  ApplicationKey: AAPSQ6V1YTWAW00GICLEE49L0XGG6MMB
+  AttributionKey: 
+  EnableLogging: 1
+  EnableDevLogging: 0
+  DynamicObjectSearchInParent: 1
+  TrackGPSLocation: 0
+  GPSInterval: 1
+  GPSAccuracy: 2
+  SyncGPSWithGaze: 0
+  RecordFloorPosition: 1
+  GazeLayerMask: -1
+  DynamicLayerMask: -1
+  TriggerInteraction: 1
+  GazeSnapshotCount: 64
+  SensorSnapshotCount: 64
+  DynamicSnapshotCount: 64
+  TransactionSnapshotCount: 64
+  FixationSnapshotCount: 64
+  SensorSnapshotMinTimer: 6
+  DynamicSnapshotMinTimer: 2
+  TransactionSnapshotMinTimer: 2
+  FixationSnapshotMinTimer: 2
+  SensorExtremeSnapshotCount: 256
+  DynamicExtremeSnapshotCount: 256
+  TransactionExtremeSnapshotCount: 256
+  FixationExtremeSnapshotCount: 2
+  SensorSnapshotMaxTimer: 10
+  DynamicSnapshotMaxTimer: 10
+  TransactionSnapshotMaxTimer: 10
+  FixationSnapshotMaxTimer: 10
+  SendDataOnQuit: 1
+  SendDataOnPause: 1
+  SendDataOnHMDRemove: 1
+  SendDataOnLevelLoad: 1
+  SendDataOnHotkey: 1
+  HotkeyShift: 1
+  HotkeyCtrl: 0
+  HotkeyAlt: 0
+  SendDataHotkey: 290
+  LocalDataCacheSize: 104857600
+  LocalStorage: 1
+  UploadCacheOnEndPlay: 1
+  TextureResize: 4
+  ExportSceneLODLowest: 1
+  ExportAOMaps: 0
+  sceneSettings:
+  - SceneName: AustinDouble
+    SceneId: 
+    ScenePath: Assets/AustinDouble.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: 1. Simple
+    SceneId: 
+    ScenePath: Assets/Bhaptics/SDK/Examples/Scenes/1. Simple.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: 2. Demo Shooter
+    SceneId: 
+    ScenePath: Assets/Bhaptics/SDK/Examples/Scenes/2. Demo Shooter.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: 3. Scene Reload Test
+    SceneId: 
+    ScenePath: Assets/Bhaptics/SDK/Examples/Scenes/3. Scene Reload Test.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: 4. ProfilingTest
+    SceneId: 
+    ScenePath: Assets/Bhaptics/SDK/Examples/Scenes/4. ProfilingTest.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: 5. IsActive IsPlaying Example
+    SceneId: 
+    ScenePath: Assets/Bhaptics/SDK/Examples/Scenes/5. IsActive IsPlaying Example.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: 6. Android Widget
+    SceneId: 
+    ScenePath: Assets/Bhaptics/SDK/Examples/Scenes/6. Android Widget.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: ReadyRoom
+    SceneId: 
+    ScenePath: Assets/CognitiveVR/ReadyRoom/ReadyRoom.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: DeanDouble
+    SceneId: 
+    ScenePath: Assets/DeanDouble.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: 1_multiple_agent_sizes
+    SceneId: 
+    ScenePath: Assets/Nav Examples/Scenes/1_multiple_agent_sizes.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: 2_drop_plank
+    SceneId: 
+    ScenePath: Assets/Nav Examples/Scenes/2_drop_plank.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: 3_free_orientation
+    SceneId: 
+    ScenePath: Assets/Nav Examples/Scenes/3_free_orientation.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: 4_sliding_window_infinite
+    SceneId: 
+    ScenePath: Assets/Nav Examples/Scenes/4_sliding_window_infinite.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: 5_sliding_window_terrain
+    SceneId: 
+    ScenePath: Assets/Nav Examples/Scenes/5_sliding_window_terrain.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: 6_modify_mesh
+    SceneId: 
+    ScenePath: Assets/Nav Examples/Scenes/6_modify_mesh.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: 7_dungeon
+    SceneId: 
+    ScenePath: Assets/Nav Examples/Scenes/7_dungeon.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: 7b_dungeon_tile_prefabs
+    SceneId: 
+    ScenePath: Assets/Nav Examples/Scenes/7b_dungeon_tile_prefabs.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Chains
+    SceneId: 
+    ScenePath: Assets/Obi/Samples/RopeAndRod/Chains.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Crane
+    SceneId: 
+    ScenePath: Assets/Obi/Samples/RopeAndRod/Crane.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: ElectricalWires
+    SceneId: 
+    ScenePath: Assets/Obi/Samples/RopeAndRod/ElectricalWires.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: FreightLift
+    SceneId: 
+    ScenePath: Assets/Obi/Samples/RopeAndRod/FreightLift.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Plectoneme
+    SceneId: 
+    ScenePath: Assets/Obi/Samples/RopeAndRod/Plectoneme.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Rocker
+    SceneId: 
+    ScenePath: Assets/Obi/Samples/RopeAndRod/Rocker.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: RopeAndJoints
+    SceneId: 
+    ScenePath: Assets/Obi/Samples/RopeAndRod/RopeAndJoints.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: RopeGrapplingHook
+    SceneId: 
+    ScenePath: Assets/Obi/Samples/RopeAndRod/RopeGrapplingHook.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: RopeNet
+    SceneId: 
+    ScenePath: Assets/Obi/Samples/RopeAndRod/RopeNet.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: RopeShowcase
+    SceneId: 
+    ScenePath: Assets/Obi/Samples/RopeAndRod/RopeShowcase.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: SpringRod
+    SceneId: 
+    ScenePath: Assets/Obi/Samples/RopeAndRod/SpringRod.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: WrapTheRope
+    SceneId: 
+    ScenePath: Assets/Obi/Samples/RopeAndRod/WrapTheRope.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Onboarding Task
+    SceneId: 
+    ScenePath: Assets/OnboardingTasks/Austin Stewart Onboarding/Onboarding Task.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: ResetTimeline
+    SceneId: 
+    ScenePath: Assets/OnboardingTasks/AustinPorter/Scenes/ResetTimeline.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: RewindTimeline
+    SceneId: 
+    ScenePath: Assets/OnboardingTasks/AustinPorter/Scenes/RewindTimeline.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: AnimationTrial
+    SceneId: 
+    ScenePath: Assets/OnboardingTasks/CristionDominguez/AnimationTrial.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Animation_Scene
+    SceneId: 
+    ScenePath: Assets/OnboardingTasks/EXAMPLE_NevinFoster/Animation_Scene.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Scene_with_terrain
+    SceneId: 
+    ScenePath: Assets/OnboardingTasks/EXAMPLE_NevinFoster/Scene_with_terrain.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: TestMalin
+    SceneId: 
+    ScenePath: Assets/OnboardingTasks/Malin Tan/TestMalin.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: NiklasPerry
+    SceneId: 
+    ScenePath: Assets/OnboardingTasks/NiklasPerry/NiklasPerry.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Oliver_Scene
+    SceneId: 
+    ScenePath: Assets/OnboardingTasks/OliverRatnam/Oliver_Scene.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: OnboardingSceneShyam
+    SceneId: 
+    ScenePath: Assets/OnboardingTasks/Shyam Kannan Onboarding/OnboardingSceneShyam.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: garage
+    SceneId: 
+    ScenePath: Assets/pickup truck/Scenes/garage.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: test ride
+    SceneId: 
+    ScenePath: Assets/pickup truck/Scenes/test ride.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: SALSA-basic3D-boxhead
+    SceneId: 
+    ScenePath: Assets/Prefabs/BoxHead/Examples/Scenes/SALSA-basic3D-boxhead.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: demo
+    SceneId: 
+    ScenePath: Assets/Prefabs/Fences/demo.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: profile
+    SceneId: 
+    ScenePath: Assets/Prefabs/Fences/profile.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Demo_Jerrycan_Free
+    SceneId: 
+    ScenePath: Assets/Prefabs/Unknown/Jerrycan_Free/Demo_Jerrycan_Free.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: assets
+    SceneId: 
+    ScenePath: Assets/Prefabs/Unknown/Metal Barrel PBR/Scene/assets.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: overview_room
+    SceneId: 
+    ScenePath: Assets/Prefabs/Unknown/Metal Barrel PBR/Scene/overview_room.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: demoScene
+    SceneId: 
+    ScenePath: Assets/Prefabs/Unknown/PBR Folding Chairs/Demo Scene/demoScene.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Tutorial Scene
+    SceneId: 
+    ScenePath: Assets/Scenes/AustinS Tutorial Scene Test/Tutorial Scene.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: ConstructionScene
+    SceneId: 
+    ScenePath: Assets/Scenes/ConstructionScene/ConstructionScene.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Stringing Terrain Shyam
+    SceneId: 
+    ScenePath: Assets/Scenes/ConstructionScene/Stringing Terrain Shyam.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: TestScene1
+    SceneId: 
+    ScenePath: Assets/Scenes/ConstructionScene/TestScene1.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: TestScene2
+    SceneId: 
+    ScenePath: Assets/Scenes/ConstructionScene/TestScene2.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: StringingScene_Hazard1
+    SceneId: 
+    ScenePath: Assets/Scenes/CristionTest/StringingScene_Hazard1.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: AnimationTesting
+    SceneId: 
+    ScenePath: Assets/Scenes/Demos/AnimationTesting.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Audio Introduction
+    SceneId: 
+    ScenePath: Assets/Scenes/Demos/Audio Introduction.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: BHaptics Demo
+    SceneId: 
+    ScenePath: Assets/Scenes/Demos/BHaptics Demo.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Audio Introduction (17th)
+    SceneId: 
+    ScenePath: Assets/Scenes/Demos/Build For 17th/Audio Introduction (17th).unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: BHaptics Demo (17th)
+    SceneId: 
+    ScenePath: Assets/Scenes/Demos/Build For 17th/BHaptics Demo (17th).unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: LandingScene
+    SceneId: 
+    ScenePath: Assets/Scenes/Demos/Build For 17th/LandingScene.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Rokoko Test Imports (17th)
+    SceneId: 
+    ScenePath: Assets/Scenes/Demos/Build For 17th/Rokoko Test Imports (17th).unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Shack Assembly (17th)
+    SceneId: 
+    ScenePath: Assets/Scenes/Demos/Build For 17th/Shack Assembly (17th).unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Shack IN air
+    SceneId: 
+    ScenePath: Assets/Scenes/Demos/Build For 17th/Testing Shacks/Shack IN air.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Shack No Haptics
+    SceneId: 
+    ScenePath: Assets/Scenes/Demos/Build For 17th/Testing Shacks/Shack No Haptics.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Demo - PipeHazard1
+    SceneId: 
+    ScenePath: Assets/Scenes/Demos/Demo - PipeHazard1.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: IPad Testing
+    SceneId: 
+    ScenePath: Assets/Scenes/Demos/IPad Testing.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Physics Playground
+    SceneId: 
+    ScenePath: Assets/Scenes/Demos/Physics Playground.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Prefab Showcase
+    SceneId: 
+    ScenePath: Assets/Scenes/Demos/Prefab Showcase.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Rokoko Test Imports
+    SceneId: 
+    ScenePath: Assets/Scenes/Demos/Rokoko Test Imports.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Rope Testing
+    SceneId: 
+    ScenePath: Assets/Scenes/Demos/Rope Testing.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: SampleScene
+    SceneId: 
+    ScenePath: Assets/Scenes/Demos/SampleScene.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: SampleScene2
+    SceneId: 
+    ScenePath: Assets/Scenes/Demos/SampleScene2.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Test
+    SceneId: 
+    ScenePath: Assets/Scenes/DerickTest/Test.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: DustTests
+    SceneId: 
+    ScenePath: Assets/Scenes/EnvironmentalTest/DustTests.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Intro - Training
+    SceneId: 
+    ScenePath: Assets/Scenes/Pipeline Stages/Intro - Training.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Shack Assembly (audio update)
+    SceneId: 
+    ScenePath: Assets/Scenes/Pipeline Stages/Shack Assembly (audio update).unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Shack Assembly - Copy
+    SceneId: 
+    ScenePath: Assets/Scenes/Pipeline Stages/Shack Assembly - Copy.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Shack Assembly
+    SceneId: 02de358d-c49e-483e-b547-acc6b40c7192
+    ScenePath: Assets/Scenes/Pipeline Stages/Shack Assembly.unity
+    LastRevision: 5249553571951520079
+    VersionNumber: 1
+    VersionId: 2961
+  - SceneName: Staging Area
+    SceneId: 
+    ScenePath: Assets/Scenes/Pipeline Stages/Staging Area.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Stringing Terrain
+    SceneId: 
+    ScenePath: Assets/Scenes/Pipeline Stages/Stringing Terrain.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Trenching
+    SceneId: 
+    ScenePath: Assets/Scenes/Pipeline Stages/Trenching.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Scene0Start
+    SceneId: 
+    ScenePath: Assets/Scenes/Virtual Pipeline/Scene0Start.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Scene1Hazard1
+    SceneId: 
+    ScenePath: Assets/Scenes/Virtual Pipeline/Scene1Hazard1.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Scene2Hazard2
+    SceneId: 
+    ScenePath: Assets/Scenes/Virtual Pipeline/Scene2Hazard2.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Scene3Hazard3
+    SceneId: 
+    ScenePath: Assets/Scenes/Virtual Pipeline/Scene3Hazard3.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: ShackAssembly
+    SceneId: 
+    ScenePath: Assets/Scenes/Virtual Pipeline/ShackAssembly.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: VirtualPipeline
+    SceneId: 
+    ScenePath: Assets/Scenes/Virtual Pipeline/VirtualPipeline.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Hazard3
+    SceneId: 
+    ScenePath: Assets/Scenes/XiaoxunS_Hazard_3/Hazard3.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Desert_demo
+    SceneId: 
+    ScenePath: Assets/SeedMesh/Mexican Desert/Scene/Desert_demo.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: SteamVR_ForceSteamVRMode
+    SceneId: 
+    ScenePath: Assets/SteamVR/Extras/SteamVR_ForceSteamVRMode.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: SteamVR_LaserPointer
+    SceneId: 
+    ScenePath: Assets/SteamVR/Extras/SteamVR_LaserPointer.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: SteamVR_ShowTrackingReferences
+    SceneId: 
+    ScenePath: Assets/SteamVR/Extras/SteamVR_ShowTrackingReferences.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: SteamVR_TestIK
+    SceneId: 
+    ScenePath: Assets/SteamVR/Extras/SteamVR_TestIK.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: SteamVR_TestThrow
+    SceneId: 
+    ScenePath: Assets/SteamVR/Extras/SteamVR_TestThrow.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: SteamVR_TestTrackedCamera
+    SceneId: 
+    ScenePath: Assets/SteamVR/Extras/SteamVR_TestTrackedCamera.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Interactions_Example
+    SceneId: 
+    ScenePath: Assets/SteamVR/InteractionSystem/Samples/Interactions_Example.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Simple Sample
+    SceneId: 
+    ScenePath: Assets/SteamVR/Simple Sample.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Demo scene
+    SceneId: 
+    ScenePath: Assets/TerrainAssests/_MW Skybox/Scenes/Demo scene.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Prefab scene
+    SceneId: 
+    ScenePath: Assets/TerrainAssests/_MW Skybox/Scenes/Prefab scene.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: Demo
+    SceneId: 
+    ScenePath: Assets/TerrainAssests/TerrainTexturesPackFree/DemoScene/Demo.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: EyeSample
+    SceneId: 
+    ScenePath: Assets/ViveSR/Scenes/Eye/EyeSample.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: EyeSample_v2
+    SceneId: 
+    ScenePath: Assets/ViveSR/Scenes/Eye/EyeSample_v2.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: LipSample
+    SceneId: 
+    ScenePath: Assets/ViveSR/Scenes/Lip/LipSample.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: LipSample_v2
+    SceneId: 
+    ScenePath: Assets/ViveSR/Scenes/Lip/LipSample_v2.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: IndoorsScene
+    SceneId: 
+    ScenePath: Packages/com.unity.render-pipelines.high-definition/Editor/SceneTemplates/Indoors/IndoorsScene.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: IndoorsDXRScene
+    SceneId: 
+    ScenePath: Packages/com.unity.render-pipelines.high-definition/Editor/SceneTemplates/IndoorsDXR/IndoorsDXRScene.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: OutdoorsScene
+    SceneId: 
+    ScenePath: Packages/com.unity.render-pipelines.high-definition/Editor/SceneTemplates/Outdoors/OutdoorsScene.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: OutdoorsDXRScene
+    SceneId: 
+    ScenePath: Packages/com.unity.render-pipelines.high-definition/Editor/SceneTemplates/OutdoorsDXR/OutdoorsDXRScene.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
+  - SceneName: 0010_Volumes
+    SceneId: 
+    ScenePath: Packages/com.unity.render-pipelines.high-definition/Tests/Runtime/Scenes/0010_Volumes.unity
+    LastRevision: 0
+    VersionNumber: 1
+    VersionId: 0
