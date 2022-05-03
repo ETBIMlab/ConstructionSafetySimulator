@@ -14660,6 +14660,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 49
       objectReference: {fileID: 0}
+    - target: {fileID: 3982745569779310450, guid: 224439cad4b86594882700c3e903ad43,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4012904143334603608, guid: 224439cad4b86594882700c3e903ad43,
         type: 3}
       propertyPath: m_CullingMask.m_Bits
@@ -37850,13 +37855,13 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 28d3631f386706a49885d0804f611f41, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.081
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 5
+  Priority: 175
   DopplerLevel: 1.83
   MinDistance: 1
   MaxDistance: 500
@@ -53064,8 +53069,6 @@ PlayableDirector:
     value: {fileID: 2081911107}
   - key: {fileID: -9084911572903333000, guid: cdb15352d851e474cb1af43e49a5fa22, type: 2}
     value: {fileID: 390435197}
-  - key: {fileID: 8465254231157730697, guid: cdb15352d851e474cb1af43e49a5fa22, type: 2}
-    value: {fileID: 851174411}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1067206495
@@ -82171,7 +82174,7 @@ PrefabInstance:
     - target: {fileID: 4559881463071633667, guid: 8c405c22335423b4b8b337de69aa272f,
         type: 3}
       propertyPath: m_IsContraintActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4879308236356188051, guid: 8c405c22335423b4b8b337de69aa272f,
         type: 3}
@@ -88338,6 +88341,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 80d790d447435e34b8ddc648d2dcefef, type: 2}
     - {fileID: 11400000, guid: c39a972875a2ed442b5b26156ccfca2b, type: 2}
     - {fileID: 11400000, guid: 945a5c0f588052047be9dc69f1164f2f, type: 2}
+    - {fileID: 11400000, guid: bfe0daa2b54aa35479042a194c52cc0d, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -88412,6 +88416,20 @@ MonoBehaviour:
         - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: CutsceneController, ETBIM_Animations
           m_MethodName: PlayAnimationBars
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 851174411}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: Play
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -105334,7 +105352,7 @@ AudioSource:
   m_GameObject: {fileID: 2081911105}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -4996773665948582258, guid: fb0e85b148ec7ef49bd2a548ebe3aa3c,
+  OutputAudioMixerGroup: {fileID: 6672990395490941123, guid: fb0e85b148ec7ef49bd2a548ebe3aa3c,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
