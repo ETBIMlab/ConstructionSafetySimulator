@@ -1191,6 +1191,7 @@ GameObject:
   - component: {fileID: 2523435626267321320}
   - component: {fileID: 6507715334470600766}
   - component: {fileID: 4256201055232394313}
+  - component: {fileID: 9221467627867463314}
   m_Layer: 0
   m_Name: ConstructionWorkerV2
   m_TagString: Untagged
@@ -1364,6 +1365,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!136 &9221467627867463314
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858025573809680431}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.199054
+  m_Height: 1.9439163
+  m_Direction: 1
+  m_Center: {x: 0.015739053, y: 0.9167137, z: 0.007863581}
 --- !u!1 &2404884232062691159
 GameObject:
   m_ObjectHideFlags: 0
