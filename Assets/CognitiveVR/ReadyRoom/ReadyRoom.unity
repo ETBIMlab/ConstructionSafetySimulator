@@ -4366,7 +4366,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1490228509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4390,7 +4390,13 @@ MonoBehaviour:
   Height: 1
   SpawnRadius: 3
   ArcSize: 1
-  SceneInfos: []
+  SceneInfos:
+  - DisplayName: Scene A
+    ScenePath: Assets/Scenes/Pipeline Stages/Shack Assembly.unity
+    Icon: {fileID: 0}
+  - DisplayName: Scene B
+    ScenePath: Assets/Scenes/Pipeline Stages/LowQ_Shack Assembly.unity
+    Icon: {fileID: 0}
   DestroyOnSceneChange:
   - {fileID: 1726128183}
   - {fileID: 244912900}
@@ -5890,6 +5896,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Context Switcher May22
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599059253956477932, guid: ef3818bd856326a47bcfeeb7ed58aa38,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7618307356720192902, guid: ef3818bd856326a47bcfeeb7ed58aa38,
         type: 3}

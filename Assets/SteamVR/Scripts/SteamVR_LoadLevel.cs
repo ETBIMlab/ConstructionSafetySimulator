@@ -102,6 +102,7 @@ namespace Valve.VR
 
         public void Trigger()
         {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(levelName); return;
             if (!loading && !string.IsNullOrEmpty(levelName))
                 StartCoroutine(LoadLevel());
         }
