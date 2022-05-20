@@ -4166,6 +4166,7 @@ GameObject:
   m_Component:
   - component: {fileID: 136007085}
   - component: {fileID: 136007086}
+  - component: {fileID: 136007087}
   m_Layer: 0
   m_Name: Welding Shack
   m_TagString: Untagged
@@ -4214,6 +4215,32 @@ ParentConstraint:
   m_Sources:
   - sourceTransform: {fileID: 167012409}
     weight: 1
+--- !u!114 &136007087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136007084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9981709ae24fdf4fbfe39a242328bcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UseCustomId: 1
+  CustomId: editor_418a03fc-5b89-4fe4-8128-feed269728b5
+  UpdateRate: 0.1
+  UseCustomMesh: 1
+  MeshName: welding_shack
+  CommonMesh: 0
+  PositionThreshold: 0.01
+  RotationThreshold: 0.1
+  ScaleThreshold: 0.1
+  IsController: 0
+  IsRight: 0
+  ControllerType: 0
+  IdPool: {fileID: 0}
+  SyncWithPlayerGazeTick: 0
 --- !u!1001 &137831209
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5912,6 +5939,38 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 167012407}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &167012410 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8129773957171125805, guid: b4f2d34cf5c389049b8e230946b706d1,
+    type: 3}
+  m_PrefabInstance: {fileID: 167012407}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &167012411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167012410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9981709ae24fdf4fbfe39a242328bcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UseCustomId: 1
+  CustomId: editor_50d0014f-24c6-4542-9d52-694e7a966af1
+  UpdateRate: 0.1
+  UseCustomMesh: 1
+  MeshName: extended_cat_crane
+  CommonMesh: 0
+  PositionThreshold: 0.01
+  RotationThreshold: 0.1
+  ScaleThreshold: 0.1
+  IsController: 0
+  IsRight: 0
+  ControllerType: 0
+  IdPool: {fileID: 0}
+  SyncWithPlayerGazeTick: 0
 --- !u!1001 &169027501
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7809,6 +7868,38 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 246575355}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &246575357 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7048610657198189719, guid: e526da93695465940b80d8f1223d7fe5,
+    type: 3}
+  m_PrefabInstance: {fileID: 246575355}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &246575358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246575357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9981709ae24fdf4fbfe39a242328bcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UseCustomId: 1
+  CustomId: editor_343f288d-9ce6-4b64-a1f3-26e178b030de
+  UpdateRate: 0.1
+  UseCustomMesh: 1
+  MeshName: weldingshack_prefab
+  CommonMesh: 0
+  PositionThreshold: 0.01
+  RotationThreshold: 0.1
+  ScaleThreshold: 0.1
+  IsController: 0
+  IsRight: 0
+  ControllerType: 0
+  IdPool: {fileID: 0}
+  SyncWithPlayerGazeTick: 0
 --- !u!1 &251051488
 GameObject:
   m_ObjectHideFlags: 0
@@ -23677,7 +23768,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &591327552
 Transform:
   m_ObjectHideFlags: 0
@@ -30430,7 +30521,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &698936291
 Transform:
   m_ObjectHideFlags: 0
@@ -32703,6 +32794,38 @@ AudioSource:
     type: 3}
   m_PrefabInstance: {fileID: 723821836}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &723821840 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1858025573809680431, guid: 26072513785e5c54b80277cbc084b237,
+    type: 3}
+  m_PrefabInstance: {fileID: 723821836}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &723821841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723821840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9981709ae24fdf4fbfe39a242328bcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UseCustomId: 1
+  CustomId: editor_ae8a36ee-fbb0-4a6e-8260-9388b6bec3b6
+  UpdateRate: 0.1
+  UseCustomMesh: 1
+  MeshName: constructionworkerv2_(1)
+  CommonMesh: 0
+  PositionThreshold: 0.01
+  RotationThreshold: 0.1
+  ScaleThreshold: 0.1
+  IsController: 0
+  IsRight: 0
+  ControllerType: 0
+  IdPool: {fileID: 0}
+  SyncWithPlayerGazeTick: 0
 --- !u!1 &727972021
 GameObject:
   m_ObjectHideFlags: 0
@@ -43680,6 +43803,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -179
       objectReference: {fileID: 0}
+    - target: {fileID: 6790392982111901527, guid: e526da93695465940b80d8f1223d7fe5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7017742732763361430, guid: e526da93695465940b80d8f1223d7fe5,
         type: 3}
       propertyPath: m_Enabled
@@ -43820,6 +43948,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8110311139793093638, guid: e526da93695465940b80d8f1223d7fe5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8123778505866965290, guid: e526da93695465940b80d8f1223d7fe5,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -43953,7 +44086,7 @@ PrefabInstance:
     - target: {fileID: 8906911480715688661, guid: e526da93695465940b80d8f1223d7fe5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9022184544875196480, guid: e526da93695465940b80d8f1223d7fe5,
         type: 3}
@@ -51713,6 +51846,7 @@ GameObject:
   m_Component:
   - component: {fileID: 998676742}
   - component: {fileID: 998676743}
+  - component: {fileID: 998676744}
   m_Layer: 0
   m_Name: Welding Shack
   m_TagString: Untagged
@@ -51762,6 +51896,32 @@ ParentConstraint:
   m_Sources:
   - sourceTransform: {fileID: 907712121}
     weight: 1
+--- !u!114 &998676744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998676741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9981709ae24fdf4fbfe39a242328bcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UseCustomId: 1
+  CustomId: editor_755063fb-41b5-49c4-90b5-ed5191a92977
+  UpdateRate: 0.1
+  UseCustomMesh: 1
+  MeshName: welding_shack
+  CommonMesh: 0
+  PositionThreshold: 0.01
+  RotationThreshold: 0.1
+  ScaleThreshold: 0.1
+  IsController: 0
+  IsRight: 0
+  ControllerType: 0
+  IdPool: {fileID: 0}
+  SyncWithPlayerGazeTick: 0
 --- !u!1 &1001629189
 GameObject:
   m_ObjectHideFlags: 0
@@ -53140,6 +53300,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1048598340}
   - component: {fileID: 1048598341}
+  - component: {fileID: 1048598342}
   m_Layer: 0
   m_Name: Welding Shack
   m_TagString: Untagged
@@ -53188,6 +53349,32 @@ ParentConstraint:
   m_Sources:
   - sourceTransform: {fileID: 1214357966}
     weight: 1
+--- !u!114 &1048598342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048598339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9981709ae24fdf4fbfe39a242328bcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UseCustomId: 1
+  CustomId: editor_5a14bc96-2147-47ca-8d2c-27add1951fbf
+  UpdateRate: 0.1
+  UseCustomMesh: 1
+  MeshName: welding_shack
+  CommonMesh: 0
+  PositionThreshold: 0.01
+  RotationThreshold: 0.1
+  ScaleThreshold: 0.1
+  IsController: 0
+  IsRight: 0
+  ControllerType: 0
+  IdPool: {fileID: 0}
+  SyncWithPlayerGazeTick: 0
 --- !u!1 &1067206493
 GameObject:
   m_ObjectHideFlags: 0
@@ -66342,6 +66529,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 3.39
       objectReference: {fileID: 0}
+    - target: {fileID: 2599776988028997058, guid: b4f2d34cf5c389049b8e230946b706d1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3110411605615433720, guid: b4f2d34cf5c389049b8e230946b706d1,
         type: 3}
       propertyPath: m_LocalScale.z
@@ -66603,6 +66795,51 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 174.028
       objectReference: {fileID: 0}
+    - target: {fileID: 4139795723308796376, guid: b4f2d34cf5c389049b8e230946b706d1,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1064659
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139795723308796376, guid: b4f2d34cf5c389049b8e230946b706d1,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8217943
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516773005309824887, guid: b4f2d34cf5c389049b8e230946b706d1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.1500125
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516773005309824887, guid: b4f2d34cf5c389049b8e230946b706d1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.867237
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516773005309824887, guid: b4f2d34cf5c389049b8e230946b706d1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.1015244
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516773005309824887, guid: b4f2d34cf5c389049b8e230946b706d1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.68613327
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516773005309824887, guid: b4f2d34cf5c389049b8e230946b706d1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.72747594
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516773005309824887, guid: b4f2d34cf5c389049b8e230946b706d1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.00000014009322
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516773005309824887, guid: b4f2d34cf5c389049b8e230946b706d1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.0000001246101
+      objectReference: {fileID: 0}
     - target: {fileID: 5969662203465489890, guid: b4f2d34cf5c389049b8e230946b706d1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -66791,6 +67028,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4f2d34cf5c389049b8e230946b706d1, type: 3}
+--- !u!1 &1214357964 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8129773957171125805, guid: b4f2d34cf5c389049b8e230946b706d1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1214357963}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1214357965 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4037877891631251757, guid: b4f2d34cf5c389049b8e230946b706d1,
@@ -66803,6 +67046,32 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1214357963}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1214357967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214357964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9981709ae24fdf4fbfe39a242328bcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UseCustomId: 1
+  CustomId: editor_f3c796bf-375b-4c7f-9352-bfeb57870235
+  UpdateRate: 0.1
+  UseCustomMesh: 1
+  MeshName: extended_cat_crane
+  CommonMesh: 0
+  PositionThreshold: 0.01
+  RotationThreshold: 0.1
+  ScaleThreshold: 0.1
+  IsController: 0
+  IsRight: 0
+  ControllerType: 0
+  IdPool: {fileID: 0}
+  SyncWithPlayerGazeTick: 0
 --- !u!114 &1214357969 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 990189771757884513, guid: b4f2d34cf5c389049b8e230946b706d1,
@@ -77106,6 +77375,38 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 1344902155}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1344902158 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1858025573809680431, guid: 26072513785e5c54b80277cbc084b237,
+    type: 3}
+  m_PrefabInstance: {fileID: 1344902155}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1344902159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344902158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9981709ae24fdf4fbfe39a242328bcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UseCustomId: 1
+  CustomId: editor_b892d906-ece1-4130-b5a8-18746ecc7fb9
+  UpdateRate: 0.1
+  UseCustomMesh: 1
+  MeshName: constructionworkerv2_(2)
+  CommonMesh: 0
+  PositionThreshold: 0.01
+  RotationThreshold: 0.1
+  ScaleThreshold: 0.1
+  IsController: 0
+  IsRight: 0
+  ControllerType: 0
+  IdPool: {fileID: 0}
+  SyncWithPlayerGazeTick: 0
 --- !u!1 &1356663010
 GameObject:
   m_ObjectHideFlags: 0
@@ -78395,6 +78696,32 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1411103123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411103121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9981709ae24fdf4fbfe39a242328bcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UseCustomId: 1
+  CustomId: editor_af5b2c0d-ab88-4207-9149-57c84581419f
+  UpdateRate: 0.1
+  UseCustomMesh: 1
+  MeshName: extended_cat_crane
+  CommonMesh: 0
+  PositionThreshold: 0.01
+  RotationThreshold: 0.1
+  ScaleThreshold: 0.1
+  IsController: 0
+  IsRight: 0
+  ControllerType: 0
+  IdPool: {fileID: 0}
+  SyncWithPlayerGazeTick: 0
 --- !u!1 &1415880255
 GameObject:
   m_ObjectHideFlags: 0
@@ -79748,7 +80075,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1482284598
 Transform:
   m_ObjectHideFlags: 0
@@ -84445,6 +84772,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c405c22335423b4b8b337de69aa272f, type: 3}
+--- !u!1 &1492610749 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7042656265401480284, guid: 8c405c22335423b4b8b337de69aa272f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1492610748}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1492610750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492610749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9981709ae24fdf4fbfe39a242328bcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UseCustomId: 1
+  CustomId: editor_1982136a-905f-43d4-af55-721d26f36065
+  UpdateRate: 0.1
+  UseCustomMesh: 1
+  MeshName: extended_cat_crane
+  CommonMesh: 0
+  PositionThreshold: 0.01
+  RotationThreshold: 0.1
+  ScaleThreshold: 0.1
+  IsController: 0
+  IsRight: 0
+  ControllerType: 0
+  IdPool: {fileID: 0}
+  SyncWithPlayerGazeTick: 0
 --- !u!1001 &1493805408
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -85929,6 +86288,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1585998989}
   - component: {fileID: 1585998990}
+  - component: {fileID: 1585998991}
   m_Layer: 0
   m_Name: Supervisor
   m_TagString: Untagged
@@ -85970,6 +86330,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1585998991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585998988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9981709ae24fdf4fbfe39a242328bcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UseCustomId: 1
+  CustomId: editor_6e324f2c-65d2-4e07-8913-7e0c4736cb00
+  UpdateRate: 0.1
+  UseCustomMesh: 1
+  MeshName: supervisor
+  CommonMesh: 0
+  PositionThreshold: 0.01
+  RotationThreshold: 0.1
+  ScaleThreshold: 0.1
+  IsController: 0
+  IsRight: 0
+  ControllerType: 0
+  IdPool: {fileID: 0}
+  SyncWithPlayerGazeTick: 0
 --- !u!1 &1587442714 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6790392982111901527, guid: e526da93695465940b80d8f1223d7fe5,
@@ -93411,6 +93797,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4f2d34cf5c389049b8e230946b706d1, type: 3}
+--- !u!1 &1814000671 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8129773957171125805, guid: b4f2d34cf5c389049b8e230946b706d1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1814000670}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1814000672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1814000671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9981709ae24fdf4fbfe39a242328bcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UseCustomId: 1
+  CustomId: editor_41998591-1279-4b2d-9378-945d68fe0ee4
+  UpdateRate: 0.1
+  UseCustomMesh: 1
+  MeshName: extended_cat_crane
+  CommonMesh: 0
+  PositionThreshold: 0.01
+  RotationThreshold: 0.1
+  ScaleThreshold: 0.1
+  IsController: 0
+  IsRight: 0
+  ControllerType: 0
+  IdPool: {fileID: 0}
+  SyncWithPlayerGazeTick: 0
 --- !u!1 &1815039932
 GameObject:
   m_ObjectHideFlags: 0
