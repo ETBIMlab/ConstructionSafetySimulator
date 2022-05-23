@@ -51848,7 +51848,7 @@ GameObject:
   - component: {fileID: 998676743}
   - component: {fileID: 998676744}
   m_Layer: 0
-  m_Name: Welding Shack
+  m_Name: Welding Shack (Hazard1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76353,7 +76353,7 @@ PrefabInstance:
     - target: {fileID: 1858025573809680431, guid: 26072513785e5c54b80277cbc084b237,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2029452779446560002, guid: 26072513785e5c54b80277cbc084b237,
         type: 3}
@@ -77375,38 +77375,6 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 1344902155}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1344902158 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1858025573809680431, guid: 26072513785e5c54b80277cbc084b237,
-    type: 3}
-  m_PrefabInstance: {fileID: 1344902155}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1344902159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1344902158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9981709ae24fdf4fbfe39a242328bcb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UseCustomId: 1
-  CustomId: editor_b892d906-ece1-4130-b5a8-18746ecc7fb9
-  UpdateRate: 0.1
-  UseCustomMesh: 1
-  MeshName: constructionworkerv2_(2)
-  CommonMesh: 0
-  PositionThreshold: 0.01
-  RotationThreshold: 0.1
-  ScaleThreshold: 0.1
-  IsController: 0
-  IsRight: 0
-  ControllerType: 0
-  IdPool: {fileID: 0}
-  SyncWithPlayerGazeTick: 0
 --- !u!1 &1356663010
 GameObject:
   m_ObjectHideFlags: 0
@@ -83473,7 +83441,7 @@ PrefabInstance:
     - target: {fileID: 7042656265401480284, guid: 8c405c22335423b4b8b337de69aa272f,
         type: 3}
       propertyPath: m_Name
-      value: Extended_cat_crane
+      value: Extended_cat_crane (Hazard1)
       objectReference: {fileID: 0}
     - target: {fileID: 7192003996399975711, guid: 8c405c22335423b4b8b337de69aa272f,
         type: 3}
@@ -99696,7 +99664,7 @@ PrefabInstance:
     - target: {fileID: 8129773957171125805, guid: b4f2d34cf5c389049b8e230946b706d1,
         type: 3}
       propertyPath: m_Name
-      value: Extended_cat_crane
+      value: Extended_cat_crane (Hazard2)
       objectReference: {fileID: 0}
     - target: {fileID: 8533905271822570343, guid: b4f2d34cf5c389049b8e230946b706d1,
         type: 3}
