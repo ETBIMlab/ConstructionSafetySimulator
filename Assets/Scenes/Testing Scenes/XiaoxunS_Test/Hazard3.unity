@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 14192.426, g: 14347.223, b: 15076.625, a: 1}
+  m_IndirectSpecularColor: {r: 14103.293, g: 14263.652, b: 15002.234, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1377,6 +1377,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1094922693678753775, guid: 573b6ab3d58a4c3489e2f92f013fe19f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4112699138995088623, guid: 573b6ab3d58a4c3489e2f92f013fe19f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2292,7 +2297,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2047422094}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &2047422096
 Camera:
   m_ObjectHideFlags: 0
