@@ -1,0 +1,36 @@
+How To Duplicate Terrain (without making changes to orginal terrain)
+
+
+1. Create a new folder to hold your new terrain scene and terrain data
+
+2. Create a new scene (if not already created for your terrain)
+
+3. Copy the "TerrainCopyData" Folder into your new folder using Windows Explorer (Unity has trouble with copy/pasting files)
+	-Doing this will create a copy of the actual terrain data, this is where all custom data will be stored
+	-Give this folder a new name to keep track of the terrain data name (optional but recommended)
+
+4. Copy the "Terrain" gameobject, with all of the Terrain children, into your new scene
+
+
+IMPORTANT!!! 
+At this point, the terrain you copied will still be linked up to the old terrain data from the orginal scene.
+We need to replace each terrain gameobject Terrain0 - Terrain15 with the new terrain data copy in your new scene folder
+
+
+5. Click on the inspector window context menu (3 dots) and select Debug mode
+	-This will allow you to see the terrain data being referenced
+	-Notice how the Terrain component and the Terrain Collider component have a spot for Terrain Data
+
+6. Open up your new terrain copy data folder in the project window for easy access
+
+7. For EACH Terrain gameobject child of Terrain (Terrain0 through Terrain15):
+	1. Click on TerrainX
+	2. Replace the Terrain Data of TerrainX with the corresponding new terrain data copy called "TerrainX"
+		-Make sure you aren't in the old TerrainFolder! 
+		-Verify by clicking on it in the inspector, it should highlight the project folder you are already in
+	3. Make sure to replace the Terrain Data of TerrainX for component Terrain AND the component Terrain Collider
+
+8. Verify that all have been replaced by editing all of the terrain tiles, and checking the original scene to make sure nothing has been edited.
+	-Go back and make adjustments if a relink was missed in the process. It's tedious but a lot better than it was before I labelled the terrains by number.
+
+You have now made a copy of the terrain, repeat this process whenever you need a new duplicate!
