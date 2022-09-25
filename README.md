@@ -60,9 +60,19 @@ git checkout master             // switch back to the master branch
 
 
 ## Step 1: Cloning the repo!
-It's pretty simple! Just create a folder somewhere in your user directory (or wherever you want to keep the project) and then in the terminal, navigate to that folder. Once you're in the folder that you want to clone to repo into, type the following command
+It's pretty simple! Just create a folder somewhere in your user directory (or wherever you want to keep the project) and then in the terminal, navigate to that folder. Once you're in the folder that you want to clone to repo into, type the following command:<br/>`git clone https://github.com/ETBIMlab/ConstructionSafetySimulator.git`
+<br/>For example: 
 ```
+# cd : folder that you want to clone to repo into 
+cd ~/YourFolderForGitRepos
+
+# clone the repo into a folder called ConstructionSafetySimulator
 git clone https://github.com/ETBIMlab/ConstructionSafetySimulator.git
+
+# Set your github username and email in the newly cloned repo
+cd ConstructionSafetySimulator
+git config user.email "<youremail@asu.edu>"
+git config user.name "<yourgithubusername>"
 ```
 You will the be prompted to enter your GitHub username and password 
 
@@ -182,7 +192,7 @@ git pull
 ```
 checkout a new branch
 ```
-git checkout -b myCoolNewBranch
+git checkout -b myUsername/coolNewBranch
 ```
 Make some cool new stuff in the project, and then push it
 ```
