@@ -46,15 +46,15 @@ The easiest way to manage your git commands is through the terminal! I would **s
 
 **Here's a git cheat sheet! More explanation below**
 ```
-git fetch                       // gets info from the main repository, you can use it to check for changes
-git status                      // check the status of your current changes, see if you're up to date
-git pull                        // update your local repo with the latest on the main repo (will not overwrite your work!)
-git checkout -b myNewBranch     // creates a new branch and checks it out simultaneously!
-git add -A                      // add all changes to the stage
-git add filename.etc            // add a specific file only, to the stage
-git commit -m "my message"      // simultaneously commit and add a commit message
-git push                        // pushes your commit to the main repo
-git checkout master             // switch back to the master branch 
+git fetch                               // gets info from the main repository, you can use it to check for changes
+git status                              // check the status of your current changes, see if you're up to date
+git pull                                // update your local repo with the latest on the main repo (will not overwrite your work!)
+git checkout -b myUsername/myNewBranch  // creates a new branch and checks it out simultaneously!
+git add -A                              // add all changes to the stage
+git add filename.etc                    // add a specific file only, to the stage
+git commit -m "my message"              // simultaneously commit and add a commit message
+git push                                // pushes your commit to the main repo
+git checkout master                     // switch back to the master branch 
 ```
 **If you get stuck** and you just want to delete it all and start over you can use `git reset --hard` and that will revert you to the last commit and delete **all** of your changes since the last commit **without any confirmation** so use it wisely. Seriously, be careful with this command! (but don't worry, anthing commited is safe)
 
@@ -130,16 +130,17 @@ I also like to do a `git status` to make sure I don't have any unwanted changes 
 
 **Okay**, so you're up to date now! Next, come up with a name for your branch. Make it unique! Like "addingThumbadControls" or "modifyingSmokeAnimation". Make it something that isn't likely to be reused by someone else. 
 
-Let's say I'm gonna make the branch "workingOnSomeCode" all you need to type is
+Let's say I'm gonna make the branch "myUsername/workingOnSomeCode" all you need to type is<br/>
+(Important: Always prefix your branch name with <myUsername/...> so we can tell who owns what branch)
 ```
-git checkout -b workingOnSomeCode
+git checkout -b myUsername/workingOnSomeCode
 ```
 
 The `-b` will create the branch and immediately switch you to it. 
 You can also use 
 ``` 
-git branch workingOnSomeCode
-git checkout workingOnSomeCode
+git branch myUsername/workingOnSomeCode
+git checkout myUsername/workingOnSomeCode
 ```
 But using the `checkout -b` action is just less typing! 
 
@@ -190,7 +191,7 @@ Start on `master`
 git checkout master
 git pull
 ```
-checkout a new branch
+checkout a new branch (Prefix with your username)
 ```
 git checkout -b myUsername/coolNewBranch
 ```
@@ -200,4 +201,7 @@ git add -A
 git commit -m "I did a thing!"
 git push
 ```
-then create a pull request on GitHub, wait for review, and merge that puppy!
+then create a pull request on GitHub, wait for review, and merge that puppy! <br/>
+Always use "Squash and Merge" unless there's a compelling reason not to
+
+<img src="https://user-images.githubusercontent.com/79553911/192163046-a6b29d11-167f-442b-a3c6-143f8ac5632a.png" width=50% height=50%/>
