@@ -58,3 +58,10 @@ $ git push origin mnfitz/morelfs
 
 # PullRequest here!
 ```
+## Recommended plan for migrating: 
+Dummy commits to `ETBIM-Research-Group/LFS_Test`
+All users perform `git lfs install`
+Then pick obscure filetype (ex: .psd), and migrate it to git LFS
+Evaluate usage over week
+Pick another less obscure filetype (ex: .fbx), and migrate to git lfs
+Evaluate again over one week
