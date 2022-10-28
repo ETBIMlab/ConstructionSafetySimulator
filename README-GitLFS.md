@@ -1,11 +1,16 @@
 # Git LFS, AKA Git L)arge F)ile S)torage
 
 ## What is it: _Get for >100MB files_
-Git LFS is an external file storage solution used to divert exceedingly large files of your choosing into the LFS server. It after storing the files, it replaces the files in your repo with file pointers. This means that these large files no longer reside in the repo, but instead in the LFS server. These large files are still integrated seamlessly when a git clone is pformed.
+Git LFS is an external file storage solution used to divert exceedingly large files of your choosing into the LFS server. 
+After storing the files, it replaces the files in your repo with file pointers. 
+This means that these large files no longer reside in the repo, but instead in the LFS server. 
+These large files are still integrated seamlessly when a git clone is performed.
 https://git-lfs.github.com/
 
 ## Why is it Needed: _Standard Git disallows >100MB files_
-Github has a limit to how large your files can be when committing. Any file larger than 50MB will start giving warnings when pushed, and files larger than 100MB will be blocked from pushing entirely. Git LFS has no limit to the size of the file you can commit. 
+Github has a limit to how large your files can be when committing. 
+Any file larger than 50MB will start giving warnings when pushed, and files larger than 100MB will be blocked from pushing entirely. 
+Git LFS has no limit to the size of the file you can commit. 
 
 ## Pros and Cons
 Pros: 
