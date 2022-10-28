@@ -11408,19 +11408,6 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1101234511}
-          m_TargetAssemblyTypeName: TimelineController, Assembly-CSharp
-          m_MethodName: SetCurrentTimeline
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 1119362384}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Playables.PlayableDirector,
-              UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
         - m_Target: {fileID: 1101234512}
           m_TargetAssemblyTypeName: FreezeFrameController, ETBIM_SceneManagement
           m_MethodName: StartFreezeFrame
@@ -11450,19 +11437,6 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1101234511}
-          m_TargetAssemblyTypeName: TimelineController, Assembly-CSharp
-          m_MethodName: SetCurrentTimeline
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 1868305847}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Playables.PlayableDirector,
-              UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
         - m_Target: {fileID: 1101234512}
           m_TargetAssemblyTypeName: FreezeFrameController, ETBIM_SceneManagement
           m_MethodName: StartFreezeFrame
@@ -17831,7 +17805,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1693431767}
   m_LocalRotation: {x: -0, y: 0.80150354, z: -0, w: -0.5979901}
-  m_LocalPosition: {x: 11.21, y: 2.0372052, z: -42.8}
+  m_LocalPosition: {x: 11.21, y: 2.0372052, z: -43.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1119362383}
@@ -19141,6 +19115,8 @@ PlayableDirector:
   - key: {fileID: 3570444489023920699, guid: f2dd2bc6b9a8ede43bf75e3babf84807, type: 2}
     value: {fileID: 119695286}
   - key: {fileID: -895992478524006329, guid: f2dd2bc6b9a8ede43bf75e3babf84807, type: 2}
+    value: {fileID: 1101234514}
+  - key: {fileID: -2839387748421879953, guid: f2dd2bc6b9a8ede43bf75e3babf84807, type: 2}
     value: {fileID: 1101234514}
   m_ExposedReferences:
     m_References: []
