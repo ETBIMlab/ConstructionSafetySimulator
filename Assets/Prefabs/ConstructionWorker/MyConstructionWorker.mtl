@@ -1,0 +1,62 @@
+# Blender 3.2.1 MTL File: 'ConstructionWorkerImport.blend'
+# www.blender.org
+
+newmtl Eye_Outer
+Ns 1000.000000
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl Iris
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.063694 0.014950 0.013573
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl Pupil
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.000000 0.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl Worker_material
+Ns 20.000006
+Ka 1.000000 1.000000 1.000000
+Kd 0.588235 0.588235 0.588235
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Worker_material_Base_Color.png
+map_Ks Worker_material_Metallic.png
+map_Ns Worker_material_Roughness.png
+map_Ke Worker_material_Emissive.png
+map_Bump -bm 1.000000 Worker_material_Normal_OpenGL.png
+
+newmtl worker_head_material
+Ns 20.000006
+Ka 1.000000 1.000000 1.000000
+Kd 0.588235 0.588235 0.588235
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd worker_head_material_Base_Color.png
+map_Ks worker_head_material_Metallic.png
+map_Ns worker_head_material_Roughness.png
+map_Ke worker_head_material_Emissive.png
+map_Bump -bm 1.000000 worker_head_material_Normal_OpenGL.png
